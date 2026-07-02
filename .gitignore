@@ -1,0 +1,62 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Test / tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# uv: keep uv.lock committed (reproducible installs); ignore the pinned interpreter file
+.python-version
+
+# ---- Terraform / OpenTofu ----
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ---- Project ----
+# Cloned Cohort A target repos are inputs, not part of this source tree.
+/corpus/
+# Empirical output (source of truth is regenerated per run).
+results*.csv
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# ---- Claude Code local settings (machine-specific) ----
+.claude/settings.local.json
+
+
+
+PHASE1_NOTES.md
+PROJECT_SPEC.md
+OPERATOR_SYNONYMS.md
