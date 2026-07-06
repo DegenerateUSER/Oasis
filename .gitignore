@@ -36,8 +36,11 @@ override.tf.json
 # ---- Project ----
 # Cloned Cohort A target repos are inputs, not part of this source tree.
 /corpus/
-# Empirical output (source of truth is regenerated per run).
+# Future run outputs — keep benchmarks/ historical data committed, ignore new scratch runs.
 results*.csv
+batch_results.log
+# New per-run logs from future batch runs (historical ones in benchmarks/ are kept).
+batch_run_*.log
 
 # ---- Editors / OS ----
 .vscode/

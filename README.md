@@ -4,41 +4,96 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue?logo=python)](https://www.python.org/)
 
-**Oasis** is an open-source mutation testing framework designed specifically for Terraform and OpenTofu Infrastructure-as-Code (IaC) test suites. 
+**Oasis** is an open-source mutation testing framework for Terraform and OpenTofu Infrastructure-as-Code (IaC) test suites.
 
-Rather than relying on basic code coverage metrics, Oasis evaluates the **semantic quality** of your `terraform test` assertions. It injects small, logical faults ("mutants") directly into your `.tf` resource configurations, runs your test suites against each mutant, and validates whether your assertions successfully detect (kill) the injected failure.
+Rather than relying on basic code coverage metrics, Oasis evaluates the **semantic quality** of your `terraform test` assertions. It injects small, logical faults ("mutants") into `.tf` resource configurations, runs your test suite against each mutant, and reports whether your assertions successfully detect (kill) the injected failure—producing a **mutation score** that quantifies how rigorous your IaC tests actually are.
+
+---
+
+## 📊 Benchmarks — Tested on 23 Real-World Repositories
+
+Oasis was empirically evaluated against a curated corpus of **23 public Terraform repositories** from GitHub. The full evaluation report and raw data live in [`/benchmarks`](./benchmarks/).
+
+### Aggregate Results
+
+| Metric | Value |
+|---|---|
+| Total mutants generated | 242 |
+| Scored mutants (valid, ran to completion) | **177** |
+| Killed (caught by test assertions) | 44 |
+| Survived (missed by tests) | 133 |
+| **Overall mutation score** | **24.9%** |
+| Baseline failures (credential/env issues) | 61 |
+
+### Per-Repository Breakdown (scored repos only)
+
+| Repository | Scored Mutants | Mutation Score |
+|---|---|---|
+| `aws-platform-starter` | 38 | 13% |
+| `aws-terraform-infrastructure` | 5 | 80% |
+| `cloud-native-deployment-platform` | 1 | 100% |
+| `eks-vulnerable-infra` | 5 | 40% |
+| `genai-idp-terraform` | 8 | 0% |
+| `platform-design` | 32 | 41% |
+| `platform-tools` | 37 | 24% |
+| `psoxy` | 9 | 0% |
+| `server-terraform` | 5 | 0% |
+| `serverless-architecture-patterns` | 19 | 21% |
+| `terraform-aws-sonarqube` | 2 | 50% |
+| `terraform-aws-static-site` | 10 | 0% |
+| `terraform-mongodbatlas-project` | 1 | 0% |
+| `tofu-modules` | 5 | 100% |
+
+### Why Survived Mutants Matter
+Of the 133 surviving mutants, the classifier identified:
+- **104 (78%)** as `no_coverage` — the mutated resource was never exercised by any test.
+- **29 (22%)** as `weak_assertion` — the test executed but lacked an assertion checking the mutated attribute.
+
+→ **Full analysis**: [`benchmarks/report_draft.md`](./benchmarks/report_draft.md) | **Raw data**: [`benchmarks/batch_results/master.csv`](./benchmarks/batch_results/master.csv)
 
 ---
 
 ## 🚀 Key Features
 
-*   **12 Specialized Mutation Operators**: Targets variables, logical resource dependencies (`depends_on`), conditional tags, lifecycle rules, security enums, and tag casing.
-*   **Zero-Drift State Management**: Uses a robust `restored` context manager that guarantees your git repository state is cleanly reverted (`git checkout`) after every test execution, even on crash or manual abort.
-*   **Survival Reason Classifier**: Automatically categorizes *why* a mutant survived into three actionable categories:
-    *   `no_coverage`: The mutated file or resource was never targeted by tests.
-    *   `plan_only_no_assert`: The test block has run-gates (`command = plan`) but lacks explicit check assertions.
-    *   `weak_assertion`: The test block executes and verifies the state, but fails to check the mutated parameter.
-*   **Zero-Dependency Installer Packages**: Distributed as compiled, standalone native binaries (via Nuitka) for macOS, Linux, and Windows—no Python runtime required.
+- **12 Specialized Mutation Operators** targeting variables, resource dependencies (`depends_on`), conditionals, lifecycle rules, security enums, and tag casing.
+- **Zero-Drift State Management** — a `restored` context manager guarantees your git repository state is cleanly reverted (`git checkout`) after every test, even on crash or keyboard interrupt.
+- **Survival Reason Classifier** — every surviving mutant is automatically classified into `no_coverage`, `plan_only_no_assert`, or `weak_assertion` to give you actionable signal, not just a number.
+- **Self-Managing CLI** — `oasis update` self-updates from GitHub Releases; `oasis uninstall` removes itself cleanly.
+- **No Python Runtime Required** — distributed as compiled native binaries for macOS, Linux, and Windows.
 
 ---
 
 ## 📦 Installation
 
-### 1. One-Command Installer (macOS & Linux)
-To download the correct binary, package it, and install it to `/usr/local/bin/oasis` automatically:
+### Option 1 — One-Command Installer (macOS & Linux)
 
 ```bash
 curl -sSfL https://raw.githubusercontent.com/DegenerateUSER/Oasis/master/bin/install.sh | sh
 ```
 
-### 2. Native Package Installers
-Go to the [GitHub Releases](https://github.com/DegenerateUSER/Oasis/releases) page and download:
-*   **macOS**: `oasis-macos-arm64.pkg` (Double-click to install using the macOS wizard)
-*   **Linux (Ubuntu/Debian)**: `oasis-linux-amd64.deb` (`sudo dpkg -i oasis-linux-amd64.deb`)
-*   **Windows**: `oasis-windows-amd64.zip` (Extract `oasis-windows-amd64.exe` to a directory in your `PATH`)
+**Verify before running** (recommended): Check the script's SHA-256 digest against the published value to confirm it hasn't been tampered with in transit.
 
-### 3. Install from Source
-Ensure you have [uv](https://github.com/astral-sh/uv) or `pip` installed:
+```bash
+# Download first, verify, then run
+curl -sSfL https://raw.githubusercontent.com/DegenerateUSER/Oasis/master/bin/install.sh -o install.sh
+shasum -a 256 install.sh
+# Expected: 9444074f20ee7c331dca5d9dc8fffe40f7026a22a4e1fa57309f785855d0460d  install.sh
+sh install.sh && rm install.sh
+```
+
+> The checksum above matches the installer at the time of the current release. After any update to `install.sh`, the new digest will be published here and in the release notes.
+
+### Option 2 — Native Package Installers
+
+Download from the [GitHub Releases](https://github.com/DegenerateUSER/Oasis/releases) page:
+
+| Platform | File | How to Install |
+|---|---|---|
+| **macOS (Apple Silicon)** | `oasis-macos-arm64.pkg` | Double-click → macOS installer wizard |
+| **Linux (Ubuntu / Debian)** | `oasis-linux-amd64.deb` | `sudo dpkg -i oasis-linux-amd64.deb` |
+| **Windows** | `oasis-windows-amd64.zip` | Extract `.exe`, add to `PATH` |
+
+### Option 3 — Build from Source
 
 ```bash
 git clone https://github.com/DegenerateUSER/Oasis.git
@@ -50,104 +105,110 @@ pip install .
 
 ## 🛠️ Usage
 
-Oasis operates via four subcommands: `preview`, `run`, `update`, and `uninstall`.
-
-### Previewing Mutants
-To see where Oasis will inject mutations and preview them as unified diffs without modifying files:
-```bash
-oasis preview /path/to/module/
-```
-
-### Running Mutation Tests
-To run the full mutation testing cycle on a repository, execute its `terraform test` suite against all mutants, and generate a `results.csv` evaluation report:
-```bash
-oasis run /path/to/repo/
-```
-
-### CLI Options
+### Preview Mutants (dry-run, no files modified)
 
 ```bash
-usage: oasis [-h] [-V] {preview,run,update,uninstall} ...
-
-positional arguments:
-  {preview,run,update,uninstall}
-    preview             show mutants for a .tf file or directory
-    run                 run the full mutation cycle over a repo and write a CSV
-    update              download and install the latest Oasis release
-    uninstall           remove the Oasis binary from this system
-
-options:
-  -h, --help            show this help message and exit
-  -V, --version         show program's version number and exit
+oasis preview /path/to/terraform-module/
 ```
 
-#### `oasis run` Customizations
-*   `--test-cmd "tofu test"`: Run tests using OpenTofu instead of Terraform.
-*   `--timeout 120`: Set a custom per-test execution timeout in seconds.
-*   `--plugin-cache-dir <dir>`: Use a shared provider plugin cache to speed up test initialization across modules.
-*   `--allow-version-drift`: Proceed even if the Terraform binary version doesn't match the pinned target.
-*   `-c <category>`: Only run specific categories of mutation operators (e.g. `security`, `logic`, `variables`, `tags`).
+Shows exactly what mutations would be injected, as unified diffs, without touching any files.
+
+### Run Mutation Tests
+
+```bash
+oasis run /path/to/repo/ --output results.csv
+```
+
+Runs the full mutation cycle: initializes the module, establishes a green baseline, injects each mutant, runs `terraform test`, classifies the outcome, and restores git state — for every mutant.
+
+### Key Options for `oasis run`
+
+| Flag | Default | Description |
+|---|---|---|
+| `--output` | `results.csv` | Path for the output CSV report |
+| `--test-cmd` | `terraform test` | Use `"tofu test"` for OpenTofu |
+| `--timeout` | `60` | Per-test timeout in seconds |
+| `-c <category>` | all | Only run operators in `security`, `logic`, `variables`, or `tags` |
+| `--allow-version-drift` | off | Skip the Terraform version pin check |
+| `--plugin-cache-dir` | `~/.cache/` | Shared provider plugin cache for faster init |
+
+### Manage Oasis Itself
+
+```bash
+oasis --version      # show installed version
+oasis update         # download and install the latest release
+oasis uninstall      # remove Oasis from this system
+```
 
 ---
 
-## 📊 Mutation Operators
+## 📈 Understanding the Output
 
-Oasis runs 12 mutations divided into four categories:
+The `results.csv` report contains one row per mutant:
 
-| Operator ID | Category | Description | Target Surface |
-|---|---|---|---|
-| **MUT-VAR-001** | Variables | Deletes default values from variables | `variable.default` |
-| **MUT-VAR-002** | Variables | Replaces variable default values with empty values | `variable.default` |
-| **MUT-LGC-001** | Logic | Swaps boolean logic values (`true` $\leftrightarrow$ `false`) | Logical values |
-| **MUT-LGC-002** | Logic | Deletes explicit resource dependencies | `depends_on` |
-| **MUT-LGC-003** | Logic | Swaps count conditions (`count = 0` $\leftrightarrow$ `count = 1`) | Resource `count` |
-| **MUT-LGC-004** | Logic | Inverts conditional ternary expressions | Ternary operators |
-| **MUT-SEC-001** | Security | Swaps private ACL values to public-read | S3 / resource ACLs |
-| **MUT-SEC-002** | Security | Disables encryption-at-rest keys/parameters | Encryption settings |
-| **MUT-SEC-003** | Security | Deletes security group ingress rules | Security ingress blocks |
-| **MUT-SEC-004** | Security | Alters lifecycle/prevent_destroy rules | Lifecycle configurations |
-| **MUT-TAG-001** | Tags | Swaps string values inside tags/labels | Tag value pairs |
-| **MUT-TAG-002** | Tags | Changes casing of tag names (e.g., key casing) | Tag keys |
+| Column | Description |
+|---|---|
+| `repo_name` | Target repository |
+| `operator_id` | Mutation operator applied (e.g. `MUT-SEC-004a`) |
+| `file_mutated` | Source `.tf` file that was changed |
+| `test_status` | `killed_assert` / `killed_error` / `survived` / `baseline_fail` / `invalid` |
+| `survival_reason` | For `survived` rows: `no_coverage`, `plan_only_no_assert`, or `weak_assertion` |
+| `test_output_snippet` | Relevant excerpt from `terraform test` output |
+
+**Mutation Score** = `(killed_assert + killed_error) / (all scored mutants) × 100%`
 
 ---
 
-## 📈 Understanding Results
+## 🔬 Mutation Operators
 
-The output of `oasis run` is a structured CSV file (`results.csv`) containing the evaluation of every mutant. The key metric is the **Mutation Score**:
-
-$$\text{Mutation Score} = \frac{\text{Killed Mutants}}{\text{Scored Mutants}} \times 100\%$$
-
-Each row in the report contains:
-*   `module_path`: Target test module path.
-*   `file_path`: Mutated source configuration file.
-*   `operator_id`: Applied mutation operator.
-*   `outcome`: Classification outcome of the test run:
-    *   `killed_assert`: Test suite caught the change via an assertion failure.
-    *   `killed_error`: Test suite crashed during execution (e.g., invalid state, cloud error).
-    *   `survived`: Test suite completed successfully (the mutation went unnoticed).
-    *   `baseline_fail`: The base module failed to run before mutations were applied.
-*   `survival_reason`: Explains the structural failure of the assertions if the outcome is `survived`.
+| Operator | Category | What it mutates |
+|---|---|---|
+| `MUT-RES-001` | Logic | Deletes `depends_on` resource dependencies |
+| `MUT-RES-002` | Logic | Swaps boolean attribute values (`true` ↔ `false`) |
+| `MUT-RES-003` | Logic | Inverts `count` conditions (`0` ↔ `1`) |
+| `MUT-SEC-001` | Security | Swaps private ACL to `public-read` |
+| `MUT-SEC-002` | Security | Disables encryption-at-rest settings |
+| `MUT-SEC-003` | Security | Deletes security group ingress rules |
+| `MUT-SEC-004a` | Security | Flips `block_public_acls` lifecycle flags |
+| `MUT-SEC-004b` | Security | Flips `block_public_policy` lifecycle flags |
+| `MUT-SEC-004c` | Security | Flips `ignore_public_acls` lifecycle flags |
+| `MUT-SEC-004d` | Security | Flips `restrict_public_buckets` lifecycle flags |
+| `MUT-TAG-001` | Tags | Swaps string values inside `tags`/`labels` maps |
+| `MUT-TAG-002` | Tags | Alters tag key casing |
 
 ---
 
-## 🔄 Self-Update & Uninstall
+## 🏗️ Project Layout
 
-Oasis makes maintenance easy with built-in commands:
+```
+src/tfmutate/
+  parser.py       # locates mutation targets + terraform-fmt validity gate
+  mutators.py     # 12-operator catalog; applies one operator per mutant
+  noop.py         # static NO_OP (variable-override) detection
+  state.py        # git checkout restore, finally-guaranteed
+  runner.py       # init → baseline gate → validate → test → classify
+  classifier.py   # survival_reason for every SURVIVED mutant
+  reporter.py     # CSV writer
+  cli.py          # oasis preview / run / update / uninstall
 
-*   **Check and Install Updates**:
-    ```bash
-    oasis update
-    ```
-    This fetches release assets directly from GitHub, checks for new versions, and runs the matching native package installer for your operating system.
+benchmarks/       # full pilot study dataset and report
+  batch_results/  # per-repo CSVs + master.csv
+  report_draft.md # empirical evaluation report
+  README.md       # how to reproduce
 
-*   **Clean Uninstall**:
-    ```bash
-    oasis uninstall
-    ```
-    This removes the binary globally from `/usr/local/bin` and cleans up associated package manager registry details (like `dpkg` configurations on Linux).
+fixtures/         # hand-written fixtures (phase0 smoke, thin-operator tests)
+tests/            # unit tests
+evidence/         # gh code-search results backing the disjointness finding
+```
+
+---
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to file issues, run tests locally, and what kinds of contributions are welcome.
 
 ---
 
 ## 📄 License
 
-Oasis is released under the permissive [MIT License](./LICENSE). Copyright (c) 2026 Tushar Teotia.
+Released under the [MIT License](./LICENSE). Copyright © 2026 Tushar Teotia.
