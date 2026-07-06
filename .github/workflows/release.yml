@@ -12,7 +12,9 @@ jobs:
   build:
     name: Compile on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     strategy:
+      fail-fast: false   # don't cancel other jobs if one fails
       matrix:
         include:
           - os: ubuntu-latest
@@ -39,18 +41,18 @@ jobs:
 
       - name: Compile with Nuitka
         run: |
-          python -m nuitka --standalone --onefile --include-package=tfmutate src/tfmutate/cli.py -o ${{ matrix.artifact_name }}
+          python -m nuitka --standalone --onefile --include-package=tfmutate --assume-yes-for-downloads src/tfmutate/cli.py -o ${{ matrix.artifact_name }}
         env:
           PYTHONPATH: src
 
-      - name: Tar/Zip Release Asset
-        shell: bash
-        run: |
-          if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            compress-archive -Path ${{ matrix.artifact_name }} -DestinationPath oasis-windows-amd64.zip
-          else
-            tar -czf ${{ matrix.artifact_name }}.tar.gz ${{ matrix.artifact_name }}
-          fi
+      - name: Package Release Asset (Unix)
+        if: runner.os != 'Windows'
+        run: tar -czf ${{ matrix.artifact_name }}.tar.gz ${{ matrix.artifact_name }}
+
+      - name: Package Release Asset (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Compress-Archive -Path ${{ matrix.artifact_name }} -DestinationPath oasis-windows-amd64.zip
 
       - name: Upload Binaries to Release
         uses: softprops/action-gh-release@v2
