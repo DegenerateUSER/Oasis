@@ -34,11 +34,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install nuitka python-hcl2
+          pip install nuitka
+          pip install .
 
       - name: Compile with Nuitka
         run: |
           python -m nuitka --standalone --onefile --include-package=tfmutate src/tfmutate/cli.py -o ${{ matrix.artifact_name }}
+        env:
+          PYTHONPATH: src
 
       - name: Tar/Zip Release Asset
         shell: bash
