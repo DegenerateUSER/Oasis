@@ -13,16 +13,25 @@ from __future__ import annotations
 import argparse
 import difflib
 import logging
+import os
+import platform
 import shlex
+import shutil
+import subprocess
 import sys
+import tempfile
+import urllib.request
 from collections import Counter
 from pathlib import Path
 
-from . import state
+from . import __version__, state
 from .classifier import classify_outcomes
 from .mutators import CATALOG, CATEGORIES, generate_mutants, select_operators
 from .noop import read_tftest_files
 from .parser import find_test_module_dirs, is_valid_hcl, read_tf_files
+
+_GITHUB_REPO = "DegenerateUSER/Oasis"
+_API_LATEST = f"https://api.github.com/repos/{_GITHUB_REPO}/releases/latest"
 from .reporter import write_csv
 from .runner import Runner, check_pinned_version
 
@@ -162,8 +171,176 @@ def _add_operator_filters(subparser: argparse.ArgumentParser) -> None:
     )
 
 
+# ── Self-update ───────────────────────────────────────────────────────────────
+
+def _detect_asset_name() -> tuple[str, str]:
+    """Return (preferred_asset, fallback_tarball) for the current platform."""
+    system = platform.system()   # Darwin / Linux / Windows
+    machine = platform.machine() # arm64 / x86_64
+
+    if system == "Darwin":
+        return "oasis-macos-arm64.pkg", "oasis-darwin-arm64.tar.gz"
+    if system == "Linux":
+        return "oasis-linux-amd64.deb", "oasis-linux-amd64.tar.gz"
+    # Windows — no installer package, just the zip
+    return "", "oasis-windows-amd64.zip"
+
+
+def _cmd_exists(cmd: str) -> bool:
+    return shutil.which(cmd) is not None
+
+
+def _update(args: argparse.Namespace) -> int:  # noqa: ARG001
+    import json
+
+    print(f"Oasis {__version__} — checking for updates...")
+
+    try:
+        req = urllib.request.Request(_API_LATEST, headers={"User-Agent": "oasis-updater"})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read())
+    except Exception as exc:  # noqa: BLE001
+        print(f"\u274c Could not reach GitHub API: {exc}")
+        return 1
+
+    latest_tag: str = data.get("tag_name", "")          # e.g. "v1.2.0"
+    latest_ver = latest_tag.lstrip("v")
+    current_ver = __version__.lstrip("v")
+
+    if latest_ver == current_ver:
+        print(f"\u2705 Already up to date ({__version__}).")
+        return 0
+
+    print(f"New version available: {latest_tag}  (current: {__version__})")
+
+    # Find download URLs from release assets
+    assets: dict[str, str] = {
+        a["name"]: a["browser_download_url"] for a in data.get("assets", [])
+    }
+
+    preferred, fallback = _detect_asset_name()
+    system = platform.system()
+
+    def download(url: str, suffix: str) -> str:
+        """Stream-download url to a temp file, return its path."""
+        tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
+        print(f"Downloading {url.split('/')[-1]}...")
+        urllib.request.urlretrieve(url, tmp.name)  # noqa: S310
+        return tmp.name
+
+    # ── macOS .pkg ────────────────────────────────────────────────────────────
+    if system == "Darwin" and preferred in assets:
+        pkg = download(assets[preferred], ".pkg")
+        print("Installing (you may be prompted for your password)...")
+        result = subprocess.run(["sudo", "installer", "-pkg", pkg, "-target", "/"], check=False)
+        os.unlink(pkg)
+        if result.returncode != 0:
+            print("\u274c installer failed. Try downloading manually from:")
+            print(f"  https://github.com/{_GITHUB_REPO}/releases/latest")
+            return 1
+        print(f"\u2705 Updated to {latest_tag}! Restart your shell or run: rehash")
+        return 0
+
+    # ── Linux .deb ────────────────────────────────────────────────────────────
+    if system == "Linux" and preferred in assets and _cmd_exists("dpkg"):
+        deb = download(assets[preferred], ".deb")
+        print("Installing (you may be prompted for your password)...")
+        result = subprocess.run(["sudo", "dpkg", "-i", deb], check=False)
+        os.unlink(deb)
+        if result.returncode != 0:
+            print("\u274c dpkg install failed. Try downloading manually from:")
+            print(f"  https://github.com/{_GITHUB_REPO}/releases/latest")
+            return 1
+        print(f"\u2705 Updated to {latest_tag}!")
+        return 0
+
+    # ── Fallback: raw binary tarball / zip ────────────────────────────────────
+    if fallback in assets:
+        archive = download(assets[fallback], ".tar.gz" if fallback.endswith(".tar.gz") else ".zip")
+        # Find installed binary location
+        oasis_path = shutil.which("oasis") or "/usr/local/bin/oasis"
+        with tempfile.TemporaryDirectory() as tmpdir:
+            import tarfile, zipfile  # noqa: E401
+            if fallback.endswith(".tar.gz"):
+                with tarfile.open(archive) as t:
+                    t.extractall(tmpdir)
+                extracted = next(Path(tmpdir).iterdir())
+            else:
+                with zipfile.ZipFile(archive) as z:
+                    z.extractall(tmpdir)
+                extracted = next(Path(tmpdir).iterdir())
+            extracted.chmod(0o755)
+            result = subprocess.run(
+                ["sudo", "mv", str(extracted), oasis_path], check=False
+            )
+        os.unlink(archive)
+        if result.returncode != 0:
+            print("\u274c Could not replace binary. Try running with sudo.")
+            return 1
+        print(f"\u2705 Updated to {latest_tag}!")
+        return 0
+
+    print("\u274c No compatible release asset found for this platform.")
+    print(f"  Visit: https://github.com/{_GITHUB_REPO}/releases/latest")
+    return 1
+
+
+# ── Self-uninstall ────────────────────────────────────────────────────────────
+
+def _uninstall(args: argparse.Namespace) -> int:
+    oasis_path = shutil.which("oasis")
+
+    if not oasis_path:
+        print("\u274c Oasis binary not found in PATH.")
+        print("   It may have already been removed or was installed outside your PATH.")
+        return 1
+
+    print(f"This will permanently remove Oasis from: {oasis_path}")
+
+    if not getattr(args, "yes", False):
+        try:
+            confirm = input("Are you sure you want to uninstall Oasis? [y/N] ").strip().lower()
+        except (EOFError, KeyboardInterrupt):
+            print("\nAborted.")
+            return 1
+        if confirm not in ("y", "yes"):
+            print("Aborted.")
+            return 0
+
+    system = platform.system()
+
+    # On Debian/Ubuntu: prefer clean dpkg removal
+    if system == "Linux" and _cmd_exists("dpkg"):
+        probe = subprocess.run(
+            ["dpkg", "-s", "oasis"], check=False, capture_output=True
+        )
+        if probe.returncode == 0:          # package is dpkg-managed
+            print("Removing via dpkg (you may be prompted for your password)...")
+            result = subprocess.run(["sudo", "dpkg", "-r", "oasis"], check=False)
+            if result.returncode == 0:
+                print("\u2705 Oasis uninstalled successfully.")
+                return 0
+            print("\u26a0\ufe0f  dpkg removal failed — falling back to direct file removal...")
+
+    # macOS / Linux fallback: just delete the binary
+    # (safe even while the binary is running on Unix — the inode persists until exit)
+    print("Removing binary (you may be prompted for your password)...")
+    result = subprocess.run(["sudo", "rm", "-f", oasis_path], check=False)
+    if result.returncode == 0:
+        print(f"\u2705 Oasis removed from {oasis_path}.")
+        print("   Open a new terminal to clear the shell\'s command cache.")
+        return 0
+
+    print(f"\u274c Could not remove {oasis_path}.")
+    print(f"   Try manually: sudo rm {oasis_path}")
+    return 1
+
+
+# ── Parser ────────────────────────────────────────────────────────────────────
+
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="tfmutate", description=__doc__.splitlines()[0])
+    parser = argparse.ArgumentParser(prog="oasis", description=__doc__.splitlines()[0])
+    parser.add_argument("-V", "--version", action="version", version=f"oasis {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
 
     preview = sub.add_parser("preview", help="show mutants for a .tf file or directory")
@@ -193,6 +370,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="proceed even if the test-cmd binary doesn't match its pinned version",
     )
     run.set_defaults(func=_run)
+
+    update = sub.add_parser("update", help="download and install the latest Oasis release")
+    update.set_defaults(func=_update)
+
+    uninstall = sub.add_parser("uninstall", help="remove the Oasis binary from this system")
+    uninstall.add_argument(
+        "-y", "--yes", action="store_true",
+        help="skip the confirmation prompt",
+    )
+    uninstall.set_defaults(func=_uninstall)
+
     return parser
 
 
