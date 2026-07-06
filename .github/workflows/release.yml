@@ -14,7 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     strategy:
-      fail-fast: false   # don't cancel other jobs if one fails
+      fail-fast: false
       matrix:
         include:
           - os: ubuntu-latest
@@ -47,25 +47,71 @@ jobs:
             --include-package=tfmutate \
             --assume-yes-for-downloads \
             --python-flag=no_site \
-            src/tfmutate/cli.py \
+            src/entrypoint.py \
             -o ${{ matrix.artifact_name }}
         env:
           PYTHONPATH: ${{ github.workspace }}/src
 
-      - name: Package Release Asset (Unix)
+      # ── macOS: native .pkg installer ──────────────────────────────────────
+      - name: Build macOS Installer Package (.pkg)
+        if: matrix.os == 'macos-latest'
+        shell: bash
+        run: |
+          VERSION="${{ github.ref_name }}"
+          VERSION="${VERSION#v}"
+          mkdir -p pkg-staging/usr/local/bin
+          cp ${{ matrix.artifact_name }} pkg-staging/usr/local/bin/oasis
+          chmod +x pkg-staging/usr/local/bin/oasis
+          pkgbuild \
+            --identifier com.degenerateuser.oasis \
+            --version "$VERSION" \
+            --install-location / \
+            --root pkg-staging \
+            oasis-macos-arm64.pkg
+
+      # ── Linux: native .deb installer ──────────────────────────────────────
+      - name: Build Debian Package (.deb)
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
+        run: |
+          VERSION="${{ github.ref_name }}"
+          VERSION="${VERSION#v}"
+          mkdir -p deb-staging/DEBIAN
+          mkdir -p deb-staging/usr/local/bin
+          cp ${{ matrix.artifact_name }} deb-staging/usr/local/bin/oasis
+          chmod +x deb-staging/usr/local/bin/oasis
+          cat > deb-staging/DEBIAN/control << EOF
+          Package: oasis
+          Version: $VERSION
+          Section: utils
+          Priority: optional
+          Architecture: amd64
+          Maintainer: Tushar Teotia
+          Description: Oasis - IaC Mutation Testing Framework
+           A mutation testing framework for Terraform IaC test suites.
+          EOF
+          dpkg-deb --build deb-staging oasis-linux-amd64.deb
+
+      # ── Raw binary tarball (macOS + Linux fallback / curl installer) ──────
+      - name: Package Raw Binary Tarball (Unix)
         if: runner.os != 'Windows'
+        shell: bash
         run: tar -czf ${{ matrix.artifact_name }}.tar.gz ${{ matrix.artifact_name }}
 
+      # ── Windows: zip archive ──────────────────────────────────────────────
       - name: Package Release Asset (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
         run: Compress-Archive -Path ${{ matrix.artifact_name }} -DestinationPath oasis-windows-amd64.zip
 
-      - name: Upload Binaries to Release
+      # ── Upload everything to the GitHub Release ───────────────────────────
+      - name: Upload Release Assets
         uses: softprops/action-gh-release@v2
         with:
           files: |
             oasis-*.tar.gz
             oasis-*.zip
+            oasis-*.pkg
+            oasis-*.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
