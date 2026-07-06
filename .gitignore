@@ -53,10 +53,7 @@ results*.csv
 Thumbs.db
 
 # ---- Claude Code local settings (machine-specific) ----
-.claude/settings.local.json
+.claude
 
 
-
-PHASE1_NOTES.md
-PROJECT_SPEC.md
-OPERATOR_SYNONYMS.md
+Docs/HANDOFF.md
