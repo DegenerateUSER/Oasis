@@ -312,6 +312,33 @@ CATALOG: dict[str, Operator] = {
 }
 
 
+CATEGORIES = sorted({op.category for op in CATALOG.values()})  # security, resource, compliance
+
+
+def select_operators(
+    operator_id: str | None = None, categories: list[str] | None = None
+) -> list[Operator]:
+    """Resolve CLI filters to a concrete operator list (PROJECT_SPEC.md §7: per-category
+    toggling, independent of individual operator toggling).
+
+    ``operator_id`` and ``categories`` are mutually exclusive from the caller's perspective
+    (the CLI enforces this); if both are omitted, the whole catalog is returned. Raises
+    ``ValueError`` with a message listing valid choices on an unknown operator or category.
+    """
+    if operator_id:
+        if operator_id not in CATALOG:
+            raise ValueError(f"unknown operator {operator_id!r}; known: {', '.join(CATALOG)}")
+        return [CATALOG[operator_id]]
+    if categories:
+        unknown = [c for c in categories if c not in CATEGORIES]
+        if unknown:
+            raise ValueError(f"unknown categor{'y' if len(unknown)==1 else 'ies'} "
+                              f"{unknown!r}; known: {', '.join(CATEGORIES)}")
+        wanted = set(categories)
+        return [op for op in CATALOG.values() if op.category in wanted]
+    return list(CATALOG.values())
+
+
 def generate_mutants(
     path: Path | str, text: str, operators: list[Operator] | None = None
 ) -> list[Mutant]:

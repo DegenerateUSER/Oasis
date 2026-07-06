@@ -1,0 +1,2 @@
+repo_name,file_mutated,mutant_id,operator_id,operator_category,surface,resource_or_var,attribute,original_value,mutated_value,validate_status,test_status,survival_reason,test_output_snippet
+terraform-mongodbatlas-project,examples/all_enabled/main.tf,MUT-TAG-001@examples/all_enabled/main.tf:33,MUT-TAG-001,compliance,R,module.atlas_project,Environment,production,development,valid,survived,no_coverage,"tests/plan_validate_reference_mode.tftest.hcl... tearing down | tests/plan_validate_reference_mode.tftest.hcl... pass | Success! 38 passed, 0 failed."

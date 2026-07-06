@@ -1,0 +1,3 @@
+repo_name,file_mutated,mutant_id,operator_id,operator_category,surface,resource_or_var,attribute,original_value,mutated_value,validate_status,test_status,survival_reason,test_output_snippet
+terraform-aws-sonarqube,main.tf,MUT-SEC-002@main.tf:60,MUT-SEC-002,security,R,aws_db_instance.sonarqube,storage_encrypted,true,false,valid,killed_assert,n/a,    │ - false |     │ + true | RDS instance storage must be encrypted.
+terraform-aws-sonarqube,variables.tf,MUT-RES-001@variables.tf:50,MUT-RES-001,resource,V,variable.sonar_db_instance_class,default,db.t4g.micro,db.r5.24xlarge,valid,survived,no_coverage,"sonarqube.tftest.hcl... tearing down | sonarqube.tftest.hcl... pass | Success! 1 passed, 0 failed."

@@ -1,0 +1,16 @@
+unexpected exception: RuntimeError: git checkout failed for terraform/modules/aws-eks-gpu/.terraform/modules/eks/examples/eks-managed-node-group/eks-al2023.tf: error: pathspec 'terraform/modules/aws-eks-gpu/.terraform/modules/eks/examples/eks-managed-node-group/eks-al2023.tf' did not match any file(s) known to git
+Traceback (most recent call last):
+  File "/Users/tusharteotia/Documents/GitHub/Oasis/src/tfmutate/orchestrator.py", line 117, in run_repo
+    outcomes = runner.run_module()
+  File "/Users/tusharteotia/Documents/GitHub/Oasis/src/tfmutate/runner.py", line 256, in run_module
+    outcomes.append(self.run_mutant(mutant))
+  File "/Users/tusharteotia/Documents/GitHub/Oasis/src/tfmutate/runner.py", line 231, in run_mutant
+    with state.restored(self.repo_root, path, git=self.git):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/Users/tusharteotia/Documents/GitHub/Oasis/src/tfmutate/state.py", line 60, in restored
+    checkout(repo_root, str(rel), git=git)
+  File "/Users/tusharteotia/Documents/GitHub/Oasis/src/tfmutate/state.py", line 41, in checkout
+    raise RuntimeError(f"git checkout failed for {pathspec}: {result.stderr.strip()}")
+RuntimeError: git checkout failed for terraform/modules/aws-eks-gpu/.terraform/modules/eks/examples/eks-managed-node-group/eks-al2023.tf: error: pathspec 'terraform/modules/aws-eks-gpu/.terraform/modules/eks/examples/eks-managed-node-group/eks-al2023.tf' did not match any file(s) known to git
+

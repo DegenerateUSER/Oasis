@@ -22,6 +22,8 @@ from pathlib import Path
 
 import hcl2
 
+from .parser import is_ignored_path
+
 log = logging.getLogger(__name__)
 
 
@@ -64,8 +66,12 @@ def default_is_shadowed(var_name: str, tftest_texts: list[str]) -> bool:
 
 
 def read_tftest_files(root: Path) -> list[str]:
-    """Return the text of every ``.tftest.hcl`` file under ``root``."""
-    return [p.read_text() for p in sorted(root.rglob("*.tftest.hcl")) if p.is_file()]
+    """Return the text of every ``.tftest.hcl`` file under ``root`` (excluding vendored
+    third-party module code under ``.terraform/``)."""
+    return [
+        p.read_text() for p in sorted(root.rglob("*.tftest.hcl"))
+        if p.is_file() and not is_ignored_path(p)
+    ]
 
 
 def is_noop(mutant, repo_root: Path) -> bool:

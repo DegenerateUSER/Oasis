@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import textwrap
 
-from tfmutate.noop import default_is_shadowed
+from tfmutate.noop import default_is_shadowed, read_tftest_files
 
 RUN_OVERRIDES = textwrap.dedent(
     """\
@@ -64,3 +64,13 @@ def test_mixed_files_not_shadowed_if_any_run_uses_default():
 
 def test_no_runs_is_not_a_noop():
     assert default_is_shadowed("instance_class", ['mock_provider "aws" {}\n']) is False
+
+
+def test_read_tftest_files_excludes_dot_terraform(tmp_path):
+    (tmp_path / "main.tftest.hcl").write_text('mock_provider "aws" {}\n')
+    vendored = tmp_path / ".terraform" / "modules" / "some_dep"
+    vendored.mkdir(parents=True)
+    (vendored / "main.tftest.hcl").write_text('mock_provider "aws" {}\nrun "x" { command = plan }\n')
+
+    texts = read_tftest_files(tmp_path)
+    assert texts == ['mock_provider "aws" {}\n']

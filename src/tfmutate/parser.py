@@ -26,9 +26,60 @@ log = logging.getLogger(__name__)
 _FMT_CMD = "terraform"
 
 
+# `.terraform/` holds provider binaries and, for remote module sources, a full local copy of
+# vendored third-party module code fetched by `terraform init`. It is gitignored and
+# untracked -- mutating a file under it and then trying `git checkout --` to restore fails
+# outright (no git record to restore from), and even where it wouldn't fail, it isn't part of
+# the repo under study. Every scan that could become a mutation or test target must skip it.
+_IGNORED_DIR_NAMES = {".terraform", ".git"}
+
+
+def is_ignored_path(path: Path) -> bool:
+    return not _IGNORED_DIR_NAMES.isdisjoint(path.parts)
+
+
 def read_tf_files(root: Path) -> list[Path]:
     """Return every ``.tf`` file under ``root``, sorted for deterministic ordering."""
-    return sorted(p for p in root.rglob("*.tf") if p.is_file())
+    return sorted(p for p in root.rglob("*.tf") if p.is_file() and not is_ignored_path(p))
+
+
+# Terraform's own test-discovery convention (developer.hashicorp.com/terraform/language/tests):
+# `terraform test` is run from the MODULE ROOT and auto-discovers test files both alongside
+# the module's own .tf files AND inside a nested test-only subdirectory dedicated to tests
+# (conventionally `tests/`, but real repos use other names too -- `test/`, `e2e-tests/`, etc.).
+# The directory *containing* a `.tftest.hcl` file is therefore not always the correct
+# `init`/`test` working directory. The rule is deliberately **not** name-based (matching only
+# `tests`/`test` missed real repos using `e2e-tests` in the Phase 5 batch): a directory with
+# zero `.tf` files of its own can never have anything to plan/test locally, regardless of what
+# it's called, so the real module root -- if there is one -- is its immediate parent.
+#
+# Climbing is bounded to exactly one level, and a `.tftest.hcl` whose directory has no `.tf`
+# files AND whose parent doesn't either is **excluded** entirely rather than resolved further
+# up an arbitrary ancestor chain. Terraform's own convention only recognizes this one-level
+# nesting; climbing further risks silently resolving to an unrelated, wrong module. A real
+# corpus example of this exclusion case: a Bazel-based test-harness directory (`BUILD`, `.bzl`
+# files, a `.tftest.hcl` *template*) that is tooling, not an actual module under test --
+# PHASE5_NOTES.md.
+def _module_root_for_test_file(tftest_path: Path) -> Path | None:
+    parent = tftest_path.parent
+    if any(parent.glob("*.tf")):
+        return parent
+    grandparent = parent.parent
+    if any(grandparent.glob("*.tf")):
+        return grandparent
+    return None  # no .tf files at this level or one level up -- not a real module; exclude
+
+
+def find_test_module_dirs(root: Path) -> list[Path]:
+    """Module root directories under ``root`` that should be run through `init`/`test`,
+    resolved from every ``.tftest.hcl`` file found (see ``_module_root_for_test_file``),
+    sorted and deduplicated. A ``.tftest.hcl`` that resolves to no real module (no ``.tf``
+    files at its own level or one level up) is excluded, not misresolved."""
+    return sorted({
+        root_dir
+        for p in root.rglob("*.tftest.hcl") if p.is_file() and not is_ignored_path(p)
+        if (root_dir := _module_root_for_test_file(p)) is not None
+    })
 
 
 def is_valid_hcl(text: str, fmt_cmd: str = _FMT_CMD) -> bool:

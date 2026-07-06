@@ -1,0 +1,2 @@
+repo_name,file_mutated,mutant_id,operator_id,operator_category,surface,resource_or_var,attribute,original_value,mutated_value,validate_status,test_status,survival_reason,test_output_snippet
+cloud-native-deployment-platform,infra/modules/rds/main.tf,MUT-SEC-002@infra/modules/rds/main.tf:69,MUT-SEC-002,security,R,aws_db_instance.postgres,storage_encrypted,true,false,valid,killed_assert,n/a,    │ - true |     │ + false | RDS should be private encrypted PostgreSQL.

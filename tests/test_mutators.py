@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import textwrap
 
+import pytest
+
 from tfmutate.mutators import (
+    CATALOG,
     MUT_RES_001,
     MUT_RES_002,
     MUT_RES_003,
@@ -18,8 +21,9 @@ from tfmutate.mutators import (
     MUT_TAG_001,
     MUT_TAG_002,
     generate_mutants,
+    select_operators,
 )
-from tfmutate.parser import enclosing_block, find_blocks
+from tfmutate.parser import enclosing_block, find_blocks, find_test_module_dirs, read_tf_files
 
 
 def _one(text, op):
@@ -259,3 +263,121 @@ def test_tag002_matches_labels_map_too():
         """
     )
     assert len(generate_mutants("m.tf", text, [MUT_TAG_002])) == 1
+
+
+# --- select_operators: --operator / --category CLI filtering (PROJECT_SPEC.md §7) ------
+
+def test_select_operators_defaults_to_whole_catalog():
+    assert select_operators() == list(CATALOG.values())
+
+
+def test_select_operators_by_exact_id():
+    assert select_operators(operator_id="MUT-SEC-002") == [CATALOG["MUT-SEC-002"]]
+
+
+def test_select_operators_by_single_category():
+    ops = select_operators(categories=["compliance"])
+    assert {op.id for op in ops} == {"MUT-TAG-001", "MUT-TAG-002"}
+
+
+def test_select_operators_by_multiple_categories():
+    ops = select_operators(categories=["resource", "compliance"])
+    assert {op.category for op in ops} == {"resource", "compliance"}
+
+
+def test_select_operators_unknown_id_raises():
+    with pytest.raises(ValueError, match="unknown operator"):
+        select_operators(operator_id="MUT-NOPE-999")
+
+
+def test_select_operators_unknown_category_raises():
+    with pytest.raises(ValueError, match="unknown categor"):
+        select_operators(categories=["bogus"])
+
+
+# --- .terraform/ exclusion (Phase 5 batch bug: vendored module code must never be scanned) --
+# `terraform init` vendors remote module sources under `.terraform/modules/`. That tree is
+# gitignored/untracked, so mutating a file there and then trying `git checkout --` to restore
+# it fails outright -- this crashed two real batch repos before the fix (PHASE5_NOTES.md).
+
+def test_read_tf_files_excludes_dot_terraform(tmp_path):
+    (tmp_path / "main.tf").write_text('resource "x" "y" {}\n')
+    vendored = tmp_path / ".terraform" / "modules" / "some_dep" / "examples" / "basic"
+    vendored.mkdir(parents=True)
+    (vendored / "main.tf").write_text('resource "a" "b" {}\n')
+
+    found = read_tf_files(tmp_path)
+    assert found == [tmp_path / "main.tf"]
+
+
+def test_find_test_module_dirs_excludes_dot_terraform(tmp_path):
+    (tmp_path / "main.tf").write_text('resource "x" "y" {}\n')
+    (tmp_path / "main.tftest.hcl").write_text('mock_provider "aws" {}\n')
+    vendored = tmp_path / ".terraform" / "modules" / "some_dep" / "examples" / "basic"
+    vendored.mkdir(parents=True)
+    (vendored / "main.tf").write_text('resource "a" "b" {}\n')
+    (vendored / "main.tftest.hcl").write_text('mock_provider "aws" {}\n')
+
+    found = find_test_module_dirs(tmp_path)
+    assert found == [tmp_path]
+
+
+# --- tests/ subdirectory convention (Phase 5 batch bug: "initialized in an empty directory") -
+# Terraform's own convention lets a `.tftest.hcl` live in a nested `tests/`/`test/` dir
+# instead of alongside the module's .tf files -- `terraform test` is still run from the
+# MODULE ROOT. Treating the tests/ dir itself as the root means running init/test with zero
+# .tf files present, which silently produced degenerate "empty directory" results across
+# roughly half the real Phase 5 corpus (PHASE5_NOTES.md) before this fix.
+
+def test_climbs_out_of_a_bare_tests_subdir_to_the_real_module_root(tmp_path):
+    (tmp_path / "main.tf").write_text('resource "x" "y" {}\n')
+    tests_dir = tmp_path / "tests"
+    tests_dir.mkdir()
+    (tests_dir / "main.tftest.hcl").write_text('mock_provider "aws" {}\n')
+
+    assert find_test_module_dirs(tmp_path) == [tmp_path]
+
+
+def test_stays_in_tests_subdir_when_it_has_its_own_tf_files(tmp_path):
+    # A tests/ dir that is itself a genuine, self-contained fixture module (has its own .tf
+    # files) must NOT be climbed out of.
+    (tmp_path / "main.tf").write_text('resource "x" "y" {}\n')
+    tests_dir = tmp_path / "tests"
+    tests_dir.mkdir()
+    (tests_dir / "fixture.tf").write_text('resource "a" "b" {}\n')
+    (tests_dir / "main.tftest.hcl").write_text('mock_provider "aws" {}\n')
+
+    assert find_test_module_dirs(tmp_path) == [tests_dir]
+
+
+def test_multiple_test_files_in_same_tests_subdir_dedupe_to_one_module_root(tmp_path):
+    (tmp_path / "main.tf").write_text('resource "x" "y" {}\n')
+    tests_dir = tmp_path / "tests"
+    tests_dir.mkdir()
+    (tests_dir / "a.tftest.hcl").write_text('mock_provider "aws" {}\n')
+    (tests_dir / "b.tftest.hcl").write_text('mock_provider "aws" {}\n')
+
+    assert find_test_module_dirs(tmp_path) == [tmp_path]
+
+
+def test_climb_is_name_agnostic_not_just_tests_or_test(tmp_path):
+    # Real repos use other names too (e.g. `e2e-tests/`) -- the rule is "no .tf files here",
+    # not "named tests/test", which is exactly what the Phase 5 batch caught missing.
+    (tmp_path / "main.tf").write_text('resource "x" "y" {}\n')
+    e2e_dir = tmp_path / "e2e-tests"
+    e2e_dir.mkdir()
+    (e2e_dir / "main.tftest.hcl").write_text('mock_provider "aws" {}\n')
+
+    assert find_test_module_dirs(tmp_path) == [tmp_path]
+
+
+def test_excludes_test_file_with_no_real_module_at_either_level(tmp_path):
+    # Neither the containing directory nor its parent has any .tf files -- this is not a
+    # real, runnable module (e.g. a Bazel test-harness template found in the real corpus:
+    # BUILD/.bzl files plus a `.tftest.hcl` template, not an actual module under test). It
+    # must be EXCLUDED, not misresolved to some arbitrary further-up ancestor.
+    tests_dir = tmp_path / "tftesting"
+    tests_dir.mkdir()
+    (tests_dir / "main.tftest.hcl").write_text('mock_provider "aws" {}\n')
+
+    assert find_test_module_dirs(tmp_path) == []

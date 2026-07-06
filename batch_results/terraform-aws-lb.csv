@@ -1,0 +1,1 @@
+repo_name,file_mutated,mutant_id,operator_id,operator_category,surface,resource_or_var,attribute,original_value,mutated_value,validate_status,test_status,survival_reason,test_output_snippet
