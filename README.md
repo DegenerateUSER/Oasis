@@ -42,18 +42,14 @@ Built incrementally by phase (see `PROJECT_SPEC.md` §12):
   no matching assertion) — both locked in as regression tests.
 - **Phase 5 — Batch orchestrator + repo corpus** ✅ `orchestrator.py` (resumable per-repo
   CSVs, per-repo isolation, self-healing pre-run restore, whole-corpus clean verification)
-  + a vetted 18-repo corpus (§10 rubric applied to 158 real `gh`-search candidates). Found
-  and fixed 5 real bugs surfaced only by a messy real-world batch — most significantly,
-  `.tftest.hcl` files in a nested test-only subdirectory (not always literally named
-  `tests`/`test` — real repos use `e2e-tests` too) resolving to the wrong (empty) working
-  directory, affecting 9 of 18 repos; the fix is content-based (checks for real `.tf` files),
-  not name-based, and was re-verified against all 18 repos, not just the originally-affected
-  ones. `batch_results/master.csv`: **164 rows**, all 18 repos verified clean, **29.0%
-  overall mutation score**. Every zero-scored repo has a specific, individually-verified
-  reason (7 empirically confirmed to have zero fireable operator targets against real,
-  substantial `.tf` content; 2 have genuine baseline failures). Full accounting in
-  [`PHASE5_NOTES.md`](./PHASE5_NOTES.md).
-- Phases 6–7 — not started.
+  + a vetted 23-repo corpus (§10 rubric applied to 158 real `gh`-search candidates). Found
+  and fixed real bugs surfaced by real-world batches—most significantly,
+  `.tftest.hcl` files in nested test-only subdirectories resolving to the wrong working
+  directories; the fix is content-based (checks for real `.tf` files), and was verified
+  across the entire corpus. `batch_results/master.csv` contains **242 total rows** (**177 scored valid mutants**),
+  all repositories verified clean. Full accounting in [`PHASE5_NOTES.md`](./PHASE5_NOTES.md).
+- **Phase 6 — Evaluation Report** ✅ Compiled and completed the evaluation report at [`Docs/report_draft.md`](./Docs/report_draft.md). The report frames this work as an independent empirical pilot study evaluating HCL test suite adequacy, detailing aggregate categories, operator-level performance, and classifier outcomes.
+- **Phase 7 — Extension** (Not started).
 
 ## Layout
 

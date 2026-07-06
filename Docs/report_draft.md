@@ -1,6 +1,6 @@
-# Evaluation Report: Mutation Testing for Infrastructure-as-Code
+# Evaluation Report: Mutation Testing for Infrastructure-as-Code (Oasis)
 
-This report presents the design, implementation, and empirical evaluation of `tfmutate`, a mutation testing tool for Terraform HCL configurations, evaluated across a corpus of 23 real-world repositories.
+This report presents the design, implementation, and empirical evaluation of Oasis (implemented as the `tfmutate` CLI), a mutation testing tool for Terraform HCL configurations, evaluated across a corpus of 23 real-world repositories.
 
 ---
 
@@ -12,7 +12,7 @@ Traditionally, testing IaC has been slow, expensive, and flaky due to its relian
 
 Mutation testing (fault injection) is a well-established technique in traditional software engineering to measure test suite adequacy. By programmatically introducing small syntactic changes (mutants) into the source code, mutation testing measures whether a test suite is strong enough to fail (kill) the modified code. If a mutant survives, it exposes a coverage gap or a weak assertion.
 
-This paper presents the design, implementation, and empirical evaluation of `tfmutate`, the first mutation testing tool designed specifically for Terraform configurations. We evaluate `tfmutate` across a diverse corpus of 23 real-world Terraform modules, analyzing the effectiveness of HCL test suites in catching security, resource, and compliance faults.
+This evaluation report presents the design, implementation, and empirical evaluation of Oasis (implemented as the `tfmutate` CLI), a mutation testing tool designed specifically for Terraform configurations. We evaluate Oasis across an independent pilot study corpus of 23 real-world Terraform modules, analyzing the effectiveness of HCL test suites in catching security, resource, and compliance faults under mutated inputs.
 
 ---
 
@@ -51,7 +51,7 @@ Three operators are classified as fixture-validated-only and did not contribute 
 
 # Tool Design
 
-The `tfmutate` tool implements the complete mutation testing cycle for HCL configurations. Its architecture is divided into three key stages: AST parsing and target discovery, mutation application, and test execution/classification.
+The Oasis (implemented as the `tfmutate` CLI tool) architecture implements the complete mutation testing cycle for HCL configurations. Its architecture is divided into three key stages: AST parsing and target discovery, mutation application, and test execution/classification.
 
 ```mermaid
 graph TD
@@ -307,7 +307,7 @@ Static analysis cannot verify whether a test suite is capable of catching runtim
 
 # Conclusion
 
-This paper introduced `tfmutate`, a mutation testing tool for Terraform HCL configurations, and conducted an empirical study across 23 repositories to measure test suite quality. 
+This evaluation report introduced Oasis (implemented as the `tfmutate` CLI tool), a mutation testing tool for Terraform HCL configurations, and conducted an independent empirical pilot study across 23 repositories to measure test suite quality. 
 
 Our findings show that while dynamic testing is highly effective at catching security violations in public access controls and storage encryption (with a **32.2%** security kill rate), it suffers from severe, systemic coverage gaps in compliance and resource configuration. Specifically, we identified a total sizing assertion coverage gap (**0.0%** kill rate across 25 mutants of `MUT-RES-001`), confirming that practitioners treat compute sizing as unverified deployment metadata. Furthermore, we showed that metadata tagging compliance is typically delegated to static analysis pipelines rather than active test suites. 
 

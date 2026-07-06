@@ -2,7 +2,7 @@
 
 This is the **methodology reference** for the operator catalog — the authoritative mapping
 from each fault operator to the concrete HCL it matches. It is maintained as a standalone,
-citable document (droppable into a paper's *Methods* section); `PHASE1_NOTES.md` records
+citable document (droppable into an evaluation report's *Methods* section); `PHASE1_NOTES.md` records
 *why* the catalog deviates from the original spec, this document records *what* it matches.
 
 ## Matching model
