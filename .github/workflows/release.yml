@@ -36,14 +36,21 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install nuitka
-          pip install .
+          pip install nuitka python-hcl2
 
       - name: Compile with Nuitka
+        shell: bash
         run: |
-          python -m nuitka --standalone --onefile --include-package=tfmutate --assume-yes-for-downloads src/tfmutate/cli.py -o ${{ matrix.artifact_name }}
+          python -m nuitka \
+            --standalone \
+            --onefile \
+            --include-package=tfmutate \
+            --assume-yes-for-downloads \
+            --python-flag=no_site \
+            src/tfmutate/cli.py \
+            -o ${{ matrix.artifact_name }}
         env:
-          PYTHONPATH: src
+          PYTHONPATH: ${{ github.workspace }}/src
 
       - name: Package Release Asset (Unix)
         if: runner.os != 'Windows'
