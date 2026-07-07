@@ -204,7 +204,7 @@ The complete, per-repository dataset aggregated into `master.csv` is detailed be
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | `aws-platform-starter` | 38 | 0 | 0 | 38 | 5 | 13.2% | [5.8%, 27.3%] |
 | `aws-terraform-infrastructure` | 5 | 0 | 0 | 5 | 4 | 80.0% | [37.6%, 96.4%] |
-| `cloud-native-deployment-platform` | 1 | 0 | 0 | 1 | 1 | 100.0% | [20.7%, 100.0%] |
+| `cloud-native-deployment-platform` †| 1 | 0 | 0 | 1 | 1 | 100.0% | [20.7%, 100.0%] |
 | `conf-data-processing-architecture-reference` | 20 | 20 | 0 | 0 | 0 | n/a | n/a |
 | `eks-vulnerable-infra` | 5 | 0 | 0 | 5 | 2 | 40.0% | [11.8%, 76.9%] |
 | `genai-idp-terraform` | 12 | 4 | 0 | 8 | 0 | 0.0% | [0.0%, 32.4%] |
@@ -217,14 +217,17 @@ The complete, per-repository dataset aggregated into `master.csv` is detailed be
 | `terraform-aws-lb` | 0 | 0 | 0 | 0 | 0 | n/a | n/a |
 | `terraform-aws-oidc-github` | 0 | 0 | 0 | 0 | 0 | n/a | n/a |
 | `terraform-aws-security-group` | 0 | 0 | 0 | 0 | 0 | n/a | n/a |
-| `terraform-aws-sonarqube` | 2 | 0 | 0 | 2 | 1 | 50.0% | [9.5%, 90.5%] |
+| `terraform-aws-sonarqube` †| 2 | 0 | 0 | 2 | 1 | 50.0% | [9.5%, 90.5%] |
 | `terraform-aws-static-site` | 11 | 0 | 1 | 10 | 0 | 0.0% | [0.0%, 27.8%] |
 | `terraform-aws-vpc` | 0 | 0 | 0 | 0 | 0 | n/a | n/a |
 | `terraform-datadog-users` | 0 | 0 | 0 | 0 | 0 | n/a | n/a |
 | `terraform-duplocloud-components` | 8 | 8 | 0 | 0 | 0 | n/a | n/a |
-| `terraform-mongodbatlas-project` | 1 | 0 | 0 | 1 | 0 | 0.0% | [0.0%, 79.3%] |
+| `terraform-mongodbatlas-project` †| 1 | 0 | 0 | 1 | 0 | 0.0% | [0.0%, 79.3%] |
 | `terraform-postgres-config-dbs-users-roles` | 0 | 0 | 0 | 0 | 0 | n/a | n/a |
 | `tofu-modules` | 5 | 0 | 0 | 5 | 5 | 100.0% | [56.6%, 100.0%] |
+
+† **n < 5 scored mutants**: point estimate is unreliable; treat the 95% Wilson CI as the operative range for these repositories.
+
 
 ---
 

@@ -25,13 +25,18 @@ Oasis was empirically evaluated against a curated corpus of **23 public Terrafor
 | **Overall mutation score** | **24.9%** |
 | Baseline failures (credential/env issues) | 61 |
 
-### Per-Repository Breakdown (scored repos only)
+A 24.9% overall mutation score indicates that the large majority of public Terraform test suites verify a successful apply but rarely assert on the specific attribute values that security and correctness actually depend on — meaning semantic faults slip through undetected even when all tests pass.
+
+> **On baseline failures**: 61 rows could not be scored because `terraform test` requires live cloud provider credentials or other environment setup (e.g. AWS/GCP auth) that was not available in the evaluation environment. This is a real constraint: Oasis can generate and validate mutants offline, but executing the test suite requires the same credentials the repo's CI would use. Repos that need cloud auth will show `baseline_fail` until run in an authenticated environment.
+
+### Per-Repository Breakdown
+
+**Repositories with sufficient sample size (n ≥ 5)**
 
 | Repository | Scored Mutants | Mutation Score |
 |---|---|---|
 | `aws-platform-starter` | 38 | 13% |
 | `aws-terraform-infrastructure` | 5 | 80% |
-| `cloud-native-deployment-platform` | 1 | 100% |
 | `eks-vulnerable-infra` | 5 | 40% |
 | `genai-idp-terraform` | 8 | 0% |
 | `platform-design` | 32 | 41% |
@@ -39,10 +44,18 @@ Oasis was empirically evaluated against a curated corpus of **23 public Terrafor
 | `psoxy` | 9 | 0% |
 | `server-terraform` | 5 | 0% |
 | `serverless-architecture-patterns` | 19 | 21% |
-| `terraform-aws-sonarqube` | 2 | 50% |
 | `terraform-aws-static-site` | 10 | 0% |
-| `terraform-mongodbatlas-project` | 1 | 0% |
 | `tofu-modules` | 5 | 100% |
+
+**Low-sample repositories (n < 5, indicative only)**
+
+| Repository | Scored Mutants | Mutation Score |
+|---|---|---|
+| `cloud-native-deployment-platform` | 1 | 100% * |
+| `terraform-aws-sonarqube` | 2 | 50% * |
+| `terraform-mongodbatlas-project` | 1 | 0% * |
+
+\* Sample size too small for a reliable percentage; shown for completeness only.
 
 ### Why Survived Mutants Matter
 Of the 133 surviving mutants, the classifier identified:
@@ -198,7 +211,7 @@ benchmarks/       # full pilot study dataset and report
 
 fixtures/         # hand-written fixtures (phase0 smoke, thin-operator tests)
 tests/            # unit tests
-evidence/         # gh code-search results backing the disjointness finding
+evidence/         # GitHub code-search results (saved as JSON/CSV) confirming that the two security operators MUT-SEC-001 and MUT-SEC-003 target legacy misconfiguration patterns (S3 ACL strings, bare ingress rules) that are structurally absent from the modern terraform-test population — supporting the paper's finding that zero corpus matches is a property of the target population, not a bug in the operators.
 ```
 
 ---
