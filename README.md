@@ -10,7 +10,7 @@ Rather than relying on basic code coverage metrics, Oasis evaluates the **semant
 
 ---
 
-## 📊 Benchmarks — Tested on 23 Real-World Repositories
+##  Benchmarks — Tested on 23 Real-World Repositories
 
 Oasis was empirically evaluated against a curated corpus of **23 public Terraform repositories** from GitHub. The full evaluation report and raw data live in [`/benchmarks`](./benchmarks/).
 
@@ -53,7 +53,7 @@ Of the 133 surviving mutants, the classifier identified:
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
 - **12 Specialized Mutation Operators** targeting variables, resource dependencies (`depends_on`), conditionals, lifecycle rules, security enums, and tag casing.
 - **Zero-Drift State Management** — a `restored` context manager guarantees your git repository state is cleanly reverted (`git checkout`) after every test, even on crash or keyboard interrupt.
@@ -63,7 +63,7 @@ Of the 133 surviving mutants, the classifier identified:
 
 ---
 
-## 📦 Installation
+##  Installation
 
 ### Option 1 — One-Command Installer (macOS & Linux)
 
@@ -103,7 +103,7 @@ pip install .
 
 ---
 
-## 🛠️ Usage
+##  Usage
 
 ### Preview Mutants (dry-run, no files modified)
 
@@ -142,7 +142,7 @@ oasis uninstall      # remove Oasis from this system
 
 ---
 
-## 📈 Understanding the Output
+##  Understanding the Output
 
 The `results.csv` report contains one row per mutant:
 
@@ -159,7 +159,7 @@ The `results.csv` report contains one row per mutant:
 
 ---
 
-## 🔬 Mutation Operators
+##  Mutation Operators
 
 | Operator | Category | What it mutates |
 |---|---|---|
@@ -178,7 +178,7 @@ The `results.csv` report contains one row per mutant:
 
 ---
 
-## 🏗️ Project Layout
+##  Project Layout
 
 ```
 src/tfmutate/
@@ -203,12 +203,12 @@ evidence/         # gh code-search results backing the disjointness finding
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to file issues, run tests locally, and what kinds of contributions are welcome.
 
 ---
 
-## 📄 License
+##  License
 
 Released under the [MIT License](./LICENSE). Copyright © 2026 Tushar Teotia.
