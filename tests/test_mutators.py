@@ -20,6 +20,7 @@ from tfmutate.mutators import (
     MUT_SEC_004D,
     MUT_TAG_001,
     MUT_TAG_002,
+    Mutant,
     generate_mutants,
     select_operators,
 )
@@ -79,7 +80,7 @@ def test_sec001_scoped_to_s3_and_flips_private():
     # Only the S3 bucket is in scope; the aws_instance acl is ignored.
     m = _one(text, MUT_SEC_001)
     assert m.resource_address == "aws_s3_bucket.b"
-    assert (m.original_value, m.mutated_value) == ("private", "public")
+    assert (m.original_value, m.mutated_value) == ("private", "public-read")
     assert m.surface == "R"
 
 
@@ -138,12 +139,15 @@ def test_sec002_scopes_encryption_to_storage_resources():
 
 # --- MUT-SEC-003: CIDR widening --------------------------------------------------------
 
-def test_sec001_fixture_validated_operator_produces_valid_mutant():
-    # SEC-001 is FIXTURE-validated (no real Cohort A target exists; see PHASE1_NOTES.md).
-    # This locks in that the operator itself is correct.
+def test_sec001_uses_documented_canned_acl_and_versions_the_catalog():
+    import tfmutate.mutators as mutators
+
+    assert mutators.CATALOG_VERSION == "2"
+    assert '"private" -> "public-read"' in MUT_SEC_001.description
+    # HCL syntax is checked separately; this is not provider/schema validation.
     text = 'resource "aws_s3_bucket" "b" {\n  acl = "private"\n}\n'
     m = _one(text, MUT_SEC_001)
-    assert (m.original_value, m.mutated_value) == ("private", "public")
+    assert (m.original_value, m.mutated_value) == ("private", "public-read")
 
 
 def test_sec003_widens_restrictive_cidr_only():
@@ -265,6 +269,41 @@ def test_tag002_matches_labels_map_too():
     assert len(generate_mutants("m.tf", text, [MUT_TAG_002])) == 1
 
 
+def test_variable_name_returns_actual_variable_label_not_default_attribute():
+    text = 'variable "max_instance_count" { default = 3 }\n'
+    mutant = _one(text, MUT_RES_002)
+    assert mutant.attribute == "default"
+    assert mutant.variable_name == "max_instance_count"
+    resource = _one('resource "x" "y" { count = 3 }\n', MUT_RES_002)
+    assert resource.variable_name is None
+    local = _one('locals { env = "prod" }\n', MUT_TAG_001)
+    assert local.variable_name is None
+
+
+def test_site_offsets_distinguish_same_line_sites_and_identify_original_token():
+    text = 'locals { tags = { env = "prod", environment = "prod" } }\n'
+    mutants = MUT_TAG_001.generate("main.tf", text)
+    assert len(mutants) == 2
+    assert len({m.site_offset for m in mutants}) == 2
+    for mutant in mutants:
+        assert mutant.site_offset is not None
+        start = mutant.site_offset
+        end = start + len(mutant.original_value)
+        assert text[start:end] == mutant.original_value
+        assert mutant.mutated_text == text[:start] + mutant.mutated_value + text[end:]
+    deletion_text = 'locals { tags = { owner = "platform" } }\n'
+    deletion = _one(deletion_text, MUT_TAG_002)
+    assert deletion.site_offset == deletion_text.index('"platform"') + 1
+
+
+def test_legacy_positional_mutant_construction_defaults_site_metadata():
+    mutant = Mutant("OP", "category", "main.tf", 1, "V", "variable",
+                    "variable.instance_count", "default", "3", "1", "default = 3",
+                    "default = 1", 'variable "instance_count" { default = 1 }', False)
+    assert mutant.site_offset is None
+    assert mutant.variable_name == "instance_count"
+
+
 # --- select_operators: --operator / --category CLI filtering (PROJECT_SPEC.md §7) ------
 
 def test_select_operators_defaults_to_whole_catalog():
@@ -323,7 +362,7 @@ def test_find_test_module_dirs_excludes_dot_terraform(tmp_path):
 
 
 # --- tests/ subdirectory convention (Phase 5 batch bug: "initialized in an empty directory") -
-# Terraform's own convention lets a `.tftest.hcl` live in a nested `tests/`/`test/` dir
+# Terraform's default convention lets a `.tftest.hcl` live in the nested `tests/` dir
 # instead of alongside the module's .tf files -- `terraform test` is still run from the
 # MODULE ROOT. Treating the tests/ dir itself as the root means running init/test with zero
 # .tf files present, which silently produced degenerate "empty directory" results across
@@ -338,16 +377,16 @@ def test_climbs_out_of_a_bare_tests_subdir_to_the_real_module_root(tmp_path):
     assert find_test_module_dirs(tmp_path) == [tmp_path]
 
 
-def test_stays_in_tests_subdir_when_it_has_its_own_tf_files(tmp_path):
-    # A tests/ dir that is itself a genuine, self-contained fixture module (has its own .tf
-    # files) must NOT be climbed out of.
+def test_default_tests_directory_is_discovered_even_if_it_contains_tf_files(tmp_path):
+    # Root terraform test still loads tests/*.tftest.hcl even if that directory also
+    # contains .tf files. It can additionally be run as a standalone fixture module.
     (tmp_path / "main.tf").write_text('resource "x" "y" {}\n')
     tests_dir = tmp_path / "tests"
     tests_dir.mkdir()
     (tests_dir / "fixture.tf").write_text('resource "a" "b" {}\n')
     (tests_dir / "main.tftest.hcl").write_text('mock_provider "aws" {}\n')
 
-    assert find_test_module_dirs(tmp_path) == [tests_dir]
+    assert find_test_module_dirs(tmp_path) == [tmp_path, tests_dir]
 
 
 def test_multiple_test_files_in_same_tests_subdir_dedupe_to_one_module_root(tmp_path):
@@ -360,15 +399,42 @@ def test_multiple_test_files_in_same_tests_subdir_dedupe_to_one_module_root(tmp_
     assert find_test_module_dirs(tmp_path) == [tmp_path]
 
 
-def test_climb_is_name_agnostic_not_just_tests_or_test(tmp_path):
-    # Real repos use other names too (e.g. `e2e-tests/`) -- the rule is "no .tf files here",
-    # not "named tests/test", which is exactly what the Phase 5 batch caught missing.
+@pytest.mark.parametrize("name", ["test", "e2e-tests", "arbitrary"])
+def test_default_discovery_excludes_arbitrarily_named_child_test_directories(tmp_path, name):
     (tmp_path / "main.tf").write_text('resource "x" "y" {}\n')
-    e2e_dir = tmp_path / "e2e-tests"
+    e2e_dir = tmp_path / name
     e2e_dir.mkdir()
     (e2e_dir / "main.tftest.hcl").write_text('mock_provider "aws" {}\n')
 
-    assert find_test_module_dirs(tmp_path) == [tmp_path]
+    assert find_test_module_dirs(tmp_path) == []
+
+
+def test_explicit_nested_test_directory_still_loads_alongside_test_files(tmp_path):
+    (tmp_path / "main.tf").write_text('resource "x" "y" {}\n')
+    nested = tmp_path / "qa" / "integration"
+    nested.mkdir(parents=True)
+    (nested / "main.tftest.hcl").write_text('run "nested" {}\n')
+    sibling = tmp_path / "sibling"
+    sibling.mkdir()
+    (sibling / "main.tf").write_text('resource "x" "y" {}\n')
+    (sibling / "main.tftest.hcl").write_text('run "alongside" {}\n')
+
+    assert find_test_module_dirs(tmp_path) == [sibling]
+    assert find_test_module_dirs(tmp_path, test_directory="qa/integration") == [tmp_path, sibling]
+
+
+@pytest.mark.parametrize("directory", ["../unrelated", "/unrelated"])
+def test_module_discovery_rejects_test_directory_outside_the_module(tmp_path, directory):
+    with pytest.raises(ValueError, match="within the module"):
+        find_test_module_dirs(tmp_path, test_directory=directory)
+
+
+def test_default_tests_directory_is_not_searched_recursively(tmp_path):
+    (tmp_path / "main.tf").write_text('resource "x" "y" {}\n')
+    nested = tmp_path / "tests" / "nested"
+    nested.mkdir(parents=True)
+    (nested / "main.tftest.hcl").write_text('run "nested" {}\n')
+    assert find_test_module_dirs(tmp_path) == []
 
 
 def test_excludes_test_file_with_no_real_module_at_either_level(tmp_path):

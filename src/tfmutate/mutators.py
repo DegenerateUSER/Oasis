@@ -24,7 +24,9 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
-from .parser import Block, enclosing_block, find_blocks, find_tag_maps, in_regions
+from .parser import Block, code_mask, enclosing_block, find_blocks, find_tag_map_spans
+
+CATALOG_VERSION = "2"
 
 # A transform maps (family_key, original_value) -> mutated_value, or None to skip the site
 # (ineligible or would produce an equivalent mutant). family_key is the attribute name (R/L)
@@ -54,6 +56,50 @@ class Mutant:
     mutated_snippet: str
     mutated_text: str
     is_deletion: bool = False
+    site_offset: int | None = None  # original target's zero-based Python string offset
+
+    @property
+    def variable_name(self) -> str | None:
+        """Actual variable block label on V, never the assignment attribute ``default``."""
+        if self.surface == "V" and self.resource_address and self.resource_address.startswith("variable."):
+            return self.resource_address.removeprefix("variable.") or None
+        return None
+
+
+def _literal_assignment_end(text: str, masked: str, match: re.Match[str]) -> bool:
+    """Reject a regex's literal prefix when the assignment is actually an expression.
+
+    CIDR operators may capture the first string in a list; in that case the *list's*
+    closing bracket, not just the first string, must end the assigned expression.
+    """
+    if re.search(r"(?<!\$)\$\{|(?<!%)%\{", match.group("target")):
+        return False  # a quoted template is not a literal
+    end = match.end()
+    if text[end - 1] == '"' and masked[end - 1] != '"':
+        return False  # regex stopped at a quote nested inside a template
+    value_start = text.index("=", match.start(), end) + 1
+    while value_start < end and text[value_start].isspace():
+        value_start += 1
+    if text[value_start] == "[":
+        first_tail = masked[end:].lstrip()
+        if not first_tail or first_tail[0] not in ",]":
+            return False  # the captured string must itself be a complete list element
+        depth = 1
+        for i in range(value_start + 1, len(masked)):
+            if masked[i] == "[":
+                depth += 1
+            elif masked[i] == "]":
+                depth -= 1
+                if depth == 0:
+                    end = i + 1
+                    break
+        else:
+            return False
+    tail = masked[end:].lstrip()
+    if not tail or tail[0] in ",}]":
+        return True
+    # Another assignment (including object entries), or a following nested block.
+    return re.match(r'[\w-]+\s*=(?!=)|[\w-]+(?:[ \t]+"[^"\n]*")*[ \t]*\{', tail) is not None
 
 
 class Operator:
@@ -61,8 +107,9 @@ class Operator:
 
     ``value_regex`` is the regex fragment matched after ``<attr> =``; it must contain a
     named group ``target`` capturing the token to rewrite. ``transform`` produces the
-    replacement (or ``None`` to skip). Deletion operators (``delete=True``) remove the whole
-    matched line instead of substituting.
+    replacement (or ``None`` to skip). Deletion operators remove the assignment;
+    an otherwise empty standalone line is removed too, but neighboring entries,
+    braces, and multiline comment boundaries are preserved.
     """
 
     def __init__(
@@ -89,8 +136,8 @@ class Operator:
         self.delete = delete
         self.tags_only = tags_only  # R/L matches must sit inside a tags/labels map
         alt = "|".join(re.escape(a) for a in attributes)
-        self._rl = re.compile(rf"\b(?P<attr>{alt})\s*=\s*{value_regex}")
-        self._v = re.compile(rf"\bdefault\s*=\s*{value_regex}") if "V" in self.surfaces else None
+        self._rl = re.compile(rf"(?<![\w-])(?P<attr>{alt})\s*=\s*{value_regex}")
+        self._v = re.compile(rf"(?<![\w-])default\s*=\s*{value_regex}") if "V" in self.surfaces else None
 
     # -- surface scoping -------------------------------------------------------------------
 
@@ -121,12 +168,15 @@ class Operator:
     # -- generation ------------------------------------------------------------------------
 
     def generate(self, path: Path | str, text: str) -> list[Mutant]:
+        masked = code_mask(text)
         blocks = find_blocks(text)
-        tag_maps = find_tag_maps(text) if self.tags_only else []
+        tag_maps = find_tag_map_spans(text) if self.tags_only else []
         mutants: list[Mutant] = []
         seen: set[tuple[int, int]] = set()
 
         def emit(match: re.Match[str], surface: str, block: Block | None, attr: str) -> None:
+            if not _literal_assignment_end(text, masked, match):
+                return
             span = match.span("target")
             if span in seen:
                 return
@@ -147,8 +197,10 @@ class Operator:
 
         if {"R", "L"} & self.surfaces:
             for match in self._rl.finditer(text):
+                if masked[match.start("attr"):match.end("attr")] != match.group("attr"):
+                    continue
                 line = text.count("\n", 0, match.start()) + 1
-                if self.tags_only and not in_regions(tag_maps, line):
+                if self.tags_only and not any(start <= match.start() < end for start, end in tag_maps):
                     continue  # a synonym-named attribute that is not inside a tag/label map
                 block = enclosing_block(blocks, line)
                 surface = self._classify_rl(block)
@@ -157,6 +209,8 @@ class Operator:
 
         if self._v is not None:
             for match in self._v.finditer(text):
+                if masked[match.start():match.start() + len("default")] != "default":
+                    continue
                 block = enclosing_block(blocks, text.count("\n", 0, match.start()) + 1)
                 if block is not None and block.kind == "variable" and self._var_name_matches(block.name):
                     emit(match, "V", block, "default")
@@ -171,17 +225,38 @@ class Operator:
             original_value=original, mutated_value=mutated,
             original_snippet=match.group(0), mutated_snippet=mutated_snippet,
             mutated_text=text[: span[0]] + mutated + text[span[1] :],
+            site_offset=span[0],
         )
 
     def _deletion(self, path, text, match, line, surface, kind, address, attr) -> Mutant:
-        lines = text.splitlines(keepends=True)
-        mutated_text = "".join(lines[: line - 1] + lines[line:])
+        start, end = match.span()
+        line_start = text.rfind("\n", 0, start) + 1
+        newline = text.find("\n", end)
+        line_end = len(text) if newline < 0 else newline
+        prefix, suffix = text[line_start:start], text[end:line_end]
+        if not prefix.strip() and re.fullmatch(r"[ \t\r]*,?[ \t\r]*(?:(?:#|//)[^\n]*)?", suffix):
+            # Include all lines of a split assignment, not just the target's line.
+            start, end = line_start, line_end if newline < 0 else line_end + 1
+        else:
+            masked = code_mask(text)
+            right = end
+            while right < line_end and masked[right] in " \t\r":
+                right += 1
+            if right < line_end and masked[right] == ",":
+                end = right + 1
+            else:
+                left = start - 1
+                while left >= line_start and masked[left] in " \t\r":
+                    left -= 1
+                if left >= line_start and masked[left] == ",":
+                    start = left
+        mutated_text = text[:start] + text[end:]
         return Mutant(
             operator_id=self.id, category=self.category, file=str(path), line=line,
             surface=surface, block_kind=kind, resource_address=address, attribute=attr,
             original_value=match.group("target"), mutated_value="(deleted)",
             original_snippet=match.group(0).strip(), mutated_snippet="",
-            mutated_text=mutated_text, is_deletion=True,
+            mutated_text=mutated_text, is_deletion=True, site_offset=match.start("target"),
         )
 
 
@@ -223,8 +298,8 @@ _ENV_MAP = {"production": "development", "prod": "dev"}
 # --- Operator catalog (PROJECT_SPEC.md §7 + the MUT-SEC-004 split; see OPERATOR_SYNONYMS.md) ---
 
 MUT_SEC_001 = Operator(
-    "MUT-SEC-001", "security", 'S3 ACL "private" -> "public"',
-    ("acl",), r'"(?P<target>private)"', transform=lambda k, v: "public",
+    "MUT-SEC-001", "security", 'S3 ACL "private" -> "public-read"',
+    ("acl",), r'"(?P<target>private)"', transform=lambda k, v: "public-read",
     resource_types=("aws_s3_bucket", "aws_s3_bucket_acl"), surfaces=("R",),
 )
 

@@ -15,25 +15,19 @@ import difflib
 import logging
 import os
 import platform
-import shlex
 import shutil
 import subprocess
 import sys
 import tempfile
 import urllib.request
-from collections import Counter
 from pathlib import Path
 
-from . import __version__, state
-from .classifier import classify_outcomes
+from . import __version__
 from .mutators import CATALOG, CATEGORIES, generate_mutants, select_operators
-from .noop import read_tftest_files
-from .parser import find_test_module_dirs, is_valid_hcl, read_tf_files
+from .parser import is_valid_hcl, read_tf_files
 
 _GITHUB_REPO = "DegenerateUSER/Oasis"
 _API_LATEST = f"https://api.github.com/repos/{_GITHUB_REPO}/releases/latest"
-from .reporter import write_csv
-from .runner import Runner, check_pinned_version
 
 
 def _iter_targets(path: Path) -> list[Path]:
@@ -89,71 +83,40 @@ def _preview(args: argparse.Namespace) -> int:
 
 
 def _run(args: argparse.Namespace) -> int:
-    root = Path(args.target)
-    if not root.exists():
-        print(f"no such path: {root}", file=sys.stderr)
-        return 2
-    root = root.resolve()  # absolute, so paths align with the git repo root
+    from .metrics import summarize
+    from .orchestrator import run_repo
+    from .reporter import read_csv
 
-    binary = shlex.split(args.test_cmd)[0]
-    try:
-        repo_root = state.repo_root_of(root)
-    except RuntimeError as exc:
-        print(f"error: {exc}", file=sys.stderr)
+    root, output = Path(args.target).resolve(), Path(args.output).resolve()
+    if not root.is_dir():
+        print(f"not a target directory: {root}", file=sys.stderr)
         return 2
-
-    version = check_pinned_version(binary)
-    print(f"[{'+' if version.ok else '!'}] {version.message}")
-    if not version.ok and not args.allow_version_drift:
-        print("Refusing to run on a version drift (pass --allow-version-drift to override).",
-              file=sys.stderr)
-        return 2
-
     try:
         operators = select_operators(args.operator, args.category)
-    except ValueError as exc:
+        result = run_repo(root, output.parent, output_csv=output,
+                          test_cmd=args.test_cmd, timeout=args.timeout,
+                          operators=operators,
+                          plugin_cache_dir=Path(args.plugin_cache_dir).expanduser(),
+                          allow_version_drift=args.allow_version_drift,
+                          init_timeout=args.init_timeout, init_attempts=args.init_attempts,
+                          budget_seconds=args.budget_seconds, max_mutants=args.max_mutants)
+    except (OSError, ValueError, RuntimeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
-
-    module_dirs = find_test_module_dirs(root)
-    if not module_dirs:
-        print(f"no .tftest.hcl test modules found under {root}", file=sys.stderr)
+    if result.status == "failed":
+        print(f"error: {result.reason}", file=sys.stderr)
         return 1
-    print(f"[+] {len(module_dirs)} test module(s) under {root}")
-
-    cache = Path(args.plugin_cache_dir).expanduser()
-    cache.mkdir(parents=True, exist_ok=True)  # shared provider cache: offline, deterministic init
-
-    all_outcomes = []
-    for md in module_dirs:
-        print(f"[+] {md.relative_to(repo_root)} ...", flush=True)
-        runner = Runner(
-            module_dir=md, repo_root=repo_root, test_cmd=args.test_cmd,
-            timeout=args.timeout, operators=operators, plugin_cache_dir=cache,
-        )
-        outcomes = runner.run_module()
-        classify_outcomes(outcomes, read_tftest_files(md))  # fills survival_reason (§8)
-        all_outcomes.extend(outcomes)
-        tally = Counter(o.test_status for o in outcomes)
-        print("    " + ", ".join(f"{k}={v}" for k, v in sorted(tally.items())))
-
-    n = write_csv(all_outcomes, args.output)
-    scored = [o for o in all_outcomes if o.test_status in ("survived", "killed_assert", "killed_error")]
-    killed = sum(o.test_status.startswith("killed") for o in scored)
-    score = (killed / len(scored) * 100) if scored else 0.0
-    print(f"\n[+] {n} row(s) -> {args.output}")
-    print(f"[+] Mutation score: {score:.0f}% ({killed}/{len(scored)} killed; "
-          f"no_op/invalid/baseline excluded).")
-
-    survived = [o for o in all_outcomes if o.test_status == "survived"]
-    if survived:
-        reasons = Counter(o.survival_reason for o in survived)
-        print(f"[+] Survived-mutant breakdown ({len(survived)} total): "
-              + ", ".join(f"{k}={v}" for k, v in sorted(reasons.items())))
-
-    if not state.is_clean(repo_root):
-        print("[!] WARNING: git working tree is not clean after run.", file=sys.stderr)
-        return 1
+    report = summarize(read_csv(output))
+    score = report["mutation_score"]
+    score_text = f"{score:.1%}" if score is not None else "n/a (no scored mutants)"
+    print(f"[+] {result.status}: {output}")
+    print(f"[+] Mutation score: {score_text}; assertion kills={report['killed_assert']}, "
+          f"engine-error kills={report['killed_error']}, survived={report['survived']}")
+    print(f"[+] {report['generated_mutants']} mutant records; "
+          f"{report['module_baseline_records']} module-baseline records; "
+          f"excluded={report['excluded_statuses']}")
+    print(f"[+] Manifest: {result.manifest_path}")
+    print(f"[+] Summary: {result.summary_path}")
     return 0
 
 
@@ -176,7 +139,6 @@ def _add_operator_filters(subparser: argparse.ArgumentParser) -> None:
 def _detect_asset_name() -> tuple[str, str]:
     """Return (preferred_asset, fallback_tarball) for the current platform."""
     system = platform.system()   # Darwin / Linux / Windows
-    machine = platform.machine() # arm64 / x86_64
 
     if system == "Darwin":
         return "oasis-macos-arm64.pkg", "oasis-darwin-arm64.tar.gz"
@@ -360,6 +322,10 @@ def build_parser() -> argparse.ArgumentParser:
         help="test command (use 'tofu test' for OpenTofu; default: 'terraform test')",
     )
     run.add_argument("--timeout", type=int, default=60, help="per-test timeout in seconds")
+    run.add_argument("--init-timeout", type=int, default=60, help="per-init timeout in seconds")
+    run.add_argument("--init-attempts", type=int, default=1, help="maximum initialization attempts")
+    run.add_argument("--budget-seconds", type=float, default=120, help="total repository execution budget")
+    run.add_argument("--max-mutants", type=int, default=None, help="cap selected mutants across modules")
     _add_operator_filters(run)
     run.add_argument(
         "--plugin-cache-dir", default="~/.cache/tfmutate/plugins",

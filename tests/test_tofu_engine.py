@@ -17,7 +17,10 @@ import pytest
 
 from tfmutate.runner import PINNED_VERSIONS, check_pinned_version, classify_test
 
-pytestmark = pytest.mark.skipif(shutil.which("tofu") is None, reason="tofu not on PATH")
+pytestmark = [
+    pytest.mark.provider_integration,
+    pytest.mark.skipif(shutil.which("tofu") is None, reason="tofu not on PATH"),
+]
 
 
 def test_tofu_has_a_recorded_version_pin():
@@ -59,7 +62,7 @@ def test_tofu_assertion_failure_wording_matches_classify_test(tmp_path):
         )
     )
     subprocess.run(["tofu", "init", "-no-color"], cwd=tmp_path, capture_output=True, check=True)
-    r = subprocess.run(["tofu", "test", "-no-color"], cwd=tmp_path, capture_output=True, text=True)
+    r = subprocess.run(["tofu", "test", "-no-color", "-json"], cwd=tmp_path, capture_output=True, text=True)
     output = r.stdout + r.stderr
     assert classify_test(r.returncode, output) == "killed_assert"
 
@@ -95,6 +98,6 @@ def test_tofu_engine_error_wording_matches_classify_test(tmp_path):
         )
     )
     subprocess.run(["tofu", "init", "-no-color"], cwd=tmp_path, capture_output=True, check=True)
-    r = subprocess.run(["tofu", "test", "-no-color"], cwd=tmp_path, capture_output=True, text=True)
+    r = subprocess.run(["tofu", "test", "-no-color", "-json"], cwd=tmp_path, capture_output=True, text=True)
     output = r.stdout + r.stderr
     assert classify_test(r.returncode, output) == "killed_error"

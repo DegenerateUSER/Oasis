@@ -3,15 +3,23 @@
 from __future__ import annotations
 
 import subprocess
-from pathlib import Path
+import json
 
 from tfmutate.runner import PINNED_VERSIONS, Runner, check_pinned_version, classify_baseline, classify_test
+
+
+def _summary_json():
+    return json.dumps({"type": "test_summary", "test_summary": {"status": "pass", "passed": 1, "failed": 0, "errored": 0, "skipped": 0}})
+
+
+def _diagnostic_json(summary):
+    return json.dumps({"type": "diagnostic", "diagnostic": {"severity": "error", "summary": summary, "detail": "diagnostic detail"}})
 
 
 # --- classify_test ---------------------------------------------------------------------
 
 def test_zero_exit_is_survived():
-    assert classify_test(0, "Success! 1 passed, 0 failed.") == "survived"
+    assert classify_test(0, _summary_json()) == "survived"
 
 
 def test_timeout_wins_over_returncode():
@@ -19,24 +27,23 @@ def test_timeout_wins_over_returncode():
 
 
 def test_assertion_failure_is_killed_assert():
-    # terraform's actual wording for a failed assert block.
-    out = "Error: Test assertion failed\n\n  on x.tftest.hcl line 5\n\nRDS should be encrypted.\nFailure! 0 passed, 1 failed."
+    out = _diagnostic_json("Test assertion failed")
     assert classify_test(1, out) == "killed_assert"
 
 
 def test_terraform_error_is_killed_error():
-    out = "Error: Invalid value for variable\n\n  on main.tf line 3"
+    out = _diagnostic_json("Invalid value for variable")
     assert classify_test(1, out) == "killed_error"
 
 
-def test_non_zero_without_error_marker_defaults_to_killed_assert():
-    assert classify_test(1, "run failed somehow") == "killed_assert"
+def test_non_zero_without_error_marker_is_inconclusive():
+    assert classify_test(1, "run failed somehow") == "execution_error"
 
 
 # --- classify_baseline -----------------------------------------------------------------
 
 def test_baseline_green():
-    b = classify_baseline(0, "Success! 1 passed, 0 failed.", False, init_ok=True)
+    b = classify_baseline(0, _summary_json(), False, init_ok=True)
     assert b.green and b.reason == "ok"
 
 
@@ -51,8 +58,8 @@ def test_baseline_timeout():
 
 
 def test_baseline_assertion_failure_vs_error():
-    assert classify_baseline(1, "Error: Test assertion failed", False, True).reason == "assertion_failure"
-    assert classify_baseline(1, "Error: bad provider config", False, True).reason == "error"
+    assert classify_baseline(1, _diagnostic_json("Test assertion failed"), False, True).reason == "assertion_failure"
+    assert classify_baseline(1, _diagnostic_json("bad provider config"), False, True).reason == "error"
 
 
 # --- check_pinned_version ---------------------------------------------------------------

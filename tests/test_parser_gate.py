@@ -12,11 +12,27 @@ import textwrap
 
 import pytest
 
+from tfmutate.mutators import MUT_SEC_001
 from tfmutate.parser import is_valid_hcl
 
 pytestmark = pytest.mark.skipif(
     shutil.which("terraform") is None, reason="terraform not on PATH"
 )
+
+
+@pytest.mark.parametrize("resource_type", ["aws_s3_bucket", "aws_s3_bucket_acl"])
+def test_acl_mutant_is_hcl_syntax_valid_not_schema_validated(resource_type):
+    text = f'resource "{resource_type}" "b" {{\n  acl = "private"\n}}\n'
+    [mutant] = MUT_SEC_001.generate("main.tf", text)
+    assert mutant.mutated_value == "public-read"
+    assert is_valid_hcl(mutant.mutated_text) is True
+
+
+def test_fmt_gate_does_not_validate_provider_attribute_values():
+    # Even an unsupported canned ACL is syntactically valid. Do not conflate fmt
+    # acceptance with provider/schema validation or successful planning/applying.
+    text = 'resource "aws_s3_bucket_acl" "b" {\n  acl = "not-a-canned-acl"\n}\n'
+    assert is_valid_hcl(text) is True
 
 
 def test_accepts_plain_valid_hcl():

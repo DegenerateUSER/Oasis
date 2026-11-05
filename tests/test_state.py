@@ -57,3 +57,20 @@ def test_untracked_build_byproduct_does_not_count_as_dirty(git_repo: Path):
 def test_modified_tracked_file_still_counts_as_dirty(git_repo: Path):
     (git_repo / "main.tf").write_text("mutated\n")
     assert state.is_clean(git_repo) is False
+
+
+def test_restored_preserves_preexisting_unstaged_bytes(git_repo: Path):
+    source = git_repo / "main.tf"
+    source.write_bytes(b"# user change\r\n")
+    with state.restored(git_repo, source):
+        source.write_text("temporary mutant\n")
+    assert source.read_bytes() == b"# user change\r\n"
+
+
+def test_run_module_refuses_dirty_tree_before_init(tmp_path, monkeypatch):
+    from tfmutate.runner import Runner
+    runner = Runner(tmp_path, tmp_path)
+    monkeypatch.setattr(state, "is_clean", lambda *a, **kw: False)
+    monkeypatch.setattr(runner, "init", lambda: pytest.fail("init must not run on dirty tree"))
+    with pytest.raises(RuntimeError, match="dirty"):
+        runner.run_module()

@@ -5,11 +5,12 @@ description = "Mutation testing for Terraform (Infrastructure-as-Code) test suit
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    # Read-only HCL parsing, used only to locate mutation targets (never to rewrite files).
+    # Read-only scope/override and assertion parsing; the lockfile pins the tested grammar.
     "python-hcl2>=4.3.0",
 ]
 
 [project.scripts]
+oasis = "tfmutate.cli:main"
 tfmutate = "tfmutate.cli:main"
 
 [dependency-groups]

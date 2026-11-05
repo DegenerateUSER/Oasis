@@ -1,14 +1,8 @@
-"""Git-based state management (PROJECT_SPEC.md §5.2, §6.1).
+"""Repository discovery and non-destructive mutation restoration.
 
-The one non-negotiable correctness rule of the mutation cycle: *every* path -- survived,
-killed, invalid, timeout, or a crash -- must restore the mutated file before the next cycle,
-or mutations stack and corrupt every later result. We use ``git checkout -- <file>`` rather
-than a hand-rolled backup so restore is guaranteed by git, and wrap it in a context manager
-whose ``finally`` runs unconditionally.
-
-``terraform init`` also rewrites the tracked ``.terraform.lock.hcl``; :func:`checkout` with
-``"."`` cleans that up per module. ``.terraform/`` itself is git-ignored, so it does not dirty
-``git status``.
+Execution requires clean tracked/index state. Owned files are restored byte-for-byte
+without resetting unrelated work or the index. Python finally blocks cover ordinary
+exceptions and KeyboardInterrupt, not SIGKILL, interpreter termination or power loss.
 """
 
 from __future__ import annotations
@@ -55,14 +49,42 @@ def is_clean(repo_root: Path, git: str = "git") -> bool:
     return result.returncode == 0 and result.stdout.strip() == ""
 
 
-@contextmanager
-def restored(repo_root: Path, file_path: Path, git: str = "git"):
-    """Guarantee ``git checkout -- <file>`` runs on exit, even on exception.
+def require_clean(repo_root: Path, git: str = "git") -> None:
+    """Refuse dirty tracked/index state; never auto-discard someone else's work."""
+    if not is_clean(repo_root, git=git):
+        raise RuntimeError("dirty tracked/index state: commit/stash changes or use an isolated worktree")
 
-    The caller mutates ``file_path`` inside the ``with`` block; restore is unconditional.
+
+@contextmanager
+def preserved_files(repo_root: Path, paths: list[Path]):
+    """Restore only owned files byte-for-byte, without touching the Git index.
+
+    This covers exceptions/KeyboardInterrupt, not SIGKILL or power loss. Abandoned
+    mutations make the tree dirty and are refused on the next run, never discarded.
     """
-    rel = Path(file_path).resolve().relative_to(Path(repo_root).resolve())
+    snapshots = []
+    root = Path(repo_root).resolve()
+    for path in paths:
+        path = Path(path)
+        if path.is_symlink() or not path.resolve().is_relative_to(root):
+            raise RuntimeError(f"unsafe restoration path: {path}")
+        snapshots.append((path, path.read_bytes() if path.exists() else None,
+                          path.stat().st_mode if path.exists() else None))
     try:
         yield
     finally:
-        checkout(repo_root, str(rel), git=git)
+        for path, content, mode in snapshots:
+            if path.is_symlink():
+                raise RuntimeError(f"restoration target became a symlink: {path}")
+            if content is None:
+                path.unlink(missing_ok=True)
+            else:
+                path.write_bytes(content)
+                path.chmod(mode)
+
+
+@contextmanager
+def restored(repo_root: Path, file_path: Path, git: str = "git"):
+    """Restore the exact pre-mutation bytes and permissions, preserving staged work."""
+    with preserved_files(repo_root, [file_path]):
+        yield
