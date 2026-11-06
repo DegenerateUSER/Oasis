@@ -6,6 +6,17 @@
 
 **Oasis** is an open-source mutation testing framework for Terraform and OpenTofu Infrastructure-as-Code (IaC) test suites.
 
+## Local browser workspace
+
+The local **Signal GUI** adds interactive analytics, a mutant explorer, bounded run configuration, live command progress/logs, CSV imports/exports, and dark/light themes. It uses the same execution and scoring contracts as the CLI—historical imports are clearly distinguished from verified local runs.
+
+```sh
+uv sync --locked
+uv run oasis gui
+```
+
+Runs only on loopback; no hosted account or Node runtime is required when compiled assets are present. See [the GUI guide](Docs/GUI.md) for source builds, provenance, trusted-repository execution warnings, platform limits and cancellation behavior. This interface does not automatically rerun the historical corpus.
+
 Rather than relying on basic code coverage metrics, Oasis evaluates the **semantic quality** of your `terraform test` assertions. It injects small, logical faults ("mutants") into `.tf` resource configurations, runs your test suite against each mutant, and reports whether your assertions successfully detect (kill) the injected failure—producing a **mutation score** that quantifies how rigorous your IaC tests actually are.
 
 ---

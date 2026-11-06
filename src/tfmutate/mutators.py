@@ -167,7 +167,12 @@ class Operator:
 
     # -- generation ------------------------------------------------------------------------
 
-    def generate(self, path: Path | str, text: str) -> list[Mutant]:
+    def generate(self, path: Path | str, text: str, *, limit: int | None = None) -> list[Mutant]:
+        """Construct at most ``limit`` mutants; ``None`` preserves unbounded generation."""
+        if limit is not None and limit < 0:
+            raise ValueError("limit must be nonnegative or None")
+        if limit == 0:
+            return []
         masked = code_mask(text)
         blocks = find_blocks(text)
         tag_maps = find_tag_map_spans(text) if self.tags_only else []
@@ -206,6 +211,8 @@ class Operator:
                 surface = self._classify_rl(block)
                 if surface is not None:
                     emit(match, surface, block, match.group("attr"))
+                    if limit is not None and len(mutants) >= limit:
+                        return mutants
 
         if self._v is not None:
             for match in self._v.finditer(text):
@@ -214,6 +221,8 @@ class Operator:
                 block = enclosing_block(blocks, text.count("\n", 0, match.start()) + 1)
                 if block is not None and block.kind == "variable" and self._var_name_matches(block.name):
                     emit(match, "V", block, "default")
+                    if limit is not None and len(mutants) >= limit:
+                        return mutants
 
         return mutants
 
@@ -415,8 +424,22 @@ def select_operators(
 
 
 def generate_mutants(
-    path: Path | str, text: str, operators: list[Operator] | None = None
+    path: Path | str, text: str, operators: list[Operator] | None = None, *, limit: int | None = None
 ) -> list[Mutant]:
-    """Generate mutants for ``text`` using the given operators (default: whole catalog)."""
+    """Generate mutants in catalog/operator order, optionally bounding full-text construction.
+
+    ``limit`` is a shared nonnegative budget across operators, not a slice of an
+    eagerly constructed list. Omitting it preserves existing unbounded behavior.
+    """
+    if limit is not None and limit < 0:
+        raise ValueError("limit must be nonnegative or None")
     ops = operators if operators is not None else list(CATALOG.values())
-    return [m for op in ops for m in op.generate(path, text)]
+    if limit is None:
+        return [m for op in ops for m in op.generate(path, text)]
+    mutants: list[Mutant] = []
+    for op in ops:
+        remaining = limit - len(mutants)
+        if remaining <= 0:
+            break
+        mutants.extend(op.generate(path, text, limit=remaining))
+    return mutants

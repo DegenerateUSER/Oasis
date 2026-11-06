@@ -45,6 +45,7 @@ jobs:
             --standalone \
             --onefile \
             --include-package=tfmutate \
+            --include-data-dir=src/tfmutate/gui/static=tfmutate/gui/static \
             --assume-yes-for-downloads \
             --python-flag=no_site \
             src/entrypoint.py \

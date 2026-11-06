@@ -1,0 +1,9 @@
+import { useMemo, useState } from 'react';
+import type { Bootstrap } from './types';
+import { Icon } from './ui';
+
+export function Operators({ bootstrap }: { bootstrap: Bootstrap }) {
+  const [search, setSearch] = useState(''); const [category, setCategory] = useState('');
+  const operators = useMemo(() => bootstrap.operators.filter(op => (!category || op.category === category) && `${op.id} ${op.category} ${op.description}`.toLowerCase().includes(search.toLowerCase())), [bootstrap.operators, search, category]);
+  return <section className="operator-catalog"><div className="page-heading"><div><h1>Precise changes. Explicit scope.</h1><p>{bootstrap.operators.length} registered mutation operators, from the installed Oasis catalog.</p></div></div><div className="catalog-controls"><label className="search-control"><span>Search operators</span><div><Icon name="search" /><input type="search" value={search} onChange={event => setSearch(event.target.value)} placeholder="ID, description or category" /></div></label><label>Catalog category<select value={category} onChange={event => setCategory(event.target.value)}><option value="">All categories</option>{bootstrap.categories.map(item => <option key={item}>{item}</option>)}</select></label><span className="caption">{operators.length} matching operators</span></div><div className="catalog-list">{operators.map(op => <article key={op.id}><div><code>{op.id}</code><span className="category-tag">{op.category}</span></div><p>{op.description}</p></article>)}</div>{!operators.length && <p className="quiet-empty">No operators match this search. Change the category or search text.</p>}<p className="scoring-note">Catalog entries describe possible mutations, not executed tests or coverage. The read-only evaluation preview shows eligible sites for a specific repository.</p></section>;
+}

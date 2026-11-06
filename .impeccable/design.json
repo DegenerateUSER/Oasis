@@ -1,0 +1,790 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-06T08:18:21.488569+00:00",
+  "title": "Design System: Oasis Signal",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Primary",
+        "canonical": "#155b9a",
+        "tonalRamp": [
+          "oklch(0.15 0.121705 250.808)",
+          "oklch(0.264286 0.121705 250.808)",
+          "oklch(0.378571 0.121705 250.808)",
+          "oklch(0.492857 0.121705 250.808)",
+          "oklch(0.607143 0.121705 250.808)",
+          "oklch(0.721429 0.121705 250.808)",
+          "oklch(0.835714 0.121705 250.808)",
+          "oklch(0.95 0.121705 250.808)"
+        ]
+      },
+      "primary-dark": {
+        "role": "primary",
+        "displayName": "Primary Dark",
+        "canonical": "#a7d9fa",
+        "tonalRamp": [
+          "oklch(0.15 0.0692767 237.553)",
+          "oklch(0.264286 0.0692767 237.553)",
+          "oklch(0.378571 0.0692767 237.553)",
+          "oklch(0.492857 0.0692767 237.553)",
+          "oklch(0.607143 0.0692767 237.553)",
+          "oklch(0.721429 0.0692767 237.553)",
+          "oklch(0.835714 0.0692767 237.553)",
+          "oklch(0.95 0.0692767 237.553)"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Background",
+        "canonical": "#f7f9fc",
+        "tonalRamp": [
+          "oklch(0.15 0.00449914 258.829)",
+          "oklch(0.264286 0.00449914 258.829)",
+          "oklch(0.378571 0.00449914 258.829)",
+          "oklch(0.492857 0.00449914 258.829)",
+          "oklch(0.607143 0.00449914 258.829)",
+          "oklch(0.721429 0.00449914 258.829)",
+          "oklch(0.835714 0.00449914 258.829)",
+          "oklch(0.95 0.00449914 258.829)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(0.15 0.0000497986 23.7884)",
+          "oklch(0.264286 0.0000497986 23.7884)",
+          "oklch(0.378571 0.0000497986 23.7884)",
+          "oklch(0.492857 0.0000497986 23.7884)",
+          "oklch(0.607143 0.0000497986 23.7884)",
+          "oklch(0.721429 0.0000497986 23.7884)",
+          "oklch(0.835714 0.0000497986 23.7884)",
+          "oklch(0.95 0.0000497986 23.7884)"
+        ]
+      },
+      "layer": {
+        "role": "neutral",
+        "displayName": "Layer",
+        "canonical": "#edf2f8",
+        "tonalRamp": [
+          "oklch(0.15 0.00964034 253.024)",
+          "oklch(0.264286 0.00964034 253.024)",
+          "oklch(0.378571 0.00964034 253.024)",
+          "oklch(0.492857 0.00964034 253.024)",
+          "oklch(0.607143 0.00964034 253.024)",
+          "oklch(0.721429 0.00964034 253.024)",
+          "oklch(0.835714 0.00964034 253.024)",
+          "oklch(0.95 0.00964034 253.024)"
+        ]
+      },
+      "hover": {
+        "role": "neutral",
+        "displayName": "Hover",
+        "canonical": "#e5edf7",
+        "tonalRamp": [
+          "oklch(0.15 0.015973 254.031)",
+          "oklch(0.264286 0.015973 254.031)",
+          "oklch(0.378571 0.015973 254.031)",
+          "oklch(0.492857 0.015973 254.031)",
+          "oklch(0.607143 0.015973 254.031)",
+          "oklch(0.721429 0.015973 254.031)",
+          "oklch(0.835714 0.015973 254.031)",
+          "oklch(0.95 0.015973 254.031)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Foreground",
+        "canonical": "#1c2c42",
+        "tonalRamp": [
+          "oklch(0.15 0.0459057 256.562)",
+          "oklch(0.264286 0.0459057 256.562)",
+          "oklch(0.378571 0.0459057 256.562)",
+          "oklch(0.492857 0.0459057 256.562)",
+          "oklch(0.607143 0.0459057 256.562)",
+          "oklch(0.721429 0.0459057 256.562)",
+          "oklch(0.835714 0.0459057 256.562)",
+          "oklch(0.95 0.0459057 256.562)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#53657a",
+        "tonalRamp": [
+          "oklch(0.15 0.0401653 252.55)",
+          "oklch(0.264286 0.0401653 252.55)",
+          "oklch(0.378571 0.0401653 252.55)",
+          "oklch(0.492857 0.0401653 252.55)",
+          "oklch(0.607143 0.0401653 252.55)",
+          "oklch(0.721429 0.0401653 252.55)",
+          "oklch(0.835714 0.0401653 252.55)",
+          "oklch(0.95 0.0401653 252.55)"
+        ]
+      },
+      "subtle": {
+        "role": "neutral",
+        "displayName": "Subtle",
+        "canonical": "#65788f",
+        "tonalRamp": [
+          "oklch(0.15 0.0422294 253.422)",
+          "oklch(0.264286 0.0422294 253.422)",
+          "oklch(0.378571 0.0422294 253.422)",
+          "oklch(0.492857 0.0422294 253.422)",
+          "oklch(0.607143 0.0422294 253.422)",
+          "oklch(0.721429 0.0422294 253.422)",
+          "oklch(0.835714 0.0422294 253.422)",
+          "oklch(0.95 0.0422294 253.422)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Border",
+        "canonical": "#d5dfe9",
+        "tonalRamp": [
+          "oklch(0.15 0.0174211 248.124)",
+          "oklch(0.264286 0.0174211 248.124)",
+          "oklch(0.378571 0.0174211 248.124)",
+          "oklch(0.492857 0.0174211 248.124)",
+          "oklch(0.607143 0.0174211 248.124)",
+          "oklch(0.721429 0.0174211 248.124)",
+          "oklch(0.835714 0.0174211 248.124)",
+          "oklch(0.95 0.0174211 248.124)"
+        ]
+      },
+      "selection": {
+        "role": "neutral",
+        "displayName": "Selection",
+        "canonical": "#dceeff",
+        "tonalRamp": [
+          "oklch(0.15 0.0299437 246.651)",
+          "oklch(0.264286 0.0299437 246.651)",
+          "oklch(0.378571 0.0299437 246.651)",
+          "oklch(0.492857 0.0299437 246.651)",
+          "oklch(0.607143 0.0299437 246.651)",
+          "oklch(0.721429 0.0299437 246.651)",
+          "oklch(0.835714 0.0299437 246.651)",
+          "oklch(0.95 0.0299437 246.651)"
+        ]
+      },
+      "action": {
+        "role": "primary",
+        "displayName": "Action",
+        "canonical": "#1c5f99",
+        "tonalRamp": [
+          "oklch(0.15 0.114275 249.183)",
+          "oklch(0.264286 0.114275 249.183)",
+          "oklch(0.378571 0.114275 249.183)",
+          "oklch(0.492857 0.114275 249.183)",
+          "oklch(0.607143 0.114275 249.183)",
+          "oklch(0.721429 0.114275 249.183)",
+          "oklch(0.835714 0.114275 249.183)",
+          "oklch(0.95 0.114275 249.183)"
+        ]
+      },
+      "action-text": {
+        "role": "primary",
+        "displayName": "Action Text",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(0.15 0.0000497986 23.7884)",
+          "oklch(0.264286 0.0000497986 23.7884)",
+          "oklch(0.378571 0.0000497986 23.7884)",
+          "oklch(0.492857 0.0000497986 23.7884)",
+          "oklch(0.607143 0.0000497986 23.7884)",
+          "oklch(0.721429 0.0000497986 23.7884)",
+          "oklch(0.835714 0.0000497986 23.7884)",
+          "oklch(0.95 0.0000497986 23.7884)"
+        ]
+      },
+      "assertion": {
+        "role": "semantic",
+        "displayName": "Assertion",
+        "canonical": "#16744f",
+        "tonalRamp": [
+          "oklch(0.15 0.102834 161.13)",
+          "oklch(0.264286 0.102834 161.13)",
+          "oklch(0.378571 0.102834 161.13)",
+          "oklch(0.492857 0.102834 161.13)",
+          "oklch(0.607143 0.102834 161.13)",
+          "oklch(0.721429 0.102834 161.13)",
+          "oklch(0.835714 0.102834 161.13)",
+          "oklch(0.95 0.102834 161.13)"
+        ]
+      },
+      "engine": {
+        "role": "semantic",
+        "displayName": "Engine",
+        "canonical": "#446da7",
+        "tonalRamp": [
+          "oklch(0.15 0.102793 257.211)",
+          "oklch(0.264286 0.102793 257.211)",
+          "oklch(0.378571 0.102793 257.211)",
+          "oklch(0.492857 0.102793 257.211)",
+          "oklch(0.607143 0.102793 257.211)",
+          "oklch(0.721429 0.102793 257.211)",
+          "oklch(0.835714 0.102793 257.211)",
+          "oklch(0.95 0.102793 257.211)"
+        ]
+      },
+      "survivor": {
+        "role": "semantic",
+        "displayName": "Survivor",
+        "canonical": "#926213",
+        "tonalRamp": [
+          "oklch(0.15 0.106965 73.3076)",
+          "oklch(0.264286 0.106965 73.3076)",
+          "oklch(0.378571 0.106965 73.3076)",
+          "oklch(0.492857 0.106965 73.3076)",
+          "oklch(0.607143 0.106965 73.3076)",
+          "oklch(0.721429 0.106965 73.3076)",
+          "oklch(0.835714 0.106965 73.3076)",
+          "oklch(0.95 0.106965 73.3076)"
+        ]
+      },
+      "excluded": {
+        "role": "semantic",
+        "displayName": "Excluded",
+        "canonical": "#8090a4",
+        "tonalRamp": [
+          "oklch(0.15 0.0352084 254.125)",
+          "oklch(0.264286 0.0352084 254.125)",
+          "oklch(0.378571 0.0352084 254.125)",
+          "oklch(0.492857 0.0352084 254.125)",
+          "oklch(0.607143 0.0352084 254.125)",
+          "oklch(0.721429 0.0352084 254.125)",
+          "oklch(0.835714 0.0352084 254.125)",
+          "oklch(0.95 0.0352084 254.125)"
+        ]
+      },
+      "danger": {
+        "role": "semantic",
+        "displayName": "Danger",
+        "canonical": "#af3440",
+        "tonalRamp": [
+          "oklch(0.15 0.158517 19.4202)",
+          "oklch(0.264286 0.158517 19.4202)",
+          "oklch(0.378571 0.158517 19.4202)",
+          "oklch(0.492857 0.158517 19.4202)",
+          "oklch(0.607143 0.158517 19.4202)",
+          "oklch(0.721429 0.158517 19.4202)",
+          "oklch(0.835714 0.158517 19.4202)",
+          "oklch(0.95 0.158517 19.4202)"
+        ]
+      },
+      "warning-background": {
+        "role": "semantic",
+        "displayName": "Warning Background",
+        "canonical": "#fff5df",
+        "tonalRamp": [
+          "oklch(0.15 0.0308006 86.3792)",
+          "oklch(0.264286 0.0308006 86.3792)",
+          "oklch(0.378571 0.0308006 86.3792)",
+          "oklch(0.492857 0.0308006 86.3792)",
+          "oklch(0.607143 0.0308006 86.3792)",
+          "oklch(0.721429 0.0308006 86.3792)",
+          "oklch(0.835714 0.0308006 86.3792)",
+          "oklch(0.95 0.0308006 86.3792)"
+        ]
+      },
+      "warning-text": {
+        "role": "semantic",
+        "displayName": "Warning Text",
+        "canonical": "#775117",
+        "tonalRamp": [
+          "oklch(0.15 0.0876378 73.195)",
+          "oklch(0.264286 0.0876378 73.195)",
+          "oklch(0.378571 0.0876378 73.195)",
+          "oklch(0.492857 0.0876378 73.195)",
+          "oklch(0.607143 0.0876378 73.195)",
+          "oklch(0.721429 0.0876378 73.195)",
+          "oklch(0.835714 0.0876378 73.195)",
+          "oklch(0.95 0.0876378 73.195)"
+        ]
+      },
+      "error-background": {
+        "role": "semantic",
+        "displayName": "Error Background",
+        "canonical": "#fff0f1",
+        "tonalRamp": [
+          "oklch(0.15 0.0163145 12.8119)",
+          "oklch(0.264286 0.0163145 12.8119)",
+          "oklch(0.378571 0.0163145 12.8119)",
+          "oklch(0.492857 0.0163145 12.8119)",
+          "oklch(0.607143 0.0163145 12.8119)",
+          "oklch(0.721429 0.0163145 12.8119)",
+          "oklch(0.835714 0.0163145 12.8119)",
+          "oklch(0.95 0.0163145 12.8119)"
+        ]
+      },
+      "background-dark": {
+        "role": "neutral",
+        "displayName": "Background Dark",
+        "canonical": "#111c2c",
+        "tonalRamp": [
+          "oklch(0.15 0.0352195 257.689)",
+          "oklch(0.264286 0.0352195 257.689)",
+          "oklch(0.378571 0.0352195 257.689)",
+          "oklch(0.492857 0.0352195 257.689)",
+          "oklch(0.607143 0.0352195 257.689)",
+          "oklch(0.721429 0.0352195 257.689)",
+          "oklch(0.835714 0.0352195 257.689)",
+          "oklch(0.95 0.0352195 257.689)"
+        ]
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "Surface Dark",
+        "canonical": "#142033",
+        "tonalRamp": [
+          "oklch(0.15 0.0403777 259.315)",
+          "oklch(0.264286 0.0403777 259.315)",
+          "oklch(0.378571 0.0403777 259.315)",
+          "oklch(0.492857 0.0403777 259.315)",
+          "oklch(0.607143 0.0403777 259.315)",
+          "oklch(0.721429 0.0403777 259.315)",
+          "oklch(0.835714 0.0403777 259.315)",
+          "oklch(0.95 0.0403777 259.315)"
+        ]
+      },
+      "layer-dark": {
+        "role": "neutral",
+        "displayName": "Layer Dark",
+        "canonical": "#1b2a3f",
+        "tonalRamp": [
+          "oklch(0.15 0.0439824 256.922)",
+          "oklch(0.264286 0.0439824 256.922)",
+          "oklch(0.378571 0.0439824 256.922)",
+          "oklch(0.492857 0.0439824 256.922)",
+          "oklch(0.607143 0.0439824 256.922)",
+          "oklch(0.721429 0.0439824 256.922)",
+          "oklch(0.835714 0.0439824 256.922)",
+          "oklch(0.95 0.0439824 256.922)"
+        ]
+      },
+      "hover-dark": {
+        "role": "neutral",
+        "displayName": "Hover Dark",
+        "canonical": "#22354d",
+        "tonalRamp": [
+          "oklch(0.15 0.0496184 254.777)",
+          "oklch(0.264286 0.0496184 254.777)",
+          "oklch(0.378571 0.0496184 254.777)",
+          "oklch(0.492857 0.0496184 254.777)",
+          "oklch(0.607143 0.0496184 254.777)",
+          "oklch(0.721429 0.0496184 254.777)",
+          "oklch(0.835714 0.0496184 254.777)",
+          "oklch(0.95 0.0496184 254.777)"
+        ]
+      },
+      "foreground-dark": {
+        "role": "neutral",
+        "displayName": "Foreground Dark",
+        "canonical": "#e6edf8",
+        "tonalRamp": [
+          "oklch(0.15 0.0166111 259.552)",
+          "oklch(0.264286 0.0166111 259.552)",
+          "oklch(0.378571 0.0166111 259.552)",
+          "oklch(0.492857 0.0166111 259.552)",
+          "oklch(0.607143 0.0166111 259.552)",
+          "oklch(0.721429 0.0166111 259.552)",
+          "oklch(0.835714 0.0166111 259.552)",
+          "oklch(0.95 0.0166111 259.552)"
+        ]
+      },
+      "muted-dark": {
+        "role": "neutral",
+        "displayName": "Muted Dark",
+        "canonical": "#a0b0c6",
+        "tonalRamp": [
+          "oklch(0.15 0.0363999 256.409)",
+          "oklch(0.264286 0.0363999 256.409)",
+          "oklch(0.378571 0.0363999 256.409)",
+          "oklch(0.492857 0.0363999 256.409)",
+          "oklch(0.607143 0.0363999 256.409)",
+          "oklch(0.721429 0.0363999 256.409)",
+          "oklch(0.835714 0.0363999 256.409)",
+          "oklch(0.95 0.0363999 256.409)"
+        ]
+      },
+      "subtle-dark": {
+        "role": "neutral",
+        "displayName": "Subtle Dark",
+        "canonical": "#93a6c0",
+        "tonalRamp": [
+          "oklch(0.15 0.0435777 256.31)",
+          "oklch(0.264286 0.0435777 256.31)",
+          "oklch(0.378571 0.0435777 256.31)",
+          "oklch(0.492857 0.0435777 256.31)",
+          "oklch(0.607143 0.0435777 256.31)",
+          "oklch(0.721429 0.0435777 256.31)",
+          "oklch(0.835714 0.0435777 256.31)",
+          "oklch(0.95 0.0435777 256.31)"
+        ]
+      },
+      "border-dark": {
+        "role": "neutral",
+        "displayName": "Border Dark",
+        "canonical": "#2b3b51",
+        "tonalRamp": [
+          "oklch(0.15 0.0440397 256.5)",
+          "oklch(0.264286 0.0440397 256.5)",
+          "oklch(0.378571 0.0440397 256.5)",
+          "oklch(0.492857 0.0440397 256.5)",
+          "oklch(0.607143 0.0440397 256.5)",
+          "oklch(0.721429 0.0440397 256.5)",
+          "oklch(0.835714 0.0440397 256.5)",
+          "oklch(0.95 0.0440397 256.5)"
+        ]
+      },
+      "selection-dark": {
+        "role": "neutral",
+        "displayName": "Selection Dark",
+        "canonical": "#233e56",
+        "tonalRamp": [
+          "oklch(0.15 0.0534864 246.808)",
+          "oklch(0.264286 0.0534864 246.808)",
+          "oklch(0.378571 0.0534864 246.808)",
+          "oklch(0.492857 0.0534864 246.808)",
+          "oklch(0.607143 0.0534864 246.808)",
+          "oklch(0.721429 0.0534864 246.808)",
+          "oklch(0.835714 0.0534864 246.808)",
+          "oklch(0.95 0.0534864 246.808)"
+        ]
+      },
+      "action-text-dark": {
+        "role": "primary",
+        "displayName": "Action Text Dark",
+        "canonical": "#15283b",
+        "tonalRamp": [
+          "oklch(0.15 0.0435066 249.726)",
+          "oklch(0.264286 0.0435066 249.726)",
+          "oklch(0.378571 0.0435066 249.726)",
+          "oklch(0.492857 0.0435066 249.726)",
+          "oklch(0.607143 0.0435066 249.726)",
+          "oklch(0.721429 0.0435066 249.726)",
+          "oklch(0.835714 0.0435066 249.726)",
+          "oklch(0.95 0.0435066 249.726)"
+        ]
+      },
+      "assertion-dark": {
+        "role": "semantic",
+        "displayName": "Assertion Dark",
+        "canonical": "#7bcba9",
+        "tonalRamp": [
+          "oklch(0.15 0.0934964 165.143)",
+          "oklch(0.264286 0.0934964 165.143)",
+          "oklch(0.378571 0.0934964 165.143)",
+          "oklch(0.492857 0.0934964 165.143)",
+          "oklch(0.607143 0.0934964 165.143)",
+          "oklch(0.721429 0.0934964 165.143)",
+          "oklch(0.835714 0.0934964 165.143)",
+          "oklch(0.95 0.0934964 165.143)"
+        ]
+      },
+      "engine-dark": {
+        "role": "semantic",
+        "displayName": "Engine Dark",
+        "canonical": "#86aaf0",
+        "tonalRamp": [
+          "oklch(0.15 0.109472 263.099)",
+          "oklch(0.264286 0.109472 263.099)",
+          "oklch(0.378571 0.109472 263.099)",
+          "oklch(0.492857 0.109472 263.099)",
+          "oklch(0.607143 0.109472 263.099)",
+          "oklch(0.721429 0.109472 263.099)",
+          "oklch(0.835714 0.109472 263.099)",
+          "oklch(0.95 0.109472 263.099)"
+        ]
+      },
+      "survivor-dark": {
+        "role": "semantic",
+        "displayName": "Survivor Dark",
+        "canonical": "#e4bf74",
+        "tonalRamp": [
+          "oklch(0.15 0.102931 83.9453)",
+          "oklch(0.264286 0.102931 83.9453)",
+          "oklch(0.378571 0.102931 83.9453)",
+          "oklch(0.492857 0.102931 83.9453)",
+          "oklch(0.607143 0.102931 83.9453)",
+          "oklch(0.721429 0.102931 83.9453)",
+          "oklch(0.835714 0.102931 83.9453)",
+          "oklch(0.95 0.102931 83.9453)"
+        ]
+      },
+      "excluded-dark": {
+        "role": "semantic",
+        "displayName": "Excluded Dark",
+        "canonical": "#65788e",
+        "tonalRamp": [
+          "oklch(0.15 0.0409166 252.317)",
+          "oklch(0.264286 0.0409166 252.317)",
+          "oklch(0.378571 0.0409166 252.317)",
+          "oklch(0.492857 0.0409166 252.317)",
+          "oklch(0.607143 0.0409166 252.317)",
+          "oklch(0.721429 0.0409166 252.317)",
+          "oklch(0.835714 0.0409166 252.317)",
+          "oklch(0.95 0.0409166 252.317)"
+        ]
+      },
+      "danger-dark": {
+        "role": "semantic",
+        "displayName": "Danger Dark",
+        "canonical": "#ff9eab",
+        "tonalRamp": [
+          "oklch(0.15 0.116314 11.3454)",
+          "oklch(0.264286 0.116314 11.3454)",
+          "oklch(0.378571 0.116314 11.3454)",
+          "oklch(0.492857 0.116314 11.3454)",
+          "oklch(0.607143 0.116314 11.3454)",
+          "oklch(0.721429 0.116314 11.3454)",
+          "oklch(0.835714 0.116314 11.3454)",
+          "oklch(0.95 0.116314 11.3454)"
+        ]
+      },
+      "warning-background-dark": {
+        "role": "semantic",
+        "displayName": "Warning Background Dark",
+        "canonical": "#342d20",
+        "tonalRamp": [
+          "oklch(0.15 0.0243331 82.7337)",
+          "oklch(0.264286 0.0243331 82.7337)",
+          "oklch(0.378571 0.0243331 82.7337)",
+          "oklch(0.492857 0.0243331 82.7337)",
+          "oklch(0.607143 0.0243331 82.7337)",
+          "oklch(0.721429 0.0243331 82.7337)",
+          "oklch(0.835714 0.0243331 82.7337)",
+          "oklch(0.95 0.0243331 82.7337)"
+        ]
+      },
+      "warning-text-dark": {
+        "role": "semantic",
+        "displayName": "Warning Text Dark",
+        "canonical": "#edcb8a",
+        "tonalRamp": [
+          "oklch(0.15 0.0911494 83.0333)",
+          "oklch(0.264286 0.0911494 83.0333)",
+          "oklch(0.378571 0.0911494 83.0333)",
+          "oklch(0.492857 0.0911494 83.0333)",
+          "oklch(0.607143 0.0911494 83.0333)",
+          "oklch(0.721429 0.0911494 83.0333)",
+          "oklch(0.835714 0.0911494 83.0333)",
+          "oklch(0.95 0.0911494 83.0333)"
+        ]
+      },
+      "error-background-dark": {
+        "role": "semantic",
+        "displayName": "Error Background Dark",
+        "canonical": "#3a2430",
+        "tonalRamp": [
+          "oklch(0.15 0.0385775 345.886)",
+          "oklch(0.264286 0.0385775 345.886)",
+          "oklch(0.378571 0.0385775 345.886)",
+          "oklch(0.492857 0.0385775 345.886)",
+          "oklch(0.607143 0.0385775 345.886)",
+          "oklch(0.721429 0.0385775 345.886)",
+          "oklch(0.835714 0.0385775 345.886)",
+          "oklch(0.95 0.0385775 345.886)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "body": {
+        "displayName": "Body",
+        "purpose": "Observed body role; normative values are in DESIGN.md."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Observed headline role; normative values are in DESIGN.md."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "Observed section role; normative values are in DESIGN.md."
+      },
+      "metric": {
+        "displayName": "Metric",
+        "purpose": "Observed metric role; normative values are in DESIGN.md."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Observed control role; normative values are in DESIGN.md."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Observed code role; normative values are in DESIGN.md."
+      }
+    },
+    "shadows": [
+      {
+        "name": "drawer-light",
+        "value": "0 18px 65px -20px #12243a50",
+        "purpose": "Light-theme evidence drawer only."
+      },
+      {
+        "name": "drawer-dark",
+        "value": "0 18px 65px -20px #000b",
+        "purpose": "Dark-theme evidence drawer only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-transition",
+        "value": "background 150ms ease, color 150ms ease",
+        "purpose": "Observed control state transition."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition:none!important;animation:none!important;scroll-behavior:auto!important",
+        "purpose": "Respect reduced-motion preference."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-header",
+        "value": "1440px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "stacked",
+        "value": "800px"
+      },
+      {
+        "name": "phone",
+        "value": "520px"
+      }
+    ],
+    "containerQueries": [
+      {
+        "name": "outcomes",
+        "condition": "max-width:800px",
+        "purpose": "Native HTML labels and bars replace the wide SVG."
+      }
+    ],
+    "viewportFallback": {
+      "condition": "max-width:680px",
+      "purpose": "Enable narrow outcome layout on smaller viewports."
+    },
+    "focus": {
+      "value": "3px solid var(--accent)",
+      "offset": "3px"
+    },
+    "backdrop": {
+      "value": "#07101d80",
+      "purpose": "Evidence drawer backdrop."
+    },
+    "rampProvenance": "Derived preview ramps: Chromium resolved relative OKLCH at eight evenly spaced lightness values from15% to95%, preserving source hue/chroma. These are not shipping CSS primitives.",
+    "extraction": "Parent completed locally after independent documenter provider timeout; not a successful independent documenter run."
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary-light",
+      "description": "The existing filled execution/new-evaluation action; theme variables remain live.",
+      "html": "<button class=\"ds-primary\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg>New evaluation</button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:36px;padding:.5rem .85rem;border-radius:7px;font:550 1rem/1.25 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;cursor:pointer;transition:background 150ms ease,color 150ms ease;border:1px solid transparent;background:var(--button,#1c5f99);color:var(--button-text,#fff)}.ds-primary:hover{filter:brightness(.94)}.ds-primary:active{filter:brightness(.93)}.ds-primary:focus-visible{outline:3px solid var(--accent,#155b9a);outline-offset:3px}"
+    },
+    {
+      "name": "Secondary control",
+      "kind": "button",
+      "refersTo": "button-secondary-light",
+      "description": "Low-emphasis action used by preview, imports and exports.",
+      "html": "<button class=\"ds-secondary\">Read-only preview</button>",
+      "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:36px;padding:.5rem .85rem;border-radius:7px;font:550 1rem/1.25 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;cursor:pointer;transition:background 150ms ease,color 150ms ease;border:1px solid var(--line,#d5dfe9);background:var(--layer,#edf2f8);color:var(--fg,#1c2c42)}.ds-secondary:hover{background:var(--hover,#e5edf7)}.ds-secondary:active{filter:brightness(.93)}.ds-secondary:focus-visible{outline:3px solid var(--accent,#155b9a);outline-offset:3px}"
+    },
+    {
+      "name": "Labeled field",
+      "kind": "input",
+      "refersTo": "input-light",
+      "description": "Explicit label, quiet surface and boundary, project-colored caret/focus.",
+      "html": "<label class=\"ds-field\">Local repository path<input placeholder=\"/absolute/path/to/repository\" /></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:.4rem;font:550 .8rem/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;color:var(--muted,#53657a)}.ds-field input{min-height:38px;padding:.5rem .7rem;border:1px solid var(--line,#d5dfe9);border-radius:6px;background:var(--surface,#fff);color:var(--fg,#1c2c42);caret-color:var(--accent,#155b9a);font:inherit}.ds-field input::placeholder{color:var(--subtle,#65788f)}.ds-field input:focus-visible{outline:3px solid var(--accent,#155b9a);outline-offset:3px}"
+    },
+    {
+      "name": "Current navigation",
+      "kind": "nav",
+      "refersTo": "navigation-active-light",
+      "description": "An accent underline identifies the current view without a surrounding card.",
+      "html": "<nav class=\"ds-nav\"><button aria-current=\"page\">Overview</button><button>Runs</button></nav>",
+      "css": ".ds-nav{display:flex;gap:1.4rem}.ds-nav button{position:relative;padding:.8rem .15rem;border:0;background:transparent;color:var(--muted,#53657a);font:500 .9rem/1.25 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;cursor:pointer}.ds-nav button:hover{color:var(--fg,#1c2c42)}.ds-nav [aria-current=page]{color:var(--accent,#155b9a)}.ds-nav [aria-current=page]:after{content:\"\";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent,#155b9a)}.ds-nav button:focus-visible{outline:3px solid var(--accent,#155b9a);outline-offset:3px}"
+    },
+    {
+      "name": "Verified provenance",
+      "kind": "chip",
+      "description": "A provenance label, not a decorative generic success chip.",
+      "html": "<span class=\"ds-provenance\">Verified local run</span>",
+      "css": ".ds-provenance{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .55rem;border-radius:5px;font:.76rem/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;color:var(--assert,#16744f);background:color-mix(in srgb,var(--assert,#16744f) 12%,transparent)}"
+    },
+    {
+      "name": "Warning notice",
+      "kind": "custom",
+      "description": "Cautionary provenance or execution information, distinct from an error.",
+      "html": "<section class=\"ds-warning\"><strong>Historical · unrevalidated</strong><p>Imported evidence is not a new verified evaluation.</p></section>",
+      "css": ".ds-warning{padding:1rem;border-radius:8px;background:var(--warning-bg,#fff5df);color:var(--warning-text,#775117);font:.82rem/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}.ds-warning p{margin:.3rem 0 0;max-width:75ch}"
+    },
+    {
+      "name": "Filter container",
+      "kind": "card",
+      "description": "Observed low-emphasis filter surface; not a reusable metric-card grid.",
+      "html": "<section class=\"ds-filters\" aria-label=\"Filters\"><label>Outcome<select><option>All outcomes</option></select></label></section>",
+      "css": ".ds-filters{display:flex;gap:.65rem;padding:1rem;border:1px solid var(--line,#d5dfe9);border-radius:9px;background:var(--surface,#fff);color:var(--fg,#1c2c42);font:.8rem/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}.ds-filters label{display:grid;gap:.4rem;color:var(--muted,#53657a)}.ds-filters select{min-height:38px;padding:.5rem .7rem;border:1px solid var(--line,#d5dfe9);border-radius:6px;background:var(--surface,#fff);color:var(--fg,#1c2c42);font:inherit}.ds-filters select:focus-visible{outline:3px solid var(--accent,#155b9a);outline-offset:3px}"
+    },
+    {
+      "name": "Narrow outcome control",
+      "kind": "button",
+      "refersTo": "outcome-selected-light",
+      "description": "Illustrative empty-count component state, not an experiment result. Native labels stay separate from data geometry.",
+      "html": "<button class=\"ds-outcome\" aria-pressed=\"true\"><span>Survived<b>—</b></span><i aria-hidden=\"true\"></i></button>",
+      "css": ".ds-outcome{display:grid;grid-template-columns:minmax(0,1fr);gap:.6rem;min-height:62px;width:100%;padding:.7rem .8rem;border:1px solid var(--accent,#155b9a);border-radius:7px;background:var(--accent-bg,#dceeff);color:var(--fg,#1c2c42);font:550 1rem/1.25 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;cursor:pointer}.ds-outcome>span{display:flex;justify-content:space-between;gap:1rem}.ds-outcome b{font-size:1.1rem;font-variant-numeric:tabular-nums}.ds-outcome>i{height:7px;background:var(--layer,#edf2f8);border-radius:2px}.ds-outcome:hover{background:var(--hover,#e5edf7)}.ds-outcome:active{filter:brightness(.93)}.ds-outcome:focus-visible{outline:3px solid var(--accent,#155b9a);outline-offset:3px}"
+    },
+    {
+      "name": "Run state",
+      "kind": "chip",
+      "description": "Text and a small semantic dot; this sample is a component state, not a live job.",
+      "html": "<span class=\"ds-status\"><i aria-hidden=\"true\"></i>Completed</span>",
+      "css": ".ds-status{display:inline-flex;align-items:center;gap:.4rem;color:var(--assert,#16744f);font:.75rem/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}.ds-status i{width:6px;height:6px;border-radius:50%;background:currentColor}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Signal",
+    "overview": "Signal is a restrained operational workspace: a clear reading of mutation evidence, not a decorative dashboard. The light and dark themes preserve identical information hierarchy and semantic roles. Familiar system typography and compact native controls keep attention on source changes, execution boundaries and results.\n\nThe visual system is extracted from the built interface, not a new direction. Palette primitives above are normative observations from `frontend/src/styles.css`; component examples in `.impeccable/design.json` extend them. Derived color ramps in the sidecar are preview aids, not additional shipping CSS tokens.",
+    "keyCharacteristics": [
+      "Broad analytics sections rather than a wall of interchangeable cards.",
+      "Stable outcome colors, with text labels and counts alongside geometry.",
+      "Visible provenance, exclusions and unavailable measurements.",
+      "Familiar controls, inspectable monospaced evidence and restrained borders.",
+      "Equivalent semantic hierarchy in light and dark modes."
+    ],
+    "rules": [
+      {
+        "name": "The Same Meaning Rule",
+        "body": "Theme changes alter contrast and atmosphere, never the meaning assigned to a result or control.",
+        "section": "colors"
+      },
+      {
+        "name": "The Readable Evidence Rule",
+        "body": "Do not scale a desktop SVG's text into a miniature mobile chart. Narrow outcome controls use actual HTML labels at the base reading size, with independently sized geometry.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do preserve identical semantic color roles across both themes.",
+      "Do place labels and exact counts beside proportional geometry.",
+      "Do show provenance, exclusions and unavailable measurements explicitly.",
+      "Do keep visible keyboard focus, responsive containment and readable narrow controls.",
+      "Do reserve monospace for exact identifiers and evidence."
+    ],
+    "donts": [
+      "Don't replace the broad analytics composition with a generic card wall.",
+      "Don't turn unknown data into zero, a trend or a coverage claim.",
+      "Don't shrink desktop chart lettering to fit a phone.",
+      "Don't use decorative glass, gradients, texture or shadows as evidence hierarchy.",
+      "Don't imply that a request, preview or historical import is completed verified execution."
+    ]
+  }
+}

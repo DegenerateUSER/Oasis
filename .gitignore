@@ -61,3 +61,14 @@ Thumbs.db
 
 Docs/HANDOFF.md
 Docs/DISTRIBUTION_GUIDE.md
+
+# ---- Local GUI frontend tooling (compiled packaged assets stay tracked) ----
+frontend/node_modules/
+frontend/coverage/
+frontend/.vite/
+frontend/test-results/
+frontend/playwright-report/
+.impeccable/mocks/
+.impeccable/review/
+.impeccable/questions/
+.impeccable/direction-options.json

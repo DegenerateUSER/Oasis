@@ -298,6 +298,29 @@ def _uninstall(args: argparse.Namespace) -> int:
     return 1
 
 
+def _local_port(value: str) -> int:
+    try:
+        port = int(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("port must be an integer in 1..65535") from exc
+    if not 1 <= port <= 65535:
+        raise argparse.ArgumentTypeError("port must be an integer in 1..65535")
+    return port
+
+
+def _gui(args: argparse.Namespace) -> int:
+    from .gui import serve
+
+    try:
+        result = serve(host=args.host, port=args.port,
+                       data_dir=Path(args.data_dir).expanduser().resolve(),
+                       open_browser=args.open_browser)
+    except (OSError, RuntimeError, ValueError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+    return result if isinstance(result, int) else 0
+
+
 # ── Parser ────────────────────────────────────────────────────────────────────
 
 def build_parser() -> argparse.ArgumentParser:
@@ -336,6 +359,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="proceed even if the test-cmd binary doesn't match its pinned version",
     )
     run.set_defaults(func=_run)
+
+    gui = sub.add_parser("gui", help="open the local browser workspace (compiled frontend required)")
+    gui.add_argument("--host", choices=("127.0.0.1", "localhost"), default="127.0.0.1",
+                     help="loopback interface only")
+    gui.add_argument("--port", type=_local_port, default=8765, metavar="PORT",
+                     help="local port (default: 8765)")
+    gui.add_argument("--data-dir", default=str(Path.home() / ".local" / "share" / "oasis" / "gui"),
+                     help="private GUI state directory; must not overlap source repositories")
+    gui.add_argument("--no-open", action="store_false", dest="open_browser", default=True,
+                     help="do not open a browser automatically")
+    gui.set_defaults(func=_gui)
 
     update = sub.add_parser("update", help="download and install the latest Oasis release")
     update.set_defaults(func=_update)
