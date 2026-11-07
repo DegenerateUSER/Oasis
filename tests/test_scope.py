@@ -75,3 +75,41 @@ def test_numeric_expansion_fallback_still_rejects_escaping_source(tmp_path):
     (tmp_path / "main.tf").write_text('locals { x = cidrsubnets("10.0.0.0/8", [for i in [1] : 8]...) }\nmodule "bad" { source = "../outside" }\n')
     with pytest.raises(ScopeError, match="outside repository"):
         resolve_scope(tmp_path, tmp_path)
+
+
+def test_native_fallback_preserves_module_edges_and_engine(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    import tfmutate.scope as mod
+    text = 'locals { alerts = { for = "5m" } }\nmodule "child" { source = "./child" }\n'
+    (tmp_path / 'main.tf').write_text(text)
+    (tmp_path / 'child').mkdir()
+    (tmp_path / 'child/main.tf').write_text('resource "terraform_data" "x" {}\n')
+    calls = []
+    def fmt(argv, **kwargs):
+        calls.append(argv)
+        return SimpleNamespace(returncode=0, stdout=kwargs['input'], stderr='')
+    monkeypatch.setattr(mod.subprocess, 'run', fmt)
+    scope = mod.resolve_scope(tmp_path, tmp_path, 'tofu test')
+    assert not scope.warnings
+    assert set(scope.files) == {tmp_path / 'main.tf', tmp_path / 'child/main.tf'}
+    assert calls == [['tofu', 'fmt', '-']]
+
+
+def test_native_fallback_rejects_invalid_syntax(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    import tfmutate.scope as mod
+    (tmp_path / 'main.tf').write_text('locals { alerts = { for = "5m" } }\n')
+    monkeypatch.setattr(mod.subprocess, 'run', lambda *a, **k: SimpleNamespace(returncode=1, stdout='', stderr='invalid'))
+    with pytest.raises(mod.ScopeError, match='Native engine rejected'):
+        mod.resolve_scope(tmp_path, tmp_path)
+
+
+@pytest.mark.parametrize('source', ['"../outside"', 'var.dynamic_source'])
+def test_native_fallback_preserves_source_boundaries(tmp_path, monkeypatch, source):
+    from types import SimpleNamespace
+    import tfmutate.scope as mod
+    text = 'locals { alerts = { for = "5m" } }\nmodule "child" { source = ' + source + ' }\n'
+    (tmp_path / 'main.tf').write_text(text)
+    monkeypatch.setattr(mod.subprocess, 'run', lambda *a, **k: SimpleNamespace(returncode=0, stdout=k['input'], stderr=''))
+    with pytest.raises(mod.ScopeError):
+        mod.resolve_scope(tmp_path, tmp_path)

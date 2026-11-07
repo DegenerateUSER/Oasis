@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import json
 import shlex
+import re
+import subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -87,7 +89,39 @@ class MutationScope:
     warnings: list[str] = field(default_factory=list)
 
 
-def _load(path: Path) -> dict:
+def _native_module_document(path: Path, binary: str) -> dict:
+    """Parse only dependency edges after the native engine validates all syntax."""
+    from .parser import code_mask, find_blocks
+    if path.suffix != ".tf":
+        raise ScopeError("Native source fallback does not infer test run blocks")
+    formatted = subprocess.run([binary, "fmt", "-"], input=path.read_text(),
+                               capture_output=True, text=True, timeout=30)
+    if formatted.returncode:
+        raise ScopeError("Native engine rejected source syntax")
+    lines = formatted.stdout.splitlines(keepends=True)
+    result = []
+    for block in find_blocks(formatted.stdout):
+        if block.kind != "module":
+            continue
+        text = "".join(lines[block.start_line - 1:block.end_line])
+        masked = code_mask(text)
+        sources = []
+        for match in re.finditer(r"\bsource\s*=", masked):
+            prefix = masked[:match.start()]
+            if prefix.count("{") - prefix.count("}") != 1:
+                continue
+            end = match.end()
+            while end < len(masked) and masked[end] not in "\r\n}":
+                end += 1
+            source = hcl2.loads(text[match.start():end]).get("source")
+            sources.append(source)
+        if len(sources) != 1:
+            raise ScopeError("Module must have exactly one source attribute")
+        result.append({block.name: {"source": sources[0]}})
+    return {"module": result}
+
+
+def _load(path: Path, binary: str = "terraform") -> dict:
     try:
         return hcl2.loads(path.read_text())
     except TypeError:
@@ -118,7 +152,10 @@ def _load(path: Path) -> dict:
         except Exception as exc:
             raise ScopeError(f"cannot determine scope from {path}: {exc}") from exc
     except Exception as exc:
-        raise ScopeError(f"cannot determine scope from {path}: {exc}") from exc
+        try:
+            return _native_module_document(path, binary)
+        except Exception as fallback:
+            raise ScopeError(f"cannot determine scope from {path}: {exc}; native fallback: {fallback}") from fallback
 
 
 def _local(source: object, caller: Path, repo_root: Path, warnings: list[str]) -> Path | None:
@@ -139,13 +176,14 @@ def _local(source: object, caller: Path, repo_root: Path, warnings: list[str]) -
 def resolve_scope(module_dir: Path, repo_root: Path, test_cmd: str = "terraform test") -> MutationScope:
     module_dir, repo_root = Path(module_dir), Path(repo_root)
     tests = selected_test_files(module_dir, test_cmd)
+    binary = shlex.split(test_cmd)[0]
     roots: set[Path] = set()
     warnings: list[str] = []
     has_runs = False
     for test in tests:
         if not test.resolve().is_relative_to(repo_root.resolve()):
             raise ScopeError(f"test file outside repository: {test}")
-        for item in _load(test).get("run", []):
+        for item in _load(test, binary).get("run", []):
             for body in item.values():
                 if not isinstance(body, dict):
                     continue
@@ -173,7 +211,7 @@ def resolve_scope(module_dir: Path, repo_root: Path, test_cmd: str = "terraform 
             if not tf.resolve().is_relative_to(repo_root.resolve()):
                 raise ScopeError(f"source file outside repository: {tf}")
             files.add(tf)
-            for item in _load(tf).get("module", []):
+            for item in _load(tf, binary).get("module", []):
                 for body in item.values():
                     if isinstance(body, dict):
                         child = _local(body.get("source"), root, repo_root, warnings)
