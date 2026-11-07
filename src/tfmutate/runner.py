@@ -35,7 +35,7 @@ from . import state
 from .mutators import CATALOG, CATALOG_VERSION, Mutant, Operator, generate_mutants
 from .noop import default_is_shadowed
 from .parser import is_valid_hcl
-from .scope import resolve_scope
+from .scope import command_options, resolve_scope
 
 log = logging.getLogger(__name__)
 
@@ -269,8 +269,12 @@ class Runner:
         return code, out, timed_out
 
     def init(self) -> bool:
+        directory, _ = command_options(self.test_cmd)
+        argv = [self._binary, "init", "-no-color", "-backend=false"]
+        if directory != "tests":
+            argv.append("-test-directory=" + directory)
         for attempt in range(1, self.init_attempts + 1):
-            code, out, timed_out = self._exec([self._binary, "init", "-no-color", "-backend=false"], self.init_timeout)
+            code, out, timed_out = self._exec(argv, self.init_timeout)
             if code == 0:
                 return True
             log.warning("init attempt %d/%d failed in %s: %s",

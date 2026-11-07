@@ -113,3 +113,15 @@ def test_native_fallback_preserves_source_boundaries(tmp_path, monkeypatch, sour
     monkeypatch.setattr(mod.subprocess, 'run', lambda *a, **k: SimpleNamespace(returncode=0, stdout=k['input'], stderr=''))
     with pytest.raises(mod.ScopeError):
         mod.resolve_scope(tmp_path, tmp_path)
+
+
+def test_initialization_uses_same_nondefault_test_directory(tmp_path, monkeypatch):
+    from tfmutate.runner import Runner
+    runner = Runner(tmp_path, tmp_path, test_cmd='terraform test -test-directory=e2e-tests')
+    calls = []
+    def execute(argv, timeout):
+        calls.append(argv)
+        return 0, '', False
+    monkeypatch.setattr(runner, '_exec', execute)
+    assert runner.init()
+    assert calls == [['terraform', 'init', '-no-color', '-backend=false', '-test-directory=e2e-tests']]
