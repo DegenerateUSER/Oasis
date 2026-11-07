@@ -90,6 +90,33 @@ class MutationScope:
 def _load(path: Path) -> dict:
     try:
         return hcl2.loads(path.read_text())
+    except TypeError:
+        # python-hcl2 8 can parse valid numeric expression expansions but fail
+        # while serializing unrelated locals/assertions. Scope only depends on
+        # module sources and run/module blocks; still parse the entire file.
+        try:
+            tree = hcl2.parses(path.read_text())
+
+            def modules(body):
+                result = []
+                for block in body.children:
+                    labels = getattr(block, "labels", [])
+                    if labels and labels[0].serialize() == "module":
+                        sources = [item.serialize() for item in block.body.children
+                                   if getattr(item, "identifier", None) is not None
+                                   and item.identifier.serialize() == "source"]
+                        result.append({"source": sources[0]["source"]} if sources else {})
+                return result
+
+            result = {"module": [{str(i): body} for i, body in enumerate(modules(tree.body))]}
+            result["run"] = []
+            for block in tree.body.children:
+                labels = getattr(block, "labels", [])
+                if labels and labels[0].serialize() == "run":
+                    result["run"].append({str(len(result["run"])): {"module": modules(block.body)}})
+            return result
+        except Exception as exc:
+            raise ScopeError(f"cannot determine scope from {path}: {exc}") from exc
     except Exception as exc:
         raise ScopeError(f"cannot determine scope from {path}: {exc}") from exc
 

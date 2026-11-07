@@ -54,3 +54,24 @@ def test_scope_does_not_follow_symlink_outside_repo(tmp_path):
     (tmp_path / "main.tf").write_text('module "escape" {\n source = "./escape"\n}\n')
     with pytest.raises(ScopeError, match="outside"):
         resolve_scope(tmp_path, tmp_path)
+
+
+def test_numeric_expansion_does_not_hide_referenced_modules(tmp_path):
+    from tfmutate.scope import resolve_scope
+    (tmp_path / "main.tf").write_text('module "child" { source = "./child" }\n')
+    (tmp_path / "locals.tf").write_text('locals { x = cidrsubnets("10.0.0.0/8", [for i in [1, 2] : 8]...) }\n')
+    child = tmp_path / "child"
+    child.mkdir()
+    (child / "main.tf").write_text('resource "terraform_data" "child" {}\n')
+    (tmp_path / "main.tftest.hcl").write_text('run "plan" { command = plan }\n')
+    scope = resolve_scope(tmp_path, tmp_path)
+    assert scope.has_runs
+    assert not scope.warnings
+    assert set(scope.files) == {tmp_path / "main.tf", tmp_path / "locals.tf", child / "main.tf"}
+
+
+def test_numeric_expansion_fallback_still_rejects_escaping_source(tmp_path):
+    from tfmutate.scope import resolve_scope, ScopeError
+    (tmp_path / "main.tf").write_text('locals { x = cidrsubnets("10.0.0.0/8", [for i in [1] : 8]...) }\nmodule "bad" { source = "../outside" }\n')
+    with pytest.raises(ScopeError, match="outside repository"):
+        resolve_scope(tmp_path, tmp_path)
