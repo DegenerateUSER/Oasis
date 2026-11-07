@@ -2,7 +2,7 @@
 
 Per module:
   1. ``terraform init`` (once; idempotent).
-  2. **Green-baseline gate** -- run the unmutated suite; if it does not pass, the module is
+  2. **Green-baseline gate** -- run the unmutated suite and validate in its caller context; if either fails, the module is
      skipped as BASELINE_FAIL (with a sub-reason) because its kill/survive results would be
      meaningless noise.
   3. For each mutant: static NO_OP discard (variable-default shadowed by a test override) ->
@@ -36,6 +36,7 @@ from .mutators import CATALOG, CATALOG_VERSION, Mutant, Operator, generate_mutan
 from .noop import default_is_shadowed
 from .parser import is_valid_hcl
 from .scope import command_options, resolve_scope
+from .validation import provider_alias_context
 
 log = logging.getLogger(__name__)
 
@@ -288,7 +289,25 @@ class Runner:
         if not init_ok:
             return classify_baseline(0, "", False, init_ok=False)
         code, out, to = self._exec(self._test_argv, self.timeout)
-        return classify_baseline(code, out, to, init_ok=True)
+        result = classify_baseline(code, out, to, init_ok=True)
+        if not result.green:
+            return result
+        code, output, timed_out = self.validate()
+        if timed_out or code != 0:
+            return BaselineResult(False, "validation_timeout" if timed_out else "validation_error", output)
+        return result
+
+    def validate(self) -> tuple[int, str, bool]:
+        directory, _ = command_options(self.test_cmd)
+        argv = [self._binary, "validate", "-no-color"]
+        if directory != "tests":
+            argv.append("-test-directory=" + directory)
+        with provider_alias_context(self.module_dir, self.test_cmd, self.log_dir) as aliases:
+            event_start = len(self.command_events)
+            result = self._exec(argv, self.timeout)
+            if len(self.command_events) > event_start:
+                self.command_events[-1]["validation_provider_aliases"] = aliases
+            return result
 
     def run_mutant(self, mutant: Mutant) -> MutantOutcome:
         """Apply -> validate -> test -> restore (in finally). Assumes the module is init'd."""
@@ -298,7 +317,7 @@ class Runner:
         validate_status, test_status, snippet = "n/a", "n/a", ""
         with state.restored(self.repo_root, path, git=self.git):
             path.write_bytes(mutant.mutated_text.encode("utf-8"))
-            vcode, vout, vtimeout = self._exec([self._binary, "validate", "-no-color"], self.timeout)
+            vcode, vout, vtimeout = self.validate()
             if vtimeout:
                 validate_status, test_status, snippet = "timeout", "timeout", _snippet(vout)
             elif vcode != 0:
