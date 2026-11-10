@@ -1,0 +1,17 @@
+[
+  {
+    "source": "https://developer.hashicorp.com/terraform/language/block/variable",
+    "retrieved": "2026-11-09",
+    "sha256": "7bebf7b9ac6e9d5f4dd9b3bc5e111ff974080217e150e13ab45d2bd19af5c3e8"
+  },
+  {
+    "source": "https://learn.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview",
+    "retrieved": "2026-11-09",
+    "sha256": "a5b186296bc0a20b8f5eb75894c22a1d37a4b13a8744e709708cc6edfba87d72"
+  },
+  {
+    "source": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html",
+    "retrieved": "2026-11-09",
+    "sha256": "ae58407ded098aa6d4ad3c5b33621c62a9c044c62c9c14749cb2e8294743395f"
+  }
+]

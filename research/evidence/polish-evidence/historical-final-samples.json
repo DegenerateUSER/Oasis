@@ -1,0 +1,44 @@
+[
+  {
+    "repository": "conf-data-processing-architecture-reference",
+    "path": "operator/terraform/gcp/modules/shared/cloudfunction_alarms/tests/oasis_research_smoke.tftest.hcl",
+    "sha256": "d6b355f1eac5dc0a57ff99c1b856ea8c2b9e2b60c71e26936fbf523c5fb8191a",
+    "matches_frozen_source_manifest": true
+  },
+  {
+    "repository": "genai-idp-terraform",
+    "path": "features.tf",
+    "sha256": "853cd80326b08b5da65d41ef1c05a6afb5a7ba54de39df0c6015b4fd5dabaaf3",
+    "matches_frozen_source_manifest": true
+  },
+  {
+    "repository": "genai-idp-terraform",
+    "path": "tests/private-endpoint-gap.tftest.hcl",
+    "sha256": "ea801b5429c5d95fce3f0074b2d3203f4f7e717005ab91da27e8a20a32ef8951",
+    "matches_frozen_source_manifest": true
+  },
+  {
+    "repository": "platform-design",
+    "path": "terraform/modules/gpu-inference-vpc/gpu-inference-vpc.tftest.hcl",
+    "sha256": "2e915ac800adb564a02a458942356122e431eddff1fb2ff0e8962ae01bfc2e02",
+    "matches_frozen_source_manifest": true
+  },
+  {
+    "repository": "platform-design",
+    "path": "terraform/modules/vpc/vpc.tftest.hcl",
+    "sha256": "087eaa5a9955347b7686103a4b3637c2612a3a214abe39c3cd7129ce6b502f8a",
+    "matches_frozen_source_manifest": true
+  },
+  {
+    "repository": "platform-design",
+    "path": "terraform/modules/vpc-endpoints/oasis_research_provider_requirements.tf",
+    "sha256": "8042c912bcbcb68dad1e9b7be487838adf9c2ea3df3118c9bf463620941857e0",
+    "matches_frozen_source_manifest": true
+  },
+  {
+    "repository": "server-terraform",
+    "path": "nomad-gcp/modules/nomad-server-gcp/oasis_research_provider_requirements.tf",
+    "sha256": "b28027e5c316c00d51cbd61ff4a6ea490407447de0817ab7712ec33fba1b81a2",
+    "matches_frozen_source_manifest": true
+  }
+]

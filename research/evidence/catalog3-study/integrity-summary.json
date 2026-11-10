@@ -1,0 +1,2365 @@
+{
+  "epoch": 1794214745.405321,
+  "audit_version": "archive-integrity-audit-v1",
+  "status": "interim_archived_subset_verified",
+  "repositories_verified": 62,
+  "scored_repositories": 47,
+  "scored_mutants_verified": 1288,
+  "source_files_verified": 8186,
+  "members_verified": 30828,
+  "scope_attempts_verified": 192,
+  "unique_mutant_cases_within_repository_scope": 1533,
+  "policy": "Fresh archive SHA256 plus streamed member/source/manifest/raw-case checks. Incomplete repos excluded; interrupted attempts preserved but uncounted. Final campaign audit remains pending.",
+  "repositories": [
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "44-technologies/terraform-aws-backend",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/44-technologies__terraform-aws-backend__catalog3.tar.gz",
+      "sha256": "c709751839e680df31674027753498c04ff7c6c4aa175a957a1bb941478eb254",
+      "completion_sha256": "c625697898c0782f0224504aebfdb369ca1e80731e9fe6544f09719c80c934c6",
+      "verified_epoch": 1794182743.9582238,
+      "fresh_archive_hash_epoch": 1794214733.685749,
+      "verified_members": 63,
+      "source_files_verified": 9,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "baseline_fail": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "Azure/terraform-azurerm-avm-res-app-containerapp",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/Azure__terraform-azurerm-avm-res-app-containerapp__catalog3.tar.gz",
+      "sha256": "4dde95d37ca9a2106c8af7b854be7e21b51e49103ffaacee8c90d4676a3e6607",
+      "completion_sha256": "802c7576b2ccc5f48f818e6188140c66a6228476c46bebb95363e482a7391ad1",
+      "verified_epoch": 1794182744.5747762,
+      "fresh_archive_hash_epoch": 1794214734.1448672,
+      "verified_members": 612,
+      "source_files_verified": 155,
+      "scope_attempts": 4,
+      "configuration_manifests_verified": 4,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 9,
+      "scored_mutants": 7,
+      "row_status_counts": {
+        "baseline_fail": 1,
+        "survived": 5,
+        "scope_unresolved": 2,
+        "killed_assert": 2
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        },
+        "1": {
+          "survived": 3,
+          "scope_unresolved": 1,
+          "killed_assert": 1
+        },
+        "2": {
+          "survived": 1,
+          "scope_unresolved": 1
+        },
+        "3": {
+          "survived": 1,
+          "killed_assert": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "Azure/terraform-azurerm-avm-res-sql-server",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/Azure__terraform-azurerm-avm-res-sql-server__catalog3.tar.gz",
+      "sha256": "d653a492f744ee64800bf8f463fd6ffb2f1c9aa49571839c669a1df85c651388",
+      "completion_sha256": "792a160b675076c9f6dbbb0c920ed38eeb73de77385aee7bcb70106d33b25514",
+      "verified_epoch": 1794182744.723705,
+      "fresh_archive_hash_epoch": 1794214734.281898,
+      "verified_members": 397,
+      "source_files_verified": 154,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 15,
+      "scored_mutants": 11,
+      "row_status_counts": {
+        "survived": 10,
+        "no_op": 4,
+        "killed_assert": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 10,
+          "no_op": 4,
+          "killed_assert": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "CloudNationHQ/terraform-azure-vnet",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/CloudNationHQ__terraform-azure-vnet__catalog3.tar.gz",
+      "sha256": "7d44164be502e79842020fc9a765ea7251694647744464238363d4f0be436831",
+      "completion_sha256": "f73fb829ae7669f84ca73a2f178a1f2e0a3c6e902883a66c30159d4b9ba416bc",
+      "verified_epoch": 1794182744.884219,
+      "fresh_archive_hash_epoch": 1794214734.393692,
+      "verified_members": 171,
+      "source_files_verified": 57,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 1,
+      "scored_mutants": 1,
+      "row_status_counts": {
+        "survived": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "CloudverveGmbH/terraform-azurerm-policy-based-dns",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/CloudverveGmbH__terraform-azurerm-policy-based-dns__catalog3.tar.gz",
+      "sha256": "f9b7b3393fbdc2015d9b45763f2add1b6d2d463e08308f1ffbadf92931ec12c3",
+      "completion_sha256": "32793daf23aa38d704658aacdc31cd15620486c13cfd8e8f9e10328ab11e53d9",
+      "verified_epoch": 1794182744.9821692,
+      "fresh_archive_hash_epoch": 1794214734.531308,
+      "verified_members": 96,
+      "source_files_verified": 24,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "no_targets": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "no_targets": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "FFerrinho/terraform-google-apigeex",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/FFerrinho__terraform-google-apigeex__catalog3.tar.gz",
+      "sha256": "c7f2db47b0b3a214e53185accaaa6472c993d35e068c843e673179771710bb9c",
+      "completion_sha256": "579b4ab2c3506c903f65c7e9108f1087c2fd30b4f588b34f6779797266070d4e",
+      "verified_epoch": 1794182745.060871,
+      "fresh_archive_hash_epoch": 1794214734.6683881,
+      "verified_members": 89,
+      "source_files_verified": 17,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 4,
+      "scored_mutants": 4,
+      "row_status_counts": {
+        "survived": 3,
+        "killed_assert": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 3,
+          "killed_assert": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "FFerrinho/terraform-google-project",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/FFerrinho__terraform-google-project__catalog3.tar.gz",
+      "sha256": "e4694c1c1658bd20ec90ae58801ce53842bf90cc3152664227b85a396a72e876",
+      "completion_sha256": "aa92c3e1513f753367a986031c92aeda9f4e9b6b379df465c8571d9f60ff2cd5",
+      "verified_epoch": 1794182745.15656,
+      "fresh_archive_hash_epoch": 1794214734.78553,
+      "verified_members": 84,
+      "source_files_verified": 17,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 2,
+      "scored_mutants": 2,
+      "row_status_counts": {
+        "survived": 2
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 2
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "FociSolutions/github-foundations",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/FociSolutions__github-foundations__catalog3.tar.gz",
+      "sha256": "6f6734e07350b9869c6b39c17cda6bf5786a74daba5be834b8199cd29399f110",
+      "completion_sha256": "0d4d0dc402ad8bdc844696d6ca16b0f08dc3864bb14e79581994262e00f7ee23",
+      "verified_epoch": 1794182745.398994,
+      "fresh_archive_hash_epoch": 1794214734.993786,
+      "verified_members": 1000,
+      "source_files_verified": 77,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "baseline_fail": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "GSA-TTS/terraform-cloudgov",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/GSA-TTS__terraform-cloudgov__catalog3.tar.gz",
+      "sha256": "bc938940c48f9a84c1fdd2bd308e6991f56b9013f335886281edec1127fd0f24",
+      "completion_sha256": "18f3693b69a85cac94776c55317ce567f3a4e7d7fbdae0526f153a5c03b9c6e7",
+      "verified_epoch": 1794206136.333878,
+      "fresh_archive_hash_epoch": 1794214735.1536021,
+      "verified_members": 381,
+      "source_files_verified": 86,
+      "scope_attempts": 12,
+      "configuration_manifests_verified": 12,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "no_targets": 2,
+        "baseline_fail": 10
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "no_targets": 1
+        },
+        "1": {
+          "baseline_fail": 1
+        },
+        "2": {
+          "baseline_fail": 1
+        },
+        "3": {
+          "no_targets": 1
+        },
+        "4": {
+          "baseline_fail": 1
+        },
+        "5": {
+          "baseline_fail": 1
+        },
+        "6": {
+          "baseline_fail": 1
+        },
+        "7": {
+          "baseline_fail": 1
+        },
+        "8": {
+          "baseline_fail": 1
+        },
+        "9": {
+          "baseline_fail": 1
+        },
+        "10": {
+          "baseline_fail": 1
+        },
+        "11": {
+          "baseline_fail": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "Heeler-Security/terraform-google-heeler-wif",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/Heeler-Security__terraform-google-heeler-wif__catalog3.tar.gz",
+      "sha256": "3090d2032425db81b58faf2edba0412670d6ab128e296bafae6ce24068988221",
+      "completion_sha256": "66b7058334d87af142df65cdfee9d62233ab6362e8dceb09db192dd9a37c1d5b",
+      "verified_epoch": 1794182745.5026162,
+      "fresh_archive_hash_epoch": 1794214735.2907221,
+      "verified_members": 109,
+      "source_files_verified": 15,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 15,
+      "scored_mutants": 15,
+      "row_status_counts": {
+        "survived": 8,
+        "killed_assert": 6,
+        "killed_error": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 8,
+          "killed_assert": 6,
+          "killed_error": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "Home-Office-Digital/core-cloud-firewall-terraform",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/Home-Office-Digital__core-cloud-firewall-terraform__catalog3.tar.gz",
+      "sha256": "9ec8f2d40f5809f446ef4a259aaf789e0c03d390b413a5720aca1975bcc37516",
+      "completion_sha256": "f29499283893df5ecc90d8947682a547b865db3f10e89102374b814330781025",
+      "verified_epoch": 1794182745.668902,
+      "fresh_archive_hash_epoch": 1794214735.3417711,
+      "verified_members": 262,
+      "source_files_verified": 52,
+      "scope_attempts": 7,
+      "configuration_manifests_verified": 7,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 5,
+      "scored_mutants": 4,
+      "row_status_counts": {
+        "survived": 4,
+        "no_targets": 2,
+        "baseline_fail": 1,
+        "no_op": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 1
+        },
+        "1": {
+          "no_targets": 1
+        },
+        "2": {
+          "survived": 1
+        },
+        "3": {
+          "survived": 1
+        },
+        "4": {
+          "no_targets": 1
+        },
+        "5": {
+          "baseline_fail": 1
+        },
+        "6": {
+          "survived": 1,
+          "no_op": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "Home-Office-Digital/core-cloud-ingress-terraform",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/Home-Office-Digital__core-cloud-ingress-terraform__catalog3.tar.gz",
+      "sha256": "21560567f61e339164237e78b6d316b7b558d9b80a5b9f68b6c3db5f521780b7",
+      "completion_sha256": "ff1dcc5fa61578afb719e9e7196d2c9bee242c73d40386248207038fdb4976c7",
+      "verified_epoch": 1794182745.7387588,
+      "fresh_archive_hash_epoch": 1794214735.402368,
+      "verified_members": 393,
+      "source_files_verified": 70,
+      "scope_attempts": 9,
+      "configuration_manifests_verified": 9,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 43,
+      "scored_mutants": 35,
+      "row_status_counts": {
+        "survived": 35,
+        "no_op": 8,
+        "no_targets": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 5,
+          "no_op": 2
+        },
+        "1": {
+          "survived": 6,
+          "no_op": 1
+        },
+        "2": {
+          "survived": 13,
+          "no_op": 1
+        },
+        "3": {
+          "survived": 1
+        },
+        "4": {
+          "survived": 4,
+          "no_op": 1
+        },
+        "5": {
+          "survived": 1,
+          "no_op": 1
+        },
+        "6": {
+          "survived": 3
+        },
+        "7": {
+          "no_targets": 1
+        },
+        "8": {
+          "survived": 2,
+          "no_op": 2
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "Home-Office-Digital/core-cloud-pam-terraform",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/Home-Office-Digital__core-cloud-pam-terraform__catalog3.tar.gz",
+      "sha256": "ac213065f896529d391bdf115333132703d456de13502da04a49d2d82b290c95",
+      "completion_sha256": "a3486ab35b0fbcf1de8fb23367d579debe28a16b3da982d1ba869524d8b25530",
+      "verified_epoch": 1794182745.933123,
+      "fresh_archive_hash_epoch": 1794214735.445206,
+      "verified_members": 233,
+      "source_files_verified": 37,
+      "scope_attempts": 6,
+      "configuration_manifests_verified": 6,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 12,
+      "scored_mutants": 12,
+      "row_status_counts": {
+        "killed_assert": 4,
+        "survived": 8,
+        "no_targets": 2
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_assert": 2
+        },
+        "1": {
+          "survived": 3,
+          "killed_assert": 1
+        },
+        "2": {
+          "survived": 4
+        },
+        "3": {
+          "no_targets": 1
+        },
+        "4": {
+          "killed_assert": 1,
+          "survived": 1
+        },
+        "5": {
+          "no_targets": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "K8RVIS/eks-vulnerable-infra",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/K8RVIS__eks-vulnerable-infra__catalog3.tar.gz",
+      "sha256": "1b67863ec83ef046cf905159346a6ade17228792a54a916228a88f74e95ca556",
+      "completion_sha256": "56679857deec2c0aa71d941f5ffc88dc4af09c4bb28bfe25626f20921fe00118",
+      "verified_epoch": 1794182746.300983,
+      "fresh_archive_hash_epoch": 1794214735.633513,
+      "verified_members": 376,
+      "source_files_verified": 79,
+      "scope_attempts": 6,
+      "configuration_manifests_verified": 6,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 39,
+      "scored_mutants": 38,
+      "row_status_counts": {
+        "killed_assert": 3,
+        "survived": 35,
+        "no_targets": 1,
+        "no_op": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_assert": 2,
+          "survived": 2
+        },
+        "1": {
+          "survived": 9
+        },
+        "2": {
+          "survived": 6
+        },
+        "3": {
+          "survived": 12
+        },
+        "4": {
+          "no_targets": 1
+        },
+        "5": {
+          "survived": 6,
+          "killed_assert": 1,
+          "no_op": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "MPeets/cloud-native-deployment-platform",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/MPeets__cloud-native-deployment-platform__catalog3.tar.gz",
+      "sha256": "4b78c318e9c39a9769225bcb63f95ee8a502c5277575f35303fae447d26090e1",
+      "completion_sha256": "0e1e86cad4c5e3b34b98160984bc9045eecd4984d9037118de1b92e406460aa2",
+      "verified_epoch": 1794182746.5218089,
+      "fresh_archive_hash_epoch": 1794214735.73349,
+      "verified_members": 355,
+      "source_files_verified": 103,
+      "scope_attempts": 5,
+      "configuration_manifests_verified": 5,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 14,
+      "scored_mutants": 14,
+      "row_status_counts": {
+        "killed_assert": 3,
+        "survived": 11
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_assert": 1
+        },
+        "1": {
+          "survived": 3
+        },
+        "2": {
+          "survived": 2
+        },
+        "3": {
+          "survived": 4
+        },
+        "4": {
+          "killed_assert": 2,
+          "survived": 2
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "StackGuardian/terraform-stackguardian-modules",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/StackGuardian__terraform-stackguardian-modules__catalog3.tar.gz",
+      "sha256": "4afe6a9985a554e5abce8f58c785f7d96649ffe778a9cd70af5c16e199862b31",
+      "completion_sha256": "acf6286f27ddd2f9e58a5c971140be393bce0645027f4f1c2d6ee6c03a263ab5",
+      "verified_epoch": 1794182746.748637,
+      "fresh_archive_hash_epoch": 1794214735.8298361,
+      "verified_members": 602,
+      "source_files_verified": 243,
+      "scope_attempts": 4,
+      "configuration_manifests_verified": 4,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "baseline_fail": 4
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        },
+        "1": {
+          "baseline_fail": 1
+        },
+        "2": {
+          "baseline_fail": 1
+        },
+        "3": {
+          "baseline_fail": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "Tensho/terraform-pagerduty-service",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/Tensho__terraform-pagerduty-service__catalog3.tar.gz",
+      "sha256": "ea4aa8135ea2a7bf2a1d664d3f5a373da53ee0995c64c4b8de1c2775b3fe0575",
+      "completion_sha256": "594cd2209de144670537bdb2dbb96d38b02a5b1c97a6dc3bd0a81a71e1a8f529",
+      "verified_epoch": 1794182746.884131,
+      "fresh_archive_hash_epoch": 1794214735.876687,
+      "verified_members": 120,
+      "source_files_verified": 38,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "baseline_fail": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "ambicuity/terraform-aws-eks-ray",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/ambicuity__terraform-aws-eks-ray__catalog3.tar.gz",
+      "sha256": "66912f53f17be80b39a9055a987d6748da43a59ef79531943f0939a4024ef770",
+      "completion_sha256": "e9d223cd27840179e87c82b5e491993526209eb02e46055bb112009bc9f26343",
+      "verified_epoch": 1794182747.011531,
+      "fresh_archive_hash_epoch": 1794214735.902145,
+      "verified_members": 335,
+      "source_files_verified": 114,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 22,
+      "scored_mutants": 22,
+      "row_status_counts": {
+        "survived": 18,
+        "killed_error": 3,
+        "killed_assert": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 18,
+          "killed_error": 3,
+          "killed_assert": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "appvia/terraform-aws-compliance",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/appvia__terraform-aws-compliance__catalog3.tar.gz",
+      "sha256": "1ac204836e27169632761c4a007964e5123a85370243b374c91244db3d17e5fd",
+      "completion_sha256": "87893489f4354bdb0a40bfb8ea592da0ab15b3f18877d2eabfbc5b1416ff7268",
+      "verified_epoch": 1794182747.7840981,
+      "fresh_archive_hash_epoch": 1794214736.356821,
+      "verified_members": 624,
+      "source_files_verified": 52,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "no_targets": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "no_targets": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "awslabs/genai-idp-terraform",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/awslabs__genai-idp-terraform__catalog3.tar.gz",
+      "sha256": "c92a938e28ee78e2445e491005a14828d30ac011ada8577dbba26c90ada18c25",
+      "completion_sha256": "6ba2c14b553d3d252cfc5d20add7ac7dee7acf25ba71e905e60a94f4f08c9b1e",
+      "verified_epoch": 1794187279.0088608,
+      "fresh_archive_hash_epoch": 1794214739.799514,
+      "verified_members": 4722,
+      "source_files_verified": 1767,
+      "scope_attempts": 11,
+      "configuration_manifests_verified": 11,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 390,
+      "scored_mutants": 320,
+      "row_status_counts": {
+        "survived": 296,
+        "no_op": 63,
+        "killed_error": 21,
+        "scope_unresolved": 7,
+        "killed_assert": 3,
+        "baseline_fail": 3
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 201,
+          "no_op": 51,
+          "killed_error": 10
+        },
+        "1": {
+          "no_op": 1
+        },
+        "2": {
+          "survived": 3
+        },
+        "3": {
+          "no_op": 5,
+          "survived": 54,
+          "scope_unresolved": 5
+        },
+        "4": {
+          "killed_error": 1,
+          "killed_assert": 3,
+          "survived": 2
+        },
+        "5": {
+          "killed_error": 10,
+          "survived": 33,
+          "no_op": 6
+        },
+        "6": {
+          "baseline_fail": 1
+        },
+        "7": {
+          "baseline_fail": 1
+        },
+        "8": {
+          "baseline_fail": 1
+        },
+        "9": {
+          "survived": 2
+        },
+        "10": {
+          "survived": 1,
+          "scope_unresolved": 2
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "canada-ca-terraform-modules/terraform-azurerm-caf-foundry",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/canada-ca-terraform-modules__terraform-azurerm-caf-foundry__catalog3.tar.gz",
+      "sha256": "eb807276cd587525c031c0af689c4105014f902da568e3ae66cf04c6d82eed5a",
+      "completion_sha256": "3d957f0801bde9629680d1f52067ace22e354c93466d78f82ac53644e2cded8d",
+      "verified_epoch": 1794182747.945344,
+      "fresh_archive_hash_epoch": 1794214739.841842,
+      "verified_members": 97,
+      "source_files_verified": 24,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "no_targets": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "no_targets": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "canada-ca-terraform-modules/terraform-azurerm-caf-netapp",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/canada-ca-terraform-modules__terraform-azurerm-caf-netapp__catalog3.tar.gz",
+      "sha256": "c2013e280dd8bde3e9e7f88afd66d332f8e03e9f2d54f2415f9096a3bd9bbca1",
+      "completion_sha256": "beb5c4be21b71299325e87eb2be1599216f2e28417d17aff54ae9aaf9cf68950",
+      "verified_epoch": 1794182748.068483,
+      "fresh_archive_hash_epoch": 1794214739.876651,
+      "verified_members": 81,
+      "source_files_verified": 16,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 1,
+      "scored_mutants": 1,
+      "row_status_counts": {
+        "survived": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "cloudeteer/terraform-azurerm-launchpad",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/cloudeteer__terraform-azurerm-launchpad__catalog3.tar.gz",
+      "sha256": "8b8f5044aa6132fefc5e5b7459a304f728e4c81bd70b64c0aee6329b2a8fab77",
+      "completion_sha256": "104f1004d307432bc175198d7d2d1385fa86c7b9eacef326dd27469f78e9420d",
+      "verified_epoch": 1794182748.899664,
+      "fresh_archive_hash_epoch": 1794214740.448926,
+      "verified_members": 196,
+      "source_files_verified": 58,
+      "scope_attempts": 3,
+      "configuration_manifests_verified": 3,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "baseline_fail": 2,
+        "scope_error": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        },
+        "1": {
+          "baseline_fail": 1
+        },
+        "2": {
+          "scope_error": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "computeralex92/terraform-authentik-application",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/computeralex92__terraform-authentik-application__catalog3.tar.gz",
+      "sha256": "1b89ed6e9d7ee85b151b32a67cb4fe2f6069039d379773216401eaa0eae35e97",
+      "completion_sha256": "163ecc837a7d7dc762a98516e29da8b20b68ad7cc60e378095dc2e3396dcc417",
+      "verified_epoch": 1794182749.102686,
+      "fresh_archive_hash_epoch": 1794214740.5213928,
+      "verified_members": 177,
+      "source_files_verified": 59,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 2,
+      "scored_mutants": 2,
+      "row_status_counts": {
+        "survived": 2
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 2
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "cytario/tf-aws-cytario",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/cytario__tf-aws-cytario__catalog3.tar.gz",
+      "sha256": "d2f9d4b9f7ae491dbb9890479ae92ff18b191b28070122a360db1bd6b735f4ef",
+      "completion_sha256": "cbfd3fa72bf9ee662f2c6c5dc178ae08bacae8d10b5f4a2ab631688765ddefa8",
+      "verified_epoch": 1794182749.248197,
+      "fresh_archive_hash_epoch": 1794214740.5558531,
+      "verified_members": 262,
+      "source_files_verified": 61,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 49,
+      "scored_mutants": 40,
+      "row_status_counts": {
+        "survived": 40,
+        "no_op": 8,
+        "scope_unresolved": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 40,
+          "no_op": 8,
+          "scope_unresolved": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "duplocloud/terraform-duplocloud-components",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/duplocloud__terraform-duplocloud-components__catalog3.tar.gz",
+      "sha256": "211525a479ca7fb0d52b32b1b9f904fb1bca43e52e5b74cae15a74db06fa8766",
+      "completion_sha256": "e8f7059b656d677df311562a310e96d79d19f080eb3ec7086b9e4043fb338967",
+      "verified_epoch": 1794206267.9829602,
+      "fresh_archive_hash_epoch": 1794214740.614112,
+      "verified_members": 746,
+      "source_files_verified": 243,
+      "scope_attempts": 13,
+      "configuration_manifests_verified": 13,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "baseline_fail": 12,
+        "no_targets": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        },
+        "1": {
+          "baseline_fail": 1
+        },
+        "2": {
+          "baseline_fail": 1
+        },
+        "3": {
+          "baseline_fail": 1
+        },
+        "4": {
+          "baseline_fail": 1
+        },
+        "5": {
+          "baseline_fail": 1
+        },
+        "6": {
+          "no_targets": 1
+        },
+        "7": {
+          "baseline_fail": 1
+        },
+        "8": {
+          "baseline_fail": 1
+        },
+        "9": {
+          "baseline_fail": 1
+        },
+        "10": {
+          "baseline_fail": 1
+        },
+        "11": {
+          "baseline_fail": 1
+        },
+        "12": {
+          "baseline_fail": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "elastio/elastio-stack",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/elastio__elastio-stack__catalog3.tar.gz",
+      "sha256": "c71269821f01cf37ff483eb1350306d3ddb9c2ddf96c0c57f2ce018021460ddb",
+      "completion_sha256": "2e0aa6257a59c6afc0f2106fd33cfb89c2c163eb03a1b7d46eadca6430153499",
+      "verified_epoch": 1794182749.383189,
+      "fresh_archive_hash_epoch": 1794214740.665051,
+      "verified_members": 330,
+      "source_files_verified": 110,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 19,
+      "scored_mutants": 19,
+      "row_status_counts": {
+        "survived": 12,
+        "killed_assert": 4,
+        "killed_error": 3
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 12,
+          "killed_assert": 4,
+          "killed_error": 3
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "equinor/terraform-azurerm-key-vault",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/equinor__terraform-azurerm-key-vault__catalog3.tar.gz",
+      "sha256": "e463b285812dfbd0f32d3666dd26c4d6c76d26326a43efb2ae2914b1cb13c964",
+      "completion_sha256": "6af4c6c9dca0546bcc198319b4f036dc6fc331c27ef24adf803ad671e1b1dfd5",
+      "verified_epoch": 1794182749.493954,
+      "fresh_archive_hash_epoch": 1794214740.710619,
+      "verified_members": 131,
+      "source_files_verified": 31,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 9,
+      "scored_mutants": 9,
+      "row_status_counts": {
+        "survived": 2,
+        "killed_assert": 7
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 2,
+          "killed_assert": 7
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "fullstorydev/terraform-aws-fullstory-redshift-setup",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/fullstorydev__terraform-aws-fullstory-redshift-setup__catalog3.tar.gz",
+      "sha256": "8e52bf6c7e7c21b639f5080fe7c64b6f9f243df28a31e03d9f8bc820eaf54126",
+      "completion_sha256": "248b1b96af4fc3e38d7abbef6d467ebf4f8969da4f2165906b72b5cbc22dcefc",
+      "verified_epoch": 1794182749.659511,
+      "fresh_archive_hash_epoch": 1794214740.74944,
+      "verified_members": 103,
+      "source_files_verified": 25,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "no_targets": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "no_targets": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "langchain-ai/terraform",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/langchain-ai__terraform__catalog3.tar.gz",
+      "sha256": "fdb9e4feebb64811fe400bfa07f489c0237306e7ffd70b33f0a4fa8686ab8c1a",
+      "completion_sha256": "7e5e55f8055c2a7d273f2262ab37cd958ca1521cd9922b24c07018c387082750",
+      "verified_epoch": 1794213807.973134,
+      "fresh_archive_hash_epoch": 1794214741.594214,
+      "verified_members": 2874,
+      "source_files_verified": 549,
+      "scope_attempts": 3,
+      "configuration_manifests_verified": 3,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 324,
+      "scored_mutants": 233,
+      "row_status_counts": {
+        "survived": 199,
+        "timeout": 13,
+        "no_op": 78,
+        "killed_error": 26,
+        "killed_assert": 8,
+        "baseline_fail": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 99,
+          "timeout": 13,
+          "no_op": 39,
+          "killed_error": 16,
+          "killed_assert": 5
+        },
+        "1": {
+          "baseline_fail": 1
+        },
+        "2": {
+          "survived": 100,
+          "no_op": 39,
+          "killed_assert": 3,
+          "killed_error": 10
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "masterpointio/terraform-datadog-users",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/masterpointio__terraform-datadog-users__catalog3.tar.gz",
+      "sha256": "1d5ba2fe51a5a007c939462e3306a71002f823ae2126a1742a5b99895c2d4903",
+      "completion_sha256": "43381c24db6b8e6730a2d01329f0c90b293e6777ed992802ab34db13cf1f80f4",
+      "verified_epoch": 1794182749.740066,
+      "fresh_archive_hash_epoch": 1794214741.6211772,
+      "verified_members": 119,
+      "source_files_verified": 36,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "no_targets": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "no_targets": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "masterpointio/terraform-postgres-config-dbs-users-roles",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/masterpointio__terraform-postgres-config-dbs-users-roles__catalog3.tar.gz",
+      "sha256": "93ebe1c046d633a838e8bb09174559033af25808f124c8d915480b58ec3582ab",
+      "completion_sha256": "3f88e5f3ee8e091ad1c3a77b41394d9240fd5dd0a4778c335a33958c79858a65",
+      "verified_epoch": 1794182750.1113129,
+      "fresh_archive_hash_epoch": 1794214741.8273458,
+      "verified_members": 221,
+      "source_files_verified": 40,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 1,
+      "scored_mutants": 1,
+      "row_status_counts": {
+        "killed_assert": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_assert": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "matt-FFFFFF/terraform-github-repository-and-content",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/matt-FFFFFF__terraform-github-repository-and-content__catalog3.tar.gz",
+      "sha256": "46d17004e0859a7c8ccde67e8012ea11438d7d81041e3a132f059ac17969fde0",
+      "completion_sha256": "3921d4b9c653ae50668c53be3cfefba3bcf7b9ea55d4fa1db80c9b9c6aa32beb",
+      "verified_epoch": 1794182750.233097,
+      "fresh_archive_hash_epoch": 1794214741.9847748,
+      "verified_members": 220,
+      "source_files_verified": 54,
+      "scope_attempts": 3,
+      "configuration_manifests_verified": 3,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 12,
+      "scored_mutants": 10,
+      "row_status_counts": {
+        "killed_assert": 10,
+        "no_op": 2,
+        "no_targets": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_assert": 8,
+          "no_op": 2
+        },
+        "1": {
+          "killed_assert": 2
+        },
+        "2": {
+          "no_targets": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "metro-digital/terraform-google-cf-projectcfg",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/metro-digital__terraform-google-cf-projectcfg__catalog3.tar.gz",
+      "sha256": "e56b8c8dadf951d88aec617ae23eb758fddeba5d7593a7ae4eae939a0337e2f3",
+      "completion_sha256": "7deb5e553816bcb839b29ebe9591abfaf6e10f92f7f3512919ea45889b52045c",
+      "verified_epoch": 1794182750.377536,
+      "fresh_archive_hash_epoch": 1794214742.107353,
+      "verified_members": 230,
+      "source_files_verified": 78,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 11,
+      "scored_mutants": 11,
+      "row_status_counts": {
+        "survived": 2,
+        "killed_assert": 6,
+        "killed_error": 3
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 2,
+          "killed_assert": 6,
+          "killed_error": 3
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "nearform/terraform-aws-sonarqube",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/nearform__terraform-aws-sonarqube__catalog3.tar.gz",
+      "sha256": "80a3c2567ab1fd3ce0229cd68e59a9f44b7557faa3563ed1f3758542ea0c5114",
+      "completion_sha256": "a1822c179b248f52f4475072f9b12247437c5e44dc4d453dfd6c0a3194cc9d01",
+      "verified_epoch": 1794182750.417229,
+      "fresh_archive_hash_epoch": 1794214742.144918,
+      "verified_members": 89,
+      "source_files_verified": 19,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 2,
+      "scored_mutants": 2,
+      "row_status_counts": {
+        "killed_assert": 1,
+        "survived": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_assert": 1,
+          "survived": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "nearform/terraform-azure-sonarqube",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/nearform__terraform-azure-sonarqube__catalog3.tar.gz",
+      "sha256": "53aa21858a4d87a48768659aaefbca583392163b2aed62ac6503ef5f2d4b5ba0",
+      "completion_sha256": "b5b5dc1f54df4f359a5dcdd49fd0960522c4889fba594131bf83fdb4606886ec",
+      "verified_epoch": 1794182750.5335832,
+      "fresh_archive_hash_epoch": 1794214742.1830962,
+      "verified_members": 93,
+      "source_files_verified": 18,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 5,
+      "scored_mutants": 5,
+      "row_status_counts": {
+        "survived": 3,
+        "killed_assert": 1,
+        "killed_error": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 3,
+          "killed_assert": 1,
+          "killed_error": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "neuralsec-io/terraform-aws-neuralsec-integrations",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/neuralsec-io__terraform-aws-neuralsec-integrations__catalog3.tar.gz",
+      "sha256": "1c425255ddc990584e7b186a9254a2933013298a31261ce89560d56b9a572c6f",
+      "completion_sha256": "b9b6415f431b631e2e297997ad13f240b43b29c8b9fa0c6956a74f951c1fc36a",
+      "verified_epoch": 1794207825.529856,
+      "fresh_archive_hash_epoch": 1794214742.220768,
+      "verified_members": 224,
+      "source_files_verified": 69,
+      "scope_attempts": 2,
+      "configuration_manifests_verified": 2,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 12,
+      "scored_mutants": 6,
+      "row_status_counts": {
+        "scope_unresolved": 6,
+        "killed_assert": 3,
+        "survived": 3,
+        "no_targets": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "scope_unresolved": 6,
+          "killed_assert": 3,
+          "survived": 3
+        },
+        "1": {
+          "no_targets": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "osinfra-io/pt-arche-kubernetes-cert-manager",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/osinfra-io__pt-arche-kubernetes-cert-manager__catalog3.tar.gz",
+      "sha256": "c51fe0263d2a2c8a3c24dbe7e11e6bd420241aeac2aaa84a7c929fcbb889d1f7",
+      "completion_sha256": "14321875bdd312efd4851fc357e8c53e41ae079d11e51390d20247dc88ac2099",
+      "verified_epoch": 1794182750.648461,
+      "fresh_archive_hash_epoch": 1794214742.264534,
+      "verified_members": 209,
+      "source_files_verified": 32,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 4,
+      "scored_mutants": 4,
+      "row_status_counts": {
+        "survived": 4
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 4
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "pagopa-dx/terraform-azurerm-azure-function-app",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/pagopa-dx__terraform-azurerm-azure-function-app__catalog3.tar.gz",
+      "sha256": "86156b8b5137801e73f8c902aeeefafc2ba315eda420d7a6aa7ae8d398b66d5d",
+      "completion_sha256": "44c6a8b2f32625426c0c223fc068afcab9ad69d891b311038eacb09a26ffd45f",
+      "verified_epoch": 1794182750.7784462,
+      "fresh_archive_hash_epoch": 1794214742.311882,
+      "verified_members": 208,
+      "source_files_verified": 33,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 47,
+      "scored_mutants": 47,
+      "row_status_counts": {
+        "survived": 44,
+        "killed_assert": 2,
+        "killed_error": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 44,
+          "killed_assert": 2,
+          "killed_error": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "prefapp/tfm",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/prefapp__tfm__catalog3.tar.gz",
+      "sha256": "680ea97114f12cb11aad5633e9b7fea0abc660b1a8d7a72a229467ed4986de28",
+      "completion_sha256": "7c30e1da621533c3beb3f24c3b281f7af1a4cd4cf336c8ca9f58536809fe0261",
+      "verified_epoch": 1794182751.9583309,
+      "fresh_archive_hash_epoch": 1794214742.952029,
+      "verified_members": 3035,
+      "source_files_verified": 1189,
+      "scope_attempts": 2,
+      "configuration_manifests_verified": 2,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 14,
+      "scored_mutants": 14,
+      "row_status_counts": {
+        "killed_assert": 2,
+        "survived": 12,
+        "baseline_fail": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_assert": 2,
+          "survived": 12
+        },
+        "1": {
+          "baseline_fail": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "qiniu/terraform-module",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/qiniu__terraform-module__catalog3.tar.gz",
+      "sha256": "615e1021000206c2e832964936231f208ac1a688dba41d65d5b5b46099b65059",
+      "completion_sha256": "06525801ec13b4e17da3d2d1265c419dc6ae5c4f3dbec97f7da3b876a8efae5e",
+      "verified_epoch": 1794187907.256608,
+      "fresh_archive_hash_epoch": 1794214742.995281,
+      "verified_members": 698,
+      "source_files_verified": 233,
+      "scope_attempts": 10,
+      "configuration_manifests_verified": 10,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "baseline_fail": 8,
+        "no_targets": 2
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        },
+        "1": {
+          "no_targets": 1
+        },
+        "2": {
+          "baseline_fail": 1
+        },
+        "3": {
+          "baseline_fail": 1
+        },
+        "4": {
+          "no_targets": 1
+        },
+        "5": {
+          "baseline_fail": 1
+        },
+        "6": {
+          "baseline_fail": 1
+        },
+        "7": {
+          "baseline_fail": 1
+        },
+        "8": {
+          "baseline_fail": 1
+        },
+        "9": {
+          "baseline_fail": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "rpothin/terraform-powerplatform-res-environment",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/rpothin__terraform-powerplatform-res-environment__catalog3.tar.gz",
+      "sha256": "245e9675e6f4c025188699e64f675eb92c006fd2a955a29d8a48c0cf24bd62c3",
+      "completion_sha256": "55c244e537528fcec704029aa19afaf6d62a562bb74ae6747a7765c21d2281dd",
+      "verified_epoch": 1794182752.097356,
+      "fresh_archive_hash_epoch": 1794214743.063572,
+      "verified_members": 208,
+      "source_files_verified": 66,
+      "scope_attempts": 2,
+      "configuration_manifests_verified": 2,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 1,
+      "scored_mutants": 1,
+      "row_status_counts": {
+        "baseline_fail": 1,
+        "killed_assert": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        },
+        "1": {
+          "killed_assert": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "schubergphilis-ep/terraform-azure-mcaf-vwan",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/schubergphilis-ep__terraform-azure-mcaf-vwan__catalog3.tar.gz",
+      "sha256": "88a1dfd55d9ec293e683e4d45e1c1a0eb9ce02949c8dfe9047b92f9179477485",
+      "completion_sha256": "5b334f727febf520367679fc4816c52fb2f116fefb3bdc05abdd7844b457e79e",
+      "verified_epoch": 1794182752.2141252,
+      "fresh_archive_hash_epoch": 1794214743.108939,
+      "verified_members": 128,
+      "source_files_verified": 35,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 6,
+      "scored_mutants": 1,
+      "row_status_counts": {
+        "survived": 1,
+        "no_op": 5
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 1,
+          "no_op": 5
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "sebastianczech/terraform-databricks-community-modules",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/sebastianczech__terraform-databricks-community-modules__catalog3.tar.gz",
+      "sha256": "ae975e96f4e2be56d1d548334b59078ef1a026fdc40aab102ce47c98c59c0b40",
+      "completion_sha256": "30140515fb87146bd35094e1621a3d5d42f5e85e00aed92c37c7fbef6504063b",
+      "verified_epoch": 1794182752.273407,
+      "fresh_archive_hash_epoch": 1794214743.139383,
+      "verified_members": 103,
+      "source_files_verified": 28,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 1,
+      "scored_mutants": 1,
+      "row_status_counts": {
+        "killed_error": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_error": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "so1omon563/terraform-aws-lb",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/so1omon563__terraform-aws-lb__catalog3.tar.gz",
+      "sha256": "bad308785d8d3840896bf928ce9aa1ed29f9a0400130e07cae665aa4e44e9a38",
+      "completion_sha256": "d49a4b02afa97d82011934ac4c6127d8d2ab66443b15c2fbae640cc27ac57db4",
+      "verified_epoch": 1794182752.392596,
+      "fresh_archive_hash_epoch": 1794214743.181896,
+      "verified_members": 202,
+      "source_files_verified": 60,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 12,
+      "scored_mutants": 12,
+      "row_status_counts": {
+        "survived": 12
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 12
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "so1omon563/terraform-aws-secrets-manager",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/so1omon563__terraform-aws-secrets-manager__catalog3.tar.gz",
+      "sha256": "b174deefff2a1c362b7909ce98727d54e8640a50640f1e105ce7e96ac1ada017",
+      "completion_sha256": "98b26cc0e69a5eeac3648a2b22e28d6a4237da6590af1f402d22fc62bd0200ac",
+      "verified_epoch": 1794182752.457689,
+      "fresh_archive_hash_epoch": 1794214743.227287,
+      "verified_members": 174,
+      "source_files_verified": 55,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 3,
+      "scored_mutants": 2,
+      "row_status_counts": {
+        "no_op": 1,
+        "survived": 2
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "no_op": 1,
+          "survived": 2
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "so1omon563/terraform-aws-security-group",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/so1omon563__terraform-aws-security-group__catalog3.tar.gz",
+      "sha256": "ce8182b5b23ae88f8bc570cfa35a541e250ca799de877d8aaf283226e57af314",
+      "completion_sha256": "1183c7c115d8ae99c7c93a398cf1fc289bd9a1a097e8027e760e43f90700f9c4",
+      "verified_epoch": 1794182752.606774,
+      "fresh_archive_hash_epoch": 1794214743.257987,
+      "verified_members": 151,
+      "source_files_verified": 45,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 3,
+      "scored_mutants": 1,
+      "row_status_counts": {
+        "no_op": 2,
+        "killed_assert": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "no_op": 2,
+          "killed_assert": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "so1omon563/terraform-aws-sns",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/so1omon563__terraform-aws-sns__catalog3.tar.gz",
+      "sha256": "44bfda598448371e30bd0c48df1f04c044ef56437439cb15d229693bda2b9680",
+      "completion_sha256": "c5ecd0597073e627ab6447266aabcdaaea77ec6ea22dbed7852cbd7b6c287aae",
+      "verified_epoch": 1794182752.720043,
+      "fresh_archive_hash_epoch": 1794214743.274306,
+      "verified_members": 205,
+      "source_files_verified": 67,
+      "scope_attempts": 2,
+      "configuration_manifests_verified": 2,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 2,
+      "scored_mutants": 2,
+      "row_status_counts": {
+        "killed_assert": 1,
+        "survived": 1,
+        "baseline_fail": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_assert": 1,
+          "survived": 1
+        },
+        "1": {
+          "baseline_fail": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "so1omon563/terraform-aws-vpc",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/so1omon563__terraform-aws-vpc__catalog3.tar.gz",
+      "sha256": "a1bd132a7dab9ac980dcdfd7e004809e792c50ffe36303afbfadda52d13e2aa8",
+      "completion_sha256": "94ee23375c31ddfe5a814cd7e8b284f1d0e99601fcdc91d4ba07be03d42fa443",
+      "verified_epoch": 1794182752.959339,
+      "fresh_archive_hash_epoch": 1794214743.315805,
+      "verified_members": 494,
+      "source_files_verified": 173,
+      "scope_attempts": 3,
+      "configuration_manifests_verified": 3,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 52,
+      "scored_mutants": 34,
+      "row_status_counts": {
+        "killed_assert": 5,
+        "survived": 26,
+        "scope_unresolved": 18,
+        "killed_error": 3
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_assert": 2,
+          "survived": 7,
+          "scope_unresolved": 6,
+          "killed_error": 1
+        },
+        "1": {
+          "killed_assert": 2,
+          "survived": 11,
+          "scope_unresolved": 6,
+          "killed_error": 1
+        },
+        "2": {
+          "survived": 8,
+          "scope_unresolved": 6,
+          "killed_assert": 1,
+          "killed_error": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "stellwerk-tf-modules/kubernetes-agent-orchestrator-runner",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/stellwerk-tf-modules__kubernetes-agent-orchestrator-runner__catalog3.tar.gz",
+      "sha256": "6750b02b4dc39640842d7fdd0803728bdeffa1bd3ab427de4e19783e578c4c77",
+      "completion_sha256": "34207e9d7d0f2623e95d366a3dbea22ee8d2621d864830536c533ab90457dceb",
+      "verified_epoch": 1794182753.063621,
+      "fresh_archive_hash_epoch": 1794214743.3378072,
+      "verified_members": 95,
+      "source_files_verified": 20,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 3,
+      "scored_mutants": 3,
+      "row_status_counts": {
+        "survived": 1,
+        "killed_error": 2
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 1,
+          "killed_error": 2
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "swxsoc/sdc_aws_architecture",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/swxsoc__sdc_aws_architecture__catalog3.tar.gz",
+      "sha256": "492061dfaf21fc99cb891384ff5b0a18ad4126aae593bcf795b6d69dfe77a2e2",
+      "completion_sha256": "33e39227b116a330130d8d49c159231efc194fc5225f157968bb1f86221f0742",
+      "verified_epoch": 1794182753.259375,
+      "fresh_archive_hash_epoch": 1794214743.45469,
+      "verified_members": 198,
+      "source_files_verified": 64,
+      "scope_attempts": 3,
+      "configuration_manifests_verified": 3,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 0,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "baseline_fail": 3
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        },
+        "1": {
+          "baseline_fail": 1
+        },
+        "2": {
+          "baseline_fail": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "tedilabs/terraform-aws-db",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/tedilabs__terraform-aws-db__catalog3.tar.gz",
+      "sha256": "9cb5eed6c3cf111ed9394510dc0241e6060b48e68854e6ee19f90decf17ec1ce",
+      "completion_sha256": "999962b62d5bbfb0373e592c6ed575e237ed352d95d52b047f3956d017913df7",
+      "verified_epoch": 1794182753.636262,
+      "fresh_archive_hash_epoch": 1794214743.619977,
+      "verified_members": 718,
+      "source_files_verified": 66,
+      "scope_attempts": 2,
+      "configuration_manifests_verified": 2,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 9,
+      "scored_mutants": 9,
+      "row_status_counts": {
+        "survived": 9
+      },
+      "preserved_interrupted_csvs_excluded": 1,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 7
+        },
+        "1": {
+          "survived": 2
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "terraform-mongodbatlas-modules/terraform-mongodbatlas-project",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/terraform-mongodbatlas-modules__terraform-mongodbatlas-project__catalog3.tar.gz",
+      "sha256": "809418f5b915b9510304155b5a280f90e1eecf36ce6143d34c6950fedc4cedf9",
+      "completion_sha256": "3e1175b8812c52683996e572887a420854d88dda7b820815e7016366414978da",
+      "verified_epoch": 1794182753.879401,
+      "fresh_archive_hash_epoch": 1794214743.671713,
+      "verified_members": 466,
+      "source_files_verified": 198,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 7,
+      "scored_mutants": 1,
+      "row_status_counts": {
+        "no_op": 6,
+        "killed_error": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "no_op": 6,
+          "killed_error": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "theusc6/aws-terraform-infrastructure",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/theusc6__aws-terraform-infrastructure__catalog3.tar.gz",
+      "sha256": "76bbfca1a9bba6fdbf2a0da294a60ea033dca3fe2326f8241a8f84b02fd20af9",
+      "completion_sha256": "b41da3fce55df1233c8bb6d5399a043f237ebe43531ac86cfa5614a1e0771b76",
+      "verified_epoch": 1794187908.8581839,
+      "fresh_archive_hash_epoch": 1794214743.708255,
+      "verified_members": 591,
+      "source_files_verified": 125,
+      "scope_attempts": 12,
+      "configuration_manifests_verified": 12,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 78,
+      "scored_mutants": 69,
+      "row_status_counts": {
+        "survived": 47,
+        "no_op": 9,
+        "killed_assert": 22,
+        "no_targets": 3
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 35,
+          "no_op": 9
+        },
+        "1": {
+          "survived": 1
+        },
+        "2": {
+          "survived": 2,
+          "killed_assert": 2
+        },
+        "3": {
+          "killed_assert": 6,
+          "survived": 6
+        },
+        "4": {
+          "no_targets": 1
+        },
+        "5": {
+          "killed_assert": 1
+        },
+        "6": {
+          "killed_assert": 2
+        },
+        "7": {
+          "no_targets": 1
+        },
+        "8": {
+          "survived": 1
+        },
+        "9": {
+          "no_targets": 1
+        },
+        "10": {
+          "killed_assert": 4,
+          "survived": 2
+        },
+        "11": {
+          "killed_assert": 7
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "thu-san/terraform-aws-static-site",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/thu-san__terraform-aws-static-site__catalog3.tar.gz",
+      "sha256": "cf18bf1ffcb0a0702e62e2e3844e50ec930340d88a24e511e3cc406a688d7a5e",
+      "completion_sha256": "070cedc9a71ce0fa906697822fe102457c85e697bd9ece03a77a0685ab86baa3",
+      "verified_epoch": 1794182754.031658,
+      "fresh_archive_hash_epoch": 1794214743.7507899,
+      "verified_members": 303,
+      "source_files_verified": 102,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 15,
+      "scored_mutants": 15,
+      "row_status_counts": {
+        "survived": 14,
+        "killed_assert": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 14,
+          "killed_assert": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "trouze/terraform-dbtcloud-as-yaml",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/trouze__terraform-dbtcloud-as-yaml__catalog3.tar.gz",
+      "sha256": "9bc3025ebcaf25016dfa5bb431d62e8502feae68484d7c2196bebd2d2cefc6b4",
+      "completion_sha256": "4f5d56b522333bf4f7adf25fdacd0bee66e0bc1d442cb72fb84f3021aa2e9fde",
+      "verified_epoch": 1794187284.419008,
+      "fresh_archive_hash_epoch": 1794214743.786007,
+      "verified_members": 643,
+      "source_files_verified": 180,
+      "scope_attempts": 11,
+      "configuration_manifests_verified": 11,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 29,
+      "scored_mutants": 26,
+      "row_status_counts": {
+        "survived": 26,
+        "no_op": 3,
+        "no_targets": 5
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 20,
+          "no_op": 3
+        },
+        "1": {
+          "no_targets": 1
+        },
+        "2": {
+          "no_targets": 1
+        },
+        "3": {
+          "survived": 1
+        },
+        "4": {
+          "survived": 1
+        },
+        "5": {
+          "survived": 1
+        },
+        "6": {
+          "no_targets": 1
+        },
+        "7": {
+          "survived": 1
+        },
+        "8": {
+          "no_targets": 1
+        },
+        "9": {
+          "survived": 2
+        },
+        "10": {
+          "no_targets": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "truefoundry/terraform-aws-truefoundry-platform-features",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/truefoundry__terraform-aws-truefoundry-platform-features__catalog3.tar.gz",
+      "sha256": "749c6eb0eede4dd947a80a8a76fe4aeedb087353d25fd7ba6b2e5a3d42ec2a23",
+      "completion_sha256": "35ee0c79fc53ae9e2cbba6e34ae17ef3eb15c59a8f642c85a7772ed4b5f7da7d",
+      "verified_epoch": 1794182754.20151,
+      "fresh_archive_hash_epoch": 1794214743.830606,
+      "verified_members": 266,
+      "source_files_verified": 15,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 26,
+      "scored_mutants": 26,
+      "row_status_counts": {
+        "survived": 22,
+        "killed_error": 4
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 22,
+          "killed_error": 4
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "unfunco/terraform-aws-oidc-github",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/unfunco__terraform-aws-oidc-github__catalog3.tar.gz",
+      "sha256": "10e30088286624c17e3e17e179e29f7c989c7f1fbb321e8d1ef7e6f145ad0247",
+      "completion_sha256": "804d609515fad2f95dd61a7cbf225caa1d4264cf79a0374e824913fdc25cdd0c",
+      "verified_epoch": 1794182754.2622888,
+      "fresh_archive_hash_epoch": 1794214743.892778,
+      "verified_members": 105,
+      "source_files_verified": 30,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 5,
+      "scored_mutants": 0,
+      "row_status_counts": {
+        "scope_unresolved": 5
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "scope_unresolved": 5
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "useparagon/terraform-hoop-platform",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/useparagon__terraform-hoop-platform__catalog3.tar.gz",
+      "sha256": "d824fd1f4148499c44b255be45c875caef64b9d85e9ec0fb92950fca31bb9f93",
+      "completion_sha256": "1f29f69a6745b1a4a09bb495ae9d399f4dbd8a9f8e363252cdc35f4e4527a405",
+      "verified_epoch": 1794182754.396116,
+      "fresh_archive_hash_epoch": 1794214743.925897,
+      "verified_members": 123,
+      "source_files_verified": 30,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 5,
+      "scored_mutants": 5,
+      "row_status_counts": {
+        "survived": 5
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 5
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "ustaxcourt/ustc-payment-portal",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/ustaxcourt__ustc-payment-portal__catalog3.tar.gz",
+      "sha256": "d64a9769d053f252b9b5749b2ee418ef11a1ed228cdc1045d9a55896aa7b0f50",
+      "completion_sha256": "35ba07e0777980e77fb6197ac87a7c8cc26469219702d587d78f841c7344a704",
+      "verified_epoch": 1794187285.40684,
+      "fresh_archive_hash_epoch": 1794214744.053546,
+      "verified_members": 1334,
+      "source_files_verified": 556,
+      "scope_attempts": 11,
+      "configuration_manifests_verified": 11,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 2,
+      "scored_mutants": 2,
+      "row_status_counts": {
+        "baseline_fail": 10,
+        "killed_assert": 2
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "baseline_fail": 1
+        },
+        "1": {
+          "baseline_fail": 1
+        },
+        "2": {
+          "baseline_fail": 1
+        },
+        "3": {
+          "baseline_fail": 1
+        },
+        "4": {
+          "baseline_fail": 1
+        },
+        "5": {
+          "baseline_fail": 1
+        },
+        "6": {
+          "baseline_fail": 1
+        },
+        "7": {
+          "baseline_fail": 1
+        },
+        "8": {
+          "baseline_fail": 1
+        },
+        "9": {
+          "baseline_fail": 1
+        },
+        "10": {
+          "killed_assert": 2
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "yutachaos/terraform-lambda-deploy-module",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/yutachaos__terraform-lambda-deploy-module__catalog3.tar.gz",
+      "sha256": "53cb3c2f24334bca4bafe335b707be2acd4068b28bfb51966b10b4c56fe504bd",
+      "completion_sha256": "4a68a6ba3c6648d594bd1a16d7af815d73be5aa85ea5f1fd4422fa9c6ebc1875",
+      "verified_epoch": 1794182754.436936,
+      "fresh_archive_hash_epoch": 1794214744.0717492,
+      "verified_members": 85,
+      "source_files_verified": 15,
+      "scope_attempts": 1,
+      "configuration_manifests_verified": 1,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 1,
+      "scored_mutants": 1,
+      "row_status_counts": {
+        "killed_assert": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "killed_assert": 1
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    },
+    {
+      "audit_version": "archive-integrity-audit-v1",
+      "status": "verified",
+      "repository": "zama-ai/terraform-coprocessor-modules",
+      "catalog_version": "3",
+      "tool_version": "0.3.0-research.1",
+      "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/archives/zama-ai__terraform-coprocessor-modules__catalog3.tar.gz",
+      "sha256": "5c4470a055337141414f72d7ea886204e824e05b7ba125e8453ae24c23037e6f",
+      "completion_sha256": "9e16be7f611d83ffb5dd2344ccd0f04c2a32c251edce49481c72a9433d2c4807",
+      "verified_epoch": 1794206148.7491672,
+      "fresh_archive_hash_epoch": 1794214745.39495,
+      "verified_members": 2869,
+      "source_files_verified": 113,
+      "scope_attempts": 9,
+      "configuration_manifests_verified": 9,
+      "missing_csv_unscored_scopes": [],
+      "unique_mutant_cases": 190,
+      "scored_mutants": 188,
+      "row_status_counts": {
+        "survived": 170,
+        "no_op": 2,
+        "killed_assert": 12,
+        "killed_error": 6,
+        "no_targets": 1
+      },
+      "preserved_interrupted_csvs_excluded": 0,
+      "per_scope_status_counts": {
+        "0": {
+          "survived": 94,
+          "no_op": 1
+        },
+        "1": {
+          "survived": 10
+        },
+        "2": {
+          "survived": 2,
+          "killed_assert": 1
+        },
+        "3": {
+          "survived": 8,
+          "killed_assert": 1
+        },
+        "4": {
+          "survived": 49,
+          "killed_assert": 6,
+          "killed_error": 6
+        },
+        "5": {
+          "no_targets": 1
+        },
+        "6": {
+          "survived": 4,
+          "no_op": 1
+        },
+        "7": {
+          "survived": 1
+        },
+        "8": {
+          "killed_assert": 4,
+          "survived": 2
+        }
+      },
+      "member_audit_reused_for_identical_bytes": true
+    }
+  ]
+}

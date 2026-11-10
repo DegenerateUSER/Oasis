@@ -1,0 +1,16 @@
+test_01_new_submission_packages_exist (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+test_02_frozen_evidence_unchanged (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+test_03_counts_and_operator_rates (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+test_04_exact_native_example_and_adaptation_limits (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+test_05_reviewer_comments_preserved (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+test_06_delivered_documents_and_layout (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+test_07_both_bundles_build_in_isolation (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+test_08_all_previous_inputs_and_deliverables_preserved (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+test_09_literature_mapping_complete_and_fresh (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+test_10_combined_pagination_and_handoff (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+test_11_delivered_checksums_and_helper_syntax (final_coauthor_checks.CoauthorRevisionChecks) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 16.628s
+
+OK

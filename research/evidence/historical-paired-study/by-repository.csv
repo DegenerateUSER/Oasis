@@ -1,0 +1,9 @@
+repository,split,attempted_pairs,both_scored,original_assertion_kills,strengthened_assertion_kills,new_assertion_detections,lost_assertion_detections
+aws-platform-starter,development,21,21,5,5,0,0
+aws-terraform-infrastructure,development,9,9,4,4,0,0
+cloud-native-deployment-platform,holdout,1,1,1,1,0,0
+platform-design,development,30,30,12,14,2,0
+platform-tools,development,29,29,9,29,20,0
+serverless-architecture-patterns,holdout,27,27,4,16,12,0
+terraform-aws-sonarqube,development,1,1,0,0,0,0
+tofu-modules,development,5,5,4,4,0,0

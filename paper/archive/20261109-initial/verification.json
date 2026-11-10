@@ -1,0 +1,49 @@
+{
+  "manuscript": {
+    "pages": 11,
+    "media_box_pt": [
+      0.0,
+      0.0,
+      544.25,
+      742.68
+    ],
+    "unresolved_references": false,
+    "overfull_warnings": 1
+  },
+  "reviewer-letter": {
+    "pages": 5,
+    "media_box_pt": [
+      0.0,
+      0.0,
+      544.25,
+      742.68
+    ],
+    "unresolved_references": false,
+    "overfull_warnings": 0
+  },
+  "1352_revised_version": {
+    "pages": 16,
+    "media_box_pt": [
+      0.0,
+      0.0,
+      544.25,
+      742.68
+    ],
+    "unresolved_references": false,
+    "overfull_warnings": 1
+  },
+  "repository-supplement": {
+    "pages": 2,
+    "media_box_pt": [
+      0.0,
+      0.0,
+      544.25,
+      742.68
+    ],
+    "unresolved_references": false,
+    "overfull_warnings": 0
+  },
+  "response_comments": 14,
+  "native_experiments_rerun": false,
+  "visual_review": "Original vs rebuilt firstpage and standalone letter inspected; firstpage vbox warning remains but no observed clipping/overlap."
+}

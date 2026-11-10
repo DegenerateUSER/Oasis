@@ -1,0 +1,87 @@
+\section*{Cover letter and point-by-point response}\label{sec:response}
+\noindent\textbf{Paper ID 1352}\par
+\noindent\textbf{Oasis: A Mutation Testing Framework for Evaluating the Semantic Quality of Infrastructure-as-Code Test Suites}\par
+\noindent Tushar Teotia, Shiven Goomer, Yash Vardhan Rawat, Minakshi Tomer and Manoj Kumar Malik\par
+\medskip
+\noindent Dear Editors and Reviewers,
+
+Thank you for the careful reviews. We have substantially revised the manuscript. The main changes are: (i) a new, larger evaluation with a frozen 16-operator catalog (1,288 scored mutants in 47 repositories) that replaces the original 242-mutant result; (ii) explicit handling and reporting of excluded mutants, blocked scopes and unfinished work; (iii) per-operator results, execution costs and a tfsec comparison; (iv) a related-work section that positions Oasis against the Terraform mutation catalog of Ribeiro and Neves and the Gang of Eight IaC defect taxonomy; and (v) a separate matched study showing how mutation feedback can strengthen tests; and (vi) a new Discussion of practical implications. The manuscript now follows the ICMLDE 2026 Procedia template and is within the 10-page limit; secondary tables have moved to a supplement (Tables S1--S10). We reproduce all fourteen comments verbatim below. Page numbers refer to the revised manuscript, which ends on page~\pageref{lastmanuscriptpage}.
+
+The original submission's 242 generated mutants, 177 scored mutants and 24.9\% mutation score are superseded by the new campaign rather than relabelled. The revised headline result is: 62 completed repository attempts, of which 47 yield 1,288 scored mutants, with 115 assertion kills, 76 runtime-error kills and 1,097 survivors (assertion-kill rate 8.9\%, combined 14.8\%). The original catalog~2 study and the 123-mutant matched study are reported separately and are never pooled with this result.
+
+\subsection*{Reviewer 1}
+\noindent\textbf{R1.1. The abstract needs to clarify how equivalent mutants were found and eliminated from scoring.}\par
+\textbf{Response.} The abstract now states that Oasis checks whether a mutated default can reach the selected tests and that excluded mutants are mostly context-specific no-ops. Section~\ref{sec:equivalence} explains the procedure: a changed default is excluded as a no-op only when every caller in the selected test context supplies its own value; if any route can use the default the mutant is tested, and undecidable cases are excluded as unresolved. This removes 193 no-ops and 39 unresolved cases. We state clearly that this does not solve general mutant equivalence: survivors are never removed because tests pass, mocks hide a value or a scanner is silent, so unknown equivalent mutants remain in the denominator. The full decision table is in supplement Table~S2, and the worked example in Section~\ref{sec:operatorresults} traces one active default to the assertion that kills it.\par
+\textbf{Locations.} Abstract; Section~\ref{sec:equivalence} (p.~\pageref{sec:equivalence}); Section~\ref{sec:metrics} (p.~\pageref{sec:metrics}); Section~\ref{sec:operatorresults} (p.~\pageref{sec:operatorresults}); supplement Table~S2.
+
+\medskip
+\noindent\textbf{R1.2. Mutation testing is an old topic and adopting twelve operators for Terraform is not novel.}\par
+\textbf{Response.} We agree that neither mutation testing nor a set of operators is novel in itself, and we no longer claim it. Related work now discusses the Terraform operator catalog and Terramutate prototype of Ribeiro and Neves, which demonstrated mutation on a single reference project and left systematic evaluation as future work. Our contribution is (i) a native-suite pipeline that separates failing baselines, context-specific no-ops, runtime errors and assertion kills, and (ii) a multi-repository evaluation of how existing Terraform/OpenTofu suites respond, together with a matched test-strengthening study and a scanner comparison. Table~\ref{tab:capabilities} contrasts Oasis with Terramutate, ProTI and EMIaC. For transparency, we note that Oasis was developed independently: our work began on 2 July 2026, before the Ribeiro and Neves paper was published on 10 July 2026, and the repository history records this. We nevertheless cite and compare with their work in full, and do not claim priority. A new Discussion (Section~\ref{sec:implications}) states what the evaluation reveals that a single reference project cannot: how often naive mutation would misreport IaC suites, how kills split between assertions and runtime errors, and how unevenly assertion strength is distributed across repositories.\par
+\textbf{Locations.} Section~\ref{sec:introduction} (p.~\pageref{sec:introduction}); Section~\ref{sec:related} and Table~\ref{tab:capabilities} (p.~\pageref{tab:capabilities}); Section~\ref{sec:operators} (p.~\pageref{sec:operators}); Section~\ref{sec:implications} (p.~\pageref{sec:implications}).
+
+\medskip
+\noindent\textbf{R1.3. Sixty five out of 242 mutants remain unscored, affecting the reported mutation score.}\par
+\textbf{Response.} This was a real limitation of the original result. In the new campaign every generated mutant is accounted for: of 1,533 generated mutants, 1,288 are scored and 245 are excluded (193 context no-ops, 39 unresolved contexts, 13 timeouts). Scores use only $N=A+E+S$, and timeouts are never counted as kills. We also report repository-level coverage: of 62 completed attempts, 39 repositories pass every selected baseline, 8 have some blocked scopes and 15 produce no scored mutants; of 192 scopes, 130 have passing baselines. Mutants in blocked or unrun scopes are reported as unknown, not imputed.\par
+\textbf{Locations.} Section~\ref{sec:metrics} (p.~\pageref{sec:metrics}); Section~\ref{sec:completion} and Table~\ref{tab:overview} (p.~\pageref{tab:overview}); Table~\ref{tab:operatorresults} (p.~\pageref{tab:operatorresults}); supplement Table~S1.
+
+\medskip
+\noindent\textbf{R1.4. Compare Oasis with policy scanners like Checkov or tfsec on the same repositories.}\par
+\textbf{Response.} We ran tfsec~1.28.14 on the same 23 repository snapshots as the original 276 scored mutants, crediting a mutant only when a newly reported rule overlaps the mutated line. Of 231 comparable mutants, 126 triggered a new rule, including 88 that the native tests accepted; conversely, 9 assertion kills triggered no rule. The remaining 45 could not be scanned because tfsec rejects newer HCL blocks. Table~\ref{tab:scanner} and a concrete example show that tests and scanners give complementary signals. This comparison uses the historical snapshots and was not rerun on the new 1,288-mutant campaign; we make no precision or recall claim.\par
+\textbf{Locations.} Section~\ref{sec:paired} (p.~\pageref{sec:paired}); Section~\ref{sec:costs} and Table~\ref{tab:scanner} (p.~\pageref{tab:scanner}).
+
+\medskip
+\noindent\textbf{R1.5. The conclusion overgeneralizes from 23 repositories; References [2] and [3] have no authors.}\par
+\textbf{Response.} The conclusion is now limited to the studied projects and fixtures and explicitly states that the results do not establish real-fault prevalence or an adequacy threshold. The evaluation grew to 62 completed repository attempts, but we describe it as a screened convenience sample, not a representative one. All references have been checked against publisher records and now give complete author lists, venues and DOIs; documentation sources are labelled as such.\par
+\textbf{Locations.} Section~\ref{sec:selection} (p.~\pageref{sec:selection}); Section~\ref{sec:threats} (p.~\pageref{sec:threats}); Section~\ref{sec:conclusion} (p.~\pageref{sec:conclusion}); References.
+
+\subsection*{Reviewer 2}
+\noindent\textbf{R2.1. The abstract provides a 24.9\% mutation score without specifying repository selection criteria.}\par
+\textbf{Response.} The abstract now describes the sample as a screened convenience sample and reports the new versioned results. Section~\ref{sec:selection} states the selection criteria (native tests, mock-compatible execution and at least one site for a catalog operator), lists the 95-repository plan and its composition, and discloses that a time-based cutoff closed admission after some outcomes were visible. All dispositions, including failed and unstarted repositories, are reported.\par
+\textbf{Locations.} Abstract; Section~\ref{sec:selection} (p.~\pageref{sec:selection}); Table~\ref{tab:overview} (p.~\pageref{tab:overview}).
+
+\medskip
+\noindent\textbf{R2.2. Justify why the twelve operators are representative of real Terraform defects using defect taxonomies.}\par
+\textbf{Response.} Section~\ref{sec:operators} now relates the operators to two taxonomies. In the Gang of Eight IaC defect taxonomy (Rahman et al., ICSE 2020), all Oasis operators model configuration-data defects and the access/encryption operators also model security defects; conditional, dependency, documentation, idempotency, service and syntax defects are not modelled. Against the Terraform-specific catalog of Ribeiro and Neves, mined from 6,749 corrective commits in 54 repositories, Boolean inversion corresponds to \texttt{PAR\_BOOL}, default changes to \texttt{VDR\_DEF}, tag deletion to \texttt{RCR\_TAG\_DEL} and CIDR widening to \texttt{RCR\_SG\_OPEN}; other operators match only partly or generically. Table~\ref{tab:mapping} summarizes this mapping in the manuscript, and supplement Tables~S3 and~S4 give it for every identifier. We state that this establishes plausibility rather than representativeness: the catalog is derived from commit messages, Boolean inversion produces 89.1\% of scored mutants, and coupling to real faults is left as future work.\par
+\textbf{Locations.} Section~\ref{sec:related} (p.~\pageref{sec:related}); Section~\ref{sec:operators}, Tables~\ref{tab:operators} and~\ref{tab:mapping} (p.~\pageref{tab:mapping}); Section~\ref{sec:threats} (p.~\pageref{sec:threats}); supplement Tables~S3--S4.
+
+\medskip
+\noindent\textbf{R2.3. A table with kill rate per operator and comparison with app code mutation testing papers.}\par
+\textbf{Response.} Table~\ref{tab:operatorresults} reports, for all 16 operators, generated, scored and excluded mutants, assertion and runtime kills, survivors, and both rates. Family and subset breakdowns are in the text and supplement Tables~S5--S7. Related work now discusses application-code studies of mutant--real-fault coupling, coverage, and industrial and practitioner use, and explains why their mutation scores cannot be directly compared with ours (different operators, fault pools and filtering).\par
+\textbf{Locations.} Section~\ref{sec:related} (p.~\pageref{sec:related}); Section~\ref{sec:operatorresults} and Table~\ref{tab:operatorresults} (p.~\pageref{tab:operatorresults}); supplement Tables~S5--S7.
+
+\medskip
+\noindent\textbf{R2.4. The conclusion calls for routine adoption but there is no cost info and only 13 references.}\par
+\textbf{Response.} The routine-adoption recommendation has been replaced by a qualified one: mutation feedback is a practical diagnostic, with attention to fixtures, operator mix and cost. Table~\ref{tab:costs} reports per-command costs for each phase, including failures and timeouts; mutant tests have a median of 11.6\,s and a 95th percentile of 387\,s. The bibliography has grown from 13 to 27 references covering IaC defects and taxonomies, IaC testing and testing practice, OpenTofu semantics, policy adoption, equivalence, real-fault coupling and industrial mutation testing.\par
+\textbf{Locations.} Section~\ref{sec:costs} and Table~\ref{tab:costs} (p.~\pageref{tab:costs}); Section~\ref{sec:conclusion} (p.~\pageref{sec:conclusion}); References.
+
+\subsection*{Reviewer 3}
+\noindent\textbf{R3.1. Not many mutants were actually run, hence the study is assessing coverage rather than assertions.}\par
+\textbf{Response.} The evaluation now runs 1,288 scored mutants in 47 repositories and separates assertion kills (115) from runtime-error kills (76), so assertion sensitivity is reported directly as $D_A$. To test assertions specifically, a separate matched study ran the same 123 mutants against original and strengthened tests: assertion detections rose from 39 to 73, with no lost detections. Because the strengthening also added runs with new inputs, we describe it as test strengthening rather than an assertion-only effect, and we note that gains are concentrated in S3 public-access-block mutants and one transfer repository. We also disclose that the 23 original repositories retain earlier preparation changes, including some assertion repairs.\par
+\textbf{Locations.} Section~\ref{sec:metrics} (p.~\pageref{sec:metrics}); Section~\ref{sec:paired} (p.~\pageref{sec:paired}); Section~\ref{sec:pairedresults} and Table~\ref{tab:paired} (p.~\pageref{tab:paired}); Section~\ref{sec:adaptation} (p.~\pageref{sec:adaptation}).
+
+\medskip
+\noindent\textbf{R3.2. Innovating by extending the operators to OpenTofu specific and module level constructs.}\par
+\textbf{Response.} Thank you for this suggestion; we extended Oasis at both levels. \emph{Module level:} the new operator \texttt{MUT-CFG-001} mutates module input arguments and scalar variable defaults, and the no-op analysis traces each mutated default through module callers to decide whether the selected tests can observe it. Together with resource and local Boolean literals, this operator produces 1,147 of the 1,288 scored mutants. \emph{OpenTofu:} Oasis's scope resolution and no-op analysis are engine-aware and implement OpenTofu-specific file semantics, in which \texttt{.tofu} and \texttt{.tofutest.hcl} files replace their same-named Terraform counterparts, so mutants are analysed against the code OpenTofu actually runs. Four repositories in the evaluation ran natively on OpenTofu~1.12.3. Mutation operators for OpenTofu-only language constructs are the next step: we have designed an operator that inverts the \texttt{lifecycle} \texttt{enabled} meta-argument introduced in OpenTofu~1.11, which exists only in OpenTofu and is directly observable by \texttt{tofu test} assertions. The six-day revision window did not allow us to implement and evaluate it to the standard of the rest of the study, so we report it as future work rather than as a result.\par
+\textbf{Locations.} Section~\ref{sec:operators} and Table~\ref{tab:operators} (p.~\pageref{tab:operators}); Section~\ref{sec:equivalence} (p.~\pageref{sec:equivalence}); Section~\ref{sec:adaptation} (p.~\pageref{sec:adaptation}); Section~\ref{sec:conclusion} (p.~\pageref{sec:conclusion}).
+
+\medskip
+\noindent\textbf{R3.3. The execution cost of terraform test for each mutant is not discussed.}\par
+\textbf{Response.} Table~\ref{tab:costs} now separates initialization, baseline tests and validation, mutant validation and mutant tests. The 1,301 mutant-test runs (1,288 scored plus 13 timeouts) took 94,002\,s of command time, with a median of 11.6\,s and a 95th percentile of 387\,s, under 600\,s test and 900\,s initialization limits. We note that sums are command time rather than wall-clock time and that measurements are single runs with warm caches.\par
+\textbf{Locations.} Section~\ref{sec:adaptation} (p.~\pageref{sec:adaptation}); Section~\ref{sec:paired} (p.~\pageref{sec:paired}); Section~\ref{sec:costs} and Table~\ref{tab:costs} (p.~\pageref{tab:costs}).
+
+\medskip
+\noindent\textbf{R3.4. How the surviving mutants relate to the misconfiguration findings of previous empirical work.}\par
+\textbf{Response.} A new paragraph in Section~\ref{sec:costs} relates survivors to prior work. In the tfsec comparison, 88 survivors trigger a new policy rule: these are misconfigurations of the kind that Verdet et al.\ found to be unevenly addressed in Terraform projects, yet the projects' tests accept them. Conversely, 9 assertion kills trigger no rule, showing that project tests can encode contracts that generic policies do not. We do not project published prevalence figures onto our Boolean-dominated sample. The Discussion (Section~\ref{sec:implications}) turns this into practical guidance: prioritize survivors that touch security-relevant settings and add an assertion for each.\par
+\textbf{Locations.} Section~\ref{sec:related} (p.~\pageref{sec:related}); Section~\ref{sec:costs} and Table~\ref{tab:scanner} (p.~\pageref{tab:scanner}); Section~\ref{sec:implications} (p.~\pageref{sec:implications}).
+
+\medskip
+\noindent\textbf{R3.5. The conclusion is short and several references are arXiv preprints or incomplete.}\par
+\textbf{Response.} The conclusion now summarizes the main results, their limits and concrete future work (OpenTofu-specific operators, richer module-interface mutations, dynamic coverage and a real-fault study). Preprints have been replaced by their published versions where available (e.g.\ ProTI in IEEE TSE and EMIaC in PACMPL), and all references include complete bibliographic details and DOIs.\par
+\textbf{Locations.} Section~\ref{sec:conclusion} (p.~\pageref{sec:conclusion}); References.
+
+\subsection*{Editorial requirements}
+The manuscript has been proofread and edited for clarity and length, uses the ICMLDE 2026 Procedia Computer Science template, and is \pageref{lastmanuscriptpage} pages long. Figure~\ref{fig:pipeline} is original. A generative-AI declaration is included as required by the publisher.
+
+\medskip
+\noindent Sincerely,\\
+Tushar Teotia, Shiven Goomer, Yash Vardhan Rawat, Minakshi Tomer and Manoj Kumar Malik

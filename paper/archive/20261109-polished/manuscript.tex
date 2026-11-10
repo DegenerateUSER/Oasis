@@ -1,0 +1,210 @@
+\input{preamble.tex}
+\input{metrics.tex}
+\begin{document}
+\begin{frontmatter}
+\dochead{International Conference on Machine Learning and Data Engineering}
+\title{Oasis: A Mutation Testing Framework for Evaluating the Semantic Quality of Infrastructure-as-Code Test Suites}
+\author[a]{Tushar Teotia}
+\author[a]{Shiven Goomer}
+\author[a]{Yash Vardhan Rawat}
+\author[a]{Minakshi Tomer\corref{cor 1}\fnref{fn 2}}
+\author[a]{Manoj Kumar Malik\fnref{fn 1}}
+\address[a]{Department of Information Technology, Maharaja Surajmal Institute of Technology, Janakpuri, New Delhi 110058, India}
+\cortext[cor 1]{Corresponding author. Email: tomer.minakshi@gmail.com}
+\fntext[fn 1]{Assistant Professor. Email: manojmalik@msit.in. ORCID: 0000-0001-9477-5592.}
+\fntext[fn 2]{Assistant Professor. ORCID: 0000-0001-5536-3675.}
+\begin{abstract}
+Passing native Infrastructure-as-Code tests does not establish sensitivity to configuration faults. Oasis integrates bounded HCL mutations with selected Terraform/OpenTofu test scopes, input/default binding checks, separate assertion and runtime outcomes, and source-restoration evidence. A technically screened convenience sample yields \ArchivedRepos{} completed repository attempts and \NScored{} scored cases across \ScoredRepos{} repositories: \AssertionKills{} assertion kills, \RuntimeKills{} runtime-error kills and \Survivors{} survivors. The assertion-kill fraction is \AssertionPct{}; combined rejection is \CombinedPct{}. Another \ExcludedCases{} generated cases are excluded. Known selected-context no-ops are filtered conservatively; general semantic equivalence remains unresolved. Boolean inversion supplies \BooleanShare{} of scored cases. A separate 123-case matched study increases assertion detections from 39 to 73 through assertion and input strengthening. These exploratory results concern test sensitivity under recorded fixtures, not representative fault prevalence or deployed-cloud security.
+\end{abstract}
+\begin{keyword}
+Infrastructure-as-Code \sep Terraform \sep OpenTofu \sep Mutation Testing \sep Test Oracles \sep Reproducibility
+\end{keyword}
+\end{frontmatter}
+
+
+
+\section{Introduction}\label{sec:introduction}
+Infrastructure-as-Code (IaC) places infrastructure decisions under version control, but a valid configuration can still express an undesirable access, encryption or capacity setting. Research on defect-related properties in Puppet~\cite{rahman}, security smells~\cite{seven} and policy adoption in Terraform~\cite{verdet} motivates configuration testing without establishing how sensitive a particular project's assertions are to changes in its intended configuration.
+
+Terraform and OpenTofu support native tests over plans and applies~\cite{terraformtests,tofutests}; provider mocks supply controlled values instead of remote operations~\cite{mocks}. A passing suite can therefore establish anything from configuration executability to a specific invariant. Mutation testing measures sensitivity by changing a program and observing its tests~\cite{jia,papadakis}. Applying this principle to a native IaC suite nevertheless requires distinguishing an effective configuration edit from a changed source literal that selected callers override. An already-failing baseline must also be separated from rejection caused by a mutation, and runtime rejection from an assertion that checks a requirement.
+
+Oasis addresses these attribution problems through a bounded native-suite protocol rather than a new mutation-testing principle. Its contributions are: (i) selected-scope mutation and conservative caller/default analysis with explicit baseline, validity, outcome and restoration gates; (ii) an auditable, version-separated evaluation that reports both usable results and execution attrition; and (iii) a fixed-edit test-strengthening comparison and a historical scanner comparison that examine different oracle signals. The technical contribution is the explicit integration and evidence model; operator count alone is not claimed as novelty. Section~\ref{sec:equivalence} explains the supported decisions and their limits.
+
+We address four questions: \textbf{RQ1}, which repository scopes produce usable outcomes and which are blocked? \textbf{RQ2}, how do the executed operator families and retained/added subsets behave? \textbf{RQ3}, can test strengthening change detections on identical frozen cases? \textbf{RQ4}, what costs are observed, and how do historical native outcomes relate to policy-scanner observations? The primary expansion, historical studies and matched strengthening experiment are reported separately.
+
+\section{Background and related work}\label{sec:related}
+IaC research relates source properties to defects~\cite{rahman}, identifies security smells~\cite{seven}, and analyzes input-handling and configuration bugs across Ansible, Puppet and Chef~\cite{drosos}. Verdet et al. study security-policy adoption in public Terraform projects~\cite{verdet}. These findings motivate bounded configuration fault models; neither cross-ecosystem taxonomies nor policy categories validate the prevalence or realism of our exact mutations. GLITCH detects static IaC smells~\cite{glitch,glitchdemo}, a complementary purpose to observing an existing suite's response to an edit.
+
+\input{capability-comparison.tex}
+
+ProTI generates and checks configurations for Pulumi TypeScript programs using mocks and pluggable oracles~\cite{proti}. EMIaC uses semantics-preserving transformations to test IaC engines~\cite{emiac}. Oasis instead changes configuration values and observes an existing native suite. The subjects, transformations and oracles therefore differ (Table~\ref{tab:capabilities}); this distinction supports a bounded integration contribution, not a claim that mutation testing or IaC testing is wholly unexplored.
+
+Mutation surveys discuss operator selection, execution cost and semantic equivalence~\cite{jia,papadakis,madeyski}. Application-code research investigates coupling between mutant and real-fault detection~\cite{just}, limitations of coverage as an effectiveness proxy~\cite{coverage}, industrial testing practice~\cite{practices,scale}, and practitioner adoption~\cite{sanchez}. Such work motivates the technique but supplies no universal adequate-score threshold for this corpus.
+
+\begin{table}[ht]
+\caption{Different experimental purposes preclude a common mutation-score ranking.}\label{tab:application}
+\small\begin{tabularx}{\linewidth}{@{}p{3.1 cm}X X@{}}\toprule
+Study & Evidence focus & Comparison limit\\\midrule
+Application mutation~\cite{just} & Mutant--real-fault relationship & No comparable real Terraform fault oracle here.\\
+Industrial mutation~\cite{practices,scale} & Testing practice and selective execution at scale & Different operators, sampling and filtering.\\
+Oasis & \NScored{} primary cases; separate 123 matched cases & Native mock/fixture sensitivity; clustered observations.\\\bottomrule
+\end{tabularx}\end{table}
+
+\section{Oasis design}\label{sec:design}
+\subsection{Execution pipeline and outcome gates}
+Oasis is implemented in Python. It identifies supported literal spans in tracked local HCL, records the file, byte offset, original and replacement values, and source hashes, and applies one edit at a time without reserializing surrounding configuration. A scope comprises a repository, module directory and selected test directory. Downloaded registry modules can execute as dependencies but lie outside the local-source mutation pool. The same edit exercised through two scopes is two mutant cases, not two independent real defects.
+
+The pipeline initializes dependencies, runs unmutated native tests and standalone validation, checks the candidate's effective input context, validates each mutation, invokes native tests, classifies the outcome and restores source bytes (Fig.~\ref{fig:pipeline}). A baseline failure is never a mutant kill. Timeouts, invalid candidates, unresolved contexts and known no-ops remain explicit exclusions. Each outcome is attached to the source hash, operator, selected scope and command receipt rather than only a pooled score. This preserves the distinction between an attempted edit, an eligible test case and an observed rejection.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[node distance=3 mm,font=\small,b/.style={draw,rounded corners=2 pt,align=center,minimum height=7 mm,text width=12.6 cm,fill=black!3},a/.style={-{Stealth},thick}]
+\node[b] (a) {Resolve selected test scope, local source closure, effective inputs and native engine};
+\node[b,below=of a] (b) {Initialize $\rightarrow$ unmutated tests $\rightarrow$ unmutated validation; retain blocked scopes};
+\node[b,below=of b] (c) {Generate literal edit $\rightarrow$ binding/no-op gate $\rightarrow$ candidate validation $\rightarrow$ native tests};
+\node[b,below=of c] (d) {Classify assertion/error/survival/exclusion $\rightarrow$ restore source $\rightarrow$ retain hash-verified evidence};
+\draw[a] (a)--(b);\draw[a] (b)--(c);\draw[a] (c)--(d);
+\end{tikzpicture}
+\caption{Native mutation pipeline. Static potential reachability is not dynamic coverage.}\label{fig:pipeline}
+\end{figure}
+
+\subsection{Frozen catalog and fault-model boundaries}\label{sec:operators}
+The primary study freezes framework \code{0.3.0-research.1}, catalog 3, 16 identifiers and 22 source-file hashes before native expansion. Twelve retained identifiers and four added identifiers are described in Table~\ref{tab:operators}. Identical offset/replacement/deletion edits are counted once per scope, with the earlier specialized operator retaining attribution. The added generic Boolean operator targets supported resource/local literals, module input arguments (M), and scalar variable defaults (V). This extends bounded module-input coverage, not arbitrary module-interface semantics.
+
+\begin{table}[ht]
+\caption{Frozen catalog 3. Transformations are bounded fault hypotheses, not a validated distribution of real bugs. R: resource, V: variable default, L: local, M: module argument.}\label{tab:operators}
+\small\begin{tabularx}{\linewidth}{@{}p{3.05 cm}X p{1.3 cm}@{}}\toprule
+Identifier(s) & Transformation & Surface\\\midrule
+MUT-SEC-001 & S3 private ACL to public-read & R\\
+MUT-SEC-002 & Supported storage encryption true to false & R\\
+MUT-SEC-003 & Restrictive literal CIDR to 0.0.0.0/0 & R\\
+MUT-SEC-004a--d & Disable one of four S3 public-access-block flags & R\\
+MUT-RES-001 & Supported instance-size literal to a larger class & R,V\\
+MUT-RES-002 & Supported count/desired/minimum of at least two to one & R,V\\
+MUT-RES-003 & Positive replica literal to zero & R,V\\
+MUT-TAG-001 & Environment production to development & R,V,L\\
+MUT-TAG-002 & Delete a literal team/owner/cost\_center tag & R,L\\\midrule
+MUT-CFG-001 (added) & Boolean literal inversion, including supported caller/default sites & R,V,L,M\\
+MUT-RES-004 (added) & Curated positive capacity/count literal to zero & R,V\\
+MUT-SEC-005 (added) & Scoped EC2 IMDS tokens required to optional & R\\
+MUT-SEC-006 (added) & Scoped EFS/Redshift encryption true to false & R\\\bottomrule
+\end{tabularx}\end{table}
+
+Table~\ref{tab:faultmodel} separates the documented meaning of an edit, its motivating fault category and the claim that can be made from it. Access/encryption transformations relate conceptually to security-policy categories~\cite{verdet}; input perturbations relate to broader IaC configuration-fault research~\cite{drosos}. These are design motivations, not a validated distribution of real Terraform defects. Generic Boolean inversion is not automatically a security fault, and metadata edits concern project-specific contracts. Literal matching, resource restrictions, unsupported expression/object forms, remote dependencies and shared module structure constrain the model. Native OpenTofu execution is supported, but no OpenTofu-specific semantic rewrite family is evaluated.
+\input{fault-model-map.tex}
+
+\subsection{Equivalence and selected-context binding}\label{sec:equivalence}
+Survival does not establish semantic equivalence. The frozen catalog~3 resolver conservatively analyses caller/default binding within the selected local test closure. Its purpose is to avoid attributing a source-level default edit to a test context that supplies an independent value, while retaining supported routes where the default can matter.
+\input{binding-procedure.tex}
+
+\section{Empirical method}\label{sec:method}
+\subsection{Selection, cohorts and deadline cutoff}\label{sec:selection}
+The primary plan contains 95 distinct canonical upstream identities: 37 earlier additions, 35 technically applicable reserves from 40 completed static screens, and 23 original sources retained in their historically adapted form. Discovery and manual inspection favor native tests, mock-compatible execution and local configurations with potential frozen-operator sites. Static screening stops at a first unshadowed potential site and records a lower bound; it neither predicts the final mutant count nor substitutes for native baseline gates. Admission does not use a kill-rate threshold; earlier campaign outcomes are nevertheless visible. This convenience sample includes reusable modules, platforms, examples and deliberately vulnerable fixtures; it is not representative of Terraform users.
+
+A time-based cutoff closed admission before the final LangChain GCP and n8n outcomes were known. Only those already active repositories were permitted to finish; pending preparation/environment retries and unstarted work were not continued. Earlier outcomes and runtimes were visible, and scheduling favoured smaller observed workloads. This is disclosed selection and attrition, not random sampling, a blind holdout or outcome-independent preregistration. The reporting snapshot of 9 November 2026 contains \ArchivedRepos{} completed archives, \PreparationFailedRepos{} failed preparations with retries cancelled, one in-progress repository excluded from results, and \UnrunRepos{} unstarted repositories. The original plan and all dispositions are retained.
+
+\subsection{Source policy, engines and execution}\label{sec:adaptation}
+The catalog~3 expansion introduced no new adaptations to upstream assertions, mocks or test values. The original 23-source admission cohort, however, used historically adapted sources and is not a pristine-upstream cohort. Earlier preparation included synthetic inputs/mocks, dependency/source repairs, some assertion-expression repairs and removal of assertions whose complete condition was a constant true or false. A retained recipe is not proof that every conditional repair was applied. Table~\ref{tab:adaptation} separates the recorded phase policy from historical change accounting; the supplement distinguishes manifest-verified final bytes, recipe-only evidence and missing applied ledgers. Complete per-category change totals are unknown, not zero.
+\input{adaptation-summary.tex}
+
+Primary native execution used Terraform 1.16.7 or OpenTofu 1.12.3, two execution lanes, serialized initialization, a 900-second initialization limit and 600-second test/validation limits. Every eligible mutant in a baseline-cleared selected scope was attempted without a mutant-count cap. Source restoration was checked after scopes. Immutable, SHA-verified provider snapshots isolated running commands from concurrent package-cache writes. Native evaluation was offline except for local provider IPC; downloads occurred during initialization. The recorded protocol used OS write/private-file restrictions, no cloud credentials and no live cloud provisioning. Setup failures, native test failures, unresolved contexts and timeouts were retained rather than repaired by weakening assertions.
+
+Interrupted attempts were retained outside active counts. Scope reuse required matching selected commands, source revisions/file hashes, frozen code hashes and manifest/artifact verification. An auxiliary GCP baseline timing probe ran no mutants and was excluded from primary cases, scope completions and command-cost summaries. Operational recovery details are retained in the evidence records rather than treated as additional experimental observations.
+
+\subsection{Metrics and denominators}\label{sec:metrics}
+Let $A$ denote assertion kills, $E$ runtime-error kills and $S$ survivors among valid, baseline-cleared scored cases:
+\begin{equation}
+N=A+E+S,\qquad D_A=A/N,\qquad MS=(A+E)/N.\label{eq:score}
+\end{equation}
+$D_A$ measures observed assertion sensitivity; $MS$ additionally includes runtime rejection. Timeout is not credited as either kind of kill. Invalid, no-op, unresolved, timeout and execution-error mutant records are separately excluded. Baseline failures and target-free module rows are scope dispositions, not generated mutant cases. Repositories with $N=0$ receive n.a., not a zero score. Pooled case fractions, repository-level summaries and all-selected-baseline coverage answer different questions. A finished scored repository can still contain blocked scopes.
+
+The retained 12 and added 4 subsets use the same catalog 3 engine, inputs, resolver and dependency context. This is a within-version operator partition, not a controlled catalog 2 rerun. Historical cases, the matched strengthening pool and the primary expansion never share one mutation denominator. We report canonical identity unions only as provenance, not as a combined scored sample.
+
+\subsection{Separate historical and matched studies}\label{sec:paired}
+The original catalog~2 execution-adapted study covered 23 repositories and 336 scope dispositions: 306 passed baselines, 27 failed and 3 lacked dependencies. It generated 299 cases, with 276 scored (47 assertion kills, 2 runtime kills and 227 survivors), 21 unresolved, 1 invalid and 1 proven context no-op. A prior 37-repository catalog~2 expansion contributed 283 scored cases in 13 repositories; exact-environment recovery added Worldcoin's 3 scored survivors. These historical sets account for 29 scored identities, with their original manifests, engine versions and preparation policies; their mutation percentages are not pooled with catalog~3.
+
+A separate experiment froze 123 matched cases across 40 modules in 8 repositories. Both arms used exactly the same edits. Source-informed strengthening added 63 assertions to existing runs and 37 positive-control runs while preserving original runs, mocks, overrides and source. Because added runs expanded the exercised input contexts, the treatment is test strengthening, not an isolated assertion-only intervention. All 40 strengthened baseline/control gates passed. The development subset contained 95 cases and the transfer subset 28 cases from 2 repositories. Proposals were sealed before transfer execution, but prior pilot exposure and investigator-authored treatment preclude a pristine blind-holdout claim. All 80 arm jobs finished, yielding 246 executions and reproducing the original labels. Preservation checks for this revision verified bytes and paired outcomes, not fresh execution of those jobs.
+
+\subsection{Policy comparison and timing protocol}\label{sec:protocol}
+The policy comparison uses the historical original 23 catalog 2 snapshots, not the new primary cohort. tfsec 1.28.14~\cite{tfsec} scans copied, hash-verified sources without module downloads. Unmutated/mutant module comparisons associate newly reported rule identifiers with findings overlapping the mutation line. Existing baseline findings receive no detection credit. Location association is incomplete semantic evidence and is not vulnerability ground truth; scanner results never become assertion kills.
+
+Primary command receipts separate initialization, baseline tests and validation, and the validation and test command for each mutant. We report elapsed seconds, medians and empirical nearest-rank 95th percentiles from recorded commands, including failures and timeouts. Summed commands overlap across lanes and omit some preparation, queue wait, snapshot and framework overhead; they are not wall time. Historical command costs retain their own cohort/version. Repeated-run variance, deployment cost savings and engine performance differences are not measured.
+
+\section{Results}\label{sec:results}
+\subsection{RQ1: completion, coverage and exclusions}\label{sec:completion}
+Table~\ref{tab:overview} gives the primary disposition ledger. \CompletedScopes{} archived scope attempts comprise \PassingBaselines{} passing and \BlockedBaselines{} blocked/unavailable baselines. \ScoredRepos{} completed repositories contribute scored mutants: \FullCoverageRepos{} pass every selected baseline; \PartialCoverageRepos{} contribute scored cases from some scopes while others are blocked. Another \UnscoredRepos{} completed repository attempts have no scored mutants. A repository count alone therefore overstates complete execution coverage if these categories are collapsed.
+
+\input{primary-overview.tex}
+\input{primary-cohorts.tex}
+
+There are \GeneratedCases{} generated mutant-case records: \NScored{} scored and \ExcludedCases{} excluded. Exclusions comprise \NoopCases{} known context no-ops, \UnresolvedCases{} unresolved contexts, \TimeoutCases{} timeouts and \OtherExcluded{} other invalid/execution-error records. Baseline-blocked scopes can have unknown potential mutant counts; the excluded-case total is not a census of every counterfactual mutation in unexecuted scopes. The repository/scope/case CSVs retain every admitted identity and unavailable outcome.
+
+LangChain illustrates the distinction between feasibility and assertion sensitivity. Its AWS scope completed 133 eligible native attempts, including 13 timeouts, after 39 shadowed candidates were excluded. Azure initialization encountered HTTP~504 while fetching provider authentication checksums and did not reach baseline testing; its retry was cancelled under the cutoff. Completed AWS/GCP records supplied 233 scored cases. The unfinished n8n repository contributed no primary outcomes at this snapshot. These observations describe the attempted environment, not Azure assertion weakness or a completed three-cloud success. Other blockers included missing source, provider availability/startup errors, offline external-program requirements and native source/test disagreements.
+
+\subsection{RQ2: operator and family outcomes}\label{sec:operatorresults}
+Primary outcomes are \AssertionKills{} assertion kills, \RuntimeKills{} runtime-error kills and \Survivors{} survivors, giving $D_A=$\AssertionPct{} and $MS=$\CombinedPct{}. The unweighted mean repository combined fraction is \MacroPct{} and its median is \MedianRepoPct{} over repositories with scored cases. These descriptive summaries do not turn small clustered samples into independent population observations.
+
+\input{primary-families.tex}
+\input{primary-subsets.tex}
+\input{primary-operators.tex}
+\FloatBarrier
+
+The generic Boolean operator contributes \BooleanScored{} cases (\BooleanShare{} of scored cases), so larger sample coverage mainly reflects configuration-literal sensitivity. The retained 12 subset contains \LegacyScored{} scored cases; the added 4 subset contains \NewScored{}. Their different fractions reflect different targeted faults and sites, not a causal effect of operator design or a version-to-version change in suite quality. Scored cases comprise \DistinctScoredEdits{} distinct repository-qualified edit identities; the additional cases re-exercise edits through different selected scopes. Neither number is a count of independent real defects. Security/resource families and zero-target identifiers remain separately visible.
+
+\input{selected-cases.tex}
+\input{worked-example.tex}
+
+A survivor shows only acceptance under recorded inputs and mocks. Missing or indirect oracles, inactive conditions, mock behavior, irrelevant contracts and semantic equivalence are possible explanations. If $e$ scored survivors were later proved equivalent, the assertion fraction would be $A/(N-e)$; no value of $e$ is inferred from survival or scanner silence. Neither unresolved outcomes nor unknown mutants in baseline-blocked scopes are imputed as detected or undetected.
+
+\subsection{RQ3: frozen test strengthening}\label{sec:pairedresults}
+\begin{table}[ht]
+\caption{Separate fixed 123-case comparison; every pair is scored.}\label{tab:paired}
+\small\begin{tabularx}{\linewidth}{@{}Xrrrr@{}}\toprule
+Subset & Cases & Original $A$ & Strengthened $A$ & New detections\\\midrule
+Development &95&34&56&22\\
+Transfer (two repositories)&28&5&17&12\\\midrule
+Total&123&39&73&34\\\bottomrule
+\end{tabularx}\end{table}
+
+Assertion detections rise from 39/123 (31.7\%) to 73/123 (59.3\%), a 27.6 percentage-point gain, with 34 new and no lost detections. Two runtime-error kills remain in each arm; survivors fall from 82 to 48. Gains concentrate in \code{platform-tools} (20), \code{serverless-architecture-patterns} (12) and \code{platform-design} (2). Thirty-two gains concern S3 public-access-block edits; two concern replica-to-zero edits. All 12 transfer gains occur in \code{serverless-architecture-patterns}; the second transfer repository contributes one already-killed case. The result demonstrates changed sensitivity to fixed edits under the combined assertion/input intervention, not dynamic coverage, general transfer to real bugs or an independence-based significance result.
+
+\subsection{RQ4: costs and historical scanner observations}\label{sec:costs}
+\input{primary-costs.tex}
+Table~\ref{tab:costs} includes native commands from archived primary attempts and excludes interrupted history and the separate probe. Cost skew and failed setup are part of feasibility. A warm-cache fast baseline is not a full mutation-run forecast: the number of effective sites, failing paths and timeouts also matters. Exhaustive execution on important modules can be expensive; this study does not establish a mandatory routine-adoption policy or validate a cost-reduction scheme.
+
+The following scanner observations use only the historical 276-case original 23 study. They are retained to answer the review request for a named scanner on corresponding snapshots, not extrapolated to catalog 3.
+\input{scanner-results.tex}
+For a concrete historical contrast, changing \code{block\_public\_acls} from true to false at \path{bootstrap/main.tf:247} in \code{aws-platform-starter} survived native tests while newly triggering \code{aws-s3-block-public-acls}. The same field edit at line~82 of \path{terraform/modules/aws-ml-artifact-store/main.tf} in \code{platform-design} was an assertion kill without a new site-associated rule. These catalog~2 records illustrate differing observations, not deployed-vulnerability ground truth; exact mutant identities and receipts are retained in the historical supplement.
+\FloatBarrier
+
+\section{Discussion and threats to validity}\label{sec:discussion}\label{sec:threats}
+\textbf{Construct validity.} Oasis measures sensitivity to a bounded literal fault model. General Boolean edits, source restrictions and operator overlap shape the denominator; a family name is not proof of a real vulnerability. Runtime rejection differs from an assertion oracle. Selected-context binding removes some no-ops but does not solve semantic equivalence or measure dynamic resource/attribute coverage. No real Terraform fault corpus validates predictive accuracy. Policy findings, survivors and deployed-cloud vulnerabilities are distinct observations.
+
+\textbf{Internal validity.} Fixtures, mock outputs, historical source and assertion repairs, aliases, dependency re-resolution and timeouts affect outcomes. Some historical assertions were repaired or removed; missing applied ledgers prevent exhaustive category counts or a claim that every repair preserved the upstream oracle. No further assertion/mocking/value adaptations were recorded in catalog~3, but this does not make the inherited sources pristine. A passing mock baseline cannot certify a live deployment. Native early failure can skip later runs. Hash checks support restoration and evidence identity, not freedom from provider/engine defects.
+
+\textbf{Selection and statistical validity.} Public mock-compatible projects, shared providers/modules, vulnerable fixtures, short-workload ordering and the visible-results deadline cutoff limit generalization. Unrun and preparation-failed repositories remain in the selection ledger. Cases repeat edits across scopes and cluster by repository/family; pooled fractions and repository summaries are descriptive. A narrow binomial interval would not address nonrandom selection. The matched experiment has development exposure, a small non-blind transfer set and investigator-authored treatment; it cannot demonstrate universal assertion improvement.
+
+\textbf{Comparison and performance validity.} Catalog 3 adds sites/operators and changes conservative binding relative to historical runs. The retained 12 view is a within-catalog 3 subset, not a fair historical-version benchmark. Static scanner location matching can miss indirect findings or associate unrelated checks; parser failures and unequal native/scanner input contexts prevent precision/recall claims. Timings are single observations with warm caches, concurrency and excluded overhead. The auxiliary third-lane baseline is not mixed into primary costs. No estimate is presented as repeatable cross-engine performance.
+
+\section{Reproducibility and future work}\label{sec:repro}
+The source repository is \url{https://github.com/DegenerateUSER/Oasis}. Primary execution froze tool~0.3.0-research.1/catalog~3 with 22 source hashes supplied in the evidence package. Retained records include exact source revisions, operator/site identities, selected commands, provider locks, CSV exports, diagnostics, native timings, restoration checks and SHA-256 archive/member inventories. The primary archive audit verified \VerifiedSourceFiles{} source files and \VerifiedArchiveMembers{} members. The 95-entry plan and all deadline dispositions are supplied. Identity deduplication gives \UnionScoredRepos{} scored identities across historical/current versions, but this union is not a shared mutation denominator.
+
+Historical execution revision \path{d535bee1ef9bb1f62c9c258dd67ead715ba826b3} and matched-harness revision \path{7124220311bf35dcf77b6a3438fdb8cb029b59a2} identify local research revisions, not a claimed new public release or DOI. The frozen 123-case CSV hash and original receipts are retained. Framework validation records report 242 passed checks and 4 skipped opt-in provider checks, plus native module/default/capacity canaries excluded from research; these records were not recreated by compiling this paper. The editable paper/evidence package contains processed records, not a self-contained native reproduction environment. Complete native archives remain on local/external storage and require a separate reviewer-access arrangement. Credentials and provider binaries are not included.
+
+Future work should evaluate engine-specific constructs, broader interfaces, expression/object mutations, dynamic effective coverage, manually assessed survivor causes, independent cohorts and real-fault coupling. Additional scanners and repeated cost measurements require separate controlled experiments. They are not implied by completing this deadline-limited study.
+
+\section{Conclusion}\label{sec:conclusion}
+The primary frozen-catalog 3 study archives \ArchivedRepos{} repository attempts; \ScoredRepos{} yield \NScored{} scored cases with \AssertionKills{} assertion kills, \RuntimeKills{} runtime-error kills and \Survivors{} survivors. Full selected-baseline coverage and partial coverage remain separate, as do \ExcludedCases{} excluded mutant records, blocked scopes and unrun repositories. Generic Boolean mutations dominate the pool, constraining security-specific conclusions. A separate matched 123-case study increases assertion detections from 39 to 73 without lost detections. These results support mutation feedback as a diagnostic aid for selected native IaC oracles, with explicit attention to fixtures, fault models, attrition and cost. They establish neither representative security prevalence nor a universal adequacy threshold.
+
+\section*{Declaration of AI assistance}
+OpenAI Codex and Hermes Agent (Nous Research) were used for implementation assistance, analysis support, manuscript drafting and LaTeX preparation. AI-generated outputs do not independently validate the experimental results. Responsibility for the research record, interpretation and final text rests with the authors.
+
+\section*{Acknowledgements}
+The authors acknowledge the Department of Information Technology, Maharaja Surajmal Institute of Technology, Janakpuri, New Delhi.
+\input{references.tex}
+\label{lastmanuscriptpage}
+\ifdefined\IncludeResponses
+\clearpage
+\input{reviewer-response.tex}
+\fi
+\end{document}

@@ -1,0 +1,27 @@
+[
+  {
+    "path": "frozen-code/bindings.py",
+    "sha256": "ba9e402139093dc3f338314b18c192173460d9223f5e64f04fe2af7a88b5e7b2",
+    "matches_catalog3_freeze": true
+  },
+  {
+    "path": "frozen-code/scope.py",
+    "sha256": "5d178cd7d5cf46db41fc5349951fe0aa05c3935a1acde7a61999f24a287c6d3d",
+    "matches_catalog3_freeze": true
+  },
+  {
+    "path": "frozen-code/runner.py",
+    "sha256": "86f49f8d9246e32ce183ce59848e4ff0f5298e37d1ea3eb6befaecdef60d643b",
+    "matches_catalog3_freeze": true
+  },
+  {
+    "path": "frozen-code/noop.py",
+    "sha256": "16557a4cdb9a617ef361f202a1c60f3e1afebfa79e01995f55b25665dbffb102",
+    "matches_catalog3_freeze": true
+  },
+  {
+    "path": "frozen-code/mutators.py",
+    "sha256": "3c5a639596c0f8b7b4ecfe3e833b21ee04f36127566aac5c8c6404b070de2dab",
+    "matches_catalog3_freeze": true
+  }
+]

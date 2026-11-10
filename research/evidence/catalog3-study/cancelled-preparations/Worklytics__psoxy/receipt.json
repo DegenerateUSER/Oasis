@@ -1,0 +1,13 @@
+{
+  "repository": "Worklytics/psoxy",
+  "epoch": 1794214340.181831,
+  "status": "cancelled_preparation_preserved",
+  "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/reports/cancelled-preparations/Worklytics__psoxy/prepared-source.tar.gz",
+  "sha256": "a402a2a34ed6786e6792ddf10991366d5564b00d8880bb2e1d33fe4f91ece8a6",
+  "regular_files_verified": 3822,
+  "declared_links_preserved_as_metadata": 44,
+  "native_scored_results": 0,
+  "retry_cancelled_by_user": true,
+  "original_local_sources_preserved": true,
+  "policy": "No links followed; absolute/relative link text retained in inventory. Not a scored research completion."
+}

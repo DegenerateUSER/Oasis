@@ -1,0 +1,106 @@
+{
+  "epoch": 1794214746.199949,
+  "status": "interim_pending_final_authorized_repositories",
+  "submission_ready": false,
+  "frozen_tool_version": "0.3.0-research.1",
+  "catalog_version": "3",
+  "counts": {
+    "DatasetStatus": "INTERIM: final authorized runs remain in progress; not submission-ready",
+    "PlannedRepos": 95,
+    "ArchivedRepos": 62,
+    "ScoredRepos": 47,
+    "FullCoverageRepos": 39,
+    "PartialCoverageRepos": 8,
+    "UnscoredRepos": 15,
+    "TriedRepos": 66,
+    "UnrunRepos": 29,
+    "PreparationFailedRepos": 3,
+    "CompletedScopes": 192,
+    "PassingBaselines": 130,
+    "BlockedBaselines": 62,
+    "GeneratedCases": 1533,
+    "NScored": 1288,
+    "AssertionKills": 115,
+    "RuntimeKills": 76,
+    "Survivors": 1097,
+    "ExcludedCases": 245,
+    "NoopCases": 193,
+    "UnresolvedCases": 39,
+    "TimeoutCases": 13,
+    "OtherExcluded": 0,
+    "AssertionPct": "8.9\\%",
+    "CombinedPct": "14.8\\%",
+    "UnionScoredRepos": 69,
+    "DistinctScoredEdits": 1049,
+    "LegacyScored": 77,
+    "NewScored": 1211,
+    "BooleanScored": 1147,
+    "BooleanShare": "89.1\\%",
+    "VerifiedSourceFiles": 8186,
+    "VerifiedArchiveMembers": 30828,
+    "MacroPct": "33.5\\%",
+    "MedianRepoPct": "18.2\\%"
+  },
+  "mutant_status_counts": {
+    "survived": 1097,
+    "killed_error": 76,
+    "killed_assert": 115,
+    "no_op": 193,
+    "scope_unresolved": 39,
+    "timeout": 13
+  },
+  "costs": {
+    "Initialization": {
+      "commands": 191,
+      "sum_seconds": 1641.0559079993982,
+      "median_seconds": 4.569224332924932,
+      "p95_seconds": 24.966440207790583
+    },
+    "Unmutated test": {
+      "commands": 165,
+      "sum_seconds": 3102.235010461416,
+      "median_seconds": 13.206692166859284,
+      "p95_seconds": 35.11021799989976
+    },
+    "Unmutated validation": {
+      "commands": 131,
+      "sum_seconds": 571.0659758751281,
+      "median_seconds": 3.056594291003421,
+      "p95_seconds": 14.165764375124127
+    },
+    "Mutant validation": {
+      "commands": 1301,
+      "sum_seconds": 8426.90424044733,
+      "median_seconds": 5.571094000013545,
+      "p95_seconds": 14.16632525017485
+    },
+    "Mutant test": {
+      "commands": 1301,
+      "sum_seconds": 94002.456456315,
+      "median_seconds": 11.591298749903217,
+      "p95_seconds": 386.8770372499712
+    }
+  },
+  "integrity_audit": {
+    "epoch": 1794214745.405321,
+    "audit_version": "archive-integrity-audit-v1",
+    "status": "interim_archived_subset_verified",
+    "repositories_verified": 62,
+    "scored_repositories": 47,
+    "scored_mutants_verified": 1288,
+    "source_files_verified": 8186,
+    "members_verified": 30828,
+    "scope_attempts_verified": 192,
+    "unique_mutant_cases_within_repository_scope": 1533,
+    "policy": "Fresh archive SHA256 plus streamed member/source/manifest/raw-case checks. Incomplete repos excluded; interrupted attempts preserved but uncounted. Final campaign audit remains pending."
+  },
+  "version_policy": "Primary catalog3, historical catalog2 and matched123 remain separate. Union repository identity count is not a pooled mutation denominator.",
+  "source_export_policy": "Native CSV content retained; campaign-local absolute paths replaced with[campaign-root] in publication exports; original bytes preserved in SHA-verified external archives.",
+  "cutoff_policy": "Time-based user cutoff set before final LangChainGCP/n8n outcomes; original95plan preserved, pending repairs and other repositories not continued.",
+  "cancelled_retry_reports": [
+    "AzureproviderHTTP504",
+    "CircleCI-Public/server-terraform",
+    "Worklytics/psoxy",
+    "stardog-oss/stardog-terraform-starters"
+  ]
+}

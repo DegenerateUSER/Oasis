@@ -1,0 +1,2063 @@
+{
+  "summary": {
+    "attempted_pairs": 123,
+    "both_scored": 123,
+    "original_assertion_kills": 39,
+    "strengthened_assertion_kills": 73,
+    "new_assertion_detections": 34,
+    "lost_assertion_detections": 0,
+    "transitions": {
+      "survived -> killed_assert": 34,
+      "survived -> survived": 48,
+      "killed_error -> killed_error": 2,
+      "killed_assert -> killed_assert": 39
+    }
+  },
+  "repositories": [
+    {
+      "repository": "aws-platform-starter",
+      "split": "development",
+      "attempted_pairs": 21,
+      "both_scored": 21,
+      "original_assertion_kills": 5,
+      "strengthened_assertion_kills": 5,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 16,
+        "killed_assert -> killed_assert": 5
+      }
+    },
+    {
+      "repository": "aws-terraform-infrastructure",
+      "split": "development",
+      "attempted_pairs": 9,
+      "both_scored": 9,
+      "original_assertion_kills": 4,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 5,
+        "killed_assert -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "cloud-native-deployment-platform",
+      "split": "holdout",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 1,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "split": "development",
+      "attempted_pairs": 30,
+      "both_scored": 30,
+      "original_assertion_kills": 12,
+      "strengthened_assertion_kills": 14,
+      "new_assertion_detections": 2,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 15,
+        "killed_error -> killed_error": 1,
+        "killed_assert -> killed_assert": 12,
+        "survived -> killed_assert": 2
+      }
+    },
+    {
+      "repository": "platform-tools",
+      "split": "development",
+      "attempted_pairs": 29,
+      "both_scored": 29,
+      "original_assertion_kills": 9,
+      "strengthened_assertion_kills": 29,
+      "new_assertion_detections": 20,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 20,
+        "killed_assert -> killed_assert": 9
+      }
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "split": "holdout",
+      "attempted_pairs": 27,
+      "both_scored": 27,
+      "original_assertion_kills": 4,
+      "strengthened_assertion_kills": 16,
+      "new_assertion_detections": 12,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 12,
+        "survived -> survived": 11,
+        "killed_assert -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "terraform-aws-sonarqube",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "tofu-modules",
+      "split": "development",
+      "attempted_pairs": 5,
+      "both_scored": 5,
+      "original_assertion_kills": 4,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 4,
+        "killed_error -> killed_error": 1
+      }
+    }
+  ],
+  "operators": [
+    {
+      "operator_id": "MUT-RES-001",
+      "split": "development",
+      "attempted_pairs": 6,
+      "both_scored": 6,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 6
+      }
+    },
+    {
+      "operator_id": "MUT-RES-001",
+      "split": "holdout",
+      "attempted_pairs": 0,
+      "both_scored": 0,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {}
+    },
+    {
+      "operator_id": "MUT-RES-002",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 1,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 3,
+        "killed_assert -> killed_assert": 1
+      }
+    },
+    {
+      "operator_id": "MUT-RES-002",
+      "split": "holdout",
+      "attempted_pairs": 3,
+      "both_scored": 3,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 3
+      }
+    },
+    {
+      "operator_id": "MUT-RES-003",
+      "split": "development",
+      "attempted_pairs": 10,
+      "both_scored": 10,
+      "original_assertion_kills": 2,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 2,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_error -> killed_error": 2,
+        "killed_assert -> killed_assert": 2,
+        "survived -> survived": 4,
+        "survived -> killed_assert": 2
+      }
+    },
+    {
+      "operator_id": "MUT-RES-003",
+      "split": "holdout",
+      "attempted_pairs": 0,
+      "both_scored": 0,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {}
+    },
+    {
+      "operator_id": "MUT-SEC-001",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 1,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 1
+      }
+    },
+    {
+      "operator_id": "MUT-SEC-001",
+      "split": "holdout",
+      "attempted_pairs": 0,
+      "both_scored": 0,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {}
+    },
+    {
+      "operator_id": "MUT-SEC-002",
+      "split": "development",
+      "attempted_pairs": 2,
+      "both_scored": 2,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 1,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 1,
+        "survived -> survived": 1
+      }
+    },
+    {
+      "operator_id": "MUT-SEC-002",
+      "split": "holdout",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 1,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 1
+      }
+    },
+    {
+      "operator_id": "MUT-SEC-003",
+      "split": "development",
+      "attempted_pairs": 0,
+      "both_scored": 0,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {}
+    },
+    {
+      "operator_id": "MUT-SEC-003",
+      "split": "holdout",
+      "attempted_pairs": 0,
+      "both_scored": 0,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {}
+    },
+    {
+      "operator_id": "MUT-SEC-004a",
+      "split": "development",
+      "attempted_pairs": 18,
+      "both_scored": 18,
+      "original_assertion_kills": 8,
+      "strengthened_assertion_kills": 13,
+      "new_assertion_detections": 5,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 8,
+        "survived -> killed_assert": 5,
+        "survived -> survived": 5
+      }
+    },
+    {
+      "operator_id": "MUT-SEC-004a",
+      "split": "holdout",
+      "attempted_pairs": 6,
+      "both_scored": 6,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 4,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 4,
+        "survived -> survived": 2
+      }
+    },
+    {
+      "operator_id": "MUT-SEC-004b",
+      "split": "development",
+      "attempted_pairs": 18,
+      "both_scored": 18,
+      "original_assertion_kills": 8,
+      "strengthened_assertion_kills": 13,
+      "new_assertion_detections": 5,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 8,
+        "survived -> killed_assert": 5,
+        "survived -> survived": 5
+      }
+    },
+    {
+      "operator_id": "MUT-SEC-004b",
+      "split": "holdout",
+      "attempted_pairs": 6,
+      "both_scored": 6,
+      "original_assertion_kills": 4,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 4,
+        "survived -> survived": 2
+      }
+    },
+    {
+      "operator_id": "MUT-SEC-004c",
+      "split": "development",
+      "attempted_pairs": 18,
+      "both_scored": 18,
+      "original_assertion_kills": 6,
+      "strengthened_assertion_kills": 11,
+      "new_assertion_detections": 5,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 7,
+        "killed_assert -> killed_assert": 6,
+        "survived -> killed_assert": 5
+      }
+    },
+    {
+      "operator_id": "MUT-SEC-004c",
+      "split": "holdout",
+      "attempted_pairs": 6,
+      "both_scored": 6,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 4,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 4,
+        "survived -> survived": 2
+      }
+    },
+    {
+      "operator_id": "MUT-SEC-004d",
+      "split": "development",
+      "attempted_pairs": 18,
+      "both_scored": 18,
+      "original_assertion_kills": 7,
+      "strengthened_assertion_kills": 12,
+      "new_assertion_detections": 5,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 5,
+        "survived -> survived": 6,
+        "killed_assert -> killed_assert": 7
+      }
+    },
+    {
+      "operator_id": "MUT-SEC-004d",
+      "split": "holdout",
+      "attempted_pairs": 6,
+      "both_scored": 6,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 4,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 4,
+        "survived -> survived": 2
+      }
+    },
+    {
+      "operator_id": "MUT-TAG-001",
+      "split": "development",
+      "attempted_pairs": 0,
+      "both_scored": 0,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {}
+    },
+    {
+      "operator_id": "MUT-TAG-001",
+      "split": "holdout",
+      "attempted_pairs": 0,
+      "both_scored": 0,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {}
+    },
+    {
+      "operator_id": "MUT-TAG-002",
+      "split": "development",
+      "attempted_pairs": 0,
+      "both_scored": 0,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {}
+    },
+    {
+      "operator_id": "MUT-TAG-002",
+      "split": "holdout",
+      "attempted_pairs": 0,
+      "both_scored": 0,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {}
+    }
+  ],
+  "modules": [
+    {
+      "repository": "aws-platform-starter",
+      "module": "bootstrap",
+      "split": "development",
+      "attempted_pairs": 16,
+      "both_scored": 16,
+      "original_assertion_kills": 4,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 12,
+        "killed_assert -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "aws-platform-starter",
+      "module": "modules/eks",
+      "split": "development",
+      "attempted_pairs": 2,
+      "both_scored": 2,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 2
+      }
+    },
+    {
+      "repository": "aws-platform-starter",
+      "module": "modules/rds",
+      "split": "development",
+      "attempted_pairs": 3,
+      "both_scored": 3,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 1,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 1,
+        "survived -> survived": 2
+      }
+    },
+    {
+      "repository": "aws-terraform-infrastructure",
+      "module": "environments/dev",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 4
+      }
+    },
+    {
+      "repository": "aws-terraform-infrastructure",
+      "module": "modules/compute",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "aws-terraform-infrastructure",
+      "module": "modules/storage",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 4,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "cloud-native-deployment-platform",
+      "module": "infra/modules/rds",
+      "split": "holdout",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 1,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-config",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 4
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-eks-gpu-managed-nodegroup",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-eks-gpu-scheduling",
+      "split": "development",
+      "attempted_pairs": 2,
+      "both_scored": 2,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 2
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-eks-inference-gateway",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-ml-artifact-store",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 3,
+      "strengthened_assertion_kills": 3,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 3,
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/baremetal-cilium-lb",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/baremetal-rook-ceph",
+      "split": "development",
+      "attempted_pairs": 2,
+      "both_scored": 2,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_error -> killed_error": 1,
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/cloudtrail",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 2,
+      "strengthened_assertion_kills": 2,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 2,
+        "killed_assert -> killed_assert": 2
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/ecr",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 1,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/ecr-pull-through-cache",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/hpa-defaults",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 1,
+      "new_assertion_detections": 1,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/keda",
+      "split": "development",
+      "attempted_pairs": 2,
+      "both_scored": 2,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 2,
+      "new_assertion_detections": 1,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 1,
+        "survived -> killed_assert": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/s3-app",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 4,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/sqs",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/wpa",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 1,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 1
+      }
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/codebase-pipelines",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 4,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/ecs-cluster",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 4,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/environment-pipelines",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 4,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/postgres/database-copy-pipeline",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 4,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/postgres/database-dump",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 4,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/s3",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 4,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/statefile-backend",
+      "split": "development",
+      "attempted_pairs": 5,
+      "both_scored": 5,
+      "original_assertion_kills": 5,
+      "strengthened_assertion_kills": 5,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 5
+      }
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/composition/subsystem",
+      "split": "holdout",
+      "attempted_pairs": 8,
+      "both_scored": 8,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 8
+      }
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/bff_service",
+      "split": "holdout",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/control_service",
+      "split": "holdout",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/esg_service",
+      "split": "holdout",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/event_lake",
+      "split": "holdout",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 3,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 3,
+        "killed_assert -> killed_assert": 1
+      }
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/fault_monitor",
+      "split": "holdout",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 3,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 1,
+        "survived -> killed_assert": 3
+      }
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/frontend_edge",
+      "split": "holdout",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 3,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 3,
+        "killed_assert -> killed_assert": 1
+      }
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/micro_frontend",
+      "split": "holdout",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 1,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 3,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> killed_assert": 3,
+        "killed_assert -> killed_assert": 1
+      }
+    },
+    {
+      "repository": "terraform-aws-sonarqube",
+      "module": ".",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "survived -> survived": 1
+      }
+    },
+    {
+      "repository": "tofu-modules",
+      "module": "infrastructure/aws/backend",
+      "split": "development",
+      "attempted_pairs": 4,
+      "both_scored": 4,
+      "original_assertion_kills": 4,
+      "strengthened_assertion_kills": 4,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_assert -> killed_assert": 4
+      }
+    },
+    {
+      "repository": "tofu-modules",
+      "module": "infrastructure/commons/istio",
+      "split": "development",
+      "attempted_pairs": 1,
+      "both_scored": 1,
+      "original_assertion_kills": 0,
+      "strengthened_assertion_kills": 0,
+      "new_assertion_detections": 0,
+      "lost_assertion_detections": 0,
+      "transitions": {
+        "killed_error -> killed_error": 1
+      }
+    }
+  ],
+  "execution_costs": [
+    {
+      "repository": "aws-platform-starter",
+      "module": "bootstrap",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 161.42442107200623,
+      "init_seconds": 4.4582094580400735,
+      "baseline_seconds": 14.82880474999547,
+      "validation_seconds": 72.39744358276948,
+      "mutant_test_seconds": 61.33795550232753,
+      "native_commands": 34
+    },
+    {
+      "repository": "aws-platform-starter",
+      "module": "modules/eks",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 38.612226724624634,
+      "init_seconds": 4.476852583000436,
+      "baseline_seconds": 13.191897666081786,
+      "validation_seconds": 7.699433918111026,
+      "mutant_test_seconds": 6.317680499982089,
+      "native_commands": 6
+    },
+    {
+      "repository": "aws-platform-starter",
+      "module": "modules/rds",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 41.99699425697327,
+      "init_seconds": 3.2363782909233123,
+      "baseline_seconds": 7.98971562506631,
+      "validation_seconds": 14.244004624895751,
+      "mutant_test_seconds": 10.453363500768319,
+      "native_commands": 8
+    },
+    {
+      "repository": "aws-terraform-infrastructure",
+      "module": "environments/dev",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 48.72393226623535,
+      "init_seconds": 3.1579404999502003,
+      "baseline_seconds": 2.7349207918159664,
+      "validation_seconds": 16.237100665923208,
+      "mutant_test_seconds": 16.366871959064156,
+      "native_commands": 10
+    },
+    {
+      "repository": "aws-terraform-infrastructure",
+      "module": "modules/compute",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 20.378957986831665,
+      "init_seconds": 3.4670595000497997,
+      "baseline_seconds": 4.325463666114956,
+      "validation_seconds": 3.5773805000353605,
+      "mutant_test_seconds": 3.115240375045687,
+      "native_commands": 4
+    },
+    {
+      "repository": "aws-terraform-infrastructure",
+      "module": "modules/storage",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 51.3793089389801,
+      "init_seconds": 2.739343750057742,
+      "baseline_seconds": 8.439776457846165,
+      "validation_seconds": 19.215888333739713,
+      "mutant_test_seconds": 16.921251208987087,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-config",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 93.05985713005066,
+      "init_seconds": 4.829239584039897,
+      "baseline_seconds": 16.363862792029977,
+      "validation_seconds": 25.420776376267895,
+      "mutant_test_seconds": 19.403299459256232,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-eks-gpu-managed-nodegroup",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 44.872929096221924,
+      "init_seconds": 4.553456333000213,
+      "baseline_seconds": 3.4758057079743594,
+      "validation_seconds": 5.141765124863014,
+      "mutant_test_seconds": 5.555891416035593,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-eks-gpu-scheduling",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 31.584065198898315,
+      "init_seconds": 0.5003880001604557,
+      "baseline_seconds": 1.1113297089468688,
+      "validation_seconds": 1.199443917023018,
+      "mutant_test_seconds": 1.180708333151415,
+      "native_commands": 6
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-eks-inference-gateway",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 29.0478458404541,
+      "init_seconds": 0.33879449986852705,
+      "baseline_seconds": 0.7178896251134574,
+      "validation_seconds": 0.5613959999755025,
+      "mutant_test_seconds": 1.1237208750098944,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-ml-artifact-store",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 95.8299298286438,
+      "init_seconds": 5.924549082992598,
+      "baseline_seconds": 9.262798874871805,
+      "validation_seconds": 25.003144540125504,
+      "mutant_test_seconds": 23.494546124711633,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/baremetal-cilium-lb",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 23.69339609146118,
+      "init_seconds": 0.5849727080203593,
+      "baseline_seconds": 0.49973083287477493,
+      "validation_seconds": 0.47308637481182814,
+      "mutant_test_seconds": 0.41232641716487706,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/baremetal-rook-ceph",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 30.088787078857422,
+      "init_seconds": 0.41728920908644795,
+      "baseline_seconds": 0.5108179999515414,
+      "validation_seconds": 1.0655851250048727,
+      "mutant_test_seconds": 0.8636778763029724,
+      "native_commands": 6
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/cloudtrail",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 86.44529604911804,
+      "init_seconds": 3.8887285829987377,
+      "baseline_seconds": 9.670868250075728,
+      "validation_seconds": 24.827596792019904,
+      "mutant_test_seconds": 23.33904812624678,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/ecr",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 28.03097891807556,
+      "init_seconds": 3.6215772500727326,
+      "baseline_seconds": 3.2908692499622703,
+      "validation_seconds": 9.159149166895077,
+      "mutant_test_seconds": 5.668749707983807,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/ecr-pull-through-cache",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 29.63884997367859,
+      "init_seconds": 3.650154958013445,
+      "baseline_seconds": 3.57751024980098,
+      "validation_seconds": 6.951491957996041,
+      "mutant_test_seconds": 8.193510040873662,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/hpa-defaults",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 8.009521722793579,
+      "init_seconds": 0.33366620796732605,
+      "baseline_seconds": 0.630880624987185,
+      "validation_seconds": 0.5982431671582162,
+      "mutant_test_seconds": 0.44738441705703735,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/keda",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 23.031957626342773,
+      "init_seconds": 2.2822569170966744,
+      "baseline_seconds": 2.6261040838435292,
+      "validation_seconds": 3.939959540963173,
+      "mutant_test_seconds": 3.203287167008966,
+      "native_commands": 6
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/s3-app",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 106.34502220153809,
+      "init_seconds": 11.723257708828896,
+      "baseline_seconds": 10.232228958047926,
+      "validation_seconds": 44.191794166807085,
+      "mutant_test_seconds": 28.216615167912096,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/sqs",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 30.58799409866333,
+      "init_seconds": 5.478708125185221,
+      "baseline_seconds": 7.299365083221346,
+      "validation_seconds": 5.640135500114411,
+      "mutant_test_seconds": 4.502686457941309,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/wpa",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 5.139158010482788,
+      "init_seconds": 0.2387684998102486,
+      "baseline_seconds": 0.23857012507505715,
+      "validation_seconds": 0.28336674999445677,
+      "mutant_test_seconds": 0.23713837494142354,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/codebase-pipelines",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 165.46661019325256,
+      "init_seconds": 3.904806791106239,
+      "baseline_seconds": 25.401908540865406,
+      "validation_seconds": 25.38741245912388,
+      "mutant_test_seconds": 95.27332158386707,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/ecs-cluster",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 53.09216117858887,
+      "init_seconds": 5.668235958088189,
+      "baseline_seconds": 6.014020582893863,
+      "validation_seconds": 19.699375041062012,
+      "mutant_test_seconds": 17.829283874714747,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/environment-pipelines",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 95.31228113174438,
+      "init_seconds": 5.6132168339099735,
+      "baseline_seconds": 14.97917841700837,
+      "validation_seconds": 26.0725712091662,
+      "mutant_test_seconds": 38.76814041589387,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/postgres/database-copy-pipeline",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 53.3717577457428,
+      "init_seconds": 2.5908359168097377,
+      "baseline_seconds": 5.38317741593346,
+      "validation_seconds": 17.151855250122026,
+      "mutant_test_seconds": 21.496218333020806,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/postgres/database-dump",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 47.62452292442322,
+      "init_seconds": 2.412872833898291,
+      "baseline_seconds": 3.733371791895479,
+      "validation_seconds": 19.216477206908166,
+      "mutant_test_seconds": 18.281323791714385,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/s3",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 64.82979035377502,
+      "init_seconds": 3.2928165839985013,
+      "baseline_seconds": 7.935233625117689,
+      "validation_seconds": 22.85991537477821,
+      "mutant_test_seconds": 26.522726958151907,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/statefile-backend",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 56.05613708496094,
+      "init_seconds": 2.490570291876793,
+      "baseline_seconds": 4.659081999910995,
+      "validation_seconds": 25.371925584273413,
+      "mutant_test_seconds": 21.43057241709903,
+      "native_commands": 12
+    },
+    {
+      "repository": "terraform-aws-sonarqube",
+      "module": ".",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 17.191235065460205,
+      "init_seconds": 3.102478750050068,
+      "baseline_seconds": 3.5718412920832634,
+      "validation_seconds": 4.090071375016123,
+      "mutant_test_seconds": 4.34304775018245,
+      "native_commands": 4
+    },
+    {
+      "repository": "tofu-modules",
+      "module": "infrastructure/aws/backend",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 138.26507902145386,
+      "init_seconds": 3.5098864170722663,
+      "baseline_seconds": 31.40348579105921,
+      "validation_seconds": 17.141542290803045,
+      "mutant_test_seconds": 82.16475733369589,
+      "native_commands": 10
+    },
+    {
+      "repository": "tofu-modules",
+      "module": "infrastructure/commons/istio",
+      "split": "development",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 12.16618275642395,
+      "init_seconds": 0.23038991703651845,
+      "baseline_seconds": 4.945037291850895,
+      "validation_seconds": 0.37837966717779636,
+      "mutant_test_seconds": 1.0738318341318518,
+      "native_commands": 4
+    },
+    {
+      "repository": "aws-platform-starter",
+      "module": "bootstrap",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 161.4267110824585,
+      "init_seconds": 4.456719791982323,
+      "baseline_seconds": 14.91525337495841,
+      "validation_seconds": 70.91541974665597,
+      "mutant_test_seconds": 63.007895877351984,
+      "native_commands": 34
+    },
+    {
+      "repository": "aws-platform-starter",
+      "module": "modules/eks",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 38.61223292350769,
+      "init_seconds": 4.476657583145425,
+      "baseline_seconds": 13.227375333895907,
+      "validation_seconds": 7.555219582980499,
+      "mutant_test_seconds": 6.444175417069346,
+      "native_commands": 6
+    },
+    {
+      "repository": "aws-platform-starter",
+      "module": "modules/rds",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 42.03622508049011,
+      "init_seconds": 3.124868792016059,
+      "baseline_seconds": 8.00922429212369,
+      "validation_seconds": 14.183318333234638,
+      "mutant_test_seconds": 10.541150791104883,
+      "native_commands": 8
+    },
+    {
+      "repository": "aws-terraform-infrastructure",
+      "module": "environments/dev",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 48.67888522148132,
+      "init_seconds": 3.1553563750348985,
+      "baseline_seconds": 2.7353227911517024,
+      "validation_seconds": 16.229040290694684,
+      "mutant_test_seconds": 16.46777066704817,
+      "native_commands": 10
+    },
+    {
+      "repository": "aws-terraform-infrastructure",
+      "module": "modules/compute",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 20.37875485420227,
+      "init_seconds": 3.4624693330843,
+      "baseline_seconds": 4.352011125069112,
+      "validation_seconds": 3.5392620828934014,
+      "mutant_test_seconds": 3.1290153327863663,
+      "native_commands": 4
+    },
+    {
+      "repository": "aws-terraform-infrastructure",
+      "module": "modules/storage",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 51.37929129600525,
+      "init_seconds": 2.641399916028604,
+      "baseline_seconds": 8.459514874964952,
+      "validation_seconds": 19.146389457862824,
+      "mutant_test_seconds": 17.043091624975204,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-config",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 93.05985403060913,
+      "init_seconds": 4.826023374916986,
+      "baseline_seconds": 16.47881079209037,
+      "validation_seconds": 25.192899249261245,
+      "mutant_test_seconds": 19.695735123939812,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-eks-gpu-managed-nodegroup",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 44.872945070266724,
+      "init_seconds": 4.547445208067074,
+      "baseline_seconds": 3.492111749947071,
+      "validation_seconds": 5.113532250048593,
+      "mutant_test_seconds": 5.563806708902121,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-eks-gpu-scheduling",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 31.732298135757446,
+      "init_seconds": 0.4949309160001576,
+      "baseline_seconds": 1.1302852500230074,
+      "validation_seconds": 1.1685257079079747,
+      "mutant_test_seconds": 1.3010495828930289,
+      "native_commands": 6
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-eks-inference-gateway",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 29.148857831954956,
+      "init_seconds": 0.3315708329901099,
+      "baseline_seconds": 0.7655388750135899,
+      "validation_seconds": 0.6359364578966051,
+      "mutant_test_seconds": 1.2091365838423371,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/aws-ml-artifact-store",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 95.77095818519592,
+      "init_seconds": 5.922654667170718,
+      "baseline_seconds": 9.354239499894902,
+      "validation_seconds": 24.878467332804576,
+      "mutant_test_seconds": 23.662669374141842,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/baremetal-cilium-lb",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 23.73464608192444,
+      "init_seconds": 0.5805949999485165,
+      "baseline_seconds": 0.5092047089710832,
+      "validation_seconds": 0.47698129201307893,
+      "mutant_test_seconds": 0.4185219588689506,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/baremetal-rook-ceph",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 30.129961013793945,
+      "init_seconds": 0.41442158282734454,
+      "baseline_seconds": 0.5178182499948889,
+      "validation_seconds": 1.0224041240289807,
+      "mutant_test_seconds": 0.91660475009121,
+      "native_commands": 6
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/cloudtrail",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 86.41953182220459,
+      "init_seconds": 3.8859067920129746,
+      "baseline_seconds": 9.730785707943141,
+      "validation_seconds": 24.614288500742987,
+      "mutant_test_seconds": 23.706091708736494,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/ecr",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 28.030963897705078,
+      "init_seconds": 3.6167290408629924,
+      "baseline_seconds": 3.284745833138004,
+      "validation_seconds": 9.14708812488243,
+      "mutant_test_seconds": 5.69389958307147,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/ecr-pull-through-cache",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 29.63868808746338,
+      "init_seconds": 3.514025542186573,
+      "baseline_seconds": 3.5866349171847105,
+      "validation_seconds": 6.931941708084196,
+      "mutant_test_seconds": 7.988465208094567,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/hpa-defaults",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 8.024840831756592,
+      "init_seconds": 0.33000979106873274,
+      "baseline_seconds": 0.6505482909269631,
+      "validation_seconds": 0.5875638329889625,
+      "mutant_test_seconds": 0.5552626249846071,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/keda",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 23.031723976135254,
+      "init_seconds": 2.252149916952476,
+      "baseline_seconds": 2.6459132907912135,
+      "validation_seconds": 3.89739212510176,
+      "mutant_test_seconds": 3.2430831659585238,
+      "native_commands": 6
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/s3-app",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 106.34504985809326,
+      "init_seconds": 11.707006125012413,
+      "baseline_seconds": 10.233507124939933,
+      "validation_seconds": 44.089029708877206,
+      "mutant_test_seconds": 28.38384912512265,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/sqs",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 30.587997913360596,
+      "init_seconds": 5.475519125116989,
+      "baseline_seconds": 7.309124500025064,
+      "validation_seconds": 5.625293209217489,
+      "mutant_test_seconds": 4.52511562500149,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-design",
+      "module": "terraform/modules/wpa",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 5.223747968673706,
+      "init_seconds": 0.22674704203382134,
+      "baseline_seconds": 0.23666754201985896,
+      "validation_seconds": 0.2907473749946803,
+      "mutant_test_seconds": 0.22883404209278524,
+      "native_commands": 4
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/codebase-pipelines",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 163.21214628219604,
+      "init_seconds": 3.606262041023001,
+      "baseline_seconds": 25.784585874993354,
+      "validation_seconds": 24.285332875326276,
+      "mutant_test_seconds": 96.73261112417094,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/ecs-cluster",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 49.937219858169556,
+      "init_seconds": 4.56341337505728,
+      "baseline_seconds": 7.604970875196159,
+      "validation_seconds": 19.46518754120916,
+      "mutant_test_seconds": 15.467002501478419,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/environment-pipelines",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 97.12340021133423,
+      "init_seconds": 2.5976675001438707,
+      "baseline_seconds": 16.789834707975388,
+      "validation_seconds": 25.88617420825176,
+      "mutant_test_seconds": 41.00638562394306,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/postgres/database-copy-pipeline",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 55.76503086090088,
+      "init_seconds": 3.3793710828758776,
+      "baseline_seconds": 4.957099374849349,
+      "validation_seconds": 17.761126501020044,
+      "mutant_test_seconds": 23.649714291095734,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/postgres/database-dump",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 48.335095167160034,
+      "init_seconds": 3.140576499979943,
+      "baseline_seconds": 3.871578040998429,
+      "validation_seconds": 19.111655667889863,
+      "mutant_test_seconds": 18.41330979205668,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/s3",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 64.53464865684509,
+      "init_seconds": 3.2064159580040723,
+      "baseline_seconds": 8.011589917121455,
+      "validation_seconds": 22.598320540739223,
+      "mutant_test_seconds": 26.783638916676864,
+      "native_commands": 10
+    },
+    {
+      "repository": "platform-tools",
+      "module": "terraform/statefile-backend",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 56.26837921142578,
+      "init_seconds": 2.6763964579440653,
+      "baseline_seconds": 4.650973665993661,
+      "validation_seconds": 25.379673125455156,
+      "mutant_test_seconds": 21.423115374986082,
+      "native_commands": 12
+    },
+    {
+      "repository": "terraform-aws-sonarqube",
+      "module": ".",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 17.27474880218506,
+      "init_seconds": 2.9783006249926984,
+      "baseline_seconds": 4.024866749998182,
+      "validation_seconds": 3.7886421252042055,
+      "mutant_test_seconds": 4.66300354199484,
+      "native_commands": 4
+    },
+    {
+      "repository": "tofu-modules",
+      "module": "infrastructure/aws/backend",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 145.94019722938538,
+      "init_seconds": 3.5098849169444293,
+      "baseline_seconds": 32.44615316600539,
+      "validation_seconds": 18.727304415777326,
+      "mutant_test_seconds": 87.30236241687089,
+      "native_commands": 10
+    },
+    {
+      "repository": "tofu-modules",
+      "module": "infrastructure/commons/istio",
+      "split": "development",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 8.056684970855713,
+      "init_seconds": 0.268854791065678,
+      "baseline_seconds": 3.8003089169505984,
+      "validation_seconds": 0.2718534590676427,
+      "mutant_test_seconds": 0.6896914169192314,
+      "native_commands": 4
+    },
+    {
+      "repository": "cloud-native-deployment-platform",
+      "module": "infra/modules/rds",
+      "split": "holdout",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 28.57052206993103,
+      "init_seconds": 2.9902185001410544,
+      "baseline_seconds": 14.03702845890075,
+      "validation_seconds": 4.888717541936785,
+      "mutant_test_seconds": 5.025674249976873,
+      "native_commands": 4
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/composition/subsystem",
+      "split": "holdout",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 179.59832119941711,
+      "init_seconds": 4.61360100004822,
+      "baseline_seconds": 24.418460249900818,
+      "validation_seconds": 53.83347199810669,
+      "mutant_test_seconds": 84.59165700036101,
+      "native_commands": 18
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/bff_service",
+      "split": "holdout",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 21.9866201877594,
+      "init_seconds": 2.986423916881904,
+      "baseline_seconds": 4.423757083946839,
+      "validation_seconds": 5.0784109169617295,
+      "mutant_test_seconds": 3.9130375829990953,
+      "native_commands": 4
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/control_service",
+      "split": "holdout",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 17.19015908241272,
+      "init_seconds": 2.3173350000288337,
+      "baseline_seconds": 3.995460458798334,
+      "validation_seconds": 3.3678707499057055,
+      "mutant_test_seconds": 3.4758538340684026,
+      "native_commands": 4
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/esg_service",
+      "split": "holdout",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 22.549324989318848,
+      "init_seconds": 3.6695089999120682,
+      "baseline_seconds": 3.110935165779665,
+      "validation_seconds": 5.876757082995027,
+      "mutant_test_seconds": 5.891651458106935,
+      "native_commands": 4
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/event_lake",
+      "split": "holdout",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 45.7327401638031,
+      "init_seconds": 2.19989554095082,
+      "baseline_seconds": 3.7534582081716508,
+      "validation_seconds": 20.373538876185194,
+      "mutant_test_seconds": 17.046016374835745,
+      "native_commands": 10
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/fault_monitor",
+      "split": "holdout",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 47.14803719520569,
+      "init_seconds": 3.374978333013132,
+      "baseline_seconds": 3.2646616250276566,
+      "validation_seconds": 19.732149166986346,
+      "mutant_test_seconds": 16.848178916610777,
+      "native_commands": 10
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/frontend_edge",
+      "split": "holdout",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 49.900402784347534,
+      "init_seconds": 5.7783463331870735,
+      "baseline_seconds": 3.875548667041585,
+      "validation_seconds": 20.283733000047505,
+      "mutant_test_seconds": 17.199920708313584,
+      "native_commands": 10
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/micro_frontend",
+      "split": "holdout",
+      "arm": "original",
+      "status": "completed",
+      "elapsed_seconds": 51.53540515899658,
+      "init_seconds": 7.329357292037457,
+      "baseline_seconds": 4.933836875017732,
+      "validation_seconds": 18.929450957803056,
+      "mutant_test_seconds": 15.286296875914559,
+      "native_commands": 10
+    },
+    {
+      "repository": "cloud-native-deployment-platform",
+      "module": "infra/modules/rds",
+      "split": "holdout",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 28.57048487663269,
+      "init_seconds": 3.0177850001491606,
+      "baseline_seconds": 14.045230667106807,
+      "validation_seconds": 4.868042250163853,
+      "mutant_test_seconds": 5.060199083061889,
+      "native_commands": 4
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/composition/subsystem",
+      "split": "holdout",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 186.46327137947083,
+      "init_seconds": 4.393145750043914,
+      "baseline_seconds": 25.66792408307083,
+      "validation_seconds": 40.92622379306704,
+      "mutant_test_seconds": 104.19526108307764,
+      "native_commands": 18
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/bff_service",
+      "split": "holdout",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 19.227997064590454,
+      "init_seconds": 3.1778165828436613,
+      "baseline_seconds": 4.35636629210785,
+      "validation_seconds": 4.879931333009154,
+      "mutant_test_seconds": 3.191218958934769,
+      "native_commands": 4
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/control_service",
+      "split": "holdout",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 15.969379901885986,
+      "init_seconds": 2.817736999830231,
+      "baseline_seconds": 3.2236978749278933,
+      "validation_seconds": 3.821086582960561,
+      "mutant_test_seconds": 3.062421791953966,
+      "native_commands": 4
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/esg_service",
+      "split": "holdout",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 21.66964316368103,
+      "init_seconds": 3.2434227091725916,
+      "baseline_seconds": 4.214362500002608,
+      "validation_seconds": 6.400025791954249,
+      "mutant_test_seconds": 4.075114208040759,
+      "native_commands": 4
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/event_lake",
+      "split": "holdout",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 44.6524019241333,
+      "init_seconds": 2.3300047090742737,
+      "baseline_seconds": 2.8797933750320226,
+      "validation_seconds": 20.086626125033945,
+      "mutant_test_seconds": 17.223889709217474,
+      "native_commands": 10
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/fault_monitor",
+      "split": "holdout",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 47.14802813529968,
+      "init_seconds": 3.2267865841276944,
+      "baseline_seconds": 3.374081833055243,
+      "validation_seconds": 19.58056166721508,
+      "mutant_test_seconds": 17.050675915786996,
+      "native_commands": 10
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/frontend_edge",
+      "split": "holdout",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 49.900455951690674,
+      "init_seconds": 5.677622207906097,
+      "baseline_seconds": 3.971461958019063,
+      "validation_seconds": 20.15941591700539,
+      "mutant_test_seconds": 17.33500274992548,
+      "native_commands": 10
+    },
+    {
+      "repository": "serverless-architecture-patterns",
+      "module": "modules/patterns/micro_frontend",
+      "split": "holdout",
+      "arm": "strengthened",
+      "status": "completed",
+      "elapsed_seconds": 51.5354437828064,
+      "init_seconds": 7.3282062090002,
+      "baseline_seconds": 5.024134041974321,
+      "validation_seconds": 18.754161833086982,
+      "mutant_test_seconds": 15.482382917078212,
+      "native_commands": 10
+    }
+  ],
+  "blocked_jobs": [],
+  "source_runs": [
+    "/Users/tusharteotia/Library/Application Support/PersonalAgent/workspace/reports/oasis-full-corpus-20261106/codex-development-paired-v1",
+    "/Users/tusharteotia/Library/Application Support/PersonalAgent/workspace/reports/oasis-full-corpus-20261106/codex-holdout-paired-v1"
+  ]
+}

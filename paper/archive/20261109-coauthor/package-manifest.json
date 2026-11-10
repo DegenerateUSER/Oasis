@@ -1,0 +1,37 @@
+{
+  "classification": "Coauthor-review / similarity-screening document package; not a native experimental reproduction or similarity certification",
+  "documents": {
+    "manuscript": {
+      "pages": 14,
+      "sha256": "d5d4499a88741f5731741b810231460a8893ea6b2e9d228d70bf03be2b41be94"
+    },
+    "reviewer-letter": {
+      "pages": 4,
+      "sha256": "ddc48c2a75f4d25e88afbdcafc45cce40dea3896da7033f9c9658c72a0adcad3"
+    },
+    "1352_revised_version": {
+      "pages": 18,
+      "sha256": "d5a1bef28ac27e2e0094dff43527314a09a575fc8b983de00997b28082b94253"
+    },
+    "repository-supplement": {
+      "pages": 4,
+      "sha256": "37ce51bc222a8fd3fd501218f1975f6801dc3576a49cf342dce0f95632f21c4e"
+    }
+  },
+  "archives": [
+    {
+      "name": "Oasis-coauthor-LaTeX-source.zip",
+      "members": 36,
+      "bytes": 1637372
+    },
+    {
+      "name": "Oasis-coauthor-LaTeX-and-evidence.zip",
+      "members": 98,
+      "bytes": 4067884
+    }
+  ],
+  "primary_experimental_data_changed": false,
+  "new_native_experiments_run": false,
+  "similarity_report_supplied": false,
+  "unfulfilled_extension": "OpenTofu-specific semantic operators are not evaluated; R3.2 remains partial"
+}

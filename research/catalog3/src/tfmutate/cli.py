@@ -1,0 +1,394 @@
+"""Command-line entry point.
+
+Two commands:
+  * ``preview`` -- locate mutation targets and print each mutant as a unified diff (Phase 1).
+  * ``run`` -- execute the full mutation cycle over a repo's test modules and write the CSV
+    dataset (Phase 2): per module, init -> green-baseline gate -> per-mutant validate/test/
+    classify, restoring git state after every cycle. Every SURVIVED mutant is additionally
+    given a ``survival_reason`` by the Phase 4 classifier (PROJECT_SPEC.md §8).
+"""
+
+from __future__ import annotations
+
+import argparse
+import difflib
+import logging
+import os
+import platform
+import shutil
+import subprocess
+import sys
+import tempfile
+import urllib.request
+from pathlib import Path
+
+from . import __version__
+from .mutators import CATALOG, CATEGORIES, generate_mutants, select_operators
+from .parser import is_valid_hcl, read_tf_files
+
+_GITHUB_REPO = "DegenerateUSER/Oasis"
+_API_LATEST = f"https://api.github.com/repos/{_GITHUB_REPO}/releases/latest"
+
+
+def _iter_targets(path: Path) -> list[Path]:
+    if path.is_dir():
+        return read_tf_files(path)
+    return [path]
+
+
+def _preview(args: argparse.Namespace) -> int:
+    try:
+        operators = select_operators(args.operator, args.category)
+    except ValueError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+
+    root = Path(args.target)
+    if not root.exists():
+        print(f"no such path: {root}", file=sys.stderr)
+        return 2
+
+    total = 0
+    skipped = 0
+    for tf in _iter_targets(root):
+        text = tf.read_text()
+        if not is_valid_hcl(text, args.fmt_cmd):
+            skipped += 1  # genuine syntax error; logged by is_valid_hcl (SKIPPED_FILE)
+            continue
+        for mutant in generate_mutants(tf, text, operators):
+            total += 1
+            resource = mutant.resource_address or "(top-level)"
+            print(
+                f"\n[{mutant.operator_id}] {tf}:{mutant.line}  "
+                f"[{mutant.surface}] {resource} .{mutant.attribute}"
+            )
+            arrow = "(deleted)" if mutant.is_deletion else repr(mutant.mutated_snippet)
+            print(f"    {mutant.original_snippet!r} -> {arrow}")
+            print(
+                "".join(
+                    difflib.unified_diff(
+                        text.splitlines(keepends=True),
+                        mutant.mutated_text.splitlines(keepends=True),
+                        fromfile=f"{tf} (original)",
+                        tofile=f"{tf} (mutant {mutant.operator_id})",
+                        n=1,
+                    )
+                )
+            )
+
+    print(f"\n[+] {total} mutant(s) generated.")
+    if skipped:
+        print(f"[!] {skipped} file(s) skipped (failed `{args.fmt_cmd} fmt`; see warnings).")
+    return 0
+
+
+def _run(args: argparse.Namespace) -> int:
+    from .metrics import summarize
+    from .orchestrator import run_repo
+    from .reporter import read_csv
+
+    root, output = Path(args.target).resolve(), Path(args.output).resolve()
+    if not root.is_dir():
+        print(f"not a target directory: {root}", file=sys.stderr)
+        return 2
+    try:
+        operators = select_operators(args.operator, args.category)
+        result = run_repo(root, output.parent, output_csv=output,
+                          test_cmd=args.test_cmd, timeout=args.timeout,
+                          operators=operators,
+                          plugin_cache_dir=Path(args.plugin_cache_dir).expanduser(),
+                          allow_version_drift=args.allow_version_drift,
+                          init_timeout=args.init_timeout, init_attempts=args.init_attempts,
+                          budget_seconds=args.budget_seconds, max_mutants=args.max_mutants)
+    except (OSError, ValueError, RuntimeError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+    if result.status == "failed":
+        print(f"error: {result.reason}", file=sys.stderr)
+        return 1
+    report = summarize(read_csv(output))
+    score = report["mutation_score"]
+    score_text = f"{score:.1%}" if score is not None else "n/a (no scored mutants)"
+    print(f"[+] {result.status}: {output}")
+    print(f"[+] Mutation score: {score_text}; assertion kills={report['killed_assert']}, "
+          f"engine-error kills={report['killed_error']}, survived={report['survived']}")
+    print(f"[+] {report['generated_mutants']} mutant records; "
+          f"{report['module_baseline_records']} module-baseline records; "
+          f"excluded={report['excluded_statuses']}")
+    print(f"[+] Manifest: {result.manifest_path}")
+    print(f"[+] Summary: {result.summary_path}")
+    return 0
+
+
+def _add_operator_filters(subparser: argparse.ArgumentParser) -> None:
+    """--operator (exact ID) and --category (one or more) are mutually exclusive filters,
+    per PROJECT_SPEC.md §7: "each operator must be independently toggleable ... per category,
+    not just overall"."""
+    group = subparser.add_mutually_exclusive_group()
+    group.add_argument(
+        "-o", "--operator", help=f"limit to one operator (known: {', '.join(CATALOG)})"
+    )
+    group.add_argument(
+        "-c", "--category", nargs="+", choices=CATEGORIES,
+        help=f"limit to one or more categories (known: {', '.join(CATEGORIES)})",
+    )
+
+
+# ── Self-update ───────────────────────────────────────────────────────────────
+
+def _detect_asset_name() -> tuple[str, str]:
+    """Return (preferred_asset, fallback_tarball) for the current platform."""
+    system = platform.system()   # Darwin / Linux / Windows
+
+    if system == "Darwin":
+        return "oasis-macos-arm64.pkg", "oasis-darwin-arm64.tar.gz"
+    if system == "Linux":
+        return "oasis-linux-amd64.deb", "oasis-linux-amd64.tar.gz"
+    # Windows — no installer package, just the zip
+    return "", "oasis-windows-amd64.zip"
+
+
+def _cmd_exists(cmd: str) -> bool:
+    return shutil.which(cmd) is not None
+
+
+def _update(args: argparse.Namespace) -> int:  # noqa: ARG001
+    import json
+
+    print(f"Oasis {__version__} — checking for updates...")
+
+    try:
+        req = urllib.request.Request(_API_LATEST, headers={"User-Agent": "oasis-updater"})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read())
+    except Exception as exc:  # noqa: BLE001
+        print(f"\u274c Could not reach GitHub API: {exc}")
+        return 1
+
+    latest_tag: str = data.get("tag_name", "")          # e.g. "v1.2.0"
+    latest_ver = latest_tag.lstrip("v")
+    current_ver = __version__.lstrip("v")
+
+    if latest_ver == current_ver:
+        print(f"\u2705 Already up to date ({__version__}).")
+        return 0
+
+    print(f"New version available: {latest_tag}  (current: {__version__})")
+
+    # Find download URLs from release assets
+    assets: dict[str, str] = {
+        a["name"]: a["browser_download_url"] for a in data.get("assets", [])
+    }
+
+    preferred, fallback = _detect_asset_name()
+    system = platform.system()
+
+    def download(url: str, suffix: str) -> str:
+        """Stream-download url to a temp file, return its path."""
+        tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
+        print(f"Downloading {url.split('/')[-1]}...")
+        urllib.request.urlretrieve(url, tmp.name)  # noqa: S310
+        return tmp.name
+
+    # ── macOS .pkg ────────────────────────────────────────────────────────────
+    if system == "Darwin" and preferred in assets:
+        pkg = download(assets[preferred], ".pkg")
+        print("Installing (you may be prompted for your password)...")
+        result = subprocess.run(["sudo", "installer", "-pkg", pkg, "-target", "/"], check=False)
+        os.unlink(pkg)
+        if result.returncode != 0:
+            print("\u274c installer failed. Try downloading manually from:")
+            print(f"  https://github.com/{_GITHUB_REPO}/releases/latest")
+            return 1
+        print(f"\u2705 Updated to {latest_tag}! Restart your shell or run: rehash")
+        return 0
+
+    # ── Linux .deb ────────────────────────────────────────────────────────────
+    if system == "Linux" and preferred in assets and _cmd_exists("dpkg"):
+        deb = download(assets[preferred], ".deb")
+        print("Installing (you may be prompted for your password)...")
+        result = subprocess.run(["sudo", "dpkg", "-i", deb], check=False)
+        os.unlink(deb)
+        if result.returncode != 0:
+            print("\u274c dpkg install failed. Try downloading manually from:")
+            print(f"  https://github.com/{_GITHUB_REPO}/releases/latest")
+            return 1
+        print(f"\u2705 Updated to {latest_tag}!")
+        return 0
+
+    # ── Fallback: raw binary tarball / zip ────────────────────────────────────
+    if fallback in assets:
+        archive = download(assets[fallback], ".tar.gz" if fallback.endswith(".tar.gz") else ".zip")
+        # Find installed binary location
+        oasis_path = shutil.which("oasis") or "/usr/local/bin/oasis"
+        with tempfile.TemporaryDirectory() as tmpdir:
+            import tarfile, zipfile  # noqa: E401
+            if fallback.endswith(".tar.gz"):
+                with tarfile.open(archive) as t:
+                    t.extractall(tmpdir)
+                extracted = next(Path(tmpdir).iterdir())
+            else:
+                with zipfile.ZipFile(archive) as z:
+                    z.extractall(tmpdir)
+                extracted = next(Path(tmpdir).iterdir())
+            extracted.chmod(0o755)
+            result = subprocess.run(
+                ["sudo", "mv", str(extracted), oasis_path], check=False
+            )
+        os.unlink(archive)
+        if result.returncode != 0:
+            print("\u274c Could not replace binary. Try running with sudo.")
+            return 1
+        print(f"\u2705 Updated to {latest_tag}!")
+        return 0
+
+    print("\u274c No compatible release asset found for this platform.")
+    print(f"  Visit: https://github.com/{_GITHUB_REPO}/releases/latest")
+    return 1
+
+
+# ── Self-uninstall ────────────────────────────────────────────────────────────
+
+def _uninstall(args: argparse.Namespace) -> int:
+    oasis_path = shutil.which("oasis")
+
+    if not oasis_path:
+        print("\u274c Oasis binary not found in PATH.")
+        print("   It may have already been removed or was installed outside your PATH.")
+        return 1
+
+    print(f"This will permanently remove Oasis from: {oasis_path}")
+
+    if not getattr(args, "yes", False):
+        try:
+            confirm = input("Are you sure you want to uninstall Oasis? [y/N] ").strip().lower()
+        except (EOFError, KeyboardInterrupt):
+            print("\nAborted.")
+            return 1
+        if confirm not in ("y", "yes"):
+            print("Aborted.")
+            return 0
+
+    system = platform.system()
+
+    # On Debian/Ubuntu: prefer clean dpkg removal
+    if system == "Linux" and _cmd_exists("dpkg"):
+        probe = subprocess.run(
+            ["dpkg", "-s", "oasis"], check=False, capture_output=True
+        )
+        if probe.returncode == 0:          # package is dpkg-managed
+            print("Removing via dpkg (you may be prompted for your password)...")
+            result = subprocess.run(["sudo", "dpkg", "-r", "oasis"], check=False)
+            if result.returncode == 0:
+                print("\u2705 Oasis uninstalled successfully.")
+                return 0
+            print("\u26a0\ufe0f  dpkg removal failed — falling back to direct file removal...")
+
+    # macOS / Linux fallback: just delete the binary
+    # (safe even while the binary is running on Unix — the inode persists until exit)
+    print("Removing binary (you may be prompted for your password)...")
+    result = subprocess.run(["sudo", "rm", "-f", oasis_path], check=False)
+    if result.returncode == 0:
+        print(f"\u2705 Oasis removed from {oasis_path}.")
+        print("   Open a new terminal to clear the shell\'s command cache.")
+        return 0
+
+    print(f"\u274c Could not remove {oasis_path}.")
+    print(f"   Try manually: sudo rm {oasis_path}")
+    return 1
+
+
+def _local_port(value: str) -> int:
+    try:
+        port = int(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("port must be an integer in 1..65535") from exc
+    if not 1 <= port <= 65535:
+        raise argparse.ArgumentTypeError("port must be an integer in 1..65535")
+    return port
+
+
+def _gui(args: argparse.Namespace) -> int:
+    from .gui import serve
+
+    try:
+        result = serve(host=args.host, port=args.port,
+                       data_dir=Path(args.data_dir).expanduser().resolve(),
+                       open_browser=args.open_browser)
+    except (OSError, RuntimeError, ValueError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+    return result if isinstance(result, int) else 0
+
+
+# ── Parser ────────────────────────────────────────────────────────────────────
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="oasis", description=__doc__.splitlines()[0])
+    parser.add_argument("-V", "--version", action="version", version=f"oasis {__version__}")
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    preview = sub.add_parser("preview", help="show mutants for a .tf file or directory")
+    preview.add_argument("target", help="a .tf file or a directory of .tf files")
+    _add_operator_filters(preview)
+    preview.add_argument(
+        "--fmt-cmd", default="terraform",
+        help="binary used to validate HCL (use 'tofu' for OpenTofu; default: terraform)",
+    )
+    preview.set_defaults(func=_preview)
+
+    run = sub.add_parser("run", help="run the full mutation cycle over a repo and write a CSV")
+    run.add_argument("target", help="a repo or directory containing .tftest.hcl test modules")
+    run.add_argument("-O", "--output", default="results.csv", help="CSV output path")
+    run.add_argument(
+        "--test-cmd", default="terraform test",
+        help="test command (use 'tofu test' for OpenTofu; default: 'terraform test')",
+    )
+    run.add_argument("--timeout", type=int, default=60, help="per-test timeout in seconds")
+    run.add_argument("--init-timeout", type=int, default=60, help="per-init timeout in seconds")
+    run.add_argument("--init-attempts", type=int, default=1, help="maximum initialization attempts")
+    run.add_argument("--budget-seconds", type=float, default=120, help="total repository execution budget")
+    run.add_argument("--max-mutants", type=int, default=None, help="cap selected mutants across modules")
+    _add_operator_filters(run)
+    run.add_argument(
+        "--plugin-cache-dir", default="~/.cache/tfmutate/plugins",
+        help="shared provider plugin cache (offline, deterministic init across modules/runs)",
+    )
+    run.add_argument(
+        "--allow-version-drift", action="store_true",
+        help="proceed even if the test-cmd binary doesn't match its pinned version",
+    )
+    run.set_defaults(func=_run)
+
+    gui = sub.add_parser("gui", help="open the local browser workspace (compiled frontend required)")
+    gui.add_argument("--host", choices=("127.0.0.1", "localhost"), default="127.0.0.1",
+                     help="loopback interface only")
+    gui.add_argument("--port", type=_local_port, default=8765, metavar="PORT",
+                     help="local port (default: 8765)")
+    gui.add_argument("--data-dir", default=str(Path.home() / ".local" / "share" / "oasis" / "gui"),
+                     help="private GUI state directory; must not overlap source repositories")
+    gui.add_argument("--no-open", action="store_false", dest="open_browser", default=True,
+                     help="do not open a browser automatically")
+    gui.set_defaults(func=_gui)
+
+    update = sub.add_parser("update", help="download and install the latest Oasis release")
+    update.set_defaults(func=_update)
+
+    uninstall = sub.add_parser("uninstall", help="remove the Oasis binary from this system")
+    uninstall.add_argument(
+        "-y", "--yes", action="store_true",
+        help="skip the confirmation prompt",
+    )
+    uninstall.set_defaults(func=_uninstall)
+
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    logging.basicConfig(level=logging.WARNING, format="[%(levelname)s] %(message)s")
+    args = build_parser().parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

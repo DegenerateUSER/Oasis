@@ -1,0 +1,29 @@
+{
+  "kind": "Document build, evidence and portable-package verification; not native research reproduction",
+  "documents": {
+    "manuscript": {
+      "pages": 12,
+      "overfull_boxes": false,
+      "unresolved_references": false
+    },
+    "reviewer-letter": {
+      "pages": 4,
+      "overfull_boxes": false,
+      "unresolved_references": false
+    },
+    "1352_revised_version": {
+      "pages": 16,
+      "overfull_boxes": false,
+      "unresolved_references": false
+    },
+    "repository-supplement": {
+      "pages": 4,
+      "overfull_boxes": false,
+      "unresolved_references": false
+    }
+  },
+  "frozen_results_unchanged": true,
+  "similarity_certification_supplied": false,
+  "human_submission_checks": "See README.md",
+  "focused_evidence": "polish-evidence/ in both source bundles"
+}

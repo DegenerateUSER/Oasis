@@ -1,0 +1,68 @@
+{
+  "frozen_csv_checks_passed": true,
+  "generated": 1533,
+  "scored": 1288,
+  "statuses": {
+    "survived": 1097,
+    "killed_error": 76,
+    "killed_assert": 115,
+    "no_op": 193,
+    "scope_unresolved": 39,
+    "timeout": 13
+  },
+  "repositories": 62,
+  "scopes": 192,
+  "plan": 95,
+  "costs": {
+    "Initialization": {
+      "commands": 191,
+      "sum_seconds": 1641.0559079993982,
+      "median_seconds": 4.569224332924932,
+      "p95_seconds": 24.966440207790583
+    },
+    "Unmutated test": {
+      "commands": 165,
+      "sum_seconds": 3102.235010461416,
+      "median_seconds": 13.206692166859284,
+      "p95_seconds": 35.11021799989976
+    },
+    "Unmutated validation": {
+      "commands": 131,
+      "sum_seconds": 571.0659758751281,
+      "median_seconds": 3.056594291003421,
+      "p95_seconds": 14.165764375124127
+    },
+    "Mutant validation": {
+      "commands": 1301,
+      "sum_seconds": 8426.90424044733,
+      "median_seconds": 5.571094000013545,
+      "p95_seconds": 14.16632525017485
+    },
+    "Mutant test": {
+      "commands": 1301,
+      "sum_seconds": 94002.456456315,
+      "median_seconds": 11.591298749903217,
+      "p95_seconds": 386.8770372499712
+    }
+  },
+  "selected_cases": [
+    {
+      "repository": "ambicuity/terraform-aws-eks-ray",
+      "attribute": "enable_key_rotation",
+      "test_status": "survived",
+      "mutant_id": "MUT-CFG-001@main.tf:74:8a3912396f68"
+    },
+    {
+      "repository": "equinor/terraform-azurerm-key-vault",
+      "attribute": "default",
+      "test_status": "killed_assert",
+      "mutant_id": "MUT-CFG-001@variables.tf:32:d7627b5073ef"
+    },
+    {
+      "repository": "langchain-ai/terraform",
+      "attribute": "special",
+      "test_status": "timeout",
+      "mutant_id": "MUT-CFG-001@modules/aws/infra/main.tf:725:43e40a2dd158"
+    }
+  ]
+}

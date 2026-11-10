@@ -1,0 +1,177 @@
+{
+  "snapshot_utc": "2026-11-09T10:21:30.192018+00:00",
+  "source": "/Users/tusharteotia/Documents/Codex/2026-11-07/get-a/outputs/oasis-submission-20261109",
+  "policy": "Completed archived catalog3 results only; in-flight n8n excluded; no native reruns. Historical studies separate.",
+  "files": [
+    {
+      "path": "ecrc.sty",
+      "sha256": "e0c5f481f58efab1d4cbf7a1c5389cc9dbd39677661508b908a34c5c8e66c500",
+      "bytes": 9851
+    },
+    {
+      "path": "elsarticle.cls",
+      "sha256": "907d76fd8f2de5cd2706e09093451a2869a0412df2f9c99584226cadeed0348f",
+      "bytes": 26250
+    },
+    {
+      "path": "elsevier-logo-3p.pdf",
+      "sha256": "e74c837045d7baa1c7b8eb8a5079b02aa28db8a58e114c1b27ddc69a9f9d6fa6",
+      "bytes": 1496269
+    },
+    {
+      "path": "SDlogo-3p.pdf",
+      "sha256": "38e5b48006d68e3705da8be84eef8fc095bf35273b0a67e66671f044d21856b0",
+      "bytes": 32832
+    },
+    {
+      "path": "references.tex",
+      "sha256": "8c3486bfa9f38eb2a655ce667dc63fa7a4080cb91233edab7d99a113587de0bd",
+      "bytes": 4623
+    },
+    {
+      "path": "reference-verification.json",
+      "sha256": "ca1c04d77060a0c5c0899f99a4fcf64fa6379952d9b3cc1b7cbb08ead99d2a9e",
+      "bytes": 28542
+    },
+    {
+      "path": "scanner-results.tex",
+      "sha256": "3eca0b83745db8bb064c36aaf6f14b5a8db82160b738f5b1e2e9df1d9987ff13",
+      "bytes": 1767
+    },
+    {
+      "path": "historical-revision-supplement.zip",
+      "sha256": "137926ce161a35e3d8bb84e93efc2ba29f5dd1915b2ffcf06f6f90dc31d3bba5",
+      "bytes": 1266712
+    },
+    {
+      "path": "repository-provenance.csv",
+      "sha256": "2ddc2ad77dbe898f56afe8111b9d10de5714da1ecc3296007ec32a932632359a",
+      "bytes": 3963
+    },
+    {
+      "path": "catalog3-study/summary.json",
+      "sha256": "6789fb1adf86127d009d60a134fafaf1df2f965999cd809a30e82d257616994f",
+      "bytes": 3633
+    },
+    {
+      "path": "catalog3-study/repositories.csv",
+      "sha256": "2fda93270a42183a5754206ff1d7cec3b2e44b412c5a3cf3d8d290d3954e20b5",
+      "bytes": 12094
+    },
+    {
+      "path": "catalog3-study/integrity-summary.json",
+      "sha256": "a3c04226bdc3cf6567d98ca20a2ce660f7cf104c9b4bea316f1536d2d273479c",
+      "bytes": 83385
+    },
+    {
+      "path": "catalog3-study/mutant-cases.csv",
+      "sha256": "ecc31ba0679d31e997a7e6b214cd7fe2b123a4f1c33829ab17aa9b37152cd7e7",
+      "bytes": 1467932
+    },
+    {
+      "path": "catalog3-study/all95-dispositions.csv",
+      "sha256": "934431b01b66cdd195268ffae0cbf2d1414a1bec8251fdb2d6d08b23962a69cc",
+      "bytes": 11196
+    },
+    {
+      "path": "catalog3-study/catalog3-freeze.json",
+      "sha256": "f130e92eb1ed8268e952bf1937c8bf67fac1a3bf8b87bf838104db6b1dd3688f",
+      "bytes": 5923
+    },
+    {
+      "path": "catalog3-study/scopes.csv",
+      "sha256": "e015152ea14dc386231f2695765a42a9714688ced4550133829d886d1678060c",
+      "bytes": 21056
+    },
+    {
+      "path": "catalog3-study/command-events.csv",
+      "sha256": "1cb5fdc40f916179307e39a287dba77e3d997203db7570cc47c42fec923f8edd",
+      "bytes": 593864
+    },
+    {
+      "path": "catalog3-study/analysis/catalog3-interim-repositories.csv",
+      "sha256": "6b9c99edec83f5e2d63b6ea5d39034af0979b2c917b5ef86147bba0a28a013b4",
+      "bytes": 4577
+    },
+    {
+      "path": "catalog3-study/analysis/catalog3-interim.json",
+      "sha256": "2e264e159228fe2e87d2b69cbb2f971df61c29062032975779f32ff15d394319",
+      "bytes": 89087
+    },
+    {
+      "path": "catalog3-study/analysis/version-separated-identities.json",
+      "sha256": "8be3e006a34e065b707caaed59eba41d8de2a91c8a182385207b451e2d4cf4cb",
+      "bytes": 7254
+    },
+    {
+      "path": "catalog3-study/cancelled-preparations/CircleCI-Public__server-terraform/receipt.json",
+      "sha256": "f9f68cb4bfa088655e34980b36f988c6727c644f93e0cc61f20f4e704c4c3411",
+      "bytes": 688
+    },
+    {
+      "path": "catalog3-study/cancelled-preparations/stardog-oss__stardog-terraform-starters/receipt.json",
+      "sha256": "5e7c9bd6f2f024d96673aba0f700ac6197455fef1decc03624f04b249c1d3172",
+      "bytes": 702
+    },
+    {
+      "path": "catalog3-study/cancelled-preparations/Worklytics__psoxy/receipt.json",
+      "sha256": "b9fa7dc71a6a9eb5cc5421b773cf07b0135a6d5517fa1ce619df61d18e56bc8b",
+      "bytes": 658
+    },
+    {
+      "path": "historical-paired-study/summary.json",
+      "sha256": "ae22663b4396a6ef729c79b6b03f2189eb9978d6bd13b77e6abe854411c938c6",
+      "bytes": 65012
+    },
+    {
+      "path": "historical-paired-study/execution-costs.csv",
+      "sha256": "c6979b3245e05726e27a84efb65f27a65b3120aeb2aaa6a5d361a59d177fca81",
+      "bytes": 14248
+    },
+    {
+      "path": "historical-paired-study/by-operator.csv",
+      "sha256": "985106732a403f7a19dbab8cda9ea38942b2ce61208910a474fa817653d0512a",
+      "bytes": 1014
+    },
+    {
+      "path": "historical-paired-study/paired-cases.csv",
+      "sha256": "3d9ce84fcb9e8783892ccdaea0eae0c2b0bda0c22bd04112866d5847611ebea6",
+      "bytes": 24858
+    },
+    {
+      "path": "historical-paired-study/verification.json",
+      "sha256": "7098071e6a8688a930a1590c405d45d3c511c82b35a8a2b572d18c60b7e8eca6",
+      "bytes": 2697
+    },
+    {
+      "path": "historical-paired-study/by-repository.csv",
+      "sha256": "f4ca80436e5409bc1e4b6271f68c75d97c47332c2cc58b8df072b3e36b439d2b",
+      "bytes": 541
+    },
+    {
+      "path": "historical-paired-study/by-module.csv",
+      "sha256": "cc309bd075e55d4b0eafeb84f240b3b4f1f7e9ee6c4e634165e86c04b72c4096",
+      "bytes": 3060
+    },
+    {
+      "path": "historical-expanded-study/execution-costs.csv",
+      "sha256": "1812878fab9ec41d619f46966a3a5d0b459d9a1c6ebec9fc3af19880242e88f0",
+      "bytes": 218327
+    },
+    {
+      "path": "historical-expanded-study/repositories.csv",
+      "sha256": "c76e5868af2b9f56041f76cff2dff4aae0eeff056bda13ae6f517897423ad583",
+      "bytes": 6365
+    },
+    {
+      "path": "historical-expanded-study/executions.csv",
+      "sha256": "8d94dc1ab2c0b5b6057640ad22ccafb0624727adfc557153662e2b27419d6555",
+      "bytes": 600936
+    },
+    {
+      "path": "historical-expanded-study/scopes.csv",
+      "sha256": "1a45096ec806b54906a41dbbbfd2b7e47b3603ffa26526c6774a3f08c1164188",
+      "bytes": 439074
+    }
+  ]
+}

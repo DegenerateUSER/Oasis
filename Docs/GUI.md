@@ -53,6 +53,15 @@ The service is for one local trusted user, not multi-tenant hosting. It is not a
 
 The React/TypeScript application lives under `frontend/`. Its production build writes to `src/tfmutate/gui/static/`; those assets are included in the wheel. Build and test scripts are documented in the frontend package. Run only one frontend build/browser on memory-constrained machines.
 
+```sh
+cd frontend
+npm ci --ignore-scripts --no-audit --no-fund
+npm test
+npm run build
+```
+
+On Node 26.0.0, the runtime's experimental Web Storage global interferes with this jsdom test environment. The verified test invocation for that runtime is `NODE_OPTIONS=--no-experimental-webstorage npm test` (41 tests). This changes the test runtime, not application storage behavior. The production build is `npm run build`; it rewrites packaged static assets, so inspect the resulting Git diff.
+
 ## Evaluation boundary
 
 The GUI does not automatically rerun or validate the historical corpus. A full-corpus evaluation is a separate, explicitly authorized task. Do not cite a displayed historical result as a new verified experiment.

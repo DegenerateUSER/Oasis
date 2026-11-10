@@ -1,0 +1,3015 @@
+{
+  "epoch": 1794214735.220274,
+  "status": "interim_archived_repositories_only",
+  "catalog_version": "3",
+  "tool_version": "0.3.0-research.1",
+  "admitted_unique_repositories": 95,
+  "archived_repositories": 62,
+  "scored_repositories": 47,
+  "completed_scope_attempts": 192,
+  "baseline_passed": 130,
+  "baseline_blocked": 62,
+  "all_operators": {
+    "status_counts": {
+      "baseline_fail": 61,
+      "killed_assert": 115,
+      "killed_error": 76,
+      "no_op": 193,
+      "no_targets": 27,
+      "scope_error": 1,
+      "scope_unresolved": 39,
+      "survived": 1097,
+      "timeout": 13
+    },
+    "scored_mutants": 1288,
+    "assertion_kills": 115,
+    "runtime_kills": 76,
+    "survivors": 1097,
+    "assertion_kill_fraction": 0.08928571428571429,
+    "combined_kill_fraction": 0.1482919254658385
+  },
+  "legacy12_subset": {
+    "status_counts": {
+      "killed_assert": 9,
+      "killed_error": 2,
+      "no_op": 14,
+      "survived": 66,
+      "timeout": 4
+    },
+    "scored_mutants": 77,
+    "assertion_kills": 9,
+    "runtime_kills": 2,
+    "survivors": 66,
+    "assertion_kill_fraction": 0.11688311688311688,
+    "combined_kill_fraction": 0.14285714285714285,
+    "operator_ids": [
+      "MUT-RES-001",
+      "MUT-RES-002",
+      "MUT-RES-003",
+      "MUT-SEC-001",
+      "MUT-SEC-002",
+      "MUT-SEC-003",
+      "MUT-SEC-004a",
+      "MUT-SEC-004b",
+      "MUT-SEC-004c",
+      "MUT-SEC-004d",
+      "MUT-TAG-001",
+      "MUT-TAG-002"
+    ],
+    "scored_repositories": 12
+  },
+  "new4_subset": {
+    "status_counts": {
+      "killed_assert": 106,
+      "killed_error": 74,
+      "no_op": 179,
+      "scope_unresolved": 39,
+      "survived": 1031,
+      "timeout": 9
+    },
+    "scored_mutants": 1211,
+    "assertion_kills": 106,
+    "runtime_kills": 74,
+    "survivors": 1031,
+    "assertion_kill_fraction": 0.0875309661436829,
+    "combined_kill_fraction": 0.1486374896779521,
+    "operator_ids": [
+      "MUT-CFG-001",
+      "MUT-RES-004",
+      "MUT-SEC-005",
+      "MUT-SEC-006"
+    ],
+    "scored_repositories": 47
+  },
+  "per_operator": {
+    "MUT-CFG-001": {
+      "status_counts": {
+        "killed_assert": 102,
+        "killed_error": 51,
+        "no_op": 168,
+        "scope_unresolved": 39,
+        "survived": 994,
+        "timeout": 9
+      },
+      "scored_mutants": 1147,
+      "assertion_kills": 102,
+      "runtime_kills": 51,
+      "survivors": 994,
+      "assertion_kill_fraction": 0.08892763731473409,
+      "combined_kill_fraction": 0.13339145597210114,
+      "family": "configuration",
+      "scored_repositories": 47
+    },
+    "MUT-RES-001": {
+      "status_counts": {
+        "killed_error": 1,
+        "no_op": 10,
+        "survived": 8
+      },
+      "scored_mutants": 9,
+      "assertion_kills": 0,
+      "runtime_kills": 1,
+      "survivors": 8,
+      "assertion_kill_fraction": 0.0,
+      "combined_kill_fraction": 0.1111111111111111,
+      "family": "resource",
+      "scored_repositories": 4
+    },
+    "MUT-RES-002": {
+      "status_counts": {
+        "no_op": 4,
+        "survived": 4
+      },
+      "scored_mutants": 4,
+      "assertion_kills": 0,
+      "runtime_kills": 0,
+      "survivors": 4,
+      "assertion_kill_fraction": 0.0,
+      "combined_kill_fraction": 0.0,
+      "family": "resource",
+      "scored_repositories": 2
+    },
+    "MUT-RES-003": {
+      "status_counts": {
+        "survived": 3
+      },
+      "scored_mutants": 3,
+      "assertion_kills": 0,
+      "runtime_kills": 0,
+      "survivors": 3,
+      "assertion_kill_fraction": 0.0,
+      "combined_kill_fraction": 0.0,
+      "family": "resource",
+      "scored_repositories": 1
+    },
+    "MUT-RES-004": {
+      "status_counts": {
+        "killed_assert": 3,
+        "killed_error": 23,
+        "no_op": 11,
+        "survived": 30
+      },
+      "scored_mutants": 56,
+      "assertion_kills": 3,
+      "runtime_kills": 23,
+      "survivors": 30,
+      "assertion_kill_fraction": 0.05357142857142857,
+      "combined_kill_fraction": 0.4642857142857143,
+      "family": "resource",
+      "scored_repositories": 6
+    },
+    "MUT-SEC-001": {
+      "status_counts": {
+        "survived": 1
+      },
+      "scored_mutants": 1,
+      "assertion_kills": 0,
+      "runtime_kills": 0,
+      "survivors": 1,
+      "assertion_kill_fraction": 0.0,
+      "combined_kill_fraction": 0.0,
+      "family": "security",
+      "scored_repositories": 1
+    },
+    "MUT-SEC-002": {
+      "status_counts": {
+        "killed_assert": 1,
+        "survived": 3
+      },
+      "scored_mutants": 4,
+      "assertion_kills": 1,
+      "runtime_kills": 0,
+      "survivors": 3,
+      "assertion_kill_fraction": 0.25,
+      "combined_kill_fraction": 0.25,
+      "family": "security",
+      "scored_repositories": 3
+    },
+    "MUT-SEC-003": {
+      "status_counts": {
+        "survived": 2
+      },
+      "scored_mutants": 2,
+      "assertion_kills": 0,
+      "runtime_kills": 0,
+      "survivors": 2,
+      "assertion_kill_fraction": 0.0,
+      "combined_kill_fraction": 0.0,
+      "family": "security",
+      "scored_repositories": 1
+    },
+    "MUT-SEC-004a": {
+      "status_counts": {
+        "killed_assert": 3,
+        "survived": 10,
+        "timeout": 1
+      },
+      "scored_mutants": 13,
+      "assertion_kills": 3,
+      "runtime_kills": 0,
+      "survivors": 10,
+      "assertion_kill_fraction": 0.23076923076923078,
+      "combined_kill_fraction": 0.23076923076923078,
+      "family": "security",
+      "scored_repositories": 5
+    },
+    "MUT-SEC-004b": {
+      "status_counts": {
+        "killed_assert": 2,
+        "survived": 11,
+        "timeout": 1
+      },
+      "scored_mutants": 13,
+      "assertion_kills": 2,
+      "runtime_kills": 0,
+      "survivors": 11,
+      "assertion_kill_fraction": 0.15384615384615385,
+      "combined_kill_fraction": 0.15384615384615385,
+      "family": "security",
+      "scored_repositories": 5
+    },
+    "MUT-SEC-004c": {
+      "status_counts": {
+        "killed_assert": 1,
+        "survived": 12,
+        "timeout": 1
+      },
+      "scored_mutants": 13,
+      "assertion_kills": 1,
+      "runtime_kills": 0,
+      "survivors": 12,
+      "assertion_kill_fraction": 0.07692307692307693,
+      "combined_kill_fraction": 0.07692307692307693,
+      "family": "security",
+      "scored_repositories": 5
+    },
+    "MUT-SEC-004d": {
+      "status_counts": {
+        "killed_assert": 1,
+        "survived": 12,
+        "timeout": 1
+      },
+      "scored_mutants": 13,
+      "assertion_kills": 1,
+      "runtime_kills": 0,
+      "survivors": 12,
+      "assertion_kill_fraction": 0.07692307692307693,
+      "combined_kill_fraction": 0.07692307692307693,
+      "family": "security",
+      "scored_repositories": 5
+    },
+    "MUT-SEC-005": {
+      "status_counts": {
+        "killed_assert": 1,
+        "survived": 6
+      },
+      "scored_mutants": 7,
+      "assertion_kills": 1,
+      "runtime_kills": 0,
+      "survivors": 6,
+      "assertion_kill_fraction": 0.14285714285714285,
+      "combined_kill_fraction": 0.14285714285714285,
+      "family": "security",
+      "scored_repositories": 4
+    },
+    "MUT-SEC-006": {
+      "status_counts": {
+        "survived": 1
+      },
+      "scored_mutants": 1,
+      "assertion_kills": 0,
+      "runtime_kills": 0,
+      "survivors": 1,
+      "assertion_kill_fraction": 0.0,
+      "combined_kill_fraction": 0.0,
+      "family": "security",
+      "scored_repositories": 1
+    },
+    "MUT-TAG-001": {
+      "status_counts": {
+        "killed_assert": 1,
+        "killed_error": 1
+      },
+      "scored_mutants": 2,
+      "assertion_kills": 1,
+      "runtime_kills": 1,
+      "survivors": 0,
+      "assertion_kill_fraction": 0.5,
+      "combined_kill_fraction": 1.0,
+      "family": "compliance",
+      "scored_repositories": 2
+    },
+    "MUT-TAG-002": {
+      "status_counts": {},
+      "scored_mutants": 0,
+      "assertion_kills": 0,
+      "runtime_kills": 0,
+      "survivors": 0,
+      "assertion_kill_fraction": null,
+      "combined_kill_fraction": null,
+      "family": "compliance",
+      "scored_repositories": 0
+    }
+  },
+  "per_family": {
+    "compliance": {
+      "status_counts": {
+        "killed_assert": 1,
+        "killed_error": 1
+      },
+      "scored_mutants": 2,
+      "assertion_kills": 1,
+      "runtime_kills": 1,
+      "survivors": 0,
+      "assertion_kill_fraction": 0.5,
+      "combined_kill_fraction": 1.0,
+      "scored_repositories": 2
+    },
+    "configuration": {
+      "status_counts": {
+        "killed_assert": 102,
+        "killed_error": 51,
+        "no_op": 168,
+        "scope_unresolved": 39,
+        "survived": 994,
+        "timeout": 9
+      },
+      "scored_mutants": 1147,
+      "assertion_kills": 102,
+      "runtime_kills": 51,
+      "survivors": 994,
+      "assertion_kill_fraction": 0.08892763731473409,
+      "combined_kill_fraction": 0.13339145597210114,
+      "scored_repositories": 47
+    },
+    "resource": {
+      "status_counts": {
+        "killed_assert": 3,
+        "killed_error": 24,
+        "no_op": 25,
+        "survived": 45
+      },
+      "scored_mutants": 72,
+      "assertion_kills": 3,
+      "runtime_kills": 24,
+      "survivors": 45,
+      "assertion_kill_fraction": 0.041666666666666664,
+      "combined_kill_fraction": 0.375,
+      "scored_repositories": 9
+    },
+    "security": {
+      "status_counts": {
+        "killed_assert": 9,
+        "survived": 58,
+        "timeout": 4
+      },
+      "scored_mutants": 67,
+      "assertion_kills": 9,
+      "runtime_kills": 0,
+      "survivors": 58,
+      "assertion_kill_fraction": 0.13432835820895522,
+      "combined_kill_fraction": 0.13432835820895522,
+      "scored_repositories": 10
+    }
+  },
+  "cohorts": {
+    "original23_adapted": {
+      "repositories": 15,
+      "scored_repositories": 11,
+      "status_counts": {
+        "killed_assert": 40,
+        "killed_error": 25,
+        "no_op": 81,
+        "scope_unresolved": 30,
+        "survived": 442
+      },
+      "scored_mutants": 507,
+      "assertion_kills": 40,
+      "runtime_kills": 25,
+      "survivors": 442,
+      "assertion_kill_fraction": 0.07889546351084813,
+      "combined_kill_fraction": 0.1282051282051282
+    },
+    "original37": {
+      "repositories": 20,
+      "scored_repositories": 14,
+      "status_counts": {
+        "killed_assert": 40,
+        "killed_error": 18,
+        "no_op": 11,
+        "scope_unresolved": 7,
+        "survived": 321
+      },
+      "scored_mutants": 379,
+      "assertion_kills": 40,
+      "runtime_kills": 18,
+      "survivors": 321,
+      "assertion_kill_fraction": 0.10554089709762533,
+      "combined_kill_fraction": 0.15303430079155672
+    },
+    "reserve": {
+      "repositories": 27,
+      "scored_repositories": 22,
+      "status_counts": {
+        "killed_assert": 35,
+        "killed_error": 33,
+        "no_op": 101,
+        "scope_unresolved": 2,
+        "survived": 334,
+        "timeout": 13
+      },
+      "scored_mutants": 402,
+      "assertion_kills": 35,
+      "runtime_kills": 33,
+      "survivors": 334,
+      "assertion_kill_fraction": 0.08706467661691543,
+      "combined_kill_fraction": 0.1691542288557214
+    }
+  },
+  "macro_combined_kill_fraction": 0.33469625174467144,
+  "median_repository_combined_kill_fraction": 0.18181818181818182,
+  "repositories": [
+    {
+      "repository": "44-technologies/terraform-aws-backend",
+      "canonical_identity": "44-technologies/terraform-aws-backend",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 0,
+      "baseline_blocked": 1,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "c709751839e680df31674027753498c04ff7c6c4aa175a957a1bb941478eb254"
+    },
+    {
+      "repository": "Azure/terraform-azurerm-avm-res-app-containerapp",
+      "canonical_identity": "azure/terraform-azurerm-avm-res-app-containerapp",
+      "cohort": "reserve",
+      "scope_count": 4,
+      "baseline_passed": 3,
+      "baseline_blocked": 1,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 2,
+          "scope_unresolved": 2,
+          "survived": 5
+        },
+        "scored_mutants": 7,
+        "assertion_kills": 2,
+        "runtime_kills": 0,
+        "survivors": 5,
+        "assertion_kill_fraction": 0.2857142857142857,
+        "combined_kill_fraction": 0.2857142857142857
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 2,
+          "scope_unresolved": 2,
+          "survived": 5
+        },
+        "scored_mutants": 7,
+        "assertion_kills": 2,
+        "runtime_kills": 0,
+        "survivors": 5,
+        "assertion_kill_fraction": 0.2857142857142857,
+        "combined_kill_fraction": 0.2857142857142857
+      },
+      "archive_sha256": "4dde95d37ca9a2106c8af7b854be7e21b51e49103ffaacee8c90d4676a3e6607"
+    },
+    {
+      "repository": "Azure/terraform-azurerm-avm-res-sql-server",
+      "canonical_identity": "azure/terraform-azurerm-avm-res-sql-server",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1,
+          "no_op": 4,
+          "survived": 10
+        },
+        "scored_mutants": 11,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 10,
+        "assertion_kill_fraction": 0.09090909090909091,
+        "combined_kill_fraction": 0.09090909090909091
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1,
+          "no_op": 4,
+          "survived": 10
+        },
+        "scored_mutants": 11,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 10,
+        "assertion_kill_fraction": 0.09090909090909091,
+        "combined_kill_fraction": 0.09090909090909091
+      },
+      "archive_sha256": "d653a492f744ee64800bf8f463fd6ffb2f1c9aa49571839c669a1df85c651388"
+    },
+    {
+      "repository": "CloudNationHQ/terraform-azure-vnet",
+      "canonical_identity": "cloudnationhq/terraform-azure-vnet",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "survived": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "survived": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "7d44164be502e79842020fc9a765ea7251694647744464238363d4f0be436831"
+    },
+    {
+      "repository": "CloudverveGmbH/terraform-azurerm-policy-based-dns",
+      "canonical_identity": "cloudvervegmbh/terraform-azurerm-policy-based-dns",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "f9b7b3393fbdc2015d9b45763f2add1b6d2d463e08308f1ffbadf92931ec12c3"
+    },
+    {
+      "repository": "FFerrinho/terraform-google-apigeex",
+      "canonical_identity": "fferrinho/terraform-google-apigeex",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1,
+          "survived": 3
+        },
+        "scored_mutants": 4,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 3,
+        "assertion_kill_fraction": 0.25,
+        "combined_kill_fraction": 0.25
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1,
+          "survived": 3
+        },
+        "scored_mutants": 4,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 3,
+        "assertion_kill_fraction": 0.25,
+        "combined_kill_fraction": 0.25
+      },
+      "archive_sha256": "c7f2db47b0b3a214e53185accaaa6472c993d35e068c843e673179771710bb9c"
+    },
+    {
+      "repository": "FFerrinho/terraform-google-project",
+      "canonical_identity": "fferrinho/terraform-google-project",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "survived": 2
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "survived": 2
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "e4694c1c1658bd20ec90ae58801ce53842bf90cc3152664227b85a396a72e876"
+    },
+    {
+      "repository": "FociSolutions/github-foundations",
+      "canonical_identity": "focisolutions/github-foundations",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 0,
+      "baseline_blocked": 1,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "6f6734e07350b9869c6b39c17cda6bf5786a74daba5be834b8199cd29399f110"
+    },
+    {
+      "repository": "GSA-TTS/terraform-cloudgov",
+      "canonical_identity": "gsa-tts/terraform-cloudgov",
+      "cohort": "original37",
+      "scope_count": 12,
+      "baseline_passed": 2,
+      "baseline_blocked": 10,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "bc938940c48f9a84c1fdd2bd308e6991f56b9013f335886281edec1127fd0f24"
+    },
+    {
+      "repository": "Heeler-Security/terraform-google-heeler-wif",
+      "canonical_identity": "heeler-security/terraform-google-heeler-wif",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 6,
+          "killed_error": 1,
+          "survived": 8
+        },
+        "scored_mutants": 15,
+        "assertion_kills": 6,
+        "runtime_kills": 1,
+        "survivors": 8,
+        "assertion_kill_fraction": 0.4,
+        "combined_kill_fraction": 0.4666666666666667
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 6,
+          "killed_error": 1,
+          "survived": 8
+        },
+        "scored_mutants": 15,
+        "assertion_kills": 6,
+        "runtime_kills": 1,
+        "survivors": 8,
+        "assertion_kill_fraction": 0.4,
+        "combined_kill_fraction": 0.4666666666666667
+      },
+      "archive_sha256": "3090d2032425db81b58faf2edba0412670d6ab128e296bafae6ce24068988221"
+    },
+    {
+      "repository": "Home-Office-Digital/core-cloud-firewall-terraform",
+      "canonical_identity": "home-office-digital/core-cloud-firewall-terraform",
+      "cohort": "original37",
+      "scope_count": 7,
+      "baseline_passed": 6,
+      "baseline_blocked": 1,
+      "all_operators": {
+        "status_counts": {
+          "no_op": 1,
+          "survived": 4
+        },
+        "scored_mutants": 4,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 4,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "no_op": 1,
+          "survived": 4
+        },
+        "scored_mutants": 4,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 4,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "9ec8f2d40f5809f446ef4a259aaf789e0c03d390b413a5720aca1975bcc37516"
+    },
+    {
+      "repository": "Home-Office-Digital/core-cloud-ingress-terraform",
+      "canonical_identity": "home-office-digital/core-cloud-ingress-terraform",
+      "cohort": "reserve",
+      "scope_count": 9,
+      "baseline_passed": 9,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "no_op": 8,
+          "survived": 35
+        },
+        "scored_mutants": 35,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 35,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "survived": 2
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "new4_subset": {
+        "status_counts": {
+          "no_op": 8,
+          "survived": 33
+        },
+        "scored_mutants": 33,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 33,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "21560567f61e339164237e78b6d316b7b558d9b80a5b9f68b6c3db5f521780b7"
+    },
+    {
+      "repository": "Home-Office-Digital/core-cloud-pam-terraform",
+      "canonical_identity": "home-office-digital/core-cloud-pam-terraform",
+      "cohort": "reserve",
+      "scope_count": 6,
+      "baseline_passed": 6,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 4,
+          "survived": 8
+        },
+        "scored_mutants": 12,
+        "assertion_kills": 4,
+        "runtime_kills": 0,
+        "survivors": 8,
+        "assertion_kill_fraction": 0.3333333333333333,
+        "combined_kill_fraction": 0.3333333333333333
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 4,
+          "survived": 8
+        },
+        "scored_mutants": 12,
+        "assertion_kills": 4,
+        "runtime_kills": 0,
+        "survivors": 8,
+        "assertion_kill_fraction": 0.3333333333333333,
+        "combined_kill_fraction": 0.3333333333333333
+      },
+      "archive_sha256": "ac213065f896529d391bdf115333132703d456de13502da04a49d2d82b290c95"
+    },
+    {
+      "repository": "K8RVIS/eks-vulnerable-infra",
+      "canonical_identity": "k8rvis/eks-vulnerable-infra",
+      "cohort": "original23_adapted",
+      "scope_count": 6,
+      "baseline_passed": 6,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 3,
+          "no_op": 1,
+          "survived": 35
+        },
+        "scored_mutants": 38,
+        "assertion_kills": 3,
+        "runtime_kills": 0,
+        "survivors": 35,
+        "assertion_kill_fraction": 0.07894736842105263,
+        "combined_kill_fraction": 0.07894736842105263
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "killed_assert": 2,
+          "no_op": 1,
+          "survived": 2
+        },
+        "scored_mutants": 4,
+        "assertion_kills": 2,
+        "runtime_kills": 0,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.5,
+        "combined_kill_fraction": 0.5
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1,
+          "survived": 33
+        },
+        "scored_mutants": 34,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 33,
+        "assertion_kill_fraction": 0.029411764705882353,
+        "combined_kill_fraction": 0.029411764705882353
+      },
+      "archive_sha256": "1b67863ec83ef046cf905159346a6ade17228792a54a916228a88f74e95ca556"
+    },
+    {
+      "repository": "MPeets/cloud-native-deployment-platform",
+      "canonical_identity": "mpeets/cloud-native-deployment-platform",
+      "cohort": "original23_adapted",
+      "scope_count": 5,
+      "baseline_passed": 5,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 3,
+          "survived": 11
+        },
+        "scored_mutants": 14,
+        "assertion_kills": 3,
+        "runtime_kills": 0,
+        "survivors": 11,
+        "assertion_kill_fraction": 0.21428571428571427,
+        "combined_kill_fraction": 0.21428571428571427
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "killed_assert": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 2,
+          "survived": 11
+        },
+        "scored_mutants": 13,
+        "assertion_kills": 2,
+        "runtime_kills": 0,
+        "survivors": 11,
+        "assertion_kill_fraction": 0.15384615384615385,
+        "combined_kill_fraction": 0.15384615384615385
+      },
+      "archive_sha256": "4b78c318e9c39a9769225bcb63f95ee8a502c5277575f35303fae447d26090e1"
+    },
+    {
+      "repository": "StackGuardian/terraform-stackguardian-modules",
+      "canonical_identity": "stackguardian/terraform-stackguardian-modules",
+      "cohort": "reserve",
+      "scope_count": 4,
+      "baseline_passed": 0,
+      "baseline_blocked": 4,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "4afe6a9985a554e5abce8f58c785f7d96649ffe778a9cd70af5c16e199862b31"
+    },
+    {
+      "repository": "Tensho/terraform-pagerduty-service",
+      "canonical_identity": "tensho/terraform-pagerduty-service",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 0,
+      "baseline_blocked": 1,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "ea4aa8135ea2a7bf2a1d664d3f5a373da53ee0995c64c4b8de1c2775b3fe0575"
+    },
+    {
+      "repository": "ambicuity/terraform-aws-eks-ray",
+      "canonical_identity": "ambicuity/terraform-aws-eks-ray",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1,
+          "killed_error": 3,
+          "survived": 18
+        },
+        "scored_mutants": 22,
+        "assertion_kills": 1,
+        "runtime_kills": 3,
+        "survivors": 18,
+        "assertion_kill_fraction": 0.045454545454545456,
+        "combined_kill_fraction": 0.18181818181818182
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "killed_error": 1,
+          "survived": 1
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 0,
+        "runtime_kills": 1,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.5
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1,
+          "killed_error": 2,
+          "survived": 17
+        },
+        "scored_mutants": 20,
+        "assertion_kills": 1,
+        "runtime_kills": 2,
+        "survivors": 17,
+        "assertion_kill_fraction": 0.05,
+        "combined_kill_fraction": 0.15
+      },
+      "archive_sha256": "66912f53f17be80b39a9055a987d6748da43a59ef79531943f0939a4024ef770"
+    },
+    {
+      "repository": "appvia/terraform-aws-compliance",
+      "canonical_identity": "appvia/terraform-aws-compliance",
+      "cohort": "original23_adapted",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "1ac204836e27169632761c4a007964e5123a85370243b374c91244db3d17e5fd"
+    },
+    {
+      "repository": "awslabs/genai-idp-terraform",
+      "canonical_identity": "awslabs/genai-idp-terraform",
+      "cohort": "original23_adapted",
+      "scope_count": 11,
+      "baseline_passed": 8,
+      "baseline_blocked": 3,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 3,
+          "killed_error": 21,
+          "no_op": 63,
+          "scope_unresolved": 7,
+          "survived": 296
+        },
+        "scored_mutants": 320,
+        "assertion_kills": 3,
+        "runtime_kills": 21,
+        "survivors": 296,
+        "assertion_kill_fraction": 0.009375,
+        "combined_kill_fraction": 0.075
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "survived": 24
+        },
+        "scored_mutants": 24,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 24,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 3,
+          "killed_error": 21,
+          "no_op": 63,
+          "scope_unresolved": 7,
+          "survived": 272
+        },
+        "scored_mutants": 296,
+        "assertion_kills": 3,
+        "runtime_kills": 21,
+        "survivors": 272,
+        "assertion_kill_fraction": 0.010135135135135136,
+        "combined_kill_fraction": 0.08108108108108109
+      },
+      "archive_sha256": "c92a938e28ee78e2445e491005a14828d30ac011ada8577dbba26c90ada18c25"
+    },
+    {
+      "repository": "canada-ca-terraform-modules/terraform-azurerm-caf-foundry",
+      "canonical_identity": "canada-ca-terraform-modules/terraform-azurerm-caf-foundry",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "eb807276cd587525c031c0af689c4105014f902da568e3ae66cf04c6d82eed5a"
+    },
+    {
+      "repository": "canada-ca-terraform-modules/terraform-azurerm-caf-netapp",
+      "canonical_identity": "canada-ca-terraform-modules/terraform-azurerm-caf-netapp",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "survived": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "survived": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "c2013e280dd8bde3e9e7f88afd66d332f8e03e9f2d54f2415f9096a3bd9bbca1"
+    },
+    {
+      "repository": "cloudeteer/terraform-azurerm-launchpad",
+      "canonical_identity": "cloudeteer/terraform-azurerm-launchpad",
+      "cohort": "reserve",
+      "scope_count": 3,
+      "baseline_passed": 0,
+      "baseline_blocked": 3,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "8b8f5044aa6132fefc5e5b7459a304f728e4c81bd70b64c0aee6329b2a8fab77"
+    },
+    {
+      "repository": "computeralex92/terraform-authentik-application",
+      "canonical_identity": "computeralex92/terraform-authentik-application",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "survived": 2
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "survived": 2
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "1b89ed6e9d7ee85b151b32a67cb4fe2f6069039d379773216401eaa0eae35e97"
+    },
+    {
+      "repository": "cytario/tf-aws-cytario",
+      "canonical_identity": "cytario/tf-aws-cytario",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "no_op": 8,
+          "scope_unresolved": 1,
+          "survived": 40
+        },
+        "scored_mutants": 40,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 40,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "no_op": 1,
+          "survived": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "new4_subset": {
+        "status_counts": {
+          "no_op": 7,
+          "scope_unresolved": 1,
+          "survived": 39
+        },
+        "scored_mutants": 39,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 39,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "d2f9d4b9f7ae491dbb9890479ae92ff18b191b28070122a360db1bd6b735f4ef"
+    },
+    {
+      "repository": "duplocloud/terraform-duplocloud-components",
+      "canonical_identity": "duplocloud/terraform-duplocloud-components",
+      "cohort": "original23_adapted",
+      "scope_count": 13,
+      "baseline_passed": 1,
+      "baseline_blocked": 12,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "211525a479ca7fb0d52b32b1b9f904fb1bca43e52e5b74cae15a74db06fa8766"
+    },
+    {
+      "repository": "elastio/elastio-stack",
+      "canonical_identity": "elastio/elastio-stack",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 4,
+          "killed_error": 3,
+          "survived": 12
+        },
+        "scored_mutants": 19,
+        "assertion_kills": 4,
+        "runtime_kills": 3,
+        "survivors": 12,
+        "assertion_kill_fraction": 0.21052631578947367,
+        "combined_kill_fraction": 0.3684210526315789
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 4,
+          "killed_error": 3,
+          "survived": 12
+        },
+        "scored_mutants": 19,
+        "assertion_kills": 4,
+        "runtime_kills": 3,
+        "survivors": 12,
+        "assertion_kill_fraction": 0.21052631578947367,
+        "combined_kill_fraction": 0.3684210526315789
+      },
+      "archive_sha256": "c71269821f01cf37ff483eb1350306d3ddb9c2ddf96c0c57f2ce018021460ddb"
+    },
+    {
+      "repository": "equinor/terraform-azurerm-key-vault",
+      "canonical_identity": "equinor/terraform-azurerm-key-vault",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 7,
+          "survived": 2
+        },
+        "scored_mutants": 9,
+        "assertion_kills": 7,
+        "runtime_kills": 0,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.7777777777777778,
+        "combined_kill_fraction": 0.7777777777777778
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 7,
+          "survived": 2
+        },
+        "scored_mutants": 9,
+        "assertion_kills": 7,
+        "runtime_kills": 0,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.7777777777777778,
+        "combined_kill_fraction": 0.7777777777777778
+      },
+      "archive_sha256": "e463b285812dfbd0f32d3666dd26c4d6c76d26326a43efb2ae2914b1cb13c964"
+    },
+    {
+      "repository": "fullstorydev/terraform-aws-fullstory-redshift-setup",
+      "canonical_identity": "fullstorydev/terraform-aws-fullstory-redshift-setup",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "8e52bf6c7e7c21b639f5080fe7c64b6f9f243df28a31e03d9f8bc820eaf54126"
+    },
+    {
+      "repository": "langchain-ai/terraform",
+      "canonical_identity": "langchain-ai/terraform",
+      "cohort": "reserve",
+      "scope_count": 3,
+      "baseline_passed": 2,
+      "baseline_blocked": 1,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 8,
+          "killed_error": 26,
+          "no_op": 78,
+          "survived": 199,
+          "timeout": 13
+        },
+        "scored_mutants": 233,
+        "assertion_kills": 8,
+        "runtime_kills": 26,
+        "survivors": 199,
+        "assertion_kill_fraction": 0.034334763948497854,
+        "combined_kill_fraction": 0.1459227467811159
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "killed_assert": 1,
+          "no_op": 11,
+          "survived": 23,
+          "timeout": 4
+        },
+        "scored_mutants": 24,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 23,
+        "assertion_kill_fraction": 0.041666666666666664,
+        "combined_kill_fraction": 0.041666666666666664
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 7,
+          "killed_error": 26,
+          "no_op": 67,
+          "survived": 176,
+          "timeout": 9
+        },
+        "scored_mutants": 209,
+        "assertion_kills": 7,
+        "runtime_kills": 26,
+        "survivors": 176,
+        "assertion_kill_fraction": 0.03349282296650718,
+        "combined_kill_fraction": 0.15789473684210525
+      },
+      "archive_sha256": "fdb9e4feebb64811fe400bfa07f489c0237306e7ffd70b33f0a4fa8686ab8c1a"
+    },
+    {
+      "repository": "masterpointio/terraform-datadog-users",
+      "canonical_identity": "masterpointio/terraform-datadog-users",
+      "cohort": "original23_adapted",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "1d5ba2fe51a5a007c939462e3306a71002f823ae2126a1742a5b99895c2d4903"
+    },
+    {
+      "repository": "masterpointio/terraform-postgres-config-dbs-users-roles",
+      "canonical_identity": "masterpointio/terraform-postgres-config-dbs-users-roles",
+      "cohort": "original23_adapted",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "archive_sha256": "93ebe1c046d633a838e8bb09174559033af25808f124c8d915480b58ec3582ab"
+    },
+    {
+      "repository": "matt-FFFFFF/terraform-github-repository-and-content",
+      "canonical_identity": "matt-ffffff/terraform-github-repository-and-content",
+      "cohort": "reserve",
+      "scope_count": 3,
+      "baseline_passed": 3,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 10,
+          "no_op": 2
+        },
+        "scored_mutants": 10,
+        "assertion_kills": 10,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 10,
+          "no_op": 2
+        },
+        "scored_mutants": 10,
+        "assertion_kills": 10,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "archive_sha256": "46d17004e0859a7c8ccde67e8012ea11438d7d81041e3a132f059ac17969fde0"
+    },
+    {
+      "repository": "metro-digital/terraform-google-cf-projectcfg",
+      "canonical_identity": "metro-digital/terraform-google-cf-projectcfg",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 6,
+          "killed_error": 3,
+          "survived": 2
+        },
+        "scored_mutants": 11,
+        "assertion_kills": 6,
+        "runtime_kills": 3,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.5454545454545454,
+        "combined_kill_fraction": 0.8181818181818182
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 6,
+          "killed_error": 3,
+          "survived": 2
+        },
+        "scored_mutants": 11,
+        "assertion_kills": 6,
+        "runtime_kills": 3,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.5454545454545454,
+        "combined_kill_fraction": 0.8181818181818182
+      },
+      "archive_sha256": "e56b8c8dadf951d88aec617ae23eb758fddeba5d7593a7ae4eae939a0337e2f3"
+    },
+    {
+      "repository": "nearform/terraform-aws-sonarqube",
+      "canonical_identity": "nearform/terraform-aws-sonarqube",
+      "cohort": "original23_adapted",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1,
+          "survived": 1
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.5,
+        "combined_kill_fraction": 0.5
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "survived": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "archive_sha256": "80a3c2567ab1fd3ce0229cd68e59a9f44b7557faa3563ed1f3758542ea0c5114"
+    },
+    {
+      "repository": "nearform/terraform-azure-sonarqube",
+      "canonical_identity": "nearform/terraform-azure-sonarqube",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1,
+          "killed_error": 1,
+          "survived": 3
+        },
+        "scored_mutants": 5,
+        "assertion_kills": 1,
+        "runtime_kills": 1,
+        "survivors": 3,
+        "assertion_kill_fraction": 0.2,
+        "combined_kill_fraction": 0.4
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "killed_error": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 1,
+        "survivors": 0,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 1.0
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1,
+          "survived": 3
+        },
+        "scored_mutants": 4,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 3,
+        "assertion_kill_fraction": 0.25,
+        "combined_kill_fraction": 0.25
+      },
+      "archive_sha256": "53aa21858a4d87a48768659aaefbca583392163b2aed62ac6503ef5f2d4b5ba0"
+    },
+    {
+      "repository": "neuralsec-io/terraform-aws-neuralsec-integrations",
+      "canonical_identity": "neuralsec-io/terraform-aws-neuralsec-integrations",
+      "cohort": "original37",
+      "scope_count": 2,
+      "baseline_passed": 2,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 3,
+          "scope_unresolved": 6,
+          "survived": 3
+        },
+        "scored_mutants": 6,
+        "assertion_kills": 3,
+        "runtime_kills": 0,
+        "survivors": 3,
+        "assertion_kill_fraction": 0.5,
+        "combined_kill_fraction": 0.5
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 3,
+          "scope_unresolved": 6,
+          "survived": 3
+        },
+        "scored_mutants": 6,
+        "assertion_kills": 3,
+        "runtime_kills": 0,
+        "survivors": 3,
+        "assertion_kill_fraction": 0.5,
+        "combined_kill_fraction": 0.5
+      },
+      "archive_sha256": "1c425255ddc990584e7b186a9254a2933013298a31261ce89560d56b9a572c6f"
+    },
+    {
+      "repository": "osinfra-io/pt-arche-kubernetes-cert-manager",
+      "canonical_identity": "osinfra-io/pt-arche-kubernetes-cert-manager",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "survived": 4
+        },
+        "scored_mutants": 4,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 4,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "survived": 3
+        },
+        "scored_mutants": 3,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 3,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "new4_subset": {
+        "status_counts": {
+          "survived": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "c51fe0263d2a2c8a3c24dbe7e11e6bd420241aeac2aaa84a7c929fcbb889d1f7"
+    },
+    {
+      "repository": "pagopa-dx/terraform-azurerm-azure-function-app",
+      "canonical_identity": "pagopa-dx/terraform-azurerm-azure-function-app",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 2,
+          "killed_error": 1,
+          "survived": 44
+        },
+        "scored_mutants": 47,
+        "assertion_kills": 2,
+        "runtime_kills": 1,
+        "survivors": 44,
+        "assertion_kill_fraction": 0.0425531914893617,
+        "combined_kill_fraction": 0.06382978723404255
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 2,
+          "killed_error": 1,
+          "survived": 44
+        },
+        "scored_mutants": 47,
+        "assertion_kills": 2,
+        "runtime_kills": 1,
+        "survivors": 44,
+        "assertion_kill_fraction": 0.0425531914893617,
+        "combined_kill_fraction": 0.06382978723404255
+      },
+      "archive_sha256": "86156b8b5137801e73f8c902aeeefafc2ba315eda420d7a6aa7ae8d398b66d5d"
+    },
+    {
+      "repository": "prefapp/tfm",
+      "canonical_identity": "prefapp/tfm",
+      "cohort": "reserve",
+      "scope_count": 2,
+      "baseline_passed": 1,
+      "baseline_blocked": 1,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 2,
+          "survived": 12
+        },
+        "scored_mutants": 14,
+        "assertion_kills": 2,
+        "runtime_kills": 0,
+        "survivors": 12,
+        "assertion_kill_fraction": 0.14285714285714285,
+        "combined_kill_fraction": 0.14285714285714285
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 2,
+          "survived": 12
+        },
+        "scored_mutants": 14,
+        "assertion_kills": 2,
+        "runtime_kills": 0,
+        "survivors": 12,
+        "assertion_kill_fraction": 0.14285714285714285,
+        "combined_kill_fraction": 0.14285714285714285
+      },
+      "archive_sha256": "680ea97114f12cb11aad5633e9b7fea0abc660b1a8d7a72a229467ed4986de28"
+    },
+    {
+      "repository": "qiniu/terraform-module",
+      "canonical_identity": "qiniu/terraform-module",
+      "cohort": "reserve",
+      "scope_count": 10,
+      "baseline_passed": 2,
+      "baseline_blocked": 8,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "615e1021000206c2e832964936231f208ac1a688dba41d65d5b5b46099b65059"
+    },
+    {
+      "repository": "rpothin/terraform-powerplatform-res-environment",
+      "canonical_identity": "rpothin/terraform-powerplatform-res-environment",
+      "cohort": "reserve",
+      "scope_count": 2,
+      "baseline_passed": 1,
+      "baseline_blocked": 1,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "archive_sha256": "245e9675e6f4c025188699e64f675eb92c006fd2a955a29d8a48c0cf24bd62c3"
+    },
+    {
+      "repository": "schubergphilis-ep/terraform-azure-mcaf-vwan",
+      "canonical_identity": "schubergphilis-ep/terraform-azure-mcaf-vwan",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "no_op": 5,
+          "survived": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "no_op": 5,
+          "survived": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "88a1dfd55d9ec293e683e4d45e1c1a0eb9ce02949c8dfe9047b92f9179477485"
+    },
+    {
+      "repository": "sebastianczech/terraform-databricks-community-modules",
+      "canonical_identity": "sebastianczech/terraform-databricks-community-modules",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_error": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 1,
+        "survivors": 0,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 1.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_error": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 1,
+        "survivors": 0,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 1.0
+      },
+      "archive_sha256": "ae975e96f4e2be56d1d548334b59078ef1a026fdc40aab102ce47c98c59c0b40"
+    },
+    {
+      "repository": "so1omon563/terraform-aws-lb",
+      "canonical_identity": "so1omon563/terraform-aws-lb",
+      "cohort": "original23_adapted",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "survived": 12
+        },
+        "scored_mutants": 12,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 12,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "survived": 12
+        },
+        "scored_mutants": 12,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 12,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "bad308785d8d3840896bf928ce9aa1ed29f9a0400130e07cae665aa4e44e9a38"
+    },
+    {
+      "repository": "so1omon563/terraform-aws-secrets-manager",
+      "canonical_identity": "so1omon563/terraform-aws-secrets-manager",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "no_op": 1,
+          "survived": 2
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "no_op": 1,
+          "survived": 2
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 2,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "b174deefff2a1c362b7909ce98727d54e8640a50640f1e105ce7e96ac1ada017"
+    },
+    {
+      "repository": "so1omon563/terraform-aws-security-group",
+      "canonical_identity": "so1omon563/terraform-aws-security-group",
+      "cohort": "original23_adapted",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1,
+          "no_op": 2
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1,
+          "no_op": 2
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "archive_sha256": "ce8182b5b23ae88f8bc570cfa35a541e250ca799de877d8aaf283226e57af314"
+    },
+    {
+      "repository": "so1omon563/terraform-aws-sns",
+      "canonical_identity": "so1omon563/terraform-aws-sns",
+      "cohort": "reserve",
+      "scope_count": 2,
+      "baseline_passed": 1,
+      "baseline_blocked": 1,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1,
+          "survived": 1
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.5,
+        "combined_kill_fraction": 0.5
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1,
+          "survived": 1
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.5,
+        "combined_kill_fraction": 0.5
+      },
+      "archive_sha256": "44bfda598448371e30bd0c48df1f04c044ef56437439cb15d229693bda2b9680"
+    },
+    {
+      "repository": "so1omon563/terraform-aws-vpc",
+      "canonical_identity": "so1omon563/terraform-aws-vpc",
+      "cohort": "original23_adapted",
+      "scope_count": 3,
+      "baseline_passed": 3,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 5,
+          "killed_error": 3,
+          "scope_unresolved": 18,
+          "survived": 26
+        },
+        "scored_mutants": 34,
+        "assertion_kills": 5,
+        "runtime_kills": 3,
+        "survivors": 26,
+        "assertion_kill_fraction": 0.14705882352941177,
+        "combined_kill_fraction": 0.23529411764705882
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 5,
+          "killed_error": 3,
+          "scope_unresolved": 18,
+          "survived": 26
+        },
+        "scored_mutants": 34,
+        "assertion_kills": 5,
+        "runtime_kills": 3,
+        "survivors": 26,
+        "assertion_kill_fraction": 0.14705882352941177,
+        "combined_kill_fraction": 0.23529411764705882
+      },
+      "archive_sha256": "a1bd132a7dab9ac980dcdfd7e004809e792c50ffe36303afbfadda52d13e2aa8"
+    },
+    {
+      "repository": "stellwerk-tf-modules/kubernetes-agent-orchestrator-runner",
+      "canonical_identity": "stellwerk-tf-modules/kubernetes-agent-orchestrator-runner",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_error": 2,
+          "survived": 1
+        },
+        "scored_mutants": 3,
+        "assertion_kills": 0,
+        "runtime_kills": 2,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.6666666666666666
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_error": 2,
+          "survived": 1
+        },
+        "scored_mutants": 3,
+        "assertion_kills": 0,
+        "runtime_kills": 2,
+        "survivors": 1,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.6666666666666666
+      },
+      "archive_sha256": "6750b02b4dc39640842d7fdd0803728bdeffa1bd3ab427de4e19783e578c4c77"
+    },
+    {
+      "repository": "swxsoc/sdc_aws_architecture",
+      "canonical_identity": "swxsoc/sdc_aws_architecture",
+      "cohort": "reserve",
+      "scope_count": 3,
+      "baseline_passed": 0,
+      "baseline_blocked": 3,
+      "all_operators": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "492061dfaf21fc99cb891384ff5b0a18ad4126aae593bcf795b6d69dfe77a2e2"
+    },
+    {
+      "repository": "tedilabs/terraform-aws-db",
+      "canonical_identity": "tedilabs/terraform-aws-db",
+      "cohort": "original37",
+      "scope_count": 2,
+      "baseline_passed": 2,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "survived": 9
+        },
+        "scored_mutants": 9,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 9,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "survived": 9
+        },
+        "scored_mutants": 9,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 9,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "9cb5eed6c3cf111ed9394510dc0241e6060b48e68854e6ee19f90decf17ec1ce"
+    },
+    {
+      "repository": "terraform-mongodbatlas-modules/terraform-mongodbatlas-project",
+      "canonical_identity": "terraform-mongodbatlas-modules/terraform-mongodbatlas-project",
+      "cohort": "original23_adapted",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_error": 1,
+          "no_op": 6
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 1,
+        "survivors": 0,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 1.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_error": 1,
+          "no_op": 6
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 0,
+        "runtime_kills": 1,
+        "survivors": 0,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 1.0
+      },
+      "archive_sha256": "809418f5b915b9510304155b5a280f90e1eecf36ce6143d34c6950fedc4cedf9"
+    },
+    {
+      "repository": "theusc6/aws-terraform-infrastructure",
+      "canonical_identity": "theusc6/aws-terraform-infrastructure",
+      "cohort": "original23_adapted",
+      "scope_count": 12,
+      "baseline_passed": 12,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 22,
+          "no_op": 9,
+          "survived": 47
+        },
+        "scored_mutants": 69,
+        "assertion_kills": 22,
+        "runtime_kills": 0,
+        "survivors": 47,
+        "assertion_kill_fraction": 0.3188405797101449,
+        "combined_kill_fraction": 0.3188405797101449
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "killed_assert": 4,
+          "no_op": 1,
+          "survived": 5
+        },
+        "scored_mutants": 9,
+        "assertion_kills": 4,
+        "runtime_kills": 0,
+        "survivors": 5,
+        "assertion_kill_fraction": 0.4444444444444444,
+        "combined_kill_fraction": 0.4444444444444444
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 18,
+          "no_op": 8,
+          "survived": 42
+        },
+        "scored_mutants": 60,
+        "assertion_kills": 18,
+        "runtime_kills": 0,
+        "survivors": 42,
+        "assertion_kill_fraction": 0.3,
+        "combined_kill_fraction": 0.3
+      },
+      "archive_sha256": "76bbfca1a9bba6fdbf2a0da294a60ea033dca3fe2326f8241a8f84b02fd20af9"
+    },
+    {
+      "repository": "thu-san/terraform-aws-static-site",
+      "canonical_identity": "thu-san/terraform-aws-static-site",
+      "cohort": "original23_adapted",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1,
+          "survived": 14
+        },
+        "scored_mutants": 15,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 14,
+        "assertion_kill_fraction": 0.06666666666666667,
+        "combined_kill_fraction": 0.06666666666666667
+      },
+      "legacy12_subset": {
+        "status_counts": {
+          "killed_assert": 1,
+          "survived": 4
+        },
+        "scored_mutants": 5,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 4,
+        "assertion_kill_fraction": 0.2,
+        "combined_kill_fraction": 0.2
+      },
+      "new4_subset": {
+        "status_counts": {
+          "survived": 10
+        },
+        "scored_mutants": 10,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 10,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "cf18bf1ffcb0a0702e62e2e3844e50ec930340d88a24e511e3cc406a688d7a5e"
+    },
+    {
+      "repository": "trouze/terraform-dbtcloud-as-yaml",
+      "canonical_identity": "trouze/terraform-dbtcloud-as-yaml",
+      "cohort": "reserve",
+      "scope_count": 11,
+      "baseline_passed": 11,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "no_op": 3,
+          "survived": 26
+        },
+        "scored_mutants": 26,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 26,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "no_op": 3,
+          "survived": 26
+        },
+        "scored_mutants": 26,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 26,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "9bc3025ebcaf25016dfa5bb431d62e8502feae68484d7c2196bebd2d2cefc6b4"
+    },
+    {
+      "repository": "truefoundry/terraform-aws-truefoundry-platform-features",
+      "canonical_identity": "truefoundry/terraform-aws-truefoundry-platform-features",
+      "cohort": "original37",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_error": 4,
+          "survived": 22
+        },
+        "scored_mutants": 26,
+        "assertion_kills": 0,
+        "runtime_kills": 4,
+        "survivors": 22,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.15384615384615385
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_error": 4,
+          "survived": 22
+        },
+        "scored_mutants": 26,
+        "assertion_kills": 0,
+        "runtime_kills": 4,
+        "survivors": 22,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.15384615384615385
+      },
+      "archive_sha256": "749c6eb0eede4dd947a80a8a76fe4aeedb087353d25fd7ba6b2e5a3d42ec2a23"
+    },
+    {
+      "repository": "unfunco/terraform-aws-oidc-github",
+      "canonical_identity": "unfunco/terraform-aws-oidc-github",
+      "cohort": "original23_adapted",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "scope_unresolved": 5
+        },
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "scope_unresolved": 5
+        },
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "archive_sha256": "10e30088286624c17e3e17e179e29f7c989c7f1fbb321e8d1ef7e6f145ad0247"
+    },
+    {
+      "repository": "useparagon/terraform-hoop-platform",
+      "canonical_identity": "useparagon/terraform-hoop-platform",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "survived": 5
+        },
+        "scored_mutants": 5,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 5,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "survived": 5
+        },
+        "scored_mutants": 5,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 5,
+        "assertion_kill_fraction": 0.0,
+        "combined_kill_fraction": 0.0
+      },
+      "archive_sha256": "d824fd1f4148499c44b255be45c875caef64b9d85e9ec0fb92950fca31bb9f93"
+    },
+    {
+      "repository": "ustaxcourt/ustc-payment-portal",
+      "canonical_identity": "ustaxcourt/ustc-payment-portal",
+      "cohort": "reserve",
+      "scope_count": 11,
+      "baseline_passed": 1,
+      "baseline_blocked": 10,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 2
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 2,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 2
+        },
+        "scored_mutants": 2,
+        "assertion_kills": 2,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "archive_sha256": "d64a9769d053f252b9b5749b2ee418ef11a1ed228cdc1045d9a55896aa7b0f50"
+    },
+    {
+      "repository": "yutachaos/terraform-lambda-deploy-module",
+      "canonical_identity": "yutachaos/terraform-lambda-deploy-module",
+      "cohort": "reserve",
+      "scope_count": 1,
+      "baseline_passed": 1,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 1
+        },
+        "scored_mutants": 1,
+        "assertion_kills": 1,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": 1.0,
+        "combined_kill_fraction": 1.0
+      },
+      "archive_sha256": "53cb3c2f24334bca4bafe335b707be2acd4068b28bfb51966b10b4c56fe504bd"
+    },
+    {
+      "repository": "zama-ai/terraform-coprocessor-modules",
+      "canonical_identity": "zama-ai/terraform-coprocessor-modules",
+      "cohort": "original37",
+      "scope_count": 9,
+      "baseline_passed": 9,
+      "baseline_blocked": 0,
+      "all_operators": {
+        "status_counts": {
+          "killed_assert": 12,
+          "killed_error": 6,
+          "no_op": 2,
+          "survived": 170
+        },
+        "scored_mutants": 188,
+        "assertion_kills": 12,
+        "runtime_kills": 6,
+        "survivors": 170,
+        "assertion_kill_fraction": 0.06382978723404255,
+        "combined_kill_fraction": 0.09574468085106383
+      },
+      "legacy12_subset": {
+        "status_counts": {},
+        "scored_mutants": 0,
+        "assertion_kills": 0,
+        "runtime_kills": 0,
+        "survivors": 0,
+        "assertion_kill_fraction": null,
+        "combined_kill_fraction": null
+      },
+      "new4_subset": {
+        "status_counts": {
+          "killed_assert": 12,
+          "killed_error": 6,
+          "no_op": 2,
+          "survived": 170
+        },
+        "scored_mutants": 188,
+        "assertion_kills": 12,
+        "runtime_kills": 6,
+        "survivors": 170,
+        "assertion_kill_fraction": 0.06382978723404255,
+        "combined_kill_fraction": 0.09574468085106383
+      },
+      "archive_sha256": "5c4470a055337141414f72d7ea886204e824e05b7ba125e8453ae24c23037e6f"
+    }
+  ],
+  "reports_awaiting_verified_archive": [],
+  "recorded_state_counts": {
+    "archived": 62,
+    "failed": 3,
+    "executing": 1
+  },
+  "policies": [
+    "Legacy12 is an operator subset under the same catalog3 engine/resolver/inputs; it is not an independent catalog2 rerun.",
+    "New4 and legacy12 scored mutant counts partition outcomes; their repository counts overlap and must not be added.",
+    "Zero scored denominator yields null, not a zero mutation percentage.",
+    "Assertion and runtime kills remain separate; timeouts, unresolved, invalid and no-op outcomes are unscored.",
+    "Canaries, interrupted attempts, migration fixtures and unarchived results are excluded.",
+    "Historically adapted original23 sources are grouped separately. Historical catalog2 and matched123-case results are not pooled.",
+    "Recorded writer receipts are checked here. A fresh archive-byte/member and raw-case/source audit is still required.",
+    "Convenience sampling and clustered ownership/providers limit generalizability."
+  ]
+}

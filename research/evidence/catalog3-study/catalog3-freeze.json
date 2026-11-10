@@ -1,0 +1,82 @@
+{
+  "catalog_version": "3",
+  "tool_version": "0.3.0-research.1",
+  "freeze_epoch": 1794153773.347094,
+  "code_sha256": {
+    "__init__.py": "74113b7ec2779643c3c1a9d93c328d587280878dfa450a99396c2f6a33ea93cc",
+    "bindings.py": "ba9e402139093dc3f338314b18c192173460d9223f5e64f04fe2af7a88b5e7b2",
+    "classifier.py": "e2648b13e73fb0be588a37785116ad9e1ad57b58a247df500d824d7f94860e3b",
+    "cli.py": "e0473544ef0dcb7821b26bbccb070569cf1cbb8ff793cba45f7b9bb106c4404e",
+    "gui/__init__.py": "8b7ba72acb35c418e28423f4f211203a046392bc6734c20cc0f5448269ccb589",
+    "gui/jobs.py": "027ea1cf8c51fd200fe272d6f152755a7ffd5a47ae7dd5576a6c44ac4a9c26cc",
+    "gui/server.py": "a97deefb7e5b19066bd822ac16d62c7f71bac2a36bb317f93e2d378d38a92b63",
+    "gui/store.py": "e94318f0e8d29f1c9660e99ae5030c5c1d44fdc09c2b3fb405eccee074d83573",
+    "gui/validation.py": "adae11d37e693e9e9c992734b1ab43f05b3e7a4b30060d8af339a019f04aec45",
+    "gui/worker.py": "172a37948d557d9f641dcf8e55823588bdb2a3ba250369287fed4a2a846611fd",
+    "metrics.py": "8d616a892b44faa2d45156a3cc06a96857feed06958d110138192c10be0ca08f",
+    "mutators.py": "3c5a639596c0f8b7b4ecfe3e833b21ee04f36127566aac5c8c6404b070de2dab",
+    "noop.py": "16557a4cdb9a617ef361f202a1c60f3e1afebfa79e01995f55b25665dbffb102",
+    "orchestrator.py": "45c92968b1339b5160b0660ee8b0ddd17dc89d004456b707e848851a3d263215",
+    "parser.py": "b69f22a3cdb8bca0d77c4133ec490c49d22855320b7a52d562648d16ebadf76a",
+    "provenance.py": "02b2081970ef4639d1da7539d5348dc245482f5d0b03ea931ee0c3ebdc6750da",
+    "reporter.py": "b50c290a2c1b27e2dec793e09645e6132db31af0addc19dd9282f57aadce7bd9",
+    "runner.py": "86f49f8d9246e32ce183ce59848e4ff0f5298e37d1ea3eb6befaecdef60d643b",
+    "scanner.py": "1cf8b849ba576fca7624942266e0cbf5cfbe7dfc165ff84705d94894972b3c3f",
+    "scope.py": "5d178cd7d5cf46db41fc5349951fe0aa05c3935a1acde7a61999f24a287c6d3d",
+    "state.py": "e671d8f155d4643079486a09a0662ce83bde7d5c5a1efc10ffbb89fbf42bd88c",
+    "validation.py": "e86371c787d363ea9f7b2c7c73481cf839d6c37418cd39186ad354bb6ba74e98"
+  },
+  "operators": 16,
+  "legacy_operators": 12,
+  "new_operators": {
+    "MUT-CFG-001": "Boolean literal inversion on resource/local configurations, module inputs (M), and scalar variable defaults (V). General configuration faults, no inferred security claim.",
+    "MUT-RES-004": "Positive count/capacity -> zero on curated provisioning attributes and scalar defaults.",
+    "MUT-SEC-005": "EC2 IMDSv2 http_tokens required -> optional, scoped AWS instance/launch template.",
+    "MUT-SEC-006": "Storage encryption true -> false for EFS/Redshift, separated from unchanged original SEC002."
+  },
+  "scope_change": "Conservative selected-run caller/default binding analysis; missing argument or explicit null to non-nullable default can be eligible. Independently supplied literals/expression to nullable child shadow defaults. Unresolved nullability/JSON/parser cases excluded. Potential reachability, not runtime coverage.",
+  "deduplication": "Identical offset/replacement/deletion counted once; earlier specialized operator retains attribution.",
+  "prequalification": "Apply actual frozen operators to selected test/local module closure; baseline native pass and actual scored mutations still required. No selection by kill rate. Static no-target and screening-blocked candidates retained.",
+  "comparison": "Legacy 12 subset retained in each version3 run with same engine, inputs, resolver and provider lock; report new operator families separately. Historical v2 results and matched 123-case comparison remain separate.",
+  "assertion_policy": "No new adaptations to source assertions, mocks or test values. Old23 executed from frozen historically adapted sources, labeled separately.",
+  "validation": {
+    "unit_tests": "242 passed, 4 skipped (opt-in provider tests)",
+    "native_canaries": "Both Terraform1.16.7 and OpenTofu1.12.3: three assertion-killed canaries each, child default, capacity and explicit module flag. Excluded from research."
+  },
+  "sources": [
+    {
+      "url": "https://www.chrisparnin.me/pdf/GangOfEight.pdf",
+      "role": "Configuration Data, Conditional, Security and Dependency defect taxonomy motivates families; not proof these exact mutations reproduce measured bugs."
+    },
+    {
+      "url": "https://homes.cs.washington.edu/~rjust/publ/mutation_test_prio_issre_2012.pdf",
+      "role": "Standard literal replacement, redundancy and mutation cost; boolean adaptation is our design, no novelty claim."
+    },
+    {
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html",
+      "role": "Required tokens restrict IMDSv2; optional permits IMDSv1/2."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-aws/main/website/docs/r/efs_file_system.html.markdown",
+      "role": "encrypted configuration boolean; provider validation still gates mutants."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-aws/main/website/docs/r/redshift_cluster.html.markdown",
+      "role": "Redshift encrypted configuration; provider validation still gates mutants."
+    },
+    {
+      "url": "https://developer.hashicorp.com/terraform/language/values/variables",
+      "role": "Input/default nullable semantics."
+    },
+    {
+      "url": "https://opentofu.org/docs/cli/commands/test/",
+      "role": "Native OpenTofu tests and file precedence."
+    }
+  ],
+  "limits": [
+    "Exploratory convenience sample with owner/provider clustering; a larger count alone does not establish generalizability.",
+    "Literal-only mutations do not cover every expression, object default, remote dependency, or equivalent/inactive case.",
+    "Neither operator number nor taxonomy mapping establishes novel or representative real-fault coverage.",
+    "Do not merge different tool versions into one reported primary mutation percentage."
+  ]
+}

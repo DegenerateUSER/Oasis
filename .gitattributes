@@ -1,0 +1,5 @@
+# Preserve author inputs, frozen scientific evidence/source, and historical artifacts byte-for-byte.
+# Git line-ending conversion would invalidate their SHA-256 provenance manifests.
+paper/** -text
+research/** -text
+Docs/archive/** -text

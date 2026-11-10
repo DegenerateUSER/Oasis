@@ -1,0 +1,1921 @@
+{
+  "repository": "equinor/terraform-azurerm-key-vault",
+  "mutant_id": "MUT-CFG-001@variables.tf:32:d7627b5073ef",
+  "archive_sha256": "e463b285812dfbd0f32d3666dd26c4d6c76d26326a43efb2ae2914b1cb13c964",
+  "upstream_commit": "0f92db17bd6a69ac997333fa7eedae877b1aa473",
+  "members": {
+    "source/variables.tf": {
+      "sha256": "1d7dcd68eb49e44b6c13f04c68242da336b4a36b6a6fd9023016140a48e6a6d5",
+      "verification": "source-snapshot.json"
+    },
+    "source/main.tf": {
+      "sha256": "ac85a205dd893153146a74a6efee1aebcfbb7cb291ffc9adf4e9220deea7217c",
+      "verification": "source-snapshot.json"
+    },
+    "source/tests/soft-delete.tftest.hcl": {
+      "sha256": "369722d4c7da935a9ab159f42413227f6808d9641c732d34d8a98f9848d32fdc",
+      "verification": "source-snapshot.json"
+    },
+    "results/scope-0000/core/results.raw/module-0000/0001.log": {
+      "sha256": "f32bcf1e6aa4a12ab8bc7a55279a02b599b84d5b4d4fc456d851864887455cdf",
+      "verification": "results.manifest.json"
+    },
+    "results/scope-0000/core/results.raw/module-0000/0007.log": {
+      "sha256": "f7997225125835fdd14060ac776d273f394b874f9a481b9e2122c83dc8adc5c1",
+      "verification": "results.manifest.json"
+    },
+    "results/scope-0000/core/results.raw/module-0000/0008.log": {
+      "sha256": "fa7801d78993d51ebebb3a40e3ed4a1d1d20f5a78295a18e327ff94a0bfbee89",
+      "verification": "results.manifest.json"
+    }
+  },
+  "runtime_versions": {
+    "python": "3.14.9",
+    "python-hcl2": "8.1.2"
+  },
+  "provider_versions": {
+    "registry.terraform.io/hashicorp/azurerm": "5.13.0",
+    "registry.terraform.io/hashicorp/random": "3.9.1"
+  },
+  "binding_events": [
+    {
+      "bindings": [
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"authorization_defaults\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"enabled_for_deployment_true\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"enabled_for_deployment_false\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"disk_encryption_enabled_true\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"enabled_for_disk_encryption_false\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"enabled_for_template_deployment_true\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"enabled_for_template_deployment_false\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"access_policies_empty\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"access_policies_defined\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"enable_rbac_authorization_true\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"enable_rbac_authorization_false\"",
+          "test": "tests/authorization.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"basic_defaults\"",
+          "test": "tests/basic.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"monitoring_defaults\"",
+          "test": "tests/monitoring.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"networking_defaults\"",
+          "test": "tests/networking.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"private_endpoints_empty\"",
+          "test": "tests/networking.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"private_endpoints_defined\"",
+          "test": "tests/networking.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"soft_delete_defaults\"",
+          "test": "tests/soft-delete.tftest.hcl"
+        },
+        {
+          "disposition": "active",
+          "module_path": [],
+          "reason": "selected run targets this module without overriding input",
+          "run": "\"soft_delete_retention\"",
+          "test": "tests/soft-delete.tftest.hcl"
+        },
+        {
+          "disposition": "unresolved",
+          "module_path": [],
+          "reason": "test input expression/null influence is unresolved",
+          "run": "\"purge_protection_enabled\"",
+          "test": "tests/soft-delete.tftest.hcl"
+        },
+        {
+          "disposition": "unresolved",
+          "module_path": [],
+          "reason": "test input expression/null influence is unresolved",
+          "run": "\"purge_protection_disabled\"",
+          "test": "tests/soft-delete.tftest.hcl"
+        }
+      ],
+      "disposition": "active",
+      "file": "variables.tf",
+      "variable": "purge_protection_enabled"
+    }
+  ],
+  "retained_log_events": {
+    "0001": [
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:52.262860+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:53.162675+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"authorization_defaults\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "authorization_defaults",
+        "@timestamp": "2026-11-08T23:00:53.164570+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "authorization_defaults",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"authorization_defaults\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "authorization_defaults",
+        "@timestamp": "2026-11-08T23:00:53.191531+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "authorization_defaults",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_deployment_true\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_deployment_true",
+        "@timestamp": "2026-11-08T23:00:53.191631+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_deployment_true",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_deployment_true\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_deployment_true",
+        "@timestamp": "2026-11-08T23:00:53.200996+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_deployment_true",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_deployment_false\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_deployment_false",
+        "@timestamp": "2026-11-08T23:00:53.201102+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_deployment_false",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_deployment_false\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_deployment_false",
+        "@timestamp": "2026-11-08T23:00:53.235298+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_deployment_false",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"disk_encryption_enabled_true\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "disk_encryption_enabled_true",
+        "@timestamp": "2026-11-08T23:00:53.235455+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "disk_encryption_enabled_true",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"disk_encryption_enabled_true\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "disk_encryption_enabled_true",
+        "@timestamp": "2026-11-08T23:00:53.245419+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "disk_encryption_enabled_true",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_disk_encryption_false\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_disk_encryption_false",
+        "@timestamp": "2026-11-08T23:00:53.245522+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_disk_encryption_false",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_disk_encryption_false\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_disk_encryption_false",
+        "@timestamp": "2026-11-08T23:00:53.258359+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_disk_encryption_false",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_template_deployment_true\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_template_deployment_true",
+        "@timestamp": "2026-11-08T23:00:53.258474+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_template_deployment_true",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_template_deployment_true\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_template_deployment_true",
+        "@timestamp": "2026-11-08T23:00:53.268077+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_template_deployment_true",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_template_deployment_false\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_template_deployment_false",
+        "@timestamp": "2026-11-08T23:00:53.268692+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_template_deployment_false",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_template_deployment_false\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_template_deployment_false",
+        "@timestamp": "2026-11-08T23:00:53.280400+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_template_deployment_false",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"access_policies_empty\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "access_policies_empty",
+        "@timestamp": "2026-11-08T23:00:53.280523+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "access_policies_empty",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"access_policies_empty\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "access_policies_empty",
+        "@timestamp": "2026-11-08T23:00:53.290001+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "access_policies_empty",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"access_policies_defined\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "access_policies_defined",
+        "@timestamp": "2026-11-08T23:00:53.290142+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "access_policies_defined",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"access_policies_defined\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "access_policies_defined",
+        "@timestamp": "2026-11-08T23:00:53.304808+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "access_policies_defined",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enable_rbac_authorization_true\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enable_rbac_authorization_true",
+        "@timestamp": "2026-11-08T23:00:53.304909+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enable_rbac_authorization_true",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enable_rbac_authorization_true\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enable_rbac_authorization_true",
+        "@timestamp": "2026-11-08T23:00:53.318407+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enable_rbac_authorization_true",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enable_rbac_authorization_false\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enable_rbac_authorization_false",
+        "@timestamp": "2026-11-08T23:00:53.318524+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enable_rbac_authorization_false",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enable_rbac_authorization_false\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enable_rbac_authorization_false",
+        "@timestamp": "2026-11-08T23:00:53.330385+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enable_rbac_authorization_false",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... tearing down",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:53.330633+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "teardown",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/basic.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:53.921923+05:30",
+        "test_run": {
+          "path": "tests/basic.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/basic.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:54.060718+05:30",
+        "test_run": {
+          "path": "tests/basic.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"basic_defaults\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/basic.tftest.hcl",
+        "@testrun": "basic_defaults",
+        "@timestamp": "2026-11-08T23:00:54.060866+05:30",
+        "test_run": {
+          "path": "tests/basic.tftest.hcl",
+          "run": "basic_defaults",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"basic_defaults\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/basic.tftest.hcl",
+        "@testrun": "basic_defaults",
+        "@timestamp": "2026-11-08T23:00:54.094516+05:30",
+        "test_run": {
+          "path": "tests/basic.tftest.hcl",
+          "run": "basic_defaults",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... tearing down",
+        "@module": "terraform.ui",
+        "@testfile": "tests/basic.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:54.094710+05:30",
+        "test_run": {
+          "path": "tests/basic.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "teardown",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/monitoring.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:54.327210+05:30",
+        "test_run": {
+          "path": "tests/monitoring.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/monitoring.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:54.529961+05:30",
+        "test_run": {
+          "path": "tests/monitoring.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"monitoring_defaults\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/monitoring.tftest.hcl",
+        "@testrun": "monitoring_defaults",
+        "@timestamp": "2026-11-08T23:00:54.530160+05:30",
+        "test_run": {
+          "path": "tests/monitoring.tftest.hcl",
+          "run": "monitoring_defaults",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"monitoring_defaults\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/monitoring.tftest.hcl",
+        "@testrun": "monitoring_defaults",
+        "@timestamp": "2026-11-08T23:00:54.568308+05:30",
+        "test_run": {
+          "path": "tests/monitoring.tftest.hcl",
+          "run": "monitoring_defaults",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... tearing down",
+        "@module": "terraform.ui",
+        "@testfile": "tests/monitoring.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:54.569090+05:30",
+        "test_run": {
+          "path": "tests/monitoring.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "teardown",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:54.849750+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:55.041513+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"networking_defaults\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "networking_defaults",
+        "@timestamp": "2026-11-08T23:00:55.041780+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "networking_defaults",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"networking_defaults\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "networking_defaults",
+        "@timestamp": "2026-11-08T23:00:55.078968+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "networking_defaults",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"private_endpoints_empty\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "private_endpoints_empty",
+        "@timestamp": "2026-11-08T23:00:55.079106+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "private_endpoints_empty",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"private_endpoints_empty\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "private_endpoints_empty",
+        "@timestamp": "2026-11-08T23:00:55.089076+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "private_endpoints_empty",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"private_endpoints_defined\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "private_endpoints_defined",
+        "@timestamp": "2026-11-08T23:00:55.089214+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "private_endpoints_defined",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"private_endpoints_defined\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "private_endpoints_defined",
+        "@timestamp": "2026-11-08T23:00:55.105261+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "private_endpoints_defined",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... tearing down",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:55.105427+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "teardown",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:55.341962+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:55.488757+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"soft_delete_defaults\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "soft_delete_defaults",
+        "@timestamp": "2026-11-08T23:00:55.488898+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "soft_delete_defaults",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"soft_delete_defaults\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "soft_delete_defaults",
+        "@timestamp": "2026-11-08T23:00:55.514754+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "soft_delete_defaults",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"soft_delete_retention\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "soft_delete_retention",
+        "@timestamp": "2026-11-08T23:00:55.514889+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "soft_delete_retention",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"soft_delete_retention\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "soft_delete_retention",
+        "@timestamp": "2026-11-08T23:00:55.523518+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "soft_delete_retention",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"purge_protection_enabled\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "purge_protection_enabled",
+        "@timestamp": "2026-11-08T23:00:55.523623+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "purge_protection_enabled",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"purge_protection_enabled\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "purge_protection_enabled",
+        "@timestamp": "2026-11-08T23:00:55.534352+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "purge_protection_enabled",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"purge_protection_disabled\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "purge_protection_disabled",
+        "@timestamp": "2026-11-08T23:00:55.534455+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "purge_protection_disabled",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"purge_protection_disabled\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "purge_protection_disabled",
+        "@timestamp": "2026-11-08T23:00:55.543881+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "purge_protection_disabled",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... tearing down",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:00:55.544059+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "teardown",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "Success! 25 passed, 0 failed.",
+        "@module": "terraform.ui",
+        "@timestamp": "2026-11-08T23:00:55.662959+05:30",
+        "test_summary": {
+          "status": "pass",
+          "passed": 25,
+          "failed": 0,
+          "errored": 0,
+          "skipped": 0
+        },
+        "type": "test_summary"
+      }
+    ],
+    "0007": [],
+    "0008": [
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:10.645042+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:10.952055+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"authorization_defaults\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "authorization_defaults",
+        "@timestamp": "2026-11-08T23:01:10.952368+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "authorization_defaults",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"authorization_defaults\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "authorization_defaults",
+        "@timestamp": "2026-11-08T23:01:10.974655+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "authorization_defaults",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_deployment_true\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_deployment_true",
+        "@timestamp": "2026-11-08T23:01:10.974871+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_deployment_true",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_deployment_true\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_deployment_true",
+        "@timestamp": "2026-11-08T23:01:10.989481+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_deployment_true",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_deployment_false\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_deployment_false",
+        "@timestamp": "2026-11-08T23:01:10.989635+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_deployment_false",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_deployment_false\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_deployment_false",
+        "@timestamp": "2026-11-08T23:01:11.005518+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_deployment_false",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"disk_encryption_enabled_true\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "disk_encryption_enabled_true",
+        "@timestamp": "2026-11-08T23:01:11.005795+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "disk_encryption_enabled_true",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"disk_encryption_enabled_true\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "disk_encryption_enabled_true",
+        "@timestamp": "2026-11-08T23:01:11.020736+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "disk_encryption_enabled_true",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_disk_encryption_false\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_disk_encryption_false",
+        "@timestamp": "2026-11-08T23:01:11.020874+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_disk_encryption_false",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_disk_encryption_false\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_disk_encryption_false",
+        "@timestamp": "2026-11-08T23:01:11.053308+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_disk_encryption_false",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_template_deployment_true\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_template_deployment_true",
+        "@timestamp": "2026-11-08T23:01:11.053496+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_template_deployment_true",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_template_deployment_true\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_template_deployment_true",
+        "@timestamp": "2026-11-08T23:01:11.069512+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_template_deployment_true",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_template_deployment_false\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_template_deployment_false",
+        "@timestamp": "2026-11-08T23:01:11.069662+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_template_deployment_false",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enabled_for_template_deployment_false\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enabled_for_template_deployment_false",
+        "@timestamp": "2026-11-08T23:01:11.084893+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enabled_for_template_deployment_false",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"access_policies_empty\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "access_policies_empty",
+        "@timestamp": "2026-11-08T23:01:11.085057+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "access_policies_empty",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"access_policies_empty\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "access_policies_empty",
+        "@timestamp": "2026-11-08T23:01:11.097212+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "access_policies_empty",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"access_policies_defined\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "access_policies_defined",
+        "@timestamp": "2026-11-08T23:01:11.097375+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "access_policies_defined",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"access_policies_defined\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "access_policies_defined",
+        "@timestamp": "2026-11-08T23:01:11.111833+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "access_policies_defined",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enable_rbac_authorization_true\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enable_rbac_authorization_true",
+        "@timestamp": "2026-11-08T23:01:11.111979+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enable_rbac_authorization_true",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enable_rbac_authorization_true\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enable_rbac_authorization_true",
+        "@timestamp": "2026-11-08T23:01:11.124547+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enable_rbac_authorization_true",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enable_rbac_authorization_false\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enable_rbac_authorization_false",
+        "@timestamp": "2026-11-08T23:01:11.124689+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enable_rbac_authorization_false",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"enable_rbac_authorization_false\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "enable_rbac_authorization_false",
+        "@timestamp": "2026-11-08T23:01:11.140062+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "enable_rbac_authorization_false",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... tearing down",
+        "@module": "terraform.ui",
+        "@testfile": "tests/authorization.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:11.140508+05:30",
+        "test_run": {
+          "path": "tests/authorization.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "teardown",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/basic.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:11.424235+05:30",
+        "test_run": {
+          "path": "tests/basic.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/basic.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:11.581000+05:30",
+        "test_run": {
+          "path": "tests/basic.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"basic_defaults\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/basic.tftest.hcl",
+        "@testrun": "basic_defaults",
+        "@timestamp": "2026-11-08T23:01:11.581195+05:30",
+        "test_run": {
+          "path": "tests/basic.tftest.hcl",
+          "run": "basic_defaults",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"basic_defaults\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/basic.tftest.hcl",
+        "@testrun": "basic_defaults",
+        "@timestamp": "2026-11-08T23:01:11.634640+05:30",
+        "test_run": {
+          "path": "tests/basic.tftest.hcl",
+          "run": "basic_defaults",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... tearing down",
+        "@module": "terraform.ui",
+        "@testfile": "tests/basic.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:11.634849+05:30",
+        "test_run": {
+          "path": "tests/basic.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "teardown",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/monitoring.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:11.883231+05:30",
+        "test_run": {
+          "path": "tests/monitoring.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/monitoring.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:12.036068+05:30",
+        "test_run": {
+          "path": "tests/monitoring.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"monitoring_defaults\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/monitoring.tftest.hcl",
+        "@testrun": "monitoring_defaults",
+        "@timestamp": "2026-11-08T23:01:12.037084+05:30",
+        "test_run": {
+          "path": "tests/monitoring.tftest.hcl",
+          "run": "monitoring_defaults",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"monitoring_defaults\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/monitoring.tftest.hcl",
+        "@testrun": "monitoring_defaults",
+        "@timestamp": "2026-11-08T23:01:12.061522+05:30",
+        "test_run": {
+          "path": "tests/monitoring.tftest.hcl",
+          "run": "monitoring_defaults",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... tearing down",
+        "@module": "terraform.ui",
+        "@testfile": "tests/monitoring.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:12.061704+05:30",
+        "test_run": {
+          "path": "tests/monitoring.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "teardown",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:12.306458+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:12.456954+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"networking_defaults\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "networking_defaults",
+        "@timestamp": "2026-11-08T23:01:12.457122+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "networking_defaults",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"networking_defaults\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "networking_defaults",
+        "@timestamp": "2026-11-08T23:01:12.482687+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "networking_defaults",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"private_endpoints_empty\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "private_endpoints_empty",
+        "@timestamp": "2026-11-08T23:01:12.482865+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "private_endpoints_empty",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"private_endpoints_empty\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "private_endpoints_empty",
+        "@timestamp": "2026-11-08T23:01:12.494047+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "private_endpoints_empty",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"private_endpoints_defined\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "private_endpoints_defined",
+        "@timestamp": "2026-11-08T23:01:12.494162+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "private_endpoints_defined",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"private_endpoints_defined\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "private_endpoints_defined",
+        "@timestamp": "2026-11-08T23:01:12.504802+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "private_endpoints_defined",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... tearing down",
+        "@module": "terraform.ui",
+        "@testfile": "tests/networking.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:12.505001+05:30",
+        "test_run": {
+          "path": "tests/networking.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "teardown",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:12.776262+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:12.946129+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"soft_delete_defaults\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "soft_delete_defaults",
+        "@timestamp": "2026-11-08T23:01:12.946327+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "soft_delete_defaults",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"soft_delete_defaults\"... fail",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "soft_delete_defaults",
+        "@timestamp": "2026-11-08T23:01:12.978688+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "soft_delete_defaults",
+          "progress": "complete",
+          "status": "fail"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "error",
+        "@message": "Error: Test assertion failed",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "soft_delete_defaults",
+        "@timestamp": "2026-11-08T23:01:12.979445+05:30",
+        "diagnostic": {
+          "severity": "error",
+          "summary": "Test assertion failed",
+          "detail": "Purge protection should be enabled by default",
+          "range": {
+            "filename": "tests/soft-delete.tftest.hcl",
+            "start": {
+              "line": 26,
+              "column": 21,
+              "byte": 679
+            },
+            "end": {
+              "line": 26,
+              "column": 76,
+              "byte": 734
+            }
+          },
+          "snippet": {
+            "context": "run \"soft_delete_defaults\"",
+            "code": "    condition     = azurerm_key_vault.this.purge_protection_enabled == true",
+            "start_line": 26,
+            "highlight_start_offset": 20,
+            "highlight_end_offset": 75,
+            "values": [
+              {
+                "traversal": "azurerm_key_vault.this.purge_protection_enabled",
+                "statement": "is false"
+              }
+            ],
+            "test_assertion_expr": {
+              "lhs": "false",
+              "rhs": "true",
+              "warning": "",
+              "show_verbose": false
+            }
+          }
+        },
+        "type": "diagnostic"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"soft_delete_retention\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "soft_delete_retention",
+        "@timestamp": "2026-11-08T23:01:12.979640+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "soft_delete_retention",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"soft_delete_retention\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "soft_delete_retention",
+        "@timestamp": "2026-11-08T23:01:12.990909+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "soft_delete_retention",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"purge_protection_enabled\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "purge_protection_enabled",
+        "@timestamp": "2026-11-08T23:01:12.991032+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "purge_protection_enabled",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"purge_protection_enabled\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "purge_protection_enabled",
+        "@timestamp": "2026-11-08T23:01:13.004740+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "purge_protection_enabled",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"purge_protection_disabled\"... in progress",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "purge_protection_disabled",
+        "@timestamp": "2026-11-08T23:01:13.004855+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "purge_protection_disabled",
+          "progress": "starting",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"purge_protection_disabled\"... pass",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "purge_protection_disabled",
+        "@timestamp": "2026-11-08T23:01:13.021663+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "purge_protection_disabled",
+          "progress": "complete",
+          "status": "pass"
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "  \"setup_tests\"... tearing down",
+        "@module": "terraform.ui",
+        "@testfile": "tests/soft-delete.tftest.hcl",
+        "@testrun": "setup_tests",
+        "@timestamp": "2026-11-08T23:01:13.021851+05:30",
+        "test_run": {
+          "path": "tests/soft-delete.tftest.hcl",
+          "run": "setup_tests",
+          "progress": "teardown",
+          "elapsed": 0
+        },
+        "type": "test_run"
+      },
+      {
+        "@level": "info",
+        "@message": "Failure! 24 passed, 1 failed.",
+        "@module": "terraform.ui",
+        "@timestamp": "2026-11-08T23:01:13.144039+05:30",
+        "test_summary": {
+          "status": "fail",
+          "passed": 24,
+          "failed": 1,
+          "errored": 0,
+          "skipped": 0
+        },
+        "type": "test_summary"
+      }
+    ]
+  },
+  "native_experiments_rerun": false
+}

@@ -1,0 +1,374 @@
+[
+  {
+    "repository": "44-technologies/terraform-aws-backend",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "e7a42cdf6bdca89b257c2d25c43df22a35f42264f2c7feac3922775da3d995ef"
+  },
+  {
+    "repository": "ambicuity/terraform-aws-eks-ray",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "c6d93558fbce8fc697f4747a9013f58181704e73e210c89abe77207c78fdc47c"
+  },
+  {
+    "repository": "appvia/terraform-aws-compliance",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "c6f39b2f398ab6193d89173f277018dab4860ad0da90d40560d5d4f36d8c21db"
+  },
+  {
+    "repository": "awslabs/genai-idp-terraform",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "6054503cb94eed9aed49e086884895bb2c386ac6e01b013706fa7082a25577ba"
+  },
+  {
+    "repository": "Azure/terraform-azurerm-avm-res-app-containerapp",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "a5657a635714b9f7f311262ed92db4e175a3d16729023847bd20cee0c1285551"
+  },
+  {
+    "repository": "Azure/terraform-azurerm-avm-res-sql-server",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "4b0df2ce2057530625deab50cecc2fc6baef385896bfe9bc45e6633f90250814"
+  },
+  {
+    "repository": "canada-ca-terraform-modules/terraform-azurerm-caf-foundry",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "4a7fb5e56d1e794f8a54d085529160e7cfd13edf8920f08b6da0fa08b85f6b1d"
+  },
+  {
+    "repository": "canada-ca-terraform-modules/terraform-azurerm-caf-netapp",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "1737a92d2e7ccdf8b59a5a5d524f5502818999474e744fc78a6cf576a40b523b"
+  },
+  {
+    "repository": "cloudeteer/terraform-azurerm-launchpad",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "1207e3df88d1198698750fa0881224958b5fc66cb50ea08fce0f81c47153ff41"
+  },
+  {
+    "repository": "CloudNationHQ/terraform-azure-vnet",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "730ebfe7aa4c2d8b4693063072cc8577e54946ddaaadfa3534c00b1385dc126f"
+  },
+  {
+    "repository": "CloudverveGmbH/terraform-azurerm-policy-based-dns",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "37f46f505a2a95db9d0cc5e9251e6d0f9e166f7ab0113ca5135e40e5378f2790"
+  },
+  {
+    "repository": "computeralex92/terraform-authentik-application",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "ee6eedba0e9ef83b55cb05784b48a80c670417f1719541ef7b3571cf4021bfa6"
+  },
+  {
+    "repository": "cytario/tf-aws-cytario",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "15244356f1de5414eb67970a153fe25ed8a021b14bd5ab9c824206045c941cf0"
+  },
+  {
+    "repository": "duplocloud/terraform-duplocloud-components",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "9b0c7f1badbb04c33ffc3b30e770631e25c84f6806ed1f4770e7f533ab72e2ab"
+  },
+  {
+    "repository": "elastio/elastio-stack",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "5b7e3935362c8ebe245ccec34c7b52f93fdcfb05cfdb141a2b4dee319b1d239f"
+  },
+  {
+    "repository": "equinor/terraform-azurerm-key-vault",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "d13ab3b46527b6827a7f3b92f6b201333081f9d5b17faf3be412ca2945f3006a"
+  },
+  {
+    "repository": "FFerrinho/terraform-google-apigeex",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "21d8146f5f2ecf9b6e512668b932be8165f0d7256d1c2f2e837c6ea349ff1882"
+  },
+  {
+    "repository": "FFerrinho/terraform-google-project",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "aaa853fa05eb9d9acf88911716176e5380e2eec8b71ba7eda59f7fdf284dea9d"
+  },
+  {
+    "repository": "FociSolutions/github-foundations",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "8484252d38a6004d8d6e40ddb1287bdc1e39f350d344590e5d807814b2749ed9"
+  },
+  {
+    "repository": "fullstorydev/terraform-aws-fullstory-redshift-setup",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "3315fdf7cbdb5e01eb7ba0afc253fcd48106171e23c4a1f8db9c52b86155a77d"
+  },
+  {
+    "repository": "GSA-TTS/terraform-cloudgov",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "5ce1d5fe0f0fd655b594daf5960e1f4d3b07572c5cee802c9808e83f465406e9"
+  },
+  {
+    "repository": "Heeler-Security/terraform-google-heeler-wif",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "12d04de8bfef96e65f79989c00df84fe5792edc5f954ec1e3bbcff286b51e9c9"
+  },
+  {
+    "repository": "Home-Office-Digital/core-cloud-firewall-terraform",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "59014c0f01e40d1092136f832efe0b12a2ae70cecdd8bae462d5e40d0edfad4f"
+  },
+  {
+    "repository": "Home-Office-Digital/core-cloud-ingress-terraform",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "a8bdcfb442114c3dc54512598848b9bad4bf9b45c2da866729b18742f2c61011"
+  },
+  {
+    "repository": "Home-Office-Digital/core-cloud-pam-terraform",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "6ba0fada9de4e2b553a8be9c9d3d9960f6f3187173d3726896532a42cfa55a24"
+  },
+  {
+    "repository": "K8RVIS/eks-vulnerable-infra",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "942e5d995df189c1ac8354b3dfffc9e5fbc55d26d28f5bb0e8f1f528a68fca30"
+  },
+  {
+    "repository": "langchain-ai/terraform",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "55279169ee0978c46b836d39febb603f63b01d3037c5d4392cd861718d7ab827"
+  },
+  {
+    "repository": "masterpointio/terraform-datadog-users",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "d27d2bd760c13c638cdc5124f7e1b7934b9c5b1c97ef32fd003ff964bf350827"
+  },
+  {
+    "repository": "masterpointio/terraform-postgres-config-dbs-users-roles",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "2e9f7b0924741ecbb6829d7dd3f7cb5003c596b5426426128b3233b2ecacf121"
+  },
+  {
+    "repository": "matt-FFFFFF/terraform-github-repository-and-content",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "629517c99e0ff3d085c5eea08e7ba3d589b7b6e4d3f640c5acb2a726e6efcd13"
+  },
+  {
+    "repository": "metro-digital/terraform-google-cf-projectcfg",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "6e436ee04a8161073d79ab2e7d6b15a3b0a32df4269b9dbea30a1f570d41e92a"
+  },
+  {
+    "repository": "MPeets/cloud-native-deployment-platform",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "291982fdccee4aa6aec255dbedeb846fa8d28fd394ac833c0f061ba2876486ac"
+  },
+  {
+    "repository": "nearform/terraform-aws-sonarqube",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "6c2a14353980c9e957f9c1dfe260ea5232576a360424f0a7fc74750a01235733"
+  },
+  {
+    "repository": "nearform/terraform-azure-sonarqube",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "73bde718749506baed5cd2a80c089e227197e4a9e38f7a5251cafd46df271080"
+  },
+  {
+    "repository": "neuralsec-io/terraform-aws-neuralsec-integrations",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "18ec99c8cc8243467f18c1a0f9fa8784c5d49b71445de1ba8abf825b8c3448aa"
+  },
+  {
+    "repository": "osinfra-io/pt-arche-kubernetes-cert-manager",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "e2bb5adf5a7fce3cfe89cd4b92d07850063f4e0893eba8f6e80f93c646f300ed"
+  },
+  {
+    "repository": "pagopa-dx/terraform-azurerm-azure-function-app",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "6fde3e03878f1ff4381bdcc726b6822334285a772b790c93edaeed71b4d0213c"
+  },
+  {
+    "repository": "prefapp/tfm",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "1ea6c920cb0184dd245dfbbe4832984f20156d2e83f5b69ae8731ff1bd6220dd"
+  },
+  {
+    "repository": "qiniu/terraform-module",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "87e5e7f0ee5adc26ebbcd401c8ad62580d3c42f016b03ffb58e1f1816db9719a"
+  },
+  {
+    "repository": "rpothin/terraform-powerplatform-res-environment",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "627a209114e65b9640f2e93d781b9ec9f4c505317a484bb56c7db3682d81b688"
+  },
+  {
+    "repository": "schubergphilis-ep/terraform-azure-mcaf-vwan",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "e87177b6d7bf57a1d03c82cc400a7c3148a1474d7f6a6cd6da459f81b3454b46"
+  },
+  {
+    "repository": "sebastianczech/terraform-databricks-community-modules",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "9a46beeaab1c960dd6d638f146580dc648569f6f1305e5105a0d0cc89faf9353"
+  },
+  {
+    "repository": "so1omon563/terraform-aws-lb",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "141b3a797121379c8f7630cecb014da514555b5fa00d95d56b05ba050fe6e2e0"
+  },
+  {
+    "repository": "so1omon563/terraform-aws-secrets-manager",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "a532e9e95a919e3ad131348730724dddbd834e373bc3d702e80e6b1085094dbb"
+  },
+  {
+    "repository": "so1omon563/terraform-aws-security-group",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "276dfecfb5aa2dec7a8b946576be87549aa8c9afc9d87063bd05a6a9617a5a26"
+  },
+  {
+    "repository": "so1omon563/terraform-aws-sns",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "847121d9edbdbcf28b43722a91f4aaa5f6b2a98b7a178b82713adaab4674d152"
+  },
+  {
+    "repository": "so1omon563/terraform-aws-vpc",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "f12810468a3d3989e3acefa1e3a80006d26df5e835b3ad4911159034a1686428"
+  },
+  {
+    "repository": "StackGuardian/terraform-stackguardian-modules",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "69eba9ac4bf39cac1921829d638cc74a217f47e66f847eb64ba72a49c2115281"
+  },
+  {
+    "repository": "stellwerk-tf-modules/kubernetes-agent-orchestrator-runner",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "f8632f1053a26c3ce30ad7ec737cdae3825207fc698c7e6713e7d30adf69d0e1"
+  },
+  {
+    "repository": "swxsoc/sdc_aws_architecture",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "ed4d6271b8c92b6fe0557029b7ce7516d018d73900688ce5d8c1680bceb9f10f"
+  },
+  {
+    "repository": "tedilabs/terraform-aws-db",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "69211075ea7e447382bce5d9673064027a533000c6b7ad30de48b857115bb1c7"
+  },
+  {
+    "repository": "Tensho/terraform-pagerduty-service",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "1e07b37c1f8d4d19de8a3873dbe1d436bd784a2df6cb3da0dbdf830b1ed71ccd"
+  },
+  {
+    "repository": "terraform-mongodbatlas-modules/terraform-mongodbatlas-project",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "797d676ef27c479750390f22f4e9f9beae7e53c605f8499d9d6e56b8a311801c"
+  },
+  {
+    "repository": "theusc6/aws-terraform-infrastructure",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "208540a492eeec1d102fe9d96bdb20ae735fe8efb5b1c47657e9f17f74fae1c4"
+  },
+  {
+    "repository": "thu-san/terraform-aws-static-site",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "d27cab8e6f71e445bddead9156e19e6b0beeac279f03ec7ce1d05e763f8a35e6"
+  },
+  {
+    "repository": "trouze/terraform-dbtcloud-as-yaml",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "0afb5473efd095162de93f985dea848a3d42c239fa51ffd445373e2415b61a93"
+  },
+  {
+    "repository": "truefoundry/terraform-aws-truefoundry-platform-features",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "8e574f8cb9fa3ee4ded5cbf5e47b08b689e7eea59aa0e929667d82dd94a2e530"
+  },
+  {
+    "repository": "unfunco/terraform-aws-oidc-github",
+    "cohort": "original23_adapted",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "05ad8ea84e697e5d3d58d6c7c3644f88571de40a3bde852eeb1c94d78b204275"
+  },
+  {
+    "repository": "useparagon/terraform-hoop-platform",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "1291a7e60d63fa7edb27326a6b1cdbdd945304e5ddc203f94d28c8c9c2f25049"
+  },
+  {
+    "repository": "ustaxcourt/ustc-payment-portal",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "0a0beaca79786f9381d89fc113b51fdd463219b21bc72877e1ab1b97760a860e"
+  },
+  {
+    "repository": "yutachaos/terraform-lambda-deploy-module",
+    "cohort": "reserve",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "8c71e2cbffe7e90a127dabb58ef5397b2c6dbfbfae3a8d09b47e643b3b8d0acc"
+  },
+  {
+    "repository": "zama-ai/terraform-coprocessor-modules",
+    "cohort": "original37",
+    "assertions_changed_in_this_phase": false,
+    "receipt_sha256": "396fad71ae37ab8428cfc16a3f1c1ca4acefe98100052028adf25f23304b6bbb"
+  }
+]

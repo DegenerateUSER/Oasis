@@ -1,0 +1,13 @@
+{
+  "repository": "stardog-oss/stardog-terraform-starters",
+  "epoch": 1794214340.5419462,
+  "status": "cancelled_preparation_preserved",
+  "archive": "/Volumes/ HD/tushar/Oasis-37-direct-exfat-20261108/ssd-run/phase3/reports/cancelled-preparations/stardog-oss__stardog-terraform-starters/prepared-source.tar.gz",
+  "sha256": "3ce3db748192808538edecd1787ee25c2dded34f85576bc330d172c243cca2d5",
+  "regular_files_verified": 534,
+  "declared_links_preserved_as_metadata": 42,
+  "native_scored_results": 0,
+  "retry_cancelled_by_user": true,
+  "original_local_sources_preserved": true,
+  "policy": "No links followed; absolute/relative link text retained in inventory. Not a scored research completion."
+}

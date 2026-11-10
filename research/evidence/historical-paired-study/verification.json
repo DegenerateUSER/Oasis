@@ -1,0 +1,92 @@
+{
+  "verified_at": "2026-11-07T12:32:52.277712+05:30",
+  "case_count": 123,
+  "module_count": 40,
+  "repository_count": 8,
+  "completed_arm_jobs": 80,
+  "candidate_case_executions": 246,
+  "all_candidates_scored_in_both_arms": true,
+  "original_outcomes_match_historical_frozen_rows": true,
+  "private_source_restoration": true,
+  "excluded_cases": [
+    {
+      "case_id": "d1486c6ea0482964d656126c132c016e16e27c689bc3027b63186832e696a941",
+      "status": "scope_unresolved"
+    },
+    {
+      "case_id": "20cc9b8c5753093fb20ae62b7fe1d56d940ee743eff06a43217fd3c4dd1db0ef",
+      "status": "scope_unresolved"
+    },
+    {
+      "case_id": "06a0e66fe27bca5b904ced8e496b2d36a4b07b2d5ff06db777cc2b4876202d09",
+      "status": "scope_unresolved"
+    },
+    {
+      "case_id": "2e2982c51aa9c62f232eb51771e22969fade5c0920084b10118cc839b206d791",
+      "status": "no_op"
+    },
+    {
+      "case_id": "7e27d6ae769c5e338ebb6278fd95f6f20c2027bda8c14543ba2a026d3580cbe5",
+      "status": "invalid"
+    },
+    {
+      "case_id": "375621351a4392e9a514b99c8bd56dc4090863f00034bb38d7b536f99aa7f224",
+      "status": "scope_unresolved"
+    },
+    {
+      "case_id": "0371ba25094094f808ca4155fa4fab590ad6090acc146cb84a7bfeeab31b3dcf",
+      "status": "scope_unresolved"
+    },
+    {
+      "case_id": "f6b3a8b66efc20e7e089ae62dceb04be854633449d30c9ed8715dd761910c484",
+      "status": "scope_unresolved"
+    }
+  ],
+  "frozen_pool_sha256": "afa343203be4ee068ff30dd66f70920bea1b5bae94ce9a3e6c7068c2b3297dc8",
+  "original_preservation": {
+    "generated_at": "2026-11-07T12:32:52.153253+05:30",
+    "repository_count": 23,
+    "originals_preserved": true,
+    "audited_source_hashes_checked": 2030,
+    "implementation_head_matches": true,
+    "implementation_tracked_tree_clean": true,
+    "implementation_source_hashes": [
+      {
+        "path": "src/tfmutate/parser.py",
+        "matches": true
+      },
+      {
+        "path": "src/tfmutate/scope.py",
+        "matches": true
+      },
+      {
+        "path": "src/tfmutate/state.py",
+        "matches": true
+      },
+      {
+        "path": "src/tfmutate/runner.py",
+        "matches": true
+      },
+      {
+        "path": "src/tfmutate/orchestrator.py",
+        "matches": true
+      }
+    ],
+    "audit_problems": [],
+    "validation_problems": []
+  },
+  "summary": {
+    "attempted_pairs": 123,
+    "both_scored": 123,
+    "original_assertion_kills": 39,
+    "strengthened_assertion_kills": 73,
+    "new_assertion_detections": 34,
+    "lost_assertion_detections": 0,
+    "transitions": {
+      "survived -> killed_assert": 34,
+      "survived -> survived": 48,
+      "killed_error -> killed_error": 2,
+      "killed_assert -> killed_assert": 39
+    }
+  }
+}
